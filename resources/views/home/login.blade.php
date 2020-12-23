@@ -17,31 +17,31 @@
   <body class="bg-info">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-xl-4 col-lg-5 d-flex flex-column align-items-end min-vh-100 bg-primary">
+        <div class="col-xl-4 col-lg-5 d-flex flex-column align-items-end min-vh-100 bg-dark">
           <div class="p-4 px-lg-5 pt-lg-4 pb-lg-3 text-center w-100 mb-auto">
-            <h1 class="text-light">Arrienda Autos</h1>
-            <h5 class="text-light">DOW020</h5>
-            <h6 class="text-light">Sistema de Películas</h6>
+            <h1 class="text-secondary" style="font-weight: bold">Arrienda Autos</h1>
+            <h5 class="text-secondary">DOW020</h5>
+            <h6 class="text-light">Sistema de Arriendo</h6>
           </div>
 
           <div class="p-4 px-lg-5 pt-lg-2 pb-lg-3 w-100 align-self-center">
             <div class="text-center">
-                <h3 class="text-light">Iniciar Sesión</h3>
+                <h3 class="text-primary">Iniciar Sesión</h3>
             </div>
             <form class="" method="POST" action="">
               @csrf
               <div class="form-group my-4 ">
-                <label for="email" class="text-dark">Email address:</label>
+                <label for="email" class="text-light">Email address:</label>
                 <input type="email" class="form-control bg-light text-primary" id="email" name="email" placeholder="Ingresa tu Email">
               </div>
               <div class="form-group @if($errors->any()) mt-4 mb-2 @else my-4 @endif">
-                <label for="password" class="text-dark">Password:</label>
+                <label for="password" class="text-light">Password:</label>
                 <input type="password" class="form-control bg-light text-light" id="password" name="password" placeholder="Ingresa tu Contraseña">
                 <div class="text-center">
-                    <small id="emailHelp" class="form-text text-muted"style="cursor:pointer;" ><a style="color: #fff;">¿Haz olvidado tu contraseña?</a></small>
+                    <small id="emailHelp" class="form-text text-muted" style="cursor:pointer;" ><a style="color: #fff;">¿Haz olvidado tu contraseña?</a></small>
                 </div>
               </div>
-              <button type="submit"  class="btn btn-dark w-100 my-2 text-light">Inicia Sesión</button>
+              <button type="submit"  class="btn btn-success w-100 my-2 text-light">Inicia Sesión</button>
               {{-- Validacion --}}
               @if($errors->any())
               <div class="text-center my-4">
@@ -61,7 +61,7 @@
                   <a href="#"class="btn btn-danger w-100"><i class="fab fa-facebook-f lead mr-2"></i>Facebook</a>
                 </div>
                 <div class="col-6 text-center pl-1">
-                  <a href="#"class="btn btn-success w-100 text-light"><i class="fab fa-google lead mr-2"></i>Google</a>
+                  <a href="#"class="btn btn-primary w-100 text-light"><i class="fab fa-google lead mr-2"></i>Google</a>
                 </div>
               </div>
             </form>
