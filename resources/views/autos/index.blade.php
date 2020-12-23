@@ -9,7 +9,7 @@
     @endphp
         <div class="row m-0 pt-3">
         @foreach ($numbers as $num)
-            <div class="card m-2 shadow-lg" style="width:18rem" >
+            <div class="card m-2 shadow-lg px-0" style="width:18rem" >
                 <img src="{{asset("../Imgs/fondoLogin1.jpg")}}" class="img-top" width="xl-285px" height="259.94px" >
                 <div class="card-body d-flex flex-column flex-fill "  >                
                         <h5 class="card-title">
