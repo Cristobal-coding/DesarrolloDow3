@@ -13,7 +13,7 @@
                 <img src="{{asset("../Imgs/fondoLogin1.jpg")}}" class="img-top" width="xl-285px" height="259.94px" >
                 <div class="card-body d-flex flex-column flex-fill "  >                
                         <h5 class="card-title">
-                            Mazda MX-7 MIATA
+                            -Mazda MX-7 MIATA
                         </h5>
                         <p class="card-text flex-fill">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. In                       
