@@ -1,0 +1,12 @@
+.img-home{
+    background-image: url("../imgs/fondo1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.no-scroll::-webkit-scrollbar{
+    display: none;
+
+
+}

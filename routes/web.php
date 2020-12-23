@@ -17,4 +17,5 @@ use App\Http\Controllers\HomeController;
 //     return view('welcome');
 // });
 
-Route::get("/", [HomeController::class, 'index'])->name("home.index");
+Route::get('/', [HomeController::class, 'index'])->name("home.index");
+Route::get('login', [HomeController::class, 'login'])->name('home.login');
