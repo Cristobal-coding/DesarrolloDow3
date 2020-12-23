@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AutosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +20,6 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name("home.index");
 Route::get('login', [HomeController::class, 'login'])->name('home.login');
+
+
+Route::get('/autos', [AutosController::class, 'index'])->name('autos.index');
