@@ -21,13 +21,16 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link @if(Request::segments()[0]=="home") active @endif" aria-current="page" href="#">Home</a>
+                    <a class="nav-link  @if(Route::current()->getName()=="home.index") active @endif" aria-current="page" href="{{route('home.index')}}">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="autos") active @endif" href="{{route("autos.index")}}">Vehiculos</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Arriendos</a>
+                    <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="arriendos") active @endif" href="{{route("arriendos.index")}}" tabindex="-1" aria-disabled="true">Arriendos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Clientes</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -42,7 +45,7 @@
                   </li>
                 </ul>
                 <form class="d-flex justify-content-center align-items-center">
-                  <p class="m-0 p-0 text-light mr-1" style="font-weight: bold; font-size:18px">Pepito01</p>
+                  <p class="m-0 p-0 text-light mr-1" style=" font-size:18px">Pepito01</p>
                   <button type="button" class="btn btn-primary border-0" data-toggle="tooltip" data-placement="bottom" title="Foto Usuario"><i class="far fa-user fa-lg"></i></button>
                   <button type="submit" class="btn btn-primary border-0" data-toggle="tooltip" data-placement="bottom" title="Cerrar Sesión"><i class="fas fa-sign-out-alt fa-lg"></i></button>
                 </form>

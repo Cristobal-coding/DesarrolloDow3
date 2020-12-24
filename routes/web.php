@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AutosController;
+use App\Http\Controllers\{HomeController, AutosController, ArriendosController};
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,3 +23,9 @@ Route::get('login', [HomeController::class, 'login'])->name('home.login');
 
 
 Route::get('/autos', [AutosController::class, 'index'])->name('autos.index');
+Route::post('/autos', [AutosController::class, 'store'])->name('autos.store');
+Route::delete('/autos/{auto}', [AutosController::class, 'destroy'])->name('autos.destroy');
+Route::get('/autos/{auto}/edit', [AutosController::class, 'edit'])->name('autos.edit');
+Route::put('/autos/{auto}', [AutosController::class, 'update'])->name('autos.update');
+
+Route::resource('/arriendos', ArriendosController::class);

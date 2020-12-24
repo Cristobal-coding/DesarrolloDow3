@@ -7,7 +7,7 @@
     <section class="py-5 text-center  text-light" >
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">!Consigue uno como este!</h1>
+            <h1 class="fw-light">¡Consigue uno como este!</h1>
             <p class="lead  text-light mb-0">“Miré a mi alrededor y no encontré el auto de mis sueños por lo que decidí construirlo yo mismo.”</p>
               <a href="#" class="btn btn-secondary text-light mb-2 mt-3">Ir Vehículos</a>
               <a href="#" class="btn btn-secondary text-light mb-2 mt-3">Ir Arriendos</a>
@@ -16,7 +16,5 @@
         </div>
       </section>
 
-    {{-- <button class="btn btn-outline-primary">Add Renato</button>
-    <button class="btn btn-outline-primary">Add cricobol</button> --}}
 </div>
 @endsection
