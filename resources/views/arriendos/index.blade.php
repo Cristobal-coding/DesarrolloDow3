@@ -15,7 +15,7 @@
             <th scope="col">Rut</th>
             <th scope="col">Incio</th>
             <th scope="col">Vencimiento</th>
-            <th scope="col">Detalles de la orden</th>        
+            <th scope="col">Detalles de la ordens</th>        
           </tr>
         </thead>
         <tbody>
