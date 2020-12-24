@@ -8,7 +8,14 @@ class AutosController extends Controller
 {
     public function index()
     {
-        return view("autos.index");
+        $total = 37; //LO que hay en el BD
+        $elementos=5;
+        $incompleta=$total % $elementos;
+        $totalInPage= $total/$elementos;
+        if($incompleta!=0){
+            $totalInPage+=1;
+        }
+        return view("autos.index", compact("totalInPage"));
     }
 
     public function create()

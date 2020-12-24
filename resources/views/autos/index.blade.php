@@ -35,12 +35,30 @@
                             <div class="col mb-2">
                                     <a href="" class="btn btn-primary">Agregar a la Orden</a>
                             </div>
-                        </div>    
-                    
-                                   
+                        </div>                
                 </div>
         </div>
         @endforeach
+        <div class="col-12 d-flex justify-content-center ">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  @for($i=1; $i<=$totalInPage;$i++)
+                    <li class="page-item"><a class="page-link" href="{{route("autos.index", $i)}}">{{$i}}</a></li>
+                  @endfor
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+
+        </div>
             
 </div>
 
