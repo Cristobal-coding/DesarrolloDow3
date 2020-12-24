@@ -1,5 +1,7 @@
 @extends('layouts/master')
-
+@section('css-personalizado')
+    <link rel="stylesheet" href="{{asset("css/myThemes.css")}}">
+@endsection
 @section('main_content')
 <div class="col-lg-8 col-10 offset-1 offset-lg-2">
     @php
