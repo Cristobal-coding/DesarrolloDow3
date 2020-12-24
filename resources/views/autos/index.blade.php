@@ -5,15 +5,15 @@
 @section('main_content')
 <div class="col-lg-8 col-10 offset-1 offset-lg-2">
     @php
-    $numbers = array(1,2,3,4,5,6,);
+    $numbers = array(1,2,3,4,5,6,7,8,9,10,11);
     @endphp
         <div class="row m-0 pt-3">
-        @foreach ($numbers as $num)
+        @for ($i=0;$i<$elementos;$i++)
             <div class="card m-2 shadow-lg px-0" style="width:18rem" >
                 <img src="{{asset("../Imgs/fondoLogin1.jpg")}}" class="img-top" width="xl-285px" height="259.94px" >
                 <div class="card-body d-flex flex-column flex-fill "  >                
                         <h5 class="card-title">
-                            -Mazda MX-7 MIATA
+                            -Mazda MX-7 MIATA {{$numbers[0]}}
                         </h5>
                         <p class="card-text flex-fill">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. In                       
@@ -38,7 +38,7 @@
                         </div>                
                 </div>
         </div>
-        @endforeach
+        @endfor
         <div class="col-12 d-flex justify-content-center ">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
@@ -48,7 +48,11 @@
                     </a>
                   </li>
                   @for($i=1; $i<=$totalInPage;$i++)
-                    <li class="page-item"><a class="page-link" href="{{route("autos.index", $i)}}">{{$i}}</a></li>
+                    @if($i==1)
+                    <li class="page-item"><a class="page-link" href="{{route("autos.index")}}">{{$i}}</a></li>
+                    @else
+                    <li class="page-item"><a class="page-link" href="{{route("autos.paginas", $i)}}">{{$i}}</a></li>
+                    @endif
                   @endfor
                   <li class="page-item">
                     <a class="page-link" href="#" aria-label="Next">

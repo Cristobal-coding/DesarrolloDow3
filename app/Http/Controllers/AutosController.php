@@ -8,14 +8,14 @@ class AutosController extends Controller
 {
     public function index()
     {
-        $total = 37; //LO que hay en el BD
-        $elementos=5;
+        $total = 11; //LO que hay en el BD
+        $elementos=6;
         $incompleta=$total % $elementos;
         $totalInPage= $total/$elementos;
         if($incompleta!=0){
             $totalInPage+=1;
         }
-        return view("autos.index", compact("totalInPage"));
+        return view("autos.index", compact("totalInPage", "elementos"));
     }
 
     public function create()
@@ -51,6 +51,10 @@ class AutosController extends Controller
     public function destroy($id)
     {
         dd("Entrando al metodo exitosamente");
+    }
+
+    public function pagina($pagina){
+        dd("La pagina es: ".$pagina);
     }
 }
 
