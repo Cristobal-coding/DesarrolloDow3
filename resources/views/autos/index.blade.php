@@ -16,7 +16,7 @@
                             -Mazda MX-7 MIATA {{$numbers[$i]}}
                         </h5>
                         <p class="card-text flex-fill">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. In                       
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. In s                      
                         </p>
                         <div class="col">
                             <?php
