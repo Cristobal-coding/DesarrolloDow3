@@ -24,14 +24,14 @@
         <h2 class="display-5">Another headline</h2>
         <p class="lead">And an even wittier subheading.</p>
       </div>
-      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 500px; border-radius: 21px 21px 0 0; background-image: url(../imgs/autorojo.jpg");></div>
     </div>
     <div class="bg-secondary mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
       <div class="my-3 p-3">
         <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
+        <p class="lead">And an even wittier subasdheading.</p>
       </div>
-      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 500px; border-radius: 21px 21px 0 0; background-image: url(../imgs/autoverde.jpg");></div>
     </div>
   </div>
 </div>

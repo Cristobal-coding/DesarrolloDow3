@@ -20,6 +20,7 @@ class Vehiculos extends Migration
             $table->string('nombre_tipo');
             $table->boolean('isArrendado');
             $table->string('patente');
+            $table->string('foto');
             $table->timestamp('created_At')->useCurrent();
             $table->foreign('nombre_tipo')->references('nombre_tipo')->on('tipo_vehiculo');
         });
