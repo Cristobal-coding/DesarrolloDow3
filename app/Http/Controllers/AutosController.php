@@ -6,16 +6,18 @@ use Illuminate\Http\Request;
 
 class AutosController extends Controller
 {
+
     public function index()
     {
-        $total = 11; //LO que hay en el BD
+        $total = 33; 
         $elementos=6;
         $incompleta=$total % $elementos;
         $totalInPage= $total/$elementos;
+        $iteraciones=$total<$elementos?$total:$elementos;
         if($incompleta!=0){
             $totalInPage+=1;
         }
-        return view("autos.index", compact("totalInPage", "elementos"));
+        return view("autos.index", compact("totalInPage", "elementos", "iteraciones"));
     }
 
     public function create()
@@ -54,7 +56,21 @@ class AutosController extends Controller
     }
 
     public function pagina($pagina){
-        dd("La pagina es: ".$pagina);
+        $total = 33; 
+        $elementos=6;
+        $incompleta=$total % $elementos;
+        $totalInPage= $total/$elementos;
+
+
+        $start=$elementos*($pagina-1);
+        $iteraciones=$total-$start>6?6:$total-$start;
+        if($incompleta!=0){
+            $totalInPage+=1;
+        }
+        //dd("Emperzar: ".$start." Iterar: ".$iteraciones);
+        return view("autos.paginaciones", compact("totalInPage", "iteraciones", "start"));
     }
+
+
 }
 
