@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{HomeController, AutosController, ArriendosController};
+use App\Http\Controllers\{HomeController, AutosController, ArriendosController,GenerarController};
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +31,5 @@ Route::put('/autos/{auto}', [AutosController::class, 'update'])->name('autos.upd
 Route::get('/autos/{pagina}', [AutosController::class, 'pagina'])->name('autos.paginas');
 
 Route::resource('/arriendos', ArriendosController::class);
+
+Route::get('/generar', [GenerarController::class, 'index'])->name('generar.index');
