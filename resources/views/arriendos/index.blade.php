@@ -9,7 +9,7 @@
             <th scope="col">Rut</th>
             <th scope="col">Incio</th>
             <th scope="col">Vencimiento</th>
-            <th scope="col">Entregada</th>
+            <th scope="col">Detalles de la orden</th>        
           </tr>
         </thead>
         <tbody>
