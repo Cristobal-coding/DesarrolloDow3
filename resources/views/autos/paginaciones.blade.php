@@ -9,11 +9,11 @@
     @endphp
         <div class="row m-0 pt-3">
         @for ($i=$start, $j=0;$j<$iteraciones;$i++,$j++)
-            <div class="card m-2 shadow-lg px-0" style="width:18rem" >
-                <img src="{{asset("../Imgs/fondoLogin1.jpg")}}" class="img-top" width="xl-285px" height="259.94px" >
+            <div class="card m-2 shadow-lg px-0 border-0" style="width:18rem" >
+                <img src="{{asset("../Imgs/fondoLogin1.jpg")}}" class="img-top rounded-top" width="xl-285px" height="259.94px" >
                 <div class="card-body d-flex flex-column flex-fill "  >                
                         <h5 class="card-title">
-                            -Mazda MX-7 MIATA  {{$numbers[$i]}}
+                            Mazda MX-7 MIATA  {{$numbers[$i]}}
                         </h5>
                         <p class="card-text flex-fill">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. In                       
@@ -43,15 +43,21 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                   <li class="page-item">
+                    @if(Request::segments()[1]=="2")
+                    <a class="page-link"  href="{{route("autos.index")}}" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    @else
                     <a class="page-link" href="{{Request::segments()[1]-1}}" aria-label="Previous">
                       <span aria-hidden="true">&laquo;</span>
                     </a>
+                    @endif
                   </li>
                   @for($i=1; $i<=$totalInPage;$i++)
                     @if($i==1)
                     <li class="page-item"><a class="page-link" href="{{route("autos.index")}}">{{$i}}</a></li>
-                    @else
-                    <li class="page-item"><a class="page-link" href="{{route("autos.paginas", $i)}}">{{$i}}</a></li>
+                    @else            
+                        <li class="page-item"><a class="page-link" href="{{route("autos.paginas", $i)}}">{{$i}}</a></li>
                     @endif
                   @endfor
                   @if($iteraciones>=6)
