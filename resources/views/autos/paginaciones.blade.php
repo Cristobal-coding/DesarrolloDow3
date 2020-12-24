@@ -7,7 +7,7 @@
     @php
     $numbers = array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33);
     @endphp
-        <div class="row m-0 pt-3">
+        <div class="row m-0 pt-3 " style="">
         @for ($i=$start, $j=0;$j<$iteraciones;$i++,$j++)
             <div class="card m-2 shadow-lg px-0 border-0" style="width:18rem" >
                 <img src="{{asset("../Imgs/fondoLogin1.jpg")}}" class="img-top rounded-top" width="xl-285px" height="259.94px" >
@@ -15,6 +15,9 @@
                         <h5 class="card-title">
                             Mazda MX-7 MIATA  {{$numbers[$i]}}
                         </h5>
+                        <h6>
+                            $6000 {{-- precio --}}
+                        </h6>
                         <p class="card-text flex-fill">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. In                       
                         </p>
@@ -29,13 +32,13 @@
                             ?>
                         </div>
                         <div class="row m-0">
-                            <div class="col mb-2 px-0">
-                                    <a href="" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Mas Detalles" > <i class="fas fa-question-circle fa-3x "></i></a>
-                            </div>
-                            <div class="col mb-2">
-                                    <a href="" class="btn btn-primary">Agregar a la Orden</a>
-                            </div>
-                        </div>                
+                          <div class="col-6">
+                                  <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="top" title="Mas Detalles"><i class="fas fa-question-circle fa-lg "></i></a>
+                          </div>
+                          <div class="col-6">
+                                  <a href="" class="btn btn-outline-primary w-100"><i class="fas fa-plus fa-lg mr-2"></i><i class="fas fa-shopping-cart fa-lg"></i></a>
+                          </div>
+                      </div>                
                 </div>
         </div>
         @endfor

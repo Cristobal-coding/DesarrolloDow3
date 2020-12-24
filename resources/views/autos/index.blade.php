@@ -15,6 +15,9 @@
                         <h5 class="card-title">
                             Mazda MX-7 MIATA {{$numbers[$i]}}
                         </h5>
+                        <h6>
+                            $6000
+                        </h6>
                         <p class="card-text flex-fill">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. In s                      
                         </p>
