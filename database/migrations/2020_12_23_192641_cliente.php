@@ -17,7 +17,7 @@ class Cliente extends Migration
             $table->string('rut_cliente');
             $table->string('nombre_cliente');
             $table->string('fono_cliente');
-            $table->boolean('entrega_pendiente');
+            $table->string('entrega_pendiente');
             $table->timestamp('created_At')->useCurrent();
             $table->primary('rut_cliente');
 

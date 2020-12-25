@@ -18,7 +18,7 @@ class Vehiculos extends Migration
             $table->string('nombre_vehiculo');
             $table->string('marca');
             $table->string('nombre_tipo');
-            $table->boolean('isArrendado');
+            $table->string('estado');
             $table->string('patente');
             $table->string('foto');
             $table->timestamp('created_At')->useCurrent();

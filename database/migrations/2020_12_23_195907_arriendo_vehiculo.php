@@ -17,7 +17,8 @@ class ArriendoVehiculo extends Migration
             $table->unsignedBigInteger("id_arriendo");
             $table->unsignedBigInteger("id_vehiculo");
             $table->boolean('entregado');
-            
+            $table->string('foto_arriendo');
+            $table->string('foto_entrega');
 
             $table->primary(['id_arriendo','id_vehiculo']);
 

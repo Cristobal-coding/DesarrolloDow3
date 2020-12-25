@@ -27,8 +27,11 @@
                     <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="autos") active @endif" href="{{route("autos.index")}}">Vehiculos</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="arriendos") active @endif" href="{{route("arriendos.index")}}" tabindex="-1" aria-disabled="true">Arriendos</a>
+                    <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="generar") active @endif" href="{{route("generar.index")}}" tabindex="-1" aria-disabled="true" tabindex="-1" aria-disabled="true">Generar arriendo</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="arriendos") active @endif" href="{{route("arriendos.index")}}" tabindex="-1" aria-disabled="true">Arriendos</a>
+                  </li>                  
                   <li class="nav-item">
                     <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Clientes</a>
                   </li>
