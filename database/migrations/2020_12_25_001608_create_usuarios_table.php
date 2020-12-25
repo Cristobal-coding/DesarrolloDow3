@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Users extends Migration
+class CreateUsuariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class Users extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->id('id');
             $table->string('nombre');
             $table->string('password');
-            $table->string('rol');        
+            $table->unsignedBigInteger('rol_id');
             $table->timestamp('created_At')->useCurrent();
-            
+
+            $table->foreign('rol_id')->references('id')->on('roles');
         });
     }
 
@@ -30,6 +31,6 @@ class Users extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('usuarios');
     }
 }
