@@ -13,7 +13,7 @@ class Vehiculos extends Migration
      */
     public function up()
     {
-        Schema::create('vehiculo', function (Blueprint $table) {
+        Schema::create('vehiculos', function (Blueprint $table) {
             $table->id('id_vehiculo');
             $table->string('nombre_vehiculo');
             $table->string('marca');
@@ -21,6 +21,7 @@ class Vehiculos extends Migration
             $table->string('estado');
             $table->string('patente');
             $table->string('foto');
+            $table->integer('year');
             $table->timestamp('created_At')->useCurrent();
             $table->foreign('nombre_tipo')->references('nombre_tipo')->on('tipo_vehiculo');
         });
