@@ -45,7 +45,7 @@
               {{-- Validacion --}}
               @if($errors->any())
               <div class="text-center my-4">
-                <p class="text-danger"><i class="fas fa-exclamation-circle fa-lg mr-1"></i>
+                <p class="text-secondary"><i class="fas fa-exclamation-circle fa-lg mr-1"></i>
                 @foreach ($errors->all() as $error )
                     {{$error}}
                 @endforeach
