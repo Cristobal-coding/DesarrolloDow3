@@ -1,6 +1,12 @@
 @extends('layouts/master')
 
 @section('main_content')
+<div class="row m-0 my-4">
+  <div class="col-lg-4 offset-lg-4 col-12 offset-0">
+    <a href="{{route("generar.index")}}"class="btn btn-primary w-100 text-light shadow-lg"><i class="fas fa-plus"></i> Generar nueva orden</a>
+
+  </div>
+</div>
 <div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
     <table class="table mt-2 table-bordered">
         <thead class="bg-dark border-0 text-light">
@@ -9,7 +15,7 @@
             <th scope="col">Rut</th>
             <th scope="col">Incio</th>
             <th scope="col">Vencimiento</th>
-            <th scope="col">Detalles de la orden</th>        
+            <th scope="col">Detalles de la ordens</th>        
           </tr>
         </thead>
         <tbody>
@@ -36,6 +42,12 @@
           </tr>
         </tbody>
       </table>
+
+      
+
+
+
+
 </div>
-    
+
 @endsection
