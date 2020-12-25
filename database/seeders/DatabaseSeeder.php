@@ -45,19 +45,19 @@ class DatabaseSeeder extends Seeder
         }
         //Vehiculos
         $vehiculos=[
-            ['id_vehiculo'=>1,'nombre_vehiculo'=>'Mazda MX-5','marca'=>'Mazda','nombre_tipo'=>
+            ['id_vehiculo'=>1,'nombre_vehiculo'=>'MX-5','marca'=>'Mazda','nombre_tipo'=>
                 'Coupe','estado'=>'disponible','patente'=>'BB-CL-34','year'=>2016,'foto'=>'mx-5.jpg'],
-            ['id_vehiculo'=>2,'nombre_vehiculo'=>'Ford Ranger 2019','marca'=>'Ford','nombre_tipo'=>
+            ['id_vehiculo'=>2,'nombre_vehiculo'=>'Ranger 2019','marca'=>'Ford','nombre_tipo'=>
                 'Camioneta','estado'=>'disponible','patente'=>'BB-CL-35','year'=>2019,'foto'=>'ranger.jpg'],
-            ['id_vehiculo'=>3,'nombre_vehiculo'=>'Toyota Tercel','marca'=>'Toyota','nombre_tipo'=>
+            ['id_vehiculo'=>3,'nombre_vehiculo'=>'Tercel','marca'=>'Toyota','nombre_tipo'=>
                 'Sedan','estado'=>'disponible','patente'=>'BB-CL-36','year'=>1998,'foto'=>'tercel.jpg'],
-            ['id_vehiculo'=>4,'nombre_vehiculo'=>'Mazda MX-7','marca'=>'Mazda','nombre_tipo'=>
+            ['id_vehiculo'=>4,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
                 'Coupe','estado'=>'disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'fondoLogin1.jpg'],
-            ['id_vehiculo'=>5,'nombre_vehiculo'=>'Mazda MX-7','marca'=>'Mazda','nombre_tipo'=>
+            ['id_vehiculo'=>5,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
                 'Coupe','estado'=>'disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'fondoLogin1.jpg'],
-            ['id_vehiculo'=>6,'nombre_vehiculo'=>'Mazda MX-7','marca'=>'Mazda','nombre_tipo'=>
+            ['id_vehiculo'=>6,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
                 'Coupe','estado'=>'disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'fondoLogin1.jpg'],
-            ['id_vehiculo'=>7,'nombre_vehiculo'=>'Mazda MX-7','marca'=>'Mazda','nombre_tipo'=>
+            ['id_vehiculo'=>7,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
                 'Coupe','estado'=>'disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'fondoLogin1.jpg'],
         ];
         foreach($vehiculos as $vehiculo){
