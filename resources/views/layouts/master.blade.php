@@ -31,7 +31,7 @@
                     <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="arriendos") active @endif" href="{{route("arriendos.index")}}" tabindex="-1" aria-disabled="true">Arriendos</a>
                   </li>                  
                   <li class="nav-item">
-                    <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Clientes</a>
+                    <a class="nav-link  @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="clientes") active @endif" href="{{route("clientes.index")}}" tabindex="-1" aria-disabled="true">Clientes</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
