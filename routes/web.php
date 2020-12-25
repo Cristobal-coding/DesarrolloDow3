@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{HomeController, AutosController, ArriendosController,GenerarController};
+use App\Http\Controllers\{HomeController, AutosController, ArriendosController,GenerarController, UsuariosController};
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +27,13 @@ Route::post('/autos', [AutosController::class, 'store'])->name('autos.store');
 Route::delete('/autos/{auto}', [AutosController::class, 'destroy'])->name('autos.destroy');
 Route::get('/autos/{auto}/edit', [AutosController::class, 'edit'])->name('autos.edit');
 Route::put('/autos/{auto}', [AutosController::class, 'update'])->name('autos.update');
-
 Route::get('/autos/{pagina}', [AutosController::class, 'pagina'])->name('autos.paginas');
 
 Route::resource('/arriendos', ArriendosController::class);
+
+Route::post('/usuarios/login',[UsuariosController::class, 'login'])->name('usuarios.login');
+Route::get('/usuarios/logout',[UsuariosController::class, 'logout'])->name('usuarios.logout');
+Route::resource('/usuarios', UsuariosController::class);
+Route::post('/usuarios/{usuario}/activar', [UsuariosController::class, 'activar'])->name('usuarios.activar');
 
 Route::get('/generar', [GenerarController::class, 'index'])->name('generar.index');

@@ -28,7 +28,7 @@
             <div class="text-center">
                 <h3 class="text-primary">Iniciar Sesión</h3>
             </div>
-            <form class="" method="POST" action="">
+            <form class="" method="POST" action="{{route("usuarios.login")}}">
               @csrf
               <div class="form-group my-4 ">
                 <label for="email" class="text-light">Email address:</label>
@@ -36,7 +36,7 @@
               </div>
               <div class="form-group @if($errors->any()) mt-4 mb-2 @else my-4 @endif">
                 <label for="password" class="text-light">Password:</label>
-                <input type="password" class="form-control bg-light text-light" id="password" name="password" placeholder="Ingresa tu Contraseña">
+                <input type="password" class="form-control bg-light text-primary" id="password" name="password" placeholder="Ingresa tu Contraseña">
                 <div class="text-center">
                     <small id="emailHelp" class="form-text text-muted" style="cursor:pointer;" ><a style="color: #fff;">¿Haz olvidado tu contraseña?</a></small>
                 </div>
