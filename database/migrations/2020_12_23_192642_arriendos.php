@@ -19,7 +19,7 @@ class Arriendos extends Migration
             $table->date('arriendo_fecha_inicio');
             $table->date('arriendo_fecha_final');
 
-            $table->timestamp('created_At')->useCurrent();
+            $table->timestamps();
             $table->foreign('rut_cliente')->references('rut_cliente')->on('cliente');
         });
     }

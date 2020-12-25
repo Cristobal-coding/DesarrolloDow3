@@ -40,7 +40,8 @@ class DatabaseSeeder extends Seeder
             DB::table('tipo_vehiculo')->insert([
                 'nombre_tipo' => $tipo['nombre_tipo'],
                 'valor_diario'=> $tipo['valor_diario'],
-                'created_At' => new DateTime('NOW')
+                'created_at' => new DateTime('NOW'),
+                'updated_at' => NULL
             ]);           
         }
         //Vehiculos
@@ -69,8 +70,9 @@ class DatabaseSeeder extends Seeder
                 'estado'=> $vehiculo['estado'],
                 'patente'=> $vehiculo['patente'],
                 'year'=> $vehiculo['year'],
-                'foto'=> $vehiculo['foto']
-               
+                'foto'=> $vehiculo['foto'],
+                'created_at' => new DateTime('NOW'),
+                'updated_at' => NULL
             ]);           
         }
         //USUARIOS
@@ -88,11 +90,11 @@ class DatabaseSeeder extends Seeder
         }
         $usuarios=[
             ['id'=>2,'nombre'=>'Renato Plaza','password'=>'$2y$10$Lj3spqVFDDvtpk..JBsQT.aqB5ZfBcDWf/G3S48eW484kkmIilU9S',
-                'rol_id'=>1,'email'=>'renato@gmail.com','created_At' => new DateTime('NOW')],
+                'rol_id'=>1,'email'=>'renato@gmail.com',],
             ['id'=>1,'nombre'=>'Carlos Alten','password'=>'$2y$10$08ttoKi2SpZkRmDFYC2kEOzVtVaJBX0E4eg3Y.295csobyUdkuRIy',
-                'rol_id'=>8,'email'=>'carlosalt@gmail.com','created_At' => new DateTime('NOW')],
+                'rol_id'=>8,'email'=>'carlosalt@gmail.com',],
             ['id'=>3,'nombre'=>'Cristobal Herrera','password'=>'$2y$10$/Ob7ZYsEv9URBlcYUGO0VOcsTsg.qZ2ZC9ztxSYv4/a5iMWLdnhCm',
-                'rol_id'=>1,'email'=>'cristobalh@gmail.com','created_At' => new DateTime('NOW')],
+                'rol_id'=>1,'email'=>'cristobalh@gmail.com',],
         ];
         foreach($usuarios as $usuario){
             DB::table('usuarios')->insert([
@@ -101,7 +103,8 @@ class DatabaseSeeder extends Seeder
                 'password' => $usuario['password'],
                 'rol_id' => $usuario['rol_id'],
                 'email' => $usuario['email'],
-                'created_At' => new DateTime('NOW')
+                'created_at' => new DateTime('NOW'),
+                'updated_at' => NULL
             ]);           
         }
     }
