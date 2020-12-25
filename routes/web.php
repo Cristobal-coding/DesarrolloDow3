@@ -30,10 +30,10 @@ Route::put('/autos/{auto}', [AutosController::class, 'update'])->name('autos.upd
 Route::get('/autos/{pagina}', [AutosController::class, 'pagina'])->name('autos.paginas');
 
 Route::resource('/arriendos', ArriendosController::class);
+Route::get('/arriendos/create', [ArriendosController::class, 'create'])->name('arriendos.create');
 
 Route::post('/usuarios/login',[UsuariosController::class, 'login'])->name('usuarios.login');
 Route::get('/usuarios/logout',[UsuariosController::class, 'logout'])->name('usuarios.logout');
 Route::resource('/usuarios', UsuariosController::class);
 Route::post('/usuarios/{usuario}/activar', [UsuariosController::class, 'activar'])->name('usuarios.activar');
 
-Route::get('/generar', [GenerarController::class, 'index'])->name('generar.index');

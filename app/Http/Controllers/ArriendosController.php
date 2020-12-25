@@ -24,7 +24,7 @@ class ArriendosController extends Controller
      */
     public function create()
     {
-        //
+        return view("arriendos.create");
     }
 
     /**
@@ -82,4 +82,7 @@ class ArriendosController extends Controller
     {
         //
     }
+
+    
+
 }

@@ -3,8 +3,7 @@
 @section('main_content')
 <div class="row m-0 my-4">
   <div class="col-lg-4 offset-lg-4 col-12 offset-0">
-    <a href="{{route("generar.index")}}"class="btn btn-primary w-100 text-light shadow-lg"><i class="fas fa-plus"></i> Generar nueva orden</a>
-
+    <a href="{{route("arriendos.create")}}"class="btn btn-primary w-100 text-light shadow-lg"><i class="fas fa-plus"></i> Generar nueva orden</a>
   </div>
 </div>
 <div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">

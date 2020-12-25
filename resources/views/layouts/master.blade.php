@@ -28,13 +28,13 @@
                   </li>
                   
                   <li class="nav-item">
-                    <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="arriendos"||"generar") active @endif" href="{{route("arriendos.index")}}" tabindex="-1" aria-disabled="true">Arriendos</a>
+                    <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="arriendos") active @endif" href="{{route("arriendos.index")}}" tabindex="-1" aria-disabled="true">Arriendos</a>
                   </li>                  
                   <li class="nav-item">
                     <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Clientes</a>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
                       Configuración
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -45,7 +45,8 @@
                     </ul>
                   </li>
                 </ul>
-                <form class="d-flex justify-content-center align-items-center">
+                <form class="d-flex justify-content-center align-items-center" method="GET" action="{{route("usuarios.logout")}}">
+                  @csrf
                   <p class="m-0 p-0 text-light mr-1" style=" font-size:18px">Pepito01</p>
                   <button type="button" class="btn btn-primary border-0" data-toggle="tooltip" data-placement="bottom" title="Foto Usuario"><i class="far fa-user fa-lg"></i></button>
                   <button type="submit" class="btn btn-primary border-0" data-toggle="tooltip" data-placement="bottom" title="Cerrar Sesión"><i class="fas fa-sign-out-alt fa-lg"></i></button>
