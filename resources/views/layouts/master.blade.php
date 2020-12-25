@@ -28,7 +28,7 @@
                   </li>
                   
                   <li class="nav-item">
-                    <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="arriendos") active @endif" href="{{route("arriendos.index")}}" tabindex="-1" aria-disabled="true">Arriendos</a>
+                    <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="arriendos"||"generar") active @endif" href="{{route("arriendos.index")}}" tabindex="-1" aria-disabled="true">Arriendos</a>
                   </li>                  
                   <li class="nav-item">
                     <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Clientes</a>
