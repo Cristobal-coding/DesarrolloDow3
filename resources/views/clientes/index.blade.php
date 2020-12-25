@@ -18,7 +18,8 @@
               <th scope="col">Rut</th>
               <th scope="col">Nombre Cliente</th>
               <th scope="col">Entrega Pendiente</th>
-              <th scope="col">Fono</th>        
+              <th scope="col">Fono</th>      
+              <th scope="col">Gestionar</th>     
             </tr>
           </thead>
           <tbody>
@@ -27,6 +28,16 @@
                 <td>Otto</td>
                 <th>No</th>
                 <td>+5698985622569</td>
+                <td>
+                    <div class="btn-group w-100 justify-content-center align-items-center" role="group" aria-label="Button group with nested dropdown">
+                        <span class="pr-1" data-toggle="tooltip" title="Editar." data-placement="bottom">                               
+                            <a  href="" class="btn btn-secondary"><i class="far fa-edit fa-lg"></i></a>
+                        </span>
+                        <span class="pl-1" data-toggle="tooltip" title="Borrar." data-placement="right">                               
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#borrarDirector"><i class="fas fa-trash fa-lg"></i></button>
+                        </span>                 
+                     </div>
+                 </td>
               
             </tr>
             
