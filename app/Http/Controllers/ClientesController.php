@@ -18,7 +18,8 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        return view("clientes.index");
+        $clientes= Cliente::all();
+        return view("clientes.index",compact("clientes"));
     }
     public function create()
     {
@@ -92,6 +93,7 @@ class ClientesController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
-        //
+        $cliente->delete();
+        return redirect()->route("clientes.index"); 
     }
 }
