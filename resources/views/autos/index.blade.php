@@ -95,7 +95,7 @@
                 <div class="row m-0 mb-3 px-0">
                     <div class="col-6">
                         <label for="nombre_tipo" id="nombre_tipo" name="nombre_tipo">Tipo Vehículo:</label>
-                        <select class="form-control @error('director_id') is-invalid @enderror" name="nombre_tipo" id="nombre_tipo" style="color: #fff;">
+                        <select class="form-control mi-scrol @error('director_id') is-invalid @enderror" name="nombre_tipo" id="nombre_tipo" >
                             @foreach ($tipos as $tipo)
                                 <option value="{{$tipo->nombre_tipo}}">{{$tipo->nombre_tipo}}</option>                        
                             @endforeach                      
@@ -104,8 +104,10 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="año">Año:</label>
-                            <select class="form-control @error('director_id') is-invalid @enderror" name="año" id="año" style="color: #fff;">                
-                                <option value="{{$tipo->nombre_tipo}}">{{$tipo->nombre_tipo}}</option>                        
+                            <select class="form-control mi-scrol @error('director_id') is-invalid @enderror" name="año" id="año" >                
+                                @foreach ($años as $año)
+                                    <option value="{{$año}}">{{$año}}</option>
+                                @endforeach                       
                             </select> 
                         </div>
                     </div>
