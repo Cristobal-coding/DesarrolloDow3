@@ -20,7 +20,10 @@
 <div class="col-12 w-100 mx-0 px-0">
   <div class="d-md-flex flex-md-equal w-100">
     <div class="bg-dark mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"style="width: 80%; height: 1500px;)">
-      <div class="my-3 py-3">
+      <div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
+        <button type="button" href=""class="btn btn-warning">Agregar un Usuario</button>
+      </div>
+      <div class="my-3 py-3"> 
         <h2 class="display-5">Ejectivo</h2>
         <p class="lead">Lista de Usuarios Ejectivos.</p>
       </div>
@@ -28,8 +31,8 @@
         <table class="table mt-2 table-bordered">
           <thead class="bg-dark border-0 text-light">
             <tr>
-              <th scope="col">nombre de usuario</th>
-              <th scope="col">email</th>         
+              <th scope="col">Username</th>
+              <th scope="col">E-mail</th>         
             </tr>
           </thead>
           <tbody>
@@ -46,16 +49,19 @@
       </div>
     </div>
     <div class="bg-primary mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"style="width: 80%; height: 1500px;)">
+      <div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
+        <button type="button" href=""class="btn btn-warning">Agregar un Usuario</button>
+      </div>
       <div class="my-3 p-3 text-light">
         <h2 class="display-5">Administrador</h2>
         <p class="lead">Lista de Usuarios Administrador.</p>
       </div>
       <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 500px; border-radius: 21px 21px 0 0;);" >
         <table class="table mt-2 table-bordered">
-          <thead class="bg-dark border-0 text-light">
+          <thead class="bg-primary border-0 text-light">
             <tr>
-              <th scope="col">nombre de usuario</th>
-              <th scope="col">email</th>         
+              <th scope="col">Username</th>
+              <th scope="col">E-mail</th>           
             </tr>
           </thead>
           <tbody>
