@@ -31,7 +31,7 @@
                     <th>{{$cliente->entrega_pendiente}}</th>
                     <td>{{$cliente->fono_cliente}}</td>
                     <td>
-                        <div class="btn-group  justify-content-center align-items-center" role="group" aria-label="Button group with nested dropdown">
+                        <div class="btn-group justify-content-center align-items-center" role="group" aria-label="Button group with nested dropdown">
                             <span class="pr-1" data-toggle="tooltip" title="Editar." data-placement="bottom">                               
                                 <a  href="" class="btn btn-secondary"><i class="far fa-edit fa-lg"></i></a>
                             </span>
