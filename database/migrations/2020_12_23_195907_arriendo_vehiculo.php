@@ -23,7 +23,7 @@ class ArriendoVehiculo extends Migration
             $table->primary(['id_arriendo','id_vehiculo']);
 
             $table->foreign('id_arriendo')->references('id_arriendo')->on('arriendos');
-            $table->foreign('id_vehiculo')->references('id_vehiculo')->on('vehiculo');
+            $table->foreign('id_vehiculo')->references('id_vehiculo')->on('vehiculos');
             
         });
     }
