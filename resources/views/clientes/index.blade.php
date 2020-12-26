@@ -8,7 +8,7 @@
 </div>
 <div class="row m-0 my-4">
     <div class="col-lg-4 offset-lg-4 col-12 offset-0">
-      <a href=""class="btn btn-primary w-100 text-light shadow-lg"><i class="fas fa-user-alt"></i><i class="fas fa-plus"></i> Añadir Cliente</a>
+      <a href="{{route("clientes.create")}}"class="btn btn-primary w-100 text-light shadow-lg"><i class="fas fa-user-alt"></i><i class="fas fa-plus"></i> Añadir Cliente</a>
     </div>
   </div>
   {{-- dentro de un foreach --}}

@@ -20,16 +20,16 @@ class ClientesController extends Controller
     {
         return view("clientes.index");
     }
-
+    public function create()
+    {
+        return view("clientes.create");
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -39,7 +39,15 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cliente= new Cliente;
+        $cliente->rut_cliente = $request->rut;
+        $cliente->nombre_cliente= $request->nombre;
+
+        $cliente->fono_cliente = $request->fono;
+        $cliente->entrega_pendiente = 'no';
+        $cliente->save();
+
+        return redirect()->route("clientes.index");
     }
 
     /**
