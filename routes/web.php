@@ -40,5 +40,6 @@ Route::post('/usuarios/{usuario}/activar', [UsuariosController::class, 'activar'
 Route::get('/clientes', [ClientesController::class, 'index'])->name('clientes.index');
 Route::get('/clientes/create', [ClientesController::class, 'create'])->name('clientes.create');
 Route::post('/clientes/create', [ClientesController::class, 'store'])->name('clientes.store');
-Route::delete('/cliente{cliente}', [ClientesController::class, 'destroy'])->name('clientes.destroy');
-Route::delete('/cliente{cliente}', [ClientesController::class, 'edit'])->name('clientes.edit');
+Route::delete('/cliente/{cliente}', [ClientesController::class, 'destroy'])->name('clientes.destroy');
+Route::get('/cliente/{cliente}/edit', [ClientesController::class, 'edit'])->name('clientes.edit');
+Route::put('/clientes/{cliente}', [ClientesController::class, "update"])->name("clientes.update");

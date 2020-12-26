@@ -71,7 +71,7 @@ class ClientesController extends Controller
     public function edit(Cliente $cliente)
     {
         $clientes=$cliente;
-         return view("cliente.edit",compact("cliente"));
+         return view("clientes.edit",compact("cliente"));
     }
 
     /**
@@ -83,7 +83,14 @@ class ClientesController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
-        //
+        $cliente->rut_cliente=$request->rut_cliente;
+        $cliente->nombre_cliente=$request->nombre_cliente;
+        $cliente->fono_cliente=$request->fono_cliente;
+        $cliente->entrega_pendiente=$request->entrega_pendiente;
+        
+        $cliente->save();
+        return redirect()->route("clientes.index");
+        
     }
 
     /**
