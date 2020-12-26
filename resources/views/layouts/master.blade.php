@@ -43,12 +43,12 @@
                     <a class="nav-link  @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="clientes") active @endif" href="{{route("clientes.index")}}" tabindex="-1" aria-disabled="true">Clientes</a>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle  @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="usuarios") active @endif" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Configuración
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Gestionar Usuarios</a></li>
-                      <li><a class="dropdown-item" href="#">Gestionar Roles</a></li>
+                      <li><a class="dropdown-item" href="{{route("usuarios.index")}}">Gestionar Usuarios</a></li>
+                      <li><a class="dropdown-item" href="">Gestionar Roles</a></li>
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>
                     </ul>
