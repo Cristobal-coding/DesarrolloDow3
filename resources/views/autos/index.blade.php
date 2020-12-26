@@ -13,7 +13,7 @@
                     <h6 class="text-primary">Patente: <span style="color: black">{{$autos[$i]->patente}}</span></h6>
                     <h6 class="text-primary">Tipo: <span style="color: black">{{$autos[$i]->nombre_tipo}}</span></h6>
                     <h6 class="text-primary">Estado: <span 
-                    @if($autos[$i]->estado=="disponible")    
+                    @if($autos[$i]->estado=="Disponible")    
                         style="color: #80EF10"
                     @else 
                         @if($autos[$i]->estado=="Arrendado")
