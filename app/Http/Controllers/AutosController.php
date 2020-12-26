@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Tipo,Autos};
+use App\Models\{Tipo,Auto};
 use Illuminate\Support\Facades\Storage;
+use DateTime;
 class AutosController extends Controller
 {
     public function __construct() {
@@ -13,8 +14,9 @@ class AutosController extends Controller
     public function index()
     {
         $tipos= Tipo::all();
+        $autos= Auto::all();
         $años = range(date('Y'), 1980);
-        $total = 33; 
+        $total = count($autos); 
         $elementos=6;
         $incompleta=$total % $elementos;
         $totalInPage= $total/$elementos;
@@ -33,17 +35,17 @@ class AutosController extends Controller
 
     public function store(Request $request)
     {
-        dd("Hola");
-        // $auto= new Auto();
-        // $auto->nombre_vehiculo= $request->nombre;
-        // $auto->marca = $request->marca;
-        // $auto->estado = $request->estado;
-        // $auto->nombre_tipo = $request->nombre_tipo;
-        // $auto->patente = $request->patente;
-        // $auto->foto=$request->foto->store("public/Vehiculos");
-        // $auto->save();
+        $auto= new Auto();
+        $auto->nombre_vehiculo= $request->nombre;
+        $auto->marca = $request->marca;
+        $auto->estado = $request->estado;
+        $auto->nombre_tipo = $request->nombre_tipo;
+        $auto->patente = $request->patente;
+        $auto->foto=$request->foto->store("public/Vehiculos");
+        $auto->year=$request->año;
+        $auto->save();
 
-        // return redirect()->route("autos.index");
+        return redirect()->route("autos.index");
     }
 
 
@@ -71,7 +73,9 @@ class AutosController extends Controller
     }
 
     public function pagina($pagina){
-        $total = 33; 
+        $tipos= Tipo::all();
+        $autos= Auto::all();
+        $total = count($autos); 
         $elementos=6;
         $incompleta=$total % $elementos;
         $totalInPage= $total/$elementos;

@@ -69,8 +69,8 @@ class DatabaseSeeder extends Seeder
                 'estado'=> $vehiculo['estado'],
                 'patente'=> $vehiculo['patente'],
                 'year'=> $vehiculo['year'],
-                'foto'=> $vehiculo['foto'],
-                'created_At' => new DateTime('NOW')
+                'foto'=> $vehiculo['foto']
+               
             ]);           
         }
         //USUARIOS

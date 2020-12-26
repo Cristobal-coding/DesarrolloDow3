@@ -116,8 +116,8 @@
                 <div class="row m-0 px-0">
                     <div class="col-12">
                         <div class="mb-3">
-                            <label for="formFileSm" class="form-label">Imagen del Vehículo:</label>
-                            <input class="form-control form-control-sm" id="formFileSm" type="file">
+                            <label for="foto" class="form-label">Imagen del Vehículo:</label>
+                            <input class="form-control form-control-sm" id="foto" type="file" name="foto">
                         </div>
                     </div>
                 </div>

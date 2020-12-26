@@ -22,7 +22,7 @@ class Vehiculos extends Migration
             $table->string('patente');
             $table->string('foto');
             $table->integer('year');
-            $table->timestamp('created_At')->useCurrent();
+            $table->timestamps();
             $table->foreign('nombre_tipo')->references('nombre_tipo')->on('tipo_vehiculo');
         });
     }
