@@ -27,7 +27,7 @@ Route::post('/autos', [AutosController::class, 'store'])->name('autos.store');
 Route::delete('/autos/{auto}', [AutosController::class, 'destroy'])->name('autos.destroy');
 Route::get('/autos/{auto}/edit', [AutosController::class, 'edit'])->name('autos.edit');
 Route::put('/autos/{auto}', [AutosController::class, 'update'])->name('autos.update');
-Route::get('/autos/{pagina}', [AutosController::class, 'pagina'])->name('autos.paginas');
+Route::get('/autos/page/{pagina}', [AutosController::class, 'pagina'])->name('autos.paginas');
 
 Route::resource('/arriendos', ArriendosController::class);
 Route::get('/arriendos/create', [ArriendosController::class, 'create'])->name('arriendos.create');

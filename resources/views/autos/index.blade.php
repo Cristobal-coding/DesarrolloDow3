@@ -37,12 +37,37 @@
                             <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="far fa-edit fa-lg"></i></a>
                         </div>
                         <div class="col-4 mb-1 px-0">
-                            <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="right" title="Eliminar"><i class="fas fa-times-circle fa-lg"></i></a>
+                            {{-- <form method="POST" action="{{route("autos.destroy", $autos[$i]->id_vehiculo)}}"  >
+                             @csrf
+                             @method('delete')   
+                            </form> --}}
+                            <span data-toggle="tooltip" data-placement="right" title="Eliminar">
+                               <button class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#borrarVehiculo{{$autos[$i]->id_vehiculo}}"><i class="fas fa-times-circle fa-lg"></i></button>
+                            </span>
                         </div>
                         <div class="col-12 px-0">
                             <a href="" class="btn btn-outline-primary w-100"><i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($autos[$i]->tipo->valor_diario,0,".",".")}} CLP</a>
                         </div>
-                    </div>                
+                    </div> 
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="borrarVehiculo{{$autos[$i]->id_vehiculo}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            fdsgaaaaaaaaaaaaaaaaaaaaaaaaaa
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         @endfor
@@ -139,6 +164,29 @@
             </form>
         </div>
     </div>
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 @endsection

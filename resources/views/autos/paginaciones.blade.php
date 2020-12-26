@@ -51,12 +51,12 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination">
           <li class="page-item">
-            @if(Request::segments()[1]=="2")
+            @if(Request::segments()[2]=="2")
             <a class="page-link"  href="{{route("autos.index")}}" aria-label="Previous">
               <span aria-hidden="true">&laquo;</span>
             </a>
             @else
-            <a class="page-link" href="{{Request::segments()[1]-1}}" aria-label="Previous">
+            <a class="page-link" href="{{Request::segments()[2]-1}}" aria-label="Previous">
               <span aria-hidden="true">&laquo;</span>
             </a>
             @endif
@@ -70,7 +70,7 @@
           @endfor
           @if($iteraciones>=6)
           <li class="page-item">
-            <a class="page-link" href="{{Request::segments()[1]+1}}" aria-label="Next">
+            <a class="page-link" href="{{Request::segments()[2]+1}}" aria-label="Next">
               <span aria-hidden="true">&raquo;</span>
             </a>
           </li>

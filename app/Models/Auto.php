@@ -9,6 +9,7 @@ class Auto extends Model
 {
     use HasFactory;
     protected $table= "vehiculos";
+    protected $primaryKey ="id_vehiculo";
 
     public function tipo(){
         return $this->belongsTo("App\Models\Tipo", "nombre_tipo", 'nombre_tipo');

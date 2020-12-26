@@ -57,7 +57,7 @@ class AutosController extends Controller
 
     public function edit($id)
     {
-        dd("Entrando al metodo exitosamente");
+        dd("Entrando al metodo edit");
     }
 
  
@@ -67,9 +67,9 @@ class AutosController extends Controller
     }
 
   
-    public function destroy($id)
+    public function destroy(Auto $auto)
     {
-        dd("Entrando al metodo exitosamente");
+        dd("Entrando al metodo delete");
     }
 
     public function pagina($pagina){
