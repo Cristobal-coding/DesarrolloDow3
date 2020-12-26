@@ -11,6 +11,7 @@
       <a href=""class="btn btn-primary w-100 text-light shadow-lg"><i class="fas fa-user-alt"></i><i class="fas fa-plus"></i> Añadir Cliente</a>
     </div>
   </div>
+  {{-- dentro de un foreach --}}
   <div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
       <table class="table mt-2 table-bordered">
           <thead class="bg-dark border-0 text-light">
