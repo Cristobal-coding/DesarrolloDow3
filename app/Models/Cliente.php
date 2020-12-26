@@ -13,7 +13,8 @@ class Cliente extends Model
     protected $keyType='string';
     public $incrementing = false;
     
-    public function arriendo(){
-        return  $this->hasMany("App\Models\Arriendo","rut_cliente",'rut_cliente');
+    public function arriendos(){
+        
+        return  $this->hasMany("App\Models\Arriendo");
     }
 }
