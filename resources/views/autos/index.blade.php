@@ -31,13 +31,13 @@
                     >{{$autos[$i]->estado}}</span></h6>
                     <div class="row m-0">
                         <div class="col-4 mb-1 px-0">
-                            <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="top" title="Mas Detalles"><i class="fas fa-question-circle fa-lg "></i></a>
+                            <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="left" title="Mas Info."><i class="fas fa-question-circle fa-lg "></i></a>
                         </div>
                         <div class="col-4 mb-1 px-0">
-                            <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="top" title="Mas Detalles"><i class="far fa-edit fa-lg"></i></a>
+                            <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="far fa-edit fa-lg"></i></a>
                         </div>
                         <div class="col-4 mb-1 px-0">
-                            <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="top" title="Mas Detalles"><i class="fas fa-times-circle fa-lg"></i></a>
+                            <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="right" title="Eliminar"><i class="fas fa-times-circle fa-lg"></i></a>
                         </div>
                         <div class="col-12 px-0">
                             <a href="" class="btn btn-outline-primary w-100"><i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($autos[$i]->tipo->valor_diario,0,".",".")}} CLP</a>

@@ -14,7 +14,7 @@ class AutosController extends Controller
     public function index()
     {
         $tipos= Tipo::all();
-        $autos= Auto::all();
+        $autos= Auto::orderby('marca',"asc")->get();
         $años = range(date('Y'), 1980);
         $total = count($autos); 
         $elementos=6;
@@ -74,13 +74,11 @@ class AutosController extends Controller
 
     public function pagina($pagina){
         $tipos= Tipo::all();
-        $autos= Auto::all();
+        $autos= Auto::orderby('marca',"asc")->get();
         $total = count($autos); 
         $elementos=6;
         $incompleta=$total % $elementos;
         $totalInPage= $total/$elementos;
-
-
         $start=$elementos*($pagina-1);
         $iteraciones=$total-$start>6?6:$total-$start;
         if($incompleta!=0){

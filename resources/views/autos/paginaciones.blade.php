@@ -5,7 +5,7 @@
 @section('main_content')
 <div class="col-lg-8 col-10 offset-1 offset-lg-2">
   <div class="row m-0 pt-3 d-flex align-items-center justify-content-center">
-    @for ($i=0;$i<$iteraciones;$i++)
+    @for ($i=$start, $j=0;$j<$iteraciones;$i++,$j++)
         <div class="card m-2 shadow-lg px-0 border-0 rounded-lg" style="width:18rem" >
             <img src="{{Storage::url($autos[$i]->foto)}}" class="img-top rounded-top" width="xl-285px" height="259.94px" >
             <div class="card-body d-flex flex-column flex-fill "  >                
