@@ -11,6 +11,6 @@ class Auto extends Model
     protected $table= "vehiculos";
 
     public function tipo(){
-        return $this->belongsTo("App\Models\Tipo");
+        return $this->belongsTo("App\Models\Tipo", "nombre_tipo", 'nombre_tipo');
     }
 }

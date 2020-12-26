@@ -9,8 +9,11 @@ class Tipo extends Model
 {
     use HasFactory;
     protected $table= "tipo_vehiculo";
+    protected $primaryKey ="nombre_tipo";
+    protected $keyType='string';
+    public $incrementing = false;
 
     public function vehiculos(){
-        return  $this->hasMany("App\Models\Autos");
+        return  $this->hasMany("App\Models\Auto", 'nombre_tipo', 'nombre_tipo');
     }
 }

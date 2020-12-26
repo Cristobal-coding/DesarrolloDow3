@@ -24,7 +24,7 @@ class AutosController extends Controller
         if($incompleta!=0){
             $totalInPage+=1;
         }
-        return view("autos.index", compact("totalInPage", "elementos", "iteraciones", "tipos", "años"));
+        return view("autos.index", compact("totalInPage", "elementos", "iteraciones", "tipos", "años","autos"));
     }
 
     public function create()
@@ -87,7 +87,7 @@ class AutosController extends Controller
             $totalInPage+=1;
         }
         //dd("Emperzar: ".$start." Iterar: ".$iteraciones);
-        return view("autos.paginaciones", compact("totalInPage", "iteraciones", "start"));
+        return view("autos.paginaciones", compact("totalInPage", "iteraciones", "start", "autos", "tipos"));
     }
 
 
