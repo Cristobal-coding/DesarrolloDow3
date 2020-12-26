@@ -44,6 +44,11 @@
                             <button class="btn btn-primary w-100" type="submit">Añadir</button>
                         </div>
                     </div>
+                    <div class="row mx-0 mb-3 px-2">
+                        <div class="col-12">
+                            <a class="btn btn-warning w-100" href="{{route("clientes.index")}}" type="cancel">Cancelar</a>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
