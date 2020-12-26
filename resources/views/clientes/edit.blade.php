@@ -8,11 +8,11 @@
 </div>
 <div class="col-8 offset-2  mt-4 px-1">
     <div class="row m-0 no-gutters  shadow-lg  bg-dark border-0 text-light">
-      <div class="col-lg-7 col-6 p-4" style="padding-bottom: 0 !important;">
+      <div class="col-lg-8 offset-2 p-4" style="padding-bottom: 0 !important;">
         <h3 class="mb-0">{{$cliente->nombre_cliente}}</h3>
-        <div class="mb-1 text-muted">Rut: {{$cliente->rut_cliente}}</div>
+        <div class="mb-1 ">Rut: {{$cliente->rut_cliente}}</div>
         <p class="card-text"><span class="text-danger">Deudor: </span>{{$cliente->entrega_pendiente}}</p>
-        <p class="card-text mb-auto"><span class="text-danger">Fono: </span>{{$cliente->fono_cliente}}</p>
+        <p class="card-text mb-2"><span class="text-danger">Fono: </span>{{$cliente->fono_cliente}}</p>
       </div>
     </div>
 </div>
