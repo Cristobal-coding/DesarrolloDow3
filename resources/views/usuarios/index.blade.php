@@ -19,29 +19,57 @@
 </div> --}}
 <div class="col-12 w-100 mx-0 px-0">
   <div class="d-md-flex flex-md-equal w-100">
-    <div class="bg-dark mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+    <div class="bg-dark mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"style="width: 80%; height: 1500px;)">
       <div class="my-3 py-3">
         <h2 class="display-5">Ejectivo</h2>
         <p class="lead">Lista de Usuarios Ejectivos.</p>
       </div>
-      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 500px; border-radius: 21px 21px 0 0; background-image: url(../imgs/autorojo.jpg");></div>
+      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 500px; border-radius: 21px 21px 0 0;);">
+        <table class="table mt-2 table-bordered">
+          <thead class="bg-dark border-0 text-light">
+            <tr>
+              <th scope="col">nombre de usuario</th>
+              <th scope="col">email</th>         
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($usuario as $user)          
+              @if ($user->rol_id=='1')
+                <tr>
+                  <td>{{$user->nombre}}</td>
+                  <td>{{$user->email}}</td>
+                </tr>
+              @endif
+            @endforeach
+          </tbody>      
+        </table>
+      </div>
     </div>
-    <div class="bg-primary mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+    <div class="bg-primary mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"style="width: 80%; height: 1500px;)">
       <div class="my-3 p-3 text-light">
         <h2 class="display-5">Administrador</h2>
         <p class="lead">Lista de Usuarios Administrador.</p>
       </div>
-      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 500px; border-radius: 21px 21px 0 0" >
+      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 500px; border-radius: 21px 21px 0 0;);" >
+        <table class="table mt-2 table-bordered">
           <thead class="bg-dark border-0 text-light">
-              <tr>
-                <th scope="col">Rut</th>
-                <th scope="col">Nombre Cliente</th>
-                <th scope="col">Entrega Pendiente</th>
-                <th scope="col">Fono</th>      
-                <th scope="col">Gestionar</th>     
-              </tr>
+            <tr>
+              <th scope="col">nombre de usuario</th>
+              <th scope="col">email</th>         
+            </tr>
           </thead>
-      </  div>
+          <tbody>
+            @foreach($usuario as $user)          
+              @if ($user->rol_id=='8')
+                <tr>
+                  <td>{{$user->nombre}}</td>
+                  <td>{{$user->email}}</td>
+                </tr>
+              @endif
+            @endforeach
+          </tbody>      
+        </table>
+      </div>
     </div>
   </div>
 </div>
