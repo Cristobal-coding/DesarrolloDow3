@@ -13,12 +13,12 @@ class Cliente extends Migration
      */
     public function up()
     {
-        Schema::create('cliente', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->string('rut_cliente');
             $table->string('nombre_cliente');
             $table->string('fono_cliente');
             $table->string('entrega_pendiente');
-            $table->timestamp('created_At')->useCurrent();
+            $table->timestamps();
             $table->primary('rut_cliente');
 
         });

@@ -21,7 +21,7 @@ class ArriendoVehiculo extends Migration
             $table->string('foto_entrega');
 
             $table->primary(['id_arriendo','id_vehiculo']);
-
+            $table->timestamps();
             $table->foreign('id_arriendo')->references('id_arriendo')->on('arriendos');
             $table->foreign('id_vehiculo')->references('id_vehiculo')->on('vehiculos');
             

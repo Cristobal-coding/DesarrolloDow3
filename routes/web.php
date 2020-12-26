@@ -38,4 +38,5 @@ Route::resource('/usuarios', UsuariosController::class);
 Route::post('/usuarios/{usuario}/activar', [UsuariosController::class, 'activar'])->name('usuarios.activar');
 
 Route::get('/clientes', [ClientesController::class, 'index'])->name('clientes.index');
-
+Route::get('/clientes/create', [ClientesController::class, 'create'])->name('clientes.create');
+Route::post('/clientes/create', [ClientesController::class, 'store'])->name('clientes.store');

@@ -16,7 +16,7 @@ class TipoVehiculo extends Migration
         Schema::create('tipo_vehiculo', function (Blueprint $table) {
             $table->string('nombre_tipo');
             $table->integer('valor_diario');
-            $table->timestamp('created_At')->useCurrent();
+            $table->timestamps();
             $table->primary('nombre_tipo');
         });
     }
