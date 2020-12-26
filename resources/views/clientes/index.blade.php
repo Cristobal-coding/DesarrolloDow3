@@ -31,7 +31,7 @@
                     <th>{{$cliente->entrega_pendiente}}</th>
                     <td>{{$cliente->fono_cliente}}</td>
                     <td>
-                        <div class="btn-group w-100 justify-content-center align-items-center" role="group" aria-label="Button group with nested dropdown">
+                        <div class="btn-group  justify-content-center align-items-center" role="group" aria-label="Button group with nested dropdown">
                             <span class="pr-1" data-toggle="tooltip" title="Editar." data-placement="bottom">                               
                                 <a  href="" class="btn btn-secondary"><i class="far fa-edit fa-lg"></i></a>
                             </span>
@@ -42,7 +42,6 @@
                     </td>
                 
                 </tr>
-<<<<<<< HEAD
                 {{-- modal borrar --}}
                 <div class="modal fade text-light " id="borrarCliente{{$num}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -69,9 +68,6 @@
                         </div>
                     </div>
                 </div>  
-=======
-                 
->>>>>>> 7c850e901fd48ee2b49884c1c1d38bc2197e8233
               @endforeach        
           </tbody>
         </table>
