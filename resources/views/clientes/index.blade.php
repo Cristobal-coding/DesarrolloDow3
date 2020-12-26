@@ -36,38 +36,39 @@
                                 <a  href="" class="btn btn-secondary"><i class="far fa-edit fa-lg"></i></a>
                             </span>
                             <span class="pl-1" data-toggle="tooltip" title="Borrar." data-placement="right">                               
-                                <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#borrarCliente{{$cliente->rut_cliente}}"><i class="fas fa-trash fa-lg"></i></a>
-                            </span>                 
+                                <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#borrarCliente{{$cliente->nombre_cliente}}"><i class="fas fa-trash fa-lg"></i></a>
+                            </span>  
+                            {{-- modal borrar --}}
+                            <div class="modal fade text-light bg-dark " id="borrarCliente{{$cliente->nombre_cliente}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content bg-dark" style="color: #fff;">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash fa-lg"></i>Confirmar Borrar Cliente ?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true"><i class="fas fa-times border-0" style="color: #fff"></i></span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <i class="fas fa-exclamation-triangle fa-lg pr-2 text-warning"></i>¿Desea eliminar el cliente {{$cliente->nombre_cliente}}?
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <form method="POST" action="{{route("clientes.destroy",$cliente->cliente)}}">
+                                        @csrf
+                                        @method("delete")
+                                        <button type="submit" data-toggle="tooltip" title="Borrar" data-placement="right" class="btn btn-warning">Borrar Cliente</button>
+                                    </form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>                
                         </div>
                     </td>
                 
                 </tr>
-                {{-- modal borrar --}}
-                <div class="modal fade text-light bg-dark " id="borrarCliente{{$cliente->rut_cliente}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content bg-dark" style="color: #fff;">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash fa-lg"></i>Confirmar Borrar Cliente ?</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"><i class="fas fa-times border-0" style="color: #fff"></i></span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <i class="fas fa-exclamation-triangle fa-lg pr-2 text-warning"></i>¿Desea eliminar el cliente {{$cliente->nombre_cliente}}?
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <form method="POST" action="{{route("clientes.destroy",$cliente->cliente)}}">
-                            @csrf
-                            @method("delete")
-                            <button type="submit" data-toggle="tooltip" title="Borrar" data-placement="right" class="btn btn-warning">Borrar Cliente</button>
-                        </form>
-                        </div>
-                    </div>
-                    </div>
-                </div>  
+                 
               @endforeach        
           </tbody>
         </table>
