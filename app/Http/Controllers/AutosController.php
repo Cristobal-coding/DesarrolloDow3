@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\{Tipo,Autos};
+use Illuminate\Support\Facades\Storage;
 class AutosController extends Controller
 {
     public function __construct() {
@@ -11,6 +12,7 @@ class AutosController extends Controller
     }
     public function index()
     {
+        $tipos= Tipo::all();
         $total = 33; 
         $elementos=6;
         $incompleta=$total % $elementos;
@@ -19,7 +21,7 @@ class AutosController extends Controller
         if($incompleta!=0){
             $totalInPage+=1;
         }
-        return view("autos.index", compact("totalInPage", "elementos", "iteraciones"));
+        return view("autos.index", compact("totalInPage", "elementos", "iteraciones", "tipos"));
     }
 
     public function create()
@@ -30,7 +32,16 @@ class AutosController extends Controller
 
     public function store(Request $request)
     {
-        dd("Entrando al metodo exitosamente");
+        $auto= new Auto();
+        $auto->nombre_vehiculo= $request->nombre;
+        $auto->marca = $request->marca;
+        $auto->estado = $request->estado;
+        $auto->nombre_tipo = $request->nombre_tipo;
+        $auto->patente = $request->patente;
+        $auto->foto=$request->foto->store("public/Vehiculos");
+        $auto->save();
+
+        return redirect()->route("autos.index");
     }
 
 
