@@ -42,6 +42,7 @@
                     </td>
                 
                 </tr>
+<<<<<<< HEAD
                 {{-- modal borrar --}}
                 <div class="modal fade text-light " id="borrarCliente{{$num}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -68,6 +69,9 @@
                         </div>
                     </div>
                 </div>  
+=======
+                 
+>>>>>>> 7c850e901fd48ee2b49884c1c1d38bc2197e8233
               @endforeach        
           </tbody>
         </table>
