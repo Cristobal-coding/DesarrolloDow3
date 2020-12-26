@@ -41,4 +41,4 @@ Route::get('/clientes', [ClientesController::class, 'index'])->name('clientes.in
 Route::get('/clientes/create', [ClientesController::class, 'create'])->name('clientes.create');
 Route::post('/clientes/create', [ClientesController::class, 'store'])->name('clientes.store');
 Route::delete('/cliente{cliente}', [ClientesController::class, 'destroy'])->name('clientes.destroy');
-Route::delete('/cliente{cliente}', [ClientesController::class, 'destroy'])->name('clientes.destroy');
+Route::delete('/cliente{cliente}', [ClientesController::class, 'edit'])->name('clientes.edit');

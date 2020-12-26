@@ -36,7 +36,7 @@
                                 <a  href="" class="btn btn-secondary"><i class="far fa-edit fa-lg"></i></a>
                             </span>
                             <span class="pl-1" data-toggle="tooltip" title="Borrar." data-placement="right">                               
-                                <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#borrarCliente{{$num}}"><i class="fas fa-trash fa-lg"></i></a>
+                                <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#borrarCliente{{$num}}"><i class="fas fa-trash fa-lg"></i></a>
                             </span>  
                             {{-- modal borrar --}}
                             <div class="modal fade text-light " id="borrarCliente{{$num}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
