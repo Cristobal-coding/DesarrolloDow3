@@ -36,7 +36,7 @@
                                     <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="top" title="Mas Detalles"><i class="fas fa-question-circle fa-lg "></i></a>
                             </div>
                             <div class="col-6">
-                                    <a href="" class="btn btn-outline-primary w-100"><i class="fas fa-plus fa-lg mr-2"></i><i class="fas fa-shopping-cart fa-lg"></i></a>
+                                    <a href="" class="btn btn-outline-primary w-100"><i class="far fa-clipboard"></i></a>
                             </div>
                         </div>                
                 </div>

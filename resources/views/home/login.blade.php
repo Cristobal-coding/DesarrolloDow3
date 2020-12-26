@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Cars</title>
+<<<<<<< HEAD
+    <title>Ingresar</title>
+=======
+    <title>Ingresar</title>
+>>>>>>> 2fdfc8ecd868e3cbd92c138349785581d91f6078
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
