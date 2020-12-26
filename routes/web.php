@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{HomeController, AutosController, ArriendosController,GenerarController, UsuariosController};
+use App\Http\Controllers\{HomeController, AutosController, ArriendosController,GenerarController, UsuariosController,ClientesController};
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +36,6 @@ Route::post('/usuarios/login',[UsuariosController::class, 'login'])->name('usuar
 Route::get('/usuarios/logout',[UsuariosController::class, 'logout'])->name('usuarios.logout');
 Route::resource('/usuarios', UsuariosController::class);
 Route::post('/usuarios/{usuario}/activar', [UsuariosController::class, 'activar'])->name('usuarios.activar');
+
+Route::get('/clientes', [ClientesController::class, 'index'])->name('clientes.index');
 
