@@ -13,7 +13,7 @@ class Cliente extends Migration
      */
     public function up()
     {
-        Schema::create('cliente', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->string('rut_cliente');
             $table->string('nombre_cliente');
             $table->string('fono_cliente');
