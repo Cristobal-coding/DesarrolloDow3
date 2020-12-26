@@ -4,7 +4,7 @@
 
 
 
-<div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
+<div class="col-lg-8 offset-lg-2 flex justify-content-center align-items-center mt-4">
     <form class="" method="POST" action="">
         @csrf
         <div class="card bg-dark px-0 " >
