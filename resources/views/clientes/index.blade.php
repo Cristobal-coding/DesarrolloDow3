@@ -36,10 +36,10 @@
                                 <a  href="" class="btn btn-secondary"><i class="far fa-edit fa-lg"></i></a>
                             </span>
                             <span class="pl-1" data-toggle="tooltip" title="Borrar." data-placement="right">                               
-                                <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#borrarCliente{{$cliente->rut_cliente}}"><i class="fas fa-trash fa-lg"></i></a>
+                                <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#borrarCliente{{$num}}"><i class="fas fa-trash fa-lg"></i></a>
                             </span>  
                             {{-- modal borrar --}}
-                            <div class="modal fade text-light bg-dark " id="borrarCliente{{$cliente->rut_cliente}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade text-light bg-dark " id="borrarCliente{{$num}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                 <div class="modal-content bg-dark" style="color: #fff;">
                                     <div class="modal-header">
