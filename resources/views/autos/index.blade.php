@@ -63,7 +63,8 @@
 <div class="col-4">
     <div class="card mt-3">
         <div class="card-body p-0 pt-2">
-            <form action="{{route("autos.store")}}" method="POST">
+            <form action="{{route("autos.store")}}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="row m-0 px-0">
                     <div class="col-6">
                         <div class="form-group">

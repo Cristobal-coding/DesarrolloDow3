@@ -33,16 +33,17 @@ class AutosController extends Controller
 
     public function store(Request $request)
     {
-        $auto= new Auto();
-        $auto->nombre_vehiculo= $request->nombre;
-        $auto->marca = $request->marca;
-        $auto->estado = $request->estado;
-        $auto->nombre_tipo = $request->nombre_tipo;
-        $auto->patente = $request->patente;
-        $auto->foto=$request->foto->store("public/Vehiculos");
-        $auto->save();
+        dd("Hola");
+        // $auto= new Auto();
+        // $auto->nombre_vehiculo= $request->nombre;
+        // $auto->marca = $request->marca;
+        // $auto->estado = $request->estado;
+        // $auto->nombre_tipo = $request->nombre_tipo;
+        // $auto->patente = $request->patente;
+        // $auto->foto=$request->foto->store("public/Vehiculos");
+        // $auto->save();
 
-        return redirect()->route("autos.index");
+        // return redirect()->route("autos.index");
     }
 
 
