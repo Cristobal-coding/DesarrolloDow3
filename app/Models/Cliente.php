@@ -9,8 +9,11 @@ class Cliente extends Model
 {
     use HasFactory;
     protected $table= "clientes";
+    protected $primaryKey ="rut_cliente";
+    protected $keyType='string';
+    public $incrementing = false;
     
     public function arriendo(){
-        return  $this->hasMany("App\Models\Arriendo");
+        return  $this->hasMany("App\Models\Arriendo","rut_cliente",'rut_cliente');
     }
 }
