@@ -58,6 +58,9 @@
                 </ul>
                 <form class="d-flex justify-content-center align-items-center" method="GET" action="{{route("usuarios.logout")}}">
                   @csrf
+                  <div class="nav-item">
+                    <a href="{{route("arriendos.carrito")}}" class="nav-link text-light"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                  </div>
                   <p class="m-0 p-0 text-light mr-1" style=" font-size:18px">{{Auth::user()->nombre}}</p>
                   <button type="button" class="btn btn-primary border-0" data-toggle="tooltip" data-placement="bottom" title="Foto Usuario"><i class="far fa-user fa-lg"></i></button>
                   <button type="submit" class="btn btn-primary border-0" data-toggle="tooltip" data-placement="bottom" title="Cerrar Sesión"><i class="fas fa-sign-out-alt fa-lg"></i></button>

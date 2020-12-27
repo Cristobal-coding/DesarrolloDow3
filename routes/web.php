@@ -31,6 +31,7 @@ Route::get('/autos/page/{pagina}', [AutosController::class, 'pagina'])->name('au
 
 Route::resource('/arriendos', ArriendosController::class);
 Route::get('/arriendos/create', [ArriendosController::class, 'create'])->name('arriendos.create');
+Route::get('/cart', [ArriendosController::class, 'carrito'])->name('arriendos.carrito');
 
 Route::post('/usuarios/login',[UsuariosController::class, 'login'])->name('usuarios.login');
 Route::get('/usuarios/logout',[UsuariosController::class, 'logout'])->name('usuarios.logout');

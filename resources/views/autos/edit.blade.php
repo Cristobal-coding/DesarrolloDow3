@@ -57,21 +57,22 @@
                 <div class="col-12 py-2">
                     <label for="estado" class="text-primary d-block">Estado:</label>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio"  @if($auto->estado=='Disponible')  checked @endif  name="inlineRadioOptions" id="Disponible" value="Disponible">
-                        <label class="form-check-label" for="Disponible" style="color: #80EF10">Disponible</label>
+                        <input class="form-check-input" type="radio"  @if($auto->estado=='Disponible')  checked @endif  name="estado" id="disponible" value="Disponible">
+                        <label class="form-check-label" for="disponible" style="color: #80EF10">Disponible</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" @if($auto->estado=='En Mantenimiento')  checked @endif  name="inlineRadioOptions" id="En Mantenimiento" value="En mantenimiento">
-                        <label class="form-check-label" for="En Mantenimiento" style="color: #0B1EF2">En Mantenimiento</label>
+                        <input class="form-check-input" type="radio" @if($auto->estado=='En Mantenimiento')  checked @endif  name="estado" id="mantenimiento" value="En Mantenimiento">
+                        <label class="form-check-label" for="mantenimiento" style="color: #0B1EF2">En Mantenimiento</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio"  @if($auto->estado=='De Baja') checked @endif  name="inlineRadioOptions" id="De Baja" value="De Baja">
-                        <label class="form-check-label" for="De Baja" style="color:  #F20B0B">De Baja</label>
+                        <input class="form-check-input" type="radio"  @if($auto->estado=='De Baja') checked @endif  name="estado" id="baja" value="De Baja">
+                        <label class="form-check-label" for="baja" style="color:  #F20B0B">De Baja</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio"  @if($auto->estado=='Arrendado') checked @endif  name="inlineRadioOptions" id="Arrendado" value="Arrendado">
-                        <label class="form-check-label" for="Arrendado" style="color:  #E8F20B">Arrendado</label>
+                        <input class="form-check-input" type="radio"  @if($auto->estado=='Arrendado') checked @endif  name="estado" id="arrendado" value="Arrendado">
+                        <label class="form-check-label" for="arrendado" style="color:  #E8F20B">Arrendado</label>
                       </div>
+                      
                 </div>
             </div>
             <div class="row mx-0 my-2 px-0">

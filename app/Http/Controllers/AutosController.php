@@ -65,7 +65,19 @@ class AutosController extends Controller
  
     public function update(Request $request, Auto $auto)
     {
-       
+       $auto->nombre_vehiculo=$request->nombre;
+       $auto->marca=$request->marca;
+       $auto->year= $request->año;
+       $auto->patente= $request->patente;
+       $auto->nombre_tipo=$request->tipo;
+       $auto->estado=$request->estado;
+       if($request->foto!=null){
+           Storage::delete($auto->foto);
+           $auto->foto= $request->foto->store("public/Vehiculos");
+       }
+       $auto->save();
+
+       return redirect()->route("autos.index");
     }
 
   

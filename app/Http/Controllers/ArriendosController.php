@@ -88,6 +88,11 @@ class ArriendosController extends Controller
         //
     }
 
+    public function carrito(){
+
+        return view('arriendos.carro');
+    }
+
     
 
 }
