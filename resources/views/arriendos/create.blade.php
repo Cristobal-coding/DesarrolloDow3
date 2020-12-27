@@ -7,16 +7,17 @@
 <div class="col-lg-8 offset-lg-2 flex justify-content-center align-items-center mt-4">
     <form class="" method="POST" action="">
         @csrf
+        
         <div class="card bg-dark px-0 " >
           <div class="card-header text-light text-center mb-0 pb-0">
             <h4 style="font-weight: bold"> <i class="fas fa-plus"></i> Crear nueva orden</h4>
           </div>
           <div class="card-body mt-0 pt-0">
               <div class="form-group text-light ">
-                  <label for="rut_cliente" style="color: rgb(255, 255, 255);">Nombre:</label>
-                  <select class="form-control bg-info border-0" name="pais" id="pais" style="color: rgb(14, 13, 13);">
+                  <label for="rut_cliente" style="color: rgb(255, 255, 255);">Rut Cliente:</label>
+                  <select class="form-control bg-info border-0" name="rut_cliente" id="rut_cliente" style="color: rgb(14, 13, 13);">
                     @foreach ($clientes as $cliente)
-                     <option value="">{{$cliente->nombre_cliente}}, Rut: {{$cliente->rut_cliente}}</option>
+                     <option value="{{$cliente->rut_cliente}}">Rut: {{$cliente->rut_cliente}}</option>
                     @endforeach
                     
                     

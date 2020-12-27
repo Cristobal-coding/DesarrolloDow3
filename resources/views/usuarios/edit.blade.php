@@ -15,11 +15,12 @@
 </div>
 
 <div class="col-lg-8 offset-lg-2 flex justify-content-center align-items-center mt-4">
-    <form class="" method="PUT" action="">
+    <form action="{{route('usuarios.update',$usuario->id)}}"  method="POST" enctype="multipart/form-data">
         @csrf
+        @method('put')
         <div class="card bg-dark px-0 " >
           <div class="card-header text-light text-center mb-0 pb-0">
-            <h4 style="font-weight: bold"> <i class="fas fa-plus"></i>Editar Usuario</h4>
+            <h4 style="font-weight: bold">  <i class="far fa-edit fa-lg"></i> Editar Usuario</h4>
           </div>
           <div class="card-body mt-0 pt-0">
               <div class="form-group text-light ">

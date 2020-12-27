@@ -86,12 +86,11 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {   
+        
         $usuario->nombre = $request->nombre;
         $usuario->email= $request->email;
         $usuario->password= $request->password;
         $usuario->rol_id= $request->rol_id;
-       
-        
         $usuario->save();
         return redirect()->route("usuarios.index");
     }
