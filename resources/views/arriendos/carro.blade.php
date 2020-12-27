@@ -4,7 +4,7 @@
     <div class="col-7 offset-1 mt-4">
         <div class="row px-0 mx-0">
             <div class="col-6">
-                <h5><i class="fas fa-shopping-cart mr-1"></i>Carrito (3 Vehículos)</h5>
+                <h5><i class="fas fa-shopping-cart mr-1"></i>Carrito ({{count($arriendos[0]->vehiculos)}} Vehículos)</h5>
             </div>
             <div class="col-6 text-right">
                 <a href="{{route("vehiculos.index")}}" class="text-decoration-none text-primary text-right">Continuar Viendo <i class="fas fa-long-arrow-alt-right"></i></a>
@@ -56,7 +56,11 @@
                         <h5 class="px-2 mt-3">${{number_format($vehiculo->tipo->valor_diario,0,".",".")}} CLP</h5>
                     </div>
                     <div class="col-2 px-0 d-flex justify-content-center">
-                        <button class="btn mt-2"><i class="fas fa-times"></i></button>
+                        <form action="{{route("arriendos.removecart",$vehiculo->id)}}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn mt-2"><i class="fas fa-times"></i></button>
+                        </form>
                     </div>
                         
                 </div>
@@ -110,8 +114,8 @@
 
         <div class="row border-top border-bottom mt-2 mb-5 px-0 mx-0">
             <div class="col-8 py-3">
-                <h6 class="d-inline pr-1"><span class="text-primary">Cliente:</span> Cristóbal</h6>
-                <h6 class="d-inline"><span class="text-primary">Rut:</span> 20440649-9</h6>
+                <h6 class="d-inline pr-1"><span class="text-primary">Cliente:</span> {{$arriendos[0]->cliente->nombre_cliente}}</h6>
+                <h6 class="d-inline"><span class="text-primary">Rut:</span> {{$arriendos[0]->rut_cliente}}</h6>
                 <h6 class="mt-1"><span class="text-primary">Fecha de Devolución:</span> 25/12/30</h6>
 
             </div>

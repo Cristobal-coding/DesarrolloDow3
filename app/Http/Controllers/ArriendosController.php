@@ -113,8 +113,14 @@ class ArriendosController extends Controller
     }
 
     public function removeCarrito(Vehiculo $vehiculo){
-
-        
+        $arriendos= Arriendo::all();
+        for ($i=0;$i<count($arriendos);$i++){
+            if($arriendos[$i]->rut_cliente=="20.440.649-9"){ //Depende del rut por ahora, como vemos quien creo la orden?
+                $arriendos[$i]->vehiculos()->detach($vehiculo->id);
+                
+            }
+        }
+        return redirect()->route('arriendos.carrito');
     }
 
     

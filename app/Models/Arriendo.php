@@ -21,5 +21,6 @@ class Arriendo extends Model
     public function vehiculos(){
         return $this->belongsToMany('App\Models\Vehiculo');
     }
+
     
 }
