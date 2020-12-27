@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Arriendo;
+use App\Models\{Arriendo,Cliente};
 use Illuminate\Http\Request;
 
 class ArriendosController extends Controller
@@ -17,6 +17,7 @@ class ArriendosController extends Controller
      */
     public function index()
     {
+        
         return view("arriendos.index");
     }
 
@@ -27,7 +28,8 @@ class ArriendosController extends Controller
      */
     public function create()
     {
-        return view("arriendos.create");
+        $clientes= Cliente::all();
+        return view("arriendos.create",compact("clientes"));
     }
 
     /**

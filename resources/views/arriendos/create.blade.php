@@ -15,8 +15,11 @@
               <div class="form-group text-light ">
                   <label for="rut_cliente" style="color: rgb(255, 255, 255);">Nombre:</label>
                   <select class="form-control bg-info border-0" name="pais" id="pais" style="color: rgb(14, 13, 13);">
-                    <option value="">RUT CLIENTE</option>
-                    <option value="">RUT CLIENTE 2</option>
+                    @foreach ($clientes as $cliente)
+                     <option value="">{{$cliente->nombre_cliente}}, Rut: {{$cliente->rut_cliente}}</option>
+                    @endforeach
+                    
+                    
                   </select>                
               </div>         
               <div class="row text-light">

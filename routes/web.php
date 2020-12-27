@@ -43,3 +43,5 @@ Route::post('/clientes/create', [ClientesController::class, 'store'])->name('cli
 Route::delete('/cliente/{cliente}', [ClientesController::class, 'destroy'])->name('clientes.destroy');
 Route::get('/cliente/{cliente}/edit', [ClientesController::class, 'edit'])->name('clientes.edit');
 Route::put('/clientes/{cliente}', [ClientesController::class, "update"])->name("clientes.update");
+
+
