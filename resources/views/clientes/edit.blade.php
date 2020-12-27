@@ -17,6 +17,18 @@
     </div>
 </div>
 <div class="col-8 offset-2 mt-3 px-1">
+    {{-- Errores --}}
+        @if ($errors->any())
+                          
+        <div class="alert alert-warning mx-2">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+      @endif
+    {{-- Errores --}}
     <form action="{{route('clientes.update',$cliente->rut_cliente)}}"  method="POST" enctype="multipart/form-data">
       @csrf
       @method('put')
@@ -25,10 +37,6 @@
           <h4 style="font-weight: bold"> <i class="fas fa-edit fa-lg"></i> Editando cliente</h4>
         </div>
         <div class="card-body mt-0 pt-0">
-            <div class="form-group text-light ">
-                <label for="rut_cliente" style="color: rgb(255, 255, 255);">Rut:</label>
-                <input type="text" name="rut_cliente" class="form-control bg-info border-0 " id="rut_cliente" value="{{$cliente->rut_cliente}}" >
-            </div>    
             <div class="row text-light">
                 <div class="form-group col-xl-4 col-md-12 text-light">
                     <label for="entrega_pendiente" class="text-light" style="color: rgb(15, 1, 1);">Entrega:</label>
@@ -36,8 +44,8 @@
                 </div>
 
                 <div class="form-group col-xl-4 col-md-12 text-light">
-                    <label for="nombre_cliente" class="text-light" style="color: rgb(15, 1, 1);">Nombre:</label>
-                    <input type="text" name="nombre_cliente" class="form-control bg-info border-0 " id="nombre_cliente" placeholder="Ubicacion" value="{{$cliente->nombre_cliente}}" >
+                    <label for="nombre" class="text-light" style="color: rgb(15, 1, 1);">Nombre:</label>
+                    <input class="form-control @error('nombre') is-invalid @enderror" type="text" name="nombre" id="nombre" value="{{$cliente->nombre_cliente}}" >
                 </div>
                 <div class="form-group col-xl-4 col-md-12 text-light ">
                   <label for="fono_cliente" class="text-light" style="color: rgb(15, 1, 1);">Fono:</label>

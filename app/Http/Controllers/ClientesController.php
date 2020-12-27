@@ -83,11 +83,11 @@ class ClientesController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(ClientesRequest $request, Cliente $cliente)
     {
-        $cliente->rut_cliente=$request->rut_cliente;
-        $cliente->nombre_cliente=$request->nombre_cliente;
-        $cliente->fono_cliente=$request->fono_cliente;
+        $cliente->rut_cliente=$cliente->rut_cliente;
+        $cliente->nombre_cliente=$request->nombre;
+        $cliente->fono_cliente=$request->fono;
         $cliente->entrega_pendiente=$request->entrega_pendiente;
         
         $cliente->save();

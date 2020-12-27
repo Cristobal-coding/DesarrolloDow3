@@ -33,7 +33,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="marca">Rut:</label>
-                                <input class="form-control @error('rut') is-invalid @enderror" type="text" name="rut" id="rut" >
+                                <input class="form-control @error('rut') is-invalid @enderror" type="text" name="rut" id="rut" value="{{old('rut')}}" >
                             </div>
                         </div>
                         <div class="col-6">
