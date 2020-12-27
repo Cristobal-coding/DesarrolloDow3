@@ -37,7 +37,7 @@
                   </li> --}}
                   
                   <li class="nav-item">
-                    <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]==("arriendos" ||"cart")) active @endif" href="{{route("arriendos.index")}}" tabindex="-1" aria-disabled="true">Arriendos</a>
+                    <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]==("arriendos" || "cart")) active @endif" href="{{route("arriendos.index")}}" tabindex="-1" aria-disabled="true">Arriendos</a>
                   </li>                  
                   <li class="nav-item">
                     <a class="nav-link  @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="clientes") active @endif" href="{{route("clientes.index")}}" tabindex="-1" aria-disabled="true">Clientes</a>
@@ -58,7 +58,7 @@
                 </ul>
                 <form class="d-flex justify-content-center align-items-center" method="GET" action="{{route("usuarios.logout")}}">
                   @csrf
-                  <div class="nav-item">
+                  <div class="nav-item ">
                     <a href="{{route("arriendos.carrito")}}" class="nav-link text-light"><i class="fas fa-shopping-cart fa-lg"></i></a>
                   </div>
                   <p class="m-0 p-0 text-light mr-1" style=" font-size:18px">{{Auth::user()->nombre}}</p>

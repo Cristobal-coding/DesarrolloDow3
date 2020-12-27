@@ -123,6 +123,13 @@ class ArriendosController extends Controller
         return redirect()->route('arriendos.carrito');
     }
 
+    public function removeCarritoAll(Arriendo $arriendo){
+
+        $arriendo->vehiculos()->detach();
+
+        return redirect()->route('arriendos.carrito');
+    }
+
     
 
 }

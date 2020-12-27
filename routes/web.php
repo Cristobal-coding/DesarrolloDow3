@@ -34,6 +34,7 @@ Route::get('/arriendos/create', [ArriendosController::class, 'create'])->name('a
 Route::get('/cart', [ArriendosController::class, 'carrito'])->name('arriendos.carrito');
 Route::post('/addcart/{vehiculo}', [ArriendosController::class, 'addCarrito'])->name('arriendos.addCarrito');
 Route::delete('/removecart/{vehiculo}', [ArriendosController::class, 'removeCarrito'])->name('arriendos.removecart');
+Route::delete('/removecartall/{arriendo}', [ArriendosController::class, 'removeCarritoAll'])->name('arriendos.removeAll');
 
 Route::post('/usuarios/login',[UsuariosController::class, 'login'])->name('usuarios.login');
 Route::get('/usuarios/logout',[UsuariosController::class, 'logout'])->name('usuarios.logout');
