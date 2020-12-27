@@ -58,7 +58,8 @@ class AutosController extends Controller
     public function edit(Auto $auto)
     {
         $tipos = Tipo::orderBy('nombre_tipo', 'asc')->get();
-        return view("autos.edit", compact("auto", 'tipos'));
+        $años = range(date('Y'), 1980);
+        return view("autos.edit", compact("auto", 'tipos', "años"));
     }
 
  
