@@ -37,6 +37,8 @@ Route::post('/usuarios/login',[UsuariosController::class, 'login'])->name('usuar
 Route::get('/usuarios/logout',[UsuariosController::class, 'logout'])->name('usuarios.logout');
 Route::resource('/usuarios', UsuariosController::class);
 Route::post('/usuarios/{usuario}/activar', [UsuariosController::class, 'activar'])->name('usuarios.activar');
+Route::get('/usuarios/create', [UsuariosController::class, 'create'])->name('usuarios.create');
+Route::post('/usuarios/create', [UsuariosController::class, 'store'])->name('usuarios.store');
 
 Route::get('/clientes', [ClientesController::class, 'index'])->name('clientes.index');
 Route::get('/clientes/create', [ClientesController::class, 'create'])->name('clientes.create');

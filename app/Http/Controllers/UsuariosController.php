@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuario;
+use App\Models\{Usuario,Rol};
 use Illuminate\Support\Facades\{Auth,Hash};
 use Illuminate\Http\Request;
 
@@ -18,7 +18,8 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        return view("usuarios.index");
+        $usuario= Usuario::all();
+        return view("usuarios.index",compact('usuario'));
     }
 
     /**
@@ -28,7 +29,8 @@ class UsuariosController extends Controller
      */
     public function create()
     {
-        //
+        $roles= Rol::all();
+        return view("usuarios.create",compact('roles'));
     }
 
     /**
@@ -39,7 +41,16 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         
+        $usuario= new Usuario;
+        $usuario->nombre = $request->nombre;
+        $usuario->password= $request->password;
+        $usuario->rol_id= $request->rol_id;
+       
+        $usuario->email= $request->nombre;
+        $usuario->save();
+
+        return redirect()->route("usuarios.index");
     }
 
     /**
