@@ -34,7 +34,7 @@
                         <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="top" title="Mas Detalles"><i class="fas fa-question-circle fa-lg "></i></a>
                     </div>
                     <div class="col-4 mb-1 px-0">
-                        <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="top" title="Mas Detalles"><i class="far fa-edit fa-lg"></i></a>
+                        <a href="{{route("autos.edit", $autos[$i]->id_vehiculo)}}" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="top" title="Mas Detalles"><i class="far fa-edit fa-lg"></i></a>
                     </div>
                     <div class="col-4 mb-1 px-0">
                         <span data-toggle="tooltip" data-placement="right" title="Eliminar">

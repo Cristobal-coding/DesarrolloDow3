@@ -55,9 +55,10 @@ class AutosController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit(Auto $auto)
     {
-        dd("Entrando al metodo edit");
+        $tipos = Tipo::orderBy('nombre_tipo', 'asc')->get();
+        return view("autos.edit", compact("auto", 'tipos'));
     }
 
  
@@ -69,7 +70,10 @@ class AutosController extends Controller
   
     public function destroy(Auto $auto)
     {
-        dd("Entrando al metodo delete");
+       Storage::delete($auto->foto);
+       $auto->delete();
+
+       return redirect()->route("autos.index");
     }
 
     public function pagina($pagina){

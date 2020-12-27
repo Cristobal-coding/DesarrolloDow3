@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @yield('css-personalizado')
+    <script src="https://kit.fontawesome.com/bce530116a.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset("css/theme.css")}}">
-    <script src="https://kit.fontawesome.com/bce530116a.js" crossorigin="anonymous"></script>
-    @yield('css-personalizado')
     <title>Cars</title>
 </head>
 <body class="no-scroll">
@@ -24,10 +24,10 @@
                     <a class="nav-link  @if(Route::current()->getName()=="home.index") active @endif" aria-current="page" href="{{route('home.index')}}">Home</a>
                   </li>
                   <li class="nav-item dropdown @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="autos") active @endif">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-expanded="false"  aria-haspopup="true">
-                     Vehículos
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Vehículos
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
                       <li><a class="dropdown-item" href="{{route("autos.index")}}">Gestionar Vehículos</a></li>
                       <li><a class="dropdown-item" href="#">Vehículos en Stock</a></li>
                     </ul>
@@ -42,18 +42,18 @@
                   <li class="nav-item">
                     <a class="nav-link  @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="clientes") active @endif" href="{{route("clientes.index")}}" tabindex="-1" aria-disabled="true">Clientes</a>
                   </li>
-
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-expanded="false"  aria-haspopup="true">
-                     Vehículos
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Configuración
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <li><a class="dropdown-item" href="#">Gestionar Usuarios</a></li>
-                      <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
                       <li><a class="dropdown-item" href="#">Gestionar Roles</a></li>
-                      <li><a class="dropdown-item" href="#">...</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>
                     </ul>
                   </li>
+                  
                   
                 </ul>
                 <form class="d-flex justify-content-center align-items-center" method="GET" action="{{route("usuarios.logout")}}">
@@ -71,10 +71,9 @@
             @yield('main_content') 
         </div>
     </div>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+</body>
 <script text="javascript/text">
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
