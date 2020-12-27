@@ -31,6 +31,8 @@ Route::get('/vehiculos/page/{pagina}', [VehiculosController::class, 'pagina'])->
 
 Route::resource('/arriendos', ArriendosController::class);
 Route::get('/arriendos/create', [ArriendosController::class, 'create'])->name('arriendos.create');
+Route::delete('/arriendos/{arriendo}', [ArriendosController::class, 'destroy'])->name('arriendos.destroy');
+Route::post('/arriendos/create', [ArriendosController::class, 'store'])->name('arriendos.store');
 Route::get('/cart', [ArriendosController::class, 'carrito'])->name('arriendos.carrito');
 Route::post('/addcart/{vehiculo}', [ArriendosController::class, 'addCarrito'])->name('arriendos.addCarrito');
 Route::delete('/removecart/{vehiculo}', [ArriendosController::class, 'removeCarrito'])->name('arriendos.removecart');

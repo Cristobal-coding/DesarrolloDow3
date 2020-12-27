@@ -17,8 +17,9 @@ class ArriendosController extends Controller
      */
     public function index()
     {
-        
-        return view("arriendos.index");
+        $arriendos= Arriendo::all();
+        $cliente=Cliente::all();
+        return view("arriendos.index",compact('arriendos','cliente'));
     }
 
     /**
@@ -40,7 +41,15 @@ class ArriendosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $arriendo= new Arriendo;
+        $arriendo->rut_cliente = $request->rut_cliente;
+        $arriendo->arriendo_fecha_inicio= $request->arriendo_fecha_inicio;
+        $arriendo->arriendo_fecha_final= $request->arriendo_fecha_final;
+        $arriendo->confirmada= false;
+        
+        $arriendo->save();
+
+        return redirect()->route("arriendos.index");
     }
 
     /**
@@ -85,7 +94,8 @@ class ArriendosController extends Controller
      */
     public function destroy(Arriendo $arriendo)
     {
-        //
+        $arriendo->delete();
+         return redirect()->route("arriendos.index"); 
     }
 
     public function carrito(){

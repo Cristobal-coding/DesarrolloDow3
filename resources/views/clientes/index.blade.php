@@ -13,7 +13,7 @@
   </div>
   {{-- dentro de un foreach --}}
   <div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
-      <table class="table mt-2 table-bordered">
+      <table class="table mt-2 table-bordered table-striped">
           <thead class="bg-dark border-0 text-light">
             <tr>
               <th scope="col">Rut</th>
