@@ -34,15 +34,15 @@
                             <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="left" title="Mas Info."><i class="fas fa-question-circle fa-lg "></i></a>
                         </div>
                         <div class="col-4 mb-1 px-0">
-                            <a href="{{route("vehiculos.edit", $vehiculos[$i]->id_vehiculo)}}" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="far fa-edit fa-lg"></i></a>
+                            <a href="{{route("vehiculos.edit", $vehiculos[$i]->id)}}" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="far fa-edit fa-lg"></i></a>
                         </div>
                         <div class="col-4 mb-1 px-0">
                             <span data-toggle="tooltip" data-placement="right" title="Eliminar">
-                               <button class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#borrarVehiculo{{$vehiculos[$i]->id_vehiculo}}"><i class="fas fa-times-circle fa-lg"></i></button>
+                               <button class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#borrarVehiculo{{$vehiculos[$i]->id}}"><i class="fas fa-times-circle fa-lg"></i></button>
                             </span>
                         </div>
                         <div class="col-12 px-0">
-                            <form action="{{route('arriendos.addCarrito',$vehiculos[$i]->id_vehiculo)}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route('arriendos.addCarrito',$vehiculos[$i]->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <button type="submit" class="btn btn-outline-primary w-100"><i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($vehiculos[$i]->tipo->valor_diario,0,".",".")}} CLP</button>
                             </form>
@@ -50,7 +50,7 @@
                     </div> 
                     
                     <!-- Modal -->
-                    <div class="modal fade" id="borrarVehiculo{{$vehiculos[$i]->id_vehiculo}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="borrarVehiculo{{$vehiculos[$i]->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <form method="POST" action="{{route("vehiculos.destroy", $vehiculos[$i]->id_vehiculo)}}"  >
+                                    <form method="POST" action="{{route("vehiculos.destroy", $vehiculos[$i]->id)}}"  >
                                         @csrf
                                         @method('delete')   
                                         <button type="submit" class="btn btn-primary">Eliminar</button>

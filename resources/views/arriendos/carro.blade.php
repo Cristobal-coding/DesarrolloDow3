@@ -116,7 +116,12 @@
 
             </div>
             <div class="col-4 text-right py-3">
-                <h5 class="text-primary">Total ${{number_format($acumulado + $vehiculo->tipo->valor_diario,0,".",".")}} CLP</h5>
+                @for ($i =0,$acumulado=0; $i < count($arriendos[0]->vehiculos) ; $i++)
+                    @php
+                    $acumulado+=$arriendos[0]->vehiculos[$i]->tipo->valor_diario;
+                    @endphp           
+                @endfor
+                <h5 class="text-primary">Total ${{number_format($acumulado,0,".",".")}} CLP</h5>
             </div>
             <div class="col-6 text-left py-3">
                 <button class="btn btn-dark"><i class="fas fa-times"></i> Cancelar Todo</button>

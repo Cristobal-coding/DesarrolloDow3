@@ -16,7 +16,7 @@
 <div class="col-lg-7 col-12 mt-5">
     <div class="card">
         <div class="card-body">
-            <form action="{{route("vehiculos.update", $vehiculo->id_vehiculo)}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route("vehiculos.update", $vehiculo->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="row my-2">

@@ -91,27 +91,14 @@ class ArriendosController extends Controller
     public function carrito(){
         $arriendos= Arriendo::all();
         $vehiculos= Vehiculo::all();
-        $acumulado=0;
-        // dd($arriendos[0]->vehiculos);
-        // dd($vehiculos[0]->arriendos);
-        return view('arriendos.carro', compact('vehiculos','arriendos','acumulado'));
+        return view('arriendos.carro', compact('vehiculos','arriendos'));
     }
 
     public function addCarrito(Vehiculo $vehiculo){
         $arriendos= Arriendo::all();
         for ($i=0;$i<count($arriendos);$i++){
-            if($arriendos[$i]->rut_cliente=="20440649-9"){
-                // $arriendoActualizado= new Arriendo();
-                // $id=$arriendos[$i]->id;
-                // $arriendoActualizado->rut_cliente=$arriendos[$i]->rut_cliente;
-                // $arriendoActualizado->arriendo_fecha_inicio=$arriendos[$i]->arriendo_fecha_inicio;
-                // $arriendoActualizado->arriendo_fecha_final=$arriendos[$i]->arriendo_fecha_final;
-                // $arriendoActualizado->confirmada=$arriendos[$i]->confirmada;
-                // $arriendos[$i]->vehiculos()->detach();
-                // $arriendos[$i]->delete();
-                // $arriendoActualizado->id=$id;
-                // $arriendoActualizado->save();
-                $arriendos[$i]->vehiculos()->attach($vehiculo->id_vehiculo,  ['entregado'=>false,'foto_arriendo'=>null, 'foto_entrega'=>null]);
+            if($arriendos[$i]->rut_cliente=="20.440.649-9"){ //Depende del rut por ahora, como vemos quien creo la orden?
+                $arriendos[$i]->vehiculos()->attach($vehiculo->id,  ['entregado'=>false,'foto_arriendo'=>null, 'foto_entrega'=>null]);
                 
             }
         }

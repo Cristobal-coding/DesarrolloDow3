@@ -19,7 +19,7 @@ class Arriendo extends Model
     //     return $this->belongsToMany('App\Models\Vehiculo','arriendo_vehiculo','id_vehiculo','id_vehiculo');
     // }
     public function vehiculos(){
-        return $this->belongsToMany('App\Models\Vehiculo','arriendo_vehiculo','id_vehiculo','id_vehiculo');
+        return $this->belongsToMany('App\Models\Vehiculo');
     }
     
 }

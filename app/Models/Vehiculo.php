@@ -9,7 +9,7 @@ class Vehiculo extends Model
 {
     use HasFactory;
     protected $table= "vehiculos";
-    protected $primaryKey ="id_vehiculo";
+    // protected $primaryKey ="id_vehiculo";
 
 
     public function tipo(){
@@ -19,7 +19,7 @@ class Vehiculo extends Model
     //     return $this->belongsToMany('App\Models\Arriendo','arriendo_vehiculo','id_arriendo','id');
     // }
     public function arriendos(){
-        return $this->belongsToMany('App\Models\Arriendo','arriendo_vehiculo','id_arriendo','id');
+        return $this->belongsToMany('App\Models\Arriendo');
     }
     
 }
