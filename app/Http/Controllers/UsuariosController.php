@@ -72,7 +72,9 @@ class UsuariosController extends Controller
      */
     public function edit(Usuario $usuario)
     {
-        //
+        $usuarios=$usuario;
+        $roles= Rol::all();
+         return view("usuarios.edit",compact("usuario","roles"));
     }
 
     /**
@@ -83,8 +85,15 @@ class UsuariosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Usuario $usuario)
-    {
-        //
+    {   
+        $usuario->nombre = $request->nombre;
+        $usuario->email= $request->email;
+        $usuario->password= $request->password;
+        $usuario->rol_id= $request->rol_id;
+       
+        
+        $usuario->save();
+        return redirect()->route("usuarios.index");
     }
 
     /**
@@ -95,8 +104,10 @@ class UsuariosController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        //
+        $usuario->delete();
+         return redirect()->route("usuarios.index"); 
     }
+    
 
     public function login(Request $request){
 
