@@ -21,23 +21,23 @@
   <div class="d-md-flex flex-md-equal w-100">
     <div class="bg-dark mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"style="width: 80%; height: 1500px;)">
       <div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
-        <button type="button" href=""class="btn btn-warning">Agregar un Usuario</button>
+        <a type="button" href="{{route("usuarios.create")}}"class="btn btn-warning">Agregar un Usuario</a>
       </div>
       <div class="my-3 py-3"> 
         <h2 class="display-5">Ejectivo</h2>
         <p class="lead">Lista de Usuarios Ejectivos.</p>
       </div>
-      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 500px; border-radius: 21px 21px 0 0;);">
+      <div class="bg-light mt-0 shadow-sm mx-auto" style="width: 80%; height: 500px; border-radius: 21px 21px 0 0;);">
         <table class="table mt-2 table-bordered">
           <thead class="bg-dark border-0 text-light">
             <tr>
               <th scope="col">Username</th>
-              <th scope="col">E-mail</th>         
+              <th scope="col ">E-mail</th>         
             </tr>
           </thead>
-          <tbody>
+          <tbody class="mi-scrol">
             @foreach($usuario as $user)          
-              @if ($user->rol_id=='1')
+              @if ($user->rol_id=='8')
                 <tr>
                   <td>{{$user->nombre}}</td>
                   <td>{{$user->email}}</td>
@@ -48,9 +48,9 @@
         </table>
       </div>
     </div>
-    <div class="bg-primary mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"style="width: 80%; height: 1500px;)">
+    <div class="bg-secondary mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"style="width: 80%; height: 1500px;)">
       <div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
-        <button type="button" href=""class="btn btn-warning">Agregar un Usuario</button>
+        <a type="button" href="{{route("usuarios.create")}}"class="btn btn-warning">Agregar un Usuario</a>
       </div>
       <div class="my-3 p-3 text-light">
         <h2 class="display-5">Administrador</h2>
@@ -58,7 +58,7 @@
       </div>
       <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 500px; border-radius: 21px 21px 0 0;);" >
         <table class="table mt-2 table-bordered">
-          <thead class="bg-primary border-0 text-light">
+          <thead class="bg-secondary border-0 text-light">
             <tr>
               <th scope="col">Username</th>
               <th scope="col">E-mail</th>           
@@ -66,7 +66,7 @@
           </thead>
           <tbody>
             @foreach($usuario as $user)          
-              @if ($user->rol_id=='8')
+              @if ($user->rol_id=='1')
                 <tr>
                   <td>{{$user->nombre}}</td>
                   <td>{{$user->email}}</td>
