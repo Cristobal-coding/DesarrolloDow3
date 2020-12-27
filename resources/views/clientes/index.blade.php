@@ -54,7 +54,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     <form method="POST" action="{{route("clientes.destroy",$cliente->rut_cliente)}}">
                                         @csrf
                                         @method("delete")
