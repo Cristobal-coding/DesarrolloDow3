@@ -18,6 +18,7 @@
         <div class="card-body">
             <form action="{{route("autos.update", $auto->id_vehiculo)}}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('put')
             <div class="row my-2">
                 <div class="col-4 mx-0 pr-1 px-0 form-floating">
                     <input type="text" class="form-control" id="nombre" name="nombre" value="{{$auto->nombre_vehiculo}}">
@@ -42,7 +43,7 @@
                     <input type="text" class="form-control" id="patente" name="patente" value="{{$auto->patente}}">
                     <label for="patente" class="text-primary">Patente:</label>
                 </div>
-                <div class="col-4 mx-0 pl-1 px-0 form-floating">
+                <div class="col-lg-4 col-8 mx-0 pl-1 px-0 form-floating">
                     <select class="form-select mi-scrol" id="tipo" aria-label="tipo" name="tipo">
                         {{-- <option selected>Open this select menu</option> --}}
                         @foreach ($tipos as $tipo)
@@ -56,25 +57,41 @@
                 <div class="col-12 py-2">
                     <label for="estado" class="text-primary d-block">Estado:</label>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio"  @if($auto->estado=='Disponible')  checked @endif style="color: #80EF10" name="inlineRadioOptions" id="Disponible" value="Disponible">
-                        <label class="form-check-label" for="Disponible">Disponible</label>
+                        <input class="form-check-input" type="radio"  @if($auto->estado=='Disponible')  checked @endif  name="inlineRadioOptions" id="Disponible" value="Disponible">
+                        <label class="form-check-label" for="Disponible" style="color: #80EF10">Disponible</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" @if($auto->estado=='En Mantenimiento')  checked @endif style="color: #0B1EF2" name="inlineRadioOptions" id="En Mantenimiento" value="En mantenimiento">
-                        <label class="form-check-label" for="En Mantenimiento">En Mantenimiento</label>
+                        <input class="form-check-input" type="radio" @if($auto->estado=='En Mantenimiento')  checked @endif  name="inlineRadioOptions" id="En Mantenimiento" value="En mantenimiento">
+                        <label class="form-check-label" for="En Mantenimiento" style="color: #0B1EF2">En Mantenimiento</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio"  @if($auto->estado=='De Baja') checked @endif style="color: #0B1EF2" name="inlineRadioOptions" id="De Baja" value="De Baja">
-                        <label class="form-check-label" for="De Baja">De Baja</label>
+                        <input class="form-check-input" type="radio"  @if($auto->estado=='De Baja') checked @endif  name="inlineRadioOptions" id="De Baja" value="De Baja">
+                        <label class="form-check-label" for="De Baja" style="color:  #F20B0B">De Baja</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio"  @if($auto->estado=='Arrendado') checked @endif name="inlineRadioOptions" id="Arrendado" value="Arrendado">
-                        <label class="form-check-label" for="Arrendado">Arrendado</label>
+                        <input class="form-check-input" type="radio"  @if($auto->estado=='Arrendado') checked @endif  name="inlineRadioOptions" id="Arrendado" value="Arrendado">
+                        <label class="form-check-label" for="Arrendado" style="color:  #E8F20B">Arrendado</label>
                       </div>
                 </div>
-
             </div>
-            @method('put')
+            <div class="row mx-0 my-2 px-0">
+                <div class="col-12 px-0">
+                    <div class="mb-3">
+                        <label for="foto" class="form-label text-primary" >Imagen del Vehículo:</label>
+                        <input class="form-control form-control-sm text-primary" id="foto" type="file" name="foto">
+                        <small class="text-secondary pl-1">Si no defines una nueva foto, mantendras la antigua.</small>
+                    </div>
+                </div>
+            </div>
+            <hr class="text-primary bg-primary">
+            <div class="row my-2">
+                <div class="col-6">
+                    <a href="{{route("autos.index")}}" class="btn btn-dark w-100">Cancelar</a>
+                </div>
+                <div class="col-6">
+                    <button  type="submit" class="btn btn-primary w-100">Confirmar</button>
+                </div>
+            </div>
             </form>
         </div>
     </div>
