@@ -10,9 +10,22 @@
             <h4 style="font-weight: bold"> <i class="fas fa-plus"></i>Agregar nuevo User</h4>
           </div>
           <div class="card-body mt-0 pt-0">
+            {{-- Errores --}}
+            @if ($errors->any())
+                        
+                <div class="alert alert-warning mx-2">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        {{-- Errores --}}
+
               <div class="form-group text-light ">
                   <label for="nombre" style="color: rgb(255, 255, 255);">Nombre:</label>         
-                  <input type="text" name="nombre" class="form-control bg-info border-0 text-dark" id="nombre" placeholder="" value="" >
+                  <input type="text" name="nombre" class="form-control bg-info border-0 text-dark @error('nombre') is-invalid @enderror" id="nombre" placeholder="" value={{old('nombre')}} >
              
               </div>         
               <div class="row text-light">
@@ -23,7 +36,7 @@
                   {{-- VALIDAR LAS FECHAS --}}
                   <div class="form-group col-12 text-light ">
                     <label for="email" class="text-light" style="color: rgb(15, 1, 1);">E-mail:</label>
-                    <input type="email" name="email" class="form-control bg-info border-0 text-dark" id="email" placeholder="" value="" >
+                    <input type="email" name="email" class="form-control bg-info border-0 text-dark @error('email') is-invalid @enderror" id="email" placeholder="" value={{old('email')}} >
                  </div>
                  <div class="form-group col-12 text-light ">
                     <label for="password" class="text-light" style="color: rgb(15, 1, 1);">Contraseña:</label>

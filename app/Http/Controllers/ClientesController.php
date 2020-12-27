@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use App\Http\Requests\ClientesRequest;
 
 class ClientesController extends Controller
 {
@@ -39,7 +40,7 @@ class ClientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientesRequest $request)
     {
         $cliente= new Cliente;
         $cliente->rut_cliente = $request->rut;

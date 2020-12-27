@@ -17,11 +17,11 @@
     <table class="table mt-2 table-bordered table-striped ">
         <thead class="bg-dark border-0 text-light">
           <tr>
-            <th scope="col">N°</th>
+            <th scope="col">N° de orden</th>
             <th scope="col">Rut</th>
-            <th scope="col">Incio</th>
+            <th scope="col">Nombre</th>
             <th scope="col">Vencimiento</th>
-            <th scope="col">Detalles de la ordens</th>        
+            <th scope="col">Gestionar</th>        
           </tr>
         </thead>
         <tbody class="mi-scrol">
