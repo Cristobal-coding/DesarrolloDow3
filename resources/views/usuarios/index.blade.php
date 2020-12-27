@@ -32,7 +32,8 @@
           <thead class="bg-dark border-0 text-light">
             <tr>
               <th scope="col">Username</th>
-              <th scope="col ">E-mail</th>         
+              <th scope="col ">E-mail</th>  
+              <th scope="col">Gestionar</th>           
             </tr>
           </thead>
           <tbody class="mi-scrol">
@@ -41,6 +42,40 @@
                 <tr>
                   <td>{{$user->nombre}}</td>
                   <td>{{$user->email}}</td>
+                  <td>
+                    <span class="pr-1" data-toggle="tooltip" title="Editar." data-placement="bottom">                               
+                      <a  href="{{route("usuarios.edit",$user->id)}}" class="btn btn-secondary"><i class="far fa-edit fa-lg"></i></a>
+                    </span>
+                    <span class="pl-1" data-toggle="tooltip" title="Borrar." data-placement="right">                               
+                      <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#borrarCliente{{$user->id}}"><i class="fas fa-trash fa-lg"></i></a>
+                     </span>  
+                     {{-- modal borrar --}}
+                     <div class="modal fade text-light " id="borrarCliente{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content bg-dark" style="color: #fff;">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash fa-lg"></i>Confirmar Borrar Cliente ?</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true"><i class="fas fa-times border-0" style="color: #fff"></i></span>
+                              </button>
+                              </div>
+                              <div class="modal-body">
+                                  <div class="d-flex align-items-center justify-content-center">
+                                      <i class="fas fa-exclamation-triangle fa-lg pr-2 text-warning"></i>¿Desea eliminar el cliente {{$user->nombre}}?
+                                  </div>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                              <form method="POST" action="{{route("usuarios.destroy",$user->id)}}">
+                                  @csrf
+                                  @method("delete")
+                                  <button type="submit" data-toggle="tooltip" title="Borrar" data-placement="right" class="btn btn-warning">Borrar Cliente</button>
+                              </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>     
+                  </td>
                 </tr>
               @endif
             @endforeach
@@ -61,15 +96,49 @@
           <thead class="bg-secondary border-0 text-light">
             <tr>
               <th scope="col">Username</th>
-              <th scope="col">E-mail</th>           
+              <th scope="col">E-mail</th> 
+              <th scope="col">Gestionar</th>                     
             </tr>
           </thead>
-          <tbody>
+          <tbody class="mi-scrol">
             @foreach($usuario as $user)          
               @if ($user->rol_id=='1')
                 <tr>
                   <td>{{$user->nombre}}</td>
                   <td>{{$user->email}}</td>
+                  <td>
+                    <span class="pr-1" data-toggle="tooltip" title="Editar." data-placement="bottom">                               
+                      <a  href="{{route("usuarios.edit",$user->id)}}" class="btn btn-secondary"><i class="far fa-edit fa-lg"></i></a>
+                    </span>
+                    <span class="pl-1" data-toggle="tooltip" title="Borrar." data-placement="right">                               
+                      <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#borrarCliente{{$user->id}}"><i class="fas fa-trash fa-lg"></i></a>
+                     </span>      
+                  </td>
+                  {{-- modal borrar --}}
+                  <div class="modal fade text-light " id="borrarCliente{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content bg-dark" style="color: #fff;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash fa-lg"></i>Confirmar Borrar Cliente ?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><i class="fas fa-times border-0" style="color: #fff"></i></span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-exclamation-triangle fa-lg pr-2 text-warning"></i>¿Desea eliminar el cliente {{$user->nombre}}?
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <form method="POST" action="{{route("usuarios.destroy",$user->id)}}">
+                                @csrf
+                                @method("delete")
+                                <button type="submit" data-toggle="tooltip" title="Borrar" data-placement="right" class="btn btn-warning">Borrar Cliente</button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
                 </tr>
               @endif
             @endforeach
