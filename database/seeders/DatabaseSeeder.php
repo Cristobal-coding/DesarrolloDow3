@@ -43,36 +43,36 @@ class DatabaseSeeder extends Seeder
             ]);           
         }
         //Vehiculos
-        // $vehiculos=[
-        //     ['id_vehiculo'=>1,'nombre_vehiculo'=>'MX-5','marca'=>'Mazda','nombre_tipo'=>
-        //         'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2016,'foto'=>'public/Vehiculos/mx-5.jpg'],
-        //     ['id_vehiculo'=>2,'nombre_vehiculo'=>'Ranger','marca'=>'Ford','nombre_tipo'=>
-        //         'Camioneta','estado'=>'Disponible','patente'=>'BB-CL-35','year'=>2019,'foto'=>'public/Vehiculos/ranger.jpg'],
-        //     ['id_vehiculo'=>3,'nombre_vehiculo'=>'Tercel','marca'=>'Toyota','nombre_tipo'=>
-        //         'Sedan','estado'=>'Disponible','patente'=>'BB-CL-36','year'=>1998,'foto'=>'public/Vehiculos/tercel.jpg'],
-        //     ['id_vehiculo'=>4,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
-        //         'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
-        //     ['id_vehiculo'=>5,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
-        //         'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
-        //     ['id_vehiculo'=>6,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
-        //         'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
-        //     ['id_vehiculo'=>7,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
-        //         'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
-        // ];
-        // foreach($vehiculos as $vehiculo){
-        //     DB::table('vehiculos')->insert([
-        //         'id_vehiculo' => $vehiculo['id_vehiculo'],
-        //         'nombre_vehiculo'=> $vehiculo['nombre_vehiculo'],
-        //         'marca'=> $vehiculo['marca'],
-        //         'nombre_tipo'=> $vehiculo['nombre_tipo'],
-        //         'estado'=> $vehiculo['estado'],
-        //         'patente'=> $vehiculo['patente'],
-        //         'year'=> $vehiculo['year'],
-        //         'foto'=> $vehiculo['foto'],
-        //         'created_at' => new DateTime('NOW'),
-        //         'updated_at' => NULL
-        //     ]);           
-        // }
+        $vehiculos=[
+            ['id'=>1,'nombre_vehiculo'=>'MX-5','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2016,'foto'=>'public/Vehiculos/mx-5.jpg'],
+            ['id'=>2,'nombre_vehiculo'=>'Ranger','marca'=>'Ford','nombre_tipo'=>
+                'Camioneta','estado'=>'Disponible','patente'=>'BB-CL-35','year'=>2019,'foto'=>'public/Vehiculos/ranger.jpg'],
+            ['id'=>3,'nombre_vehiculo'=>'Tercel','marca'=>'Toyota','nombre_tipo'=>
+                'Sedan','estado'=>'Disponible','patente'=>'BB-CL-36','year'=>1998,'foto'=>'public/Vehiculos/tercel.jpg'],
+            ['id'=>4,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
+            ['id'=>5,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
+            ['id'=>6,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
+            ['id'=>7,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
+        ];
+        foreach($vehiculos as $vehiculo){
+            DB::table('vehiculos')->insert([
+                'id' => $vehiculo['id'],
+                'nombre_vehiculo'=> $vehiculo['nombre_vehiculo'],
+                'marca'=> $vehiculo['marca'],
+                'nombre_tipo'=> $vehiculo['nombre_tipo'],
+                'estado'=> $vehiculo['estado'],
+                'patente'=> $vehiculo['patente'],
+                'year'=> $vehiculo['year'],
+                'foto'=> $vehiculo['foto'],
+                'created_at' => new DateTime('NOW'),
+                'updated_at' => new DateTime('NOW'),
+            ]);           
+        }
         //USUARIOS
         $roles=[
             ['id'=>1,'nombre'=>'Administrador'],

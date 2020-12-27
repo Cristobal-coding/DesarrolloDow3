@@ -7,7 +7,7 @@
     <div class="row m-0 pt-3 d-flex align-items-center justify-content-center">
         @for ($i=0;$i<$iteraciones;$i++)
             <div class="card m-2 shadow-lg px-0 border-0 rounded-lg" style="width:18rem" >
-                <img src="{{Storage::url($vehiculos[$i]->foto)}}" class="rounded-top img-fluid" width="xl-285px" min-height="" style="min-height:259.94px !important; " >
+                <img src="{{Storage::url($vehiculos[$i]->foto)}}" class="rounded-top img-fluid" style="max-height:259px !important; min-height:259px !important; " >
                 <div class="card-body d-flex flex-column flex-fill "  >                
                     <h5 class="card-title">{{$vehiculos[$i]->marca}} {{$vehiculos[$i]->nombre_vehiculo}} {{$vehiculos[$i]->year}}</h5>
                     <h6 class="text-primary">Patente: <span style="color: black">{{$vehiculos[$i]->patente}}</span></h6>

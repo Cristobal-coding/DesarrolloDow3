@@ -42,7 +42,10 @@
                         </span>
                     </div>
                     <div class="col-12 px-0">
-                        <a href="" class="btn btn-outline-primary w-100"><i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($vehiculos[$i]->tipo->valor_diario,0,".",".")}} CLP</a>
+                        <form action="{{route('arriendos.addCarrito',$vehiculos[$i]->id)}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-primary w-100"><i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($vehiculos[$i]->tipo->valor_diario,0,".",".")}} CLP</button>
+                        </form>
                     </div>
                 </div>  
                 <!-- Modal -->

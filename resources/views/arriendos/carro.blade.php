@@ -25,7 +25,7 @@
             <div class="col-4 py-2 px-0 rounded">
                 <div class="card border-0 rounded">
                     <div class="card-body p-0 border-0 rounded">
-                        <img src="{{Storage::url($vehiculo->foto)}}" alt="" class="img-fluid rounded">
+                        <img src="{{Storage::url($vehiculo->foto)}}" alt="" class="img-fluid rounded w-100" style="max-height: 155px !important;">
                     </div>
                 </div>
             </div>

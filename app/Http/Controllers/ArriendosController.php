@@ -98,12 +98,23 @@ class ArriendosController extends Controller
         $arriendos= Arriendo::all();
         for ($i=0;$i<count($arriendos);$i++){
             if($arriendos[$i]->rut_cliente=="20.440.649-9"){ //Depende del rut por ahora, como vemos quien creo la orden?
+                //existe ya el vehiculo que clickea?
+                foreach( $arriendos[$i]->vehiculos as $producto){
+                    if($producto->id==$vehiculo->id){
+                        $arriendos[$i]->vehiculos()->detach($producto->id);
+                    }
+                }
                 $arriendos[$i]->vehiculos()->attach($vehiculo->id,  ['entregado'=>false,'foto_arriendo'=>null, 'foto_entrega'=>null]);
                 
             }
         }
 
         return redirect()->route('arriendos.carrito');
+    }
+
+    public function removeCarrito(Vehiculo $vehiculo){
+
+        
     }
 
     
