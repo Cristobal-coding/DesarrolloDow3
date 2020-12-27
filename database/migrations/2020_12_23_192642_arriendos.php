@@ -14,10 +14,11 @@ class Arriendos extends Migration
     public function up()
     {
         Schema::create('arriendos', function (Blueprint $table) {
-            $table->id('id_arriendo');
+            $table->id();
             $table->string('rut_cliente');
             $table->date('arriendo_fecha_inicio');
             $table->date('arriendo_fecha_final');
+            $table->boolean('confirmada')->nullable();
 
             $table->timestamps();
             $table->foreign('rut_cliente')->references('rut_cliente')->on('clientes');

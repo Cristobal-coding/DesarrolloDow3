@@ -14,4 +14,12 @@ class Arriendo extends Model
     public function cliente(){
         return $this->belongsTo("App\Models\Cliente",'rut_cliente','rut_cliente');
     }
+
+    // public function vehiculos(){
+    //     return $this->belongsToMany('App\Models\Vehiculo','arriendo_vehiculo','id_vehiculo','id_vehiculo');
+    // }
+    public function vehiculos(){
+        return $this->belongsToMany('App\Models\Vehiculo','arriendo_vehiculo','id_vehiculo','id_vehiculo');
+    }
+    
 }

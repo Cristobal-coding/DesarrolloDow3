@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{HomeController, AutosController, ArriendosController,GenerarController, UsuariosController,ClientesController};
+use App\Http\Controllers\{HomeController, VehiculosController, ArriendosController,GenerarController, UsuariosController,ClientesController};
 
 /*
 |--------------------------------------------------------------------------
@@ -22,16 +22,17 @@ Route::get('/', [HomeController::class, 'index'])->name("home.index");
 Route::get('login', [HomeController::class, 'login'])->name('home.login');
 
 
-Route::get('/autos', [AutosController::class, 'index'])->name('autos.index');
-Route::post('/autos', [AutosController::class, 'store'])->name('autos.store');
-Route::delete('/autos/{auto}', [AutosController::class, 'destroy'])->name('autos.destroy');
-Route::get('/autos/{auto}/edit', [AutosController::class, 'edit'])->name('autos.edit');
-Route::put('/autos/{auto}', [AutosController::class, 'update'])->name('autos.update');
-Route::get('/autos/page/{pagina}', [AutosController::class, 'pagina'])->name('autos.paginas');
+Route::get('/vehiculos', [VehiculosController::class, 'index'])->name('vehiculos.index');
+Route::post('/vehiculos', [VehiculosController::class, 'store'])->name('vehiculos.store');
+Route::delete('/vehiculos/{vehiculo}', [VehiculosController::class, 'destroy'])->name('vehiculos.destroy');
+Route::get('/vehiculos/{vehiculo}/edit', [VehiculosController::class, 'edit'])->name('vehiculos.edit');
+Route::put('/vehiculos/{vehiculo}', [VehiculosController::class, 'update'])->name('vehiculos.update');
+Route::get('/vehiculos/page/{pagina}', [VehiculosController::class, 'pagina'])->name('vehiculos.paginas');
 
 Route::resource('/arriendos', ArriendosController::class);
 Route::get('/arriendos/create', [ArriendosController::class, 'create'])->name('arriendos.create');
 Route::get('/cart', [ArriendosController::class, 'carrito'])->name('arriendos.carrito');
+Route::post('/addcart/{vehiculo}', [ArriendosController::class, 'addCarrito'])->name('arriendos.addCarrito');
 
 Route::post('/usuarios/login',[UsuariosController::class, 'login'])->name('usuarios.login');
 Route::get('/usuarios/logout',[UsuariosController::class, 'logout'])->name('usuarios.logout');

@@ -43,36 +43,36 @@ class DatabaseSeeder extends Seeder
             ]);           
         }
         //Vehiculos
-        $vehiculos=[
-            ['id_vehiculo'=>1,'nombre_vehiculo'=>'MX-5','marca'=>'Mazda','nombre_tipo'=>
-                'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2016,'foto'=>'public/Vehiculos/mx-5.jpg'],
-            ['id_vehiculo'=>2,'nombre_vehiculo'=>'Ranger','marca'=>'Ford','nombre_tipo'=>
-                'Camioneta','estado'=>'Disponible','patente'=>'BB-CL-35','year'=>2019,'foto'=>'public/Vehiculos/ranger.jpg'],
-            ['id_vehiculo'=>3,'nombre_vehiculo'=>'Tercel','marca'=>'Toyota','nombre_tipo'=>
-                'Sedan','estado'=>'Disponible','patente'=>'BB-CL-36','year'=>1998,'foto'=>'public/Vehiculos/tercel.jpg'],
-            ['id_vehiculo'=>4,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
-                'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
-            ['id_vehiculo'=>5,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
-                'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
-            ['id_vehiculo'=>6,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
-                'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
-            ['id_vehiculo'=>7,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
-                'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
-        ];
-        foreach($vehiculos as $vehiculo){
-            DB::table('vehiculos')->insert([
-                'id_vehiculo' => $vehiculo['id_vehiculo'],
-                'nombre_vehiculo'=> $vehiculo['nombre_vehiculo'],
-                'marca'=> $vehiculo['marca'],
-                'nombre_tipo'=> $vehiculo['nombre_tipo'],
-                'estado'=> $vehiculo['estado'],
-                'patente'=> $vehiculo['patente'],
-                'year'=> $vehiculo['year'],
-                'foto'=> $vehiculo['foto'],
-                'created_at' => new DateTime('NOW'),
-                'updated_at' => NULL
-            ]);           
-        }
+        // $vehiculos=[
+        //     ['id_vehiculo'=>1,'nombre_vehiculo'=>'MX-5','marca'=>'Mazda','nombre_tipo'=>
+        //         'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2016,'foto'=>'public/Vehiculos/mx-5.jpg'],
+        //     ['id_vehiculo'=>2,'nombre_vehiculo'=>'Ranger','marca'=>'Ford','nombre_tipo'=>
+        //         'Camioneta','estado'=>'Disponible','patente'=>'BB-CL-35','year'=>2019,'foto'=>'public/Vehiculos/ranger.jpg'],
+        //     ['id_vehiculo'=>3,'nombre_vehiculo'=>'Tercel','marca'=>'Toyota','nombre_tipo'=>
+        //         'Sedan','estado'=>'Disponible','patente'=>'BB-CL-36','year'=>1998,'foto'=>'public/Vehiculos/tercel.jpg'],
+        //     ['id_vehiculo'=>4,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
+        //         'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
+        //     ['id_vehiculo'=>5,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
+        //         'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
+        //     ['id_vehiculo'=>6,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
+        //         'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
+        //     ['id_vehiculo'=>7,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
+        //         'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
+        // ];
+        // foreach($vehiculos as $vehiculo){
+        //     DB::table('vehiculos')->insert([
+        //         'id_vehiculo' => $vehiculo['id_vehiculo'],
+        //         'nombre_vehiculo'=> $vehiculo['nombre_vehiculo'],
+        //         'marca'=> $vehiculo['marca'],
+        //         'nombre_tipo'=> $vehiculo['nombre_tipo'],
+        //         'estado'=> $vehiculo['estado'],
+        //         'patente'=> $vehiculo['patente'],
+        //         'year'=> $vehiculo['year'],
+        //         'foto'=> $vehiculo['foto'],
+        //         'created_at' => new DateTime('NOW'),
+        //         'updated_at' => NULL
+        //     ]);           
+        // }
         //USUARIOS
         $roles=[
             ['id'=>1,'nombre'=>'Administrador'],
@@ -105,22 +105,22 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => NULL
             ]);           
         }
-        //Clientes
-        $clientes=[
-            ['rut_cliente'=>'20.482.871-7','nombre_cliente'=>'Renato Plaza','fono_cliente'=>'78590098   ',
-                'entrega_pendiente'=>'no'],
-            ['rut_cliente'=>'20.440.649-9','nombre_cliente'=>'Cristobal Herrera','fono_cliente'=>'98390098   ',
-                'entrega_pendiente'=>'no']         
-        ];
-        foreach($clientes as $cliente){
-            DB::table('clientes')->insert([
-                'rut_cliente' => $cliente['rut_cliente'],
-                'nombre_cliente' => $cliente['nombre_cliente'],
-                'fono_cliente' => $cliente['fono_cliente'],
-                'entrega_pendiente' => $cliente['entrega_pendiente'],
-                'created_at' => new DateTime('NOW'),
-                'updated_at' => NULL
-            ]);           
-        }
+        // //Clientes
+        // $clientes=[
+        //     ['rut_cliente'=>'20.482.871-7','nombre_cliente'=>'Renato Plaza','fono_cliente'=>'78590098   ',
+        //         'entrega_pendiente'=>'no'],
+        //     ['rut_cliente'=>'20.440.649-9','nombre_cliente'=>'Cristobal Herrera','fono_cliente'=>'98390098   ',
+        //         'entrega_pendiente'=>'no']         
+        // ];
+        // foreach($clientes as $cliente){
+        //     DB::table('clientes')->insert([
+        //         'rut_cliente' => $cliente['rut_cliente'],
+        //         'nombre_cliente' => $cliente['nombre_cliente'],
+        //         'fono_cliente' => $cliente['fono_cliente'],
+        //         'entrega_pendiente' => $cliente['entrega_pendiente'],
+        //         'created_at' => new DateTime('NOW'),
+        //         'updated_at' => NULL
+        //     ]);           
+        // }
     }
 }

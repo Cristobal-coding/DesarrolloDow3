@@ -7,51 +7,54 @@
     <div class="row m-0 pt-3 d-flex align-items-center justify-content-center">
         @for ($i=0;$i<$iteraciones;$i++)
             <div class="card m-2 shadow-lg px-0 border-0 rounded-lg" style="width:18rem" >
-                <img src="{{Storage::url($autos[$i]->foto)}}" class="img-top rounded-top" width="xl-285px" height="259.94px" >
+                <img src="{{Storage::url($vehiculos[$i]->foto)}}" class="rounded-top img-fluid" width="xl-285px" min-height="" style="min-height:259.94px !important; " >
                 <div class="card-body d-flex flex-column flex-fill "  >                
-                    <h5 class="card-title">{{$autos[$i]->marca}} {{$autos[$i]->nombre_vehiculo}} {{$autos[$i]->year}}</h5>
-                    <h6 class="text-primary">Patente: <span style="color: black">{{$autos[$i]->patente}}</span></h6>
-                    <h6 class="text-primary">Tipo: <span style="color: black">{{$autos[$i]->nombre_tipo}}</span></h6>
+                    <h5 class="card-title">{{$vehiculos[$i]->marca}} {{$vehiculos[$i]->nombre_vehiculo}} {{$vehiculos[$i]->year}}</h5>
+                    <h6 class="text-primary">Patente: <span style="color: black">{{$vehiculos[$i]->patente}}</span></h6>
+                    <h6 class="text-primary">Tipo: <span style="color: black">{{$vehiculos[$i]->nombre_tipo}}</span></h6>
                     <h6 class="text-primary">Estado: <span 
-                    @if($autos[$i]->estado=="Disponible")    
+                    @if($vehiculos[$i]->estado=="Disponible")    
                         style="color: #80EF10"
                     @else 
-                        @if($autos[$i]->estado=="Arrendado")
+                        @if($vehiculos[$i]->estado=="Arrendado")
                             style="color: #E8F20B "
                         @else
-                            @if($autos[$i]->estado=="En Mantenimiento")
+                            @if($vehiculos[$i]->estado=="En Mantenimiento")
                                 style="color: #0B1EF2"
                             @else
-                                @if($autos[$i]->estado=="De Baja")
+                                @if($vehiculos[$i]->estado=="De Baja")
                                     style="color: #F20B0B"
                                 @endif
                             @endif
                         @endif
                     @endif
-                    >{{$autos[$i]->estado}}</span></h6>
+                    >{{$vehiculos[$i]->estado}}</span></h6>
                     <div class="row m-0">
                         <div class="col-4 mb-1 px-0">
                             <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="left" title="Mas Info."><i class="fas fa-question-circle fa-lg "></i></a>
                         </div>
                         <div class="col-4 mb-1 px-0">
-                            <a href="{{route("autos.edit", $autos[$i]->id_vehiculo)}}" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="far fa-edit fa-lg"></i></a>
+                            <a href="{{route("vehiculos.edit", $vehiculos[$i]->id_vehiculo)}}" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="far fa-edit fa-lg"></i></a>
                         </div>
                         <div class="col-4 mb-1 px-0">
                             <span data-toggle="tooltip" data-placement="right" title="Eliminar">
-                               <button class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#borrarVehiculo{{$autos[$i]->id_vehiculo}}"><i class="fas fa-times-circle fa-lg"></i></button>
+                               <button class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#borrarVehiculo{{$vehiculos[$i]->id_vehiculo}}"><i class="fas fa-times-circle fa-lg"></i></button>
                             </span>
                         </div>
                         <div class="col-12 px-0">
-                            <a href="{{route("arriendos.carrito")}}" class="btn btn-outline-primary w-100"><i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($autos[$i]->tipo->valor_diario,0,".",".")}} CLP</a>
+                            <form action="{{route('arriendos.addCarrito',$vehiculos[$i]->id_vehiculo)}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-primary w-100"><i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($vehiculos[$i]->tipo->valor_diario,0,".",".")}} CLP</button>
+                            </form>
                         </div>
                     </div> 
                     
                     <!-- Modal -->
-                    <div class="modal fade" id="borrarVehiculo{{$autos[$i]->id_vehiculo}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="borrarVehiculo{{$vehiculos[$i]->id_vehiculo}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">{{$autos[$i]->marca}} {{$autos[$i]->nombre_vehiculo}} {{$autos[$i]->year}}</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">{{$vehiculos[$i]->marca}} {{$vehiculos[$i]->nombre_vehiculo}} {{$vehiculos[$i]->year}}</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -59,7 +62,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <form method="POST" action="{{route("autos.destroy", $autos[$i]->id_vehiculo)}}"  >
+                                    <form method="POST" action="{{route("vehiculos.destroy", $vehiculos[$i]->id_vehiculo)}}"  >
                                         @csrf
                                         @method('delete')   
                                         <button type="submit" class="btn btn-primary">Eliminar</button>
@@ -78,14 +81,14 @@
             <ul class="pagination">
                 @for($i=1; $i<=$totalInPage;$i++)
                 @if($i==1)
-                <li class="page-item"><a class="page-link" href="{{route("autos.index")}}">{{$i}}</a></li>
+                <li class="page-item"><a class="page-link" href="{{route("vehiculos.index")}}">{{$i}}</a></li>
                 @else
-                <li class="page-item"><a class="page-link" href="{{route("autos.paginas", $i)}}">{{$i}}</a></li>
+                <li class="page-item"><a class="page-link" href="{{route("vehiculos.paginas", $i)}}">{{$i}}</a></li>
                 @endif
                 @endfor
                 
                 <li class="page-item">
-                <a class="page-link" href="{{route("autos.paginas",2)}}" aria-label="Next">
+                <a class="page-link" href="{{route("vehiculos.paginas",2)}}" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
                 </li>
@@ -98,7 +101,7 @@
 <div class="col-4">
     <div class="card mt-3">
         <div class="card-body p-0 pt-2">
-            <form action="{{route("autos.store")}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route("vehiculos.store")}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row m-0 px-0">
                     <div class="col-6">

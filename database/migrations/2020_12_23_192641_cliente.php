@@ -14,7 +14,7 @@ class Cliente extends Migration
     public function up()
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->string('rut_cliente');
+            $table->string('rut_cliente')->unique();
             $table->string('nombre_cliente');
             $table->string('fono_cliente');
             $table->string('entrega_pendiente');
