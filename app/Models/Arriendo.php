@@ -27,6 +27,6 @@ class Arriendo extends Model
     }
 
     public function sucursal(){
-        return $this->belongsTo("App\Models\Sucursal");
+        return $this->belongsTo("App\Models\Sucursal",'id');
     }
 }

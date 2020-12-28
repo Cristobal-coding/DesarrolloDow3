@@ -21,7 +21,6 @@ class ArriendosController extends Controller
     {
         $arriendos= Arriendo::all();
         $cliente=Cliente::all();
-        
         return view("arriendos.index",compact('arriendos','cliente'));
     }
 
@@ -52,7 +51,7 @@ class ArriendosController extends Controller
         $arriendo->confirmada= false;
         $arriendo->vendedor=Auth::user()->id;
         $arriendo->estado=true;
-        $arriendo->sucursal=$request->sucursal;
+        $arriendo->id_sucursal=$request->sucursal;
         
         $arriendo->save();
 
@@ -77,8 +76,9 @@ class ArriendosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Arriendo $arriendo)
-    {
-        //
+    {   $sucursales=Sucursal::all();
+        $clientes=Cliente::all();
+        return view('arriendos.edit', compact('arriendo','sucursales','clientes'));
     }
 
     /**
@@ -137,7 +137,7 @@ class ArriendosController extends Controller
         $arriendos= Arriendo::all();
         $arriendodisponible="ninguno";
         for ($i=0;$i<count($arriendos);$i++){
-            if($arriendos[$i]->usuariovendedor->id==Auth::user()->id){ //Depende del rut por ahora, como vemos quien creo la orden?
+            if($arriendos[$i]->usuariovendedor->id==Auth::user()->id && $arriendos[$i]->confirmada!=true){ //Depende del rut por ahora, como vemos quien creo la orden?
                 //existe ya el vehiculo que clickea?
                 foreach( $arriendos[$i]->vehiculos as $producto){
                     if($producto->id==$vehiculo->id){
