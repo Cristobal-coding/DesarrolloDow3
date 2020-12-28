@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-lg-11 col-9 p-3">
                         <h5 class="text-primary">¡El Carrito se vaciado!</h5>  
-                        <h6 class="text-primary">{{Session::get('mensaje')}} <a href="{{route('arriendos.index')}}" class="text-primary text-decoration-none">Aquí</a> para crear otro arriendo.</h6>
+                        <h6 class="text-primary">{{Session::get('mensaje')}} <a href="{{route('arriendos.index')}}" class="text-secondary text-decoration-none">aquí</a> para crear otro arriendo.</h6>
                     </div>
                 </div>
             @else
@@ -46,7 +46,7 @@
                 </div>
                 <div class="col-lg-11 col-9 p-3">
                     <h5 class="text-primary">Haz creado la orden, ahora llena el carrito!</h5>  
-                    <h6><a href="{{route('vehiculos.index')}}" class="text-decoration-none text-secondary">Continuar Viendo <i class="fas fa-long-arrow-alt-right"></i></a></h6>
+                    <h6><a href="{{route('vehiculos.index')}}" class="text-decoration-none text-secondary">Ver Vehículos Disponibles <i class="fas fa-long-arrow-alt-right"></i></a></h6>
                     {{-- <p>{{$arriendo->usuariovendedor->nombre}}</p> --}}
                 </div>
             </div>

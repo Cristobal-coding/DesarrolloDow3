@@ -35,7 +35,7 @@
                     <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="vehiculos") active @endif" href="{{route("vehiculos.index")}}">Vehiculos</a>
                   </li> --}}           
                   <li class="nav-item">
-                    <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]==("arriendos")) active @endif" href="{{route("arriendos.index")}}" tabindex="-1" aria-disabled="true">Arriendos</a>
+                    <a class="nav-link @if(Route::current()->getName()!="home.index" && ( Request::segments()[0]==("arriendos") || Request::segments()[0]==("cart") || Request::segments()[0]==("addcart"))) active @endif" href="{{route("arriendos.index")}}" tabindex="-1" aria-disabled="true">Arriendos</a>
                   </li>                  
                   <li class="nav-item">
                     <a class="nav-link  @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="clientes") active @endif" href="{{route("clientes.index")}}" tabindex="-1" aria-disabled="true">Clientes</a>

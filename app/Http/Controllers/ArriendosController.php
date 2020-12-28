@@ -228,7 +228,7 @@ class ArriendosController extends Controller
         $arriendo->confirmada=true;
         $arriendo->total=$total;
         $arriendo->save();
-        $sessionManager->flash('mensaje', 'El arriendo se ha completado exitosamente haz click.');
+        $sessionManager->flash('mensaje', 'El arriendo se ha completado exitosamente haz click ');
         return redirect()->route('arriendos.carrito');
     }
 
