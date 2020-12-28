@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Arriendo,Cliente,Vehiculo};
+use App\Models\{Arriendo,Cliente,Vehiculo, Sucursal};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Session\SessionManager;
@@ -21,6 +21,7 @@ class ArriendosController extends Controller
     {
         $arriendos= Arriendo::all();
         $cliente=Cliente::all();
+        
         return view("arriendos.index",compact('arriendos','cliente'));
     }
 
@@ -32,7 +33,8 @@ class ArriendosController extends Controller
     public function create()
     {
         $clientes= Cliente::all();
-        return view("arriendos.create",compact("clientes"));
+        $sucursales=Sucursal::all();
+        return view("arriendos.create",compact("clientes",'sucursales'));
     }
 
     /**
@@ -49,10 +51,12 @@ class ArriendosController extends Controller
         $arriendo->arriendo_fecha_final= $request->arriendo_fecha_final;
         $arriendo->confirmada= false;
         $arriendo->vendedor=Auth::user()->id;
+        $arriendo->estado=true;
+        $arriendo->sucursal=$request->sucursal;
         
         $arriendo->save();
 
-        return redirect()->route("arriendos.index");
+        return redirect()->route('arriendos.carrito');
     }
 
     /**
@@ -97,6 +101,7 @@ class ArriendosController extends Controller
      */
     public function destroy(Arriendo $arriendo)
     {
+        $arriendo->vehiculos()->detach();
         $arriendo->delete();
          return redirect()->route("arriendos.index"); 
     }
@@ -148,7 +153,7 @@ class ArriendosController extends Controller
         if($arriendodisponible=='ninguno'){
             $arriendos= Arriendo::all();
             $cliente=Cliente::all();
-            $sessionManager->flash('mensaje', 'Para añadir al carrito, crea un arriendo para un usuario.');
+            $sessionManager->flash('mensaje', 'Para añadir al carrito, crea un arriendo para un cliente.');
             return view("arriendos.index",compact('arriendos','cliente'));
         }
         
@@ -169,6 +174,24 @@ class ArriendosController extends Controller
 
         $arriendo->vehiculos()->detach();
         $arriendo->delete();
+        return redirect()->route('arriendos.carrito');
+    }
+
+    public function confirmArriendo(Arriendo $arriendo){
+        $acumulado=0;
+        foreach($arriendo->vehiculos as $vehiculo){
+            $acumulado+=$vehiculo->tipo->valor_diario;
+            $vehiculo->estado='Arrendado';
+            $vehiculo->save();
+        }
+        $dias = (strtotime($arriendo->arriendo_fecha_inicio)-strtotime($arriendo->arriendo_fecha_final))/86400;
+        $dias = abs($dias);
+        $dias = floor($dias);
+        $total = $acumulado*$dias;
+        $arriendo->confirmada=true;
+        $arriendo->total=$total;
+        $arriendo->save();
+
         return redirect()->route('arriendos.carrito');
     }
 

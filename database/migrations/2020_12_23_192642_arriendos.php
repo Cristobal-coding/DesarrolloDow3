@@ -18,10 +18,16 @@ class Arriendos extends Migration
             $table->string('rut_cliente');
             $table->date('arriendo_fecha_inicio');
             $table->date('arriendo_fecha_final');
-            $table->boolean('confirmada')->nullable();
+            $table->boolean('confirmada');
+            $table->integer('total')->nullable();
+
+ 
+            $table->date('fecha_entrega_autos')->nullable();
+            $table->boolean('estado');//0 vigente 1 Finalizado
 
             $table->timestamps();
             $table->foreign('rut_cliente')->references('rut_cliente')->on('clientes');
+
         });
     }
 

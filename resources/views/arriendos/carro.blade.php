@@ -98,21 +98,30 @@
             </div>
             @endforeach
             @if($confirmado!='not_but_empty')
-
+            {{-- Datos de la order --}}
+          
+            @php
+            $diff = (strtotime($arriendo->arriendo_fecha_inicio)-strtotime($arriendo->arriendo_fecha_final))/86400;
+            $diff = abs($diff);
+            $diff = floor($diff);
+            @endphp
+            @for ($i =0,$acumulado=0; $i < count($arriendo->vehiculos) ; $i++)
+                @php
+                    $acumulado+=$arriendo->vehiculos[$i]->tipo->valor_diario;
+                @endphp           
+            @endfor
+            
             <div class="row border-top border-bottom mt-2 mb-5 px-0 mx-0">
                 <div class="col-8 py-3">
                     <h6 class="d-inline pr-1"><span class="text-primary">Cliente:</span> {{$arriendo->cliente->nombre_cliente}}</h6>
                     <h6 class="d-inline"><span class="text-primary">Rut:</span> {{$arriendo->rut_cliente}}</h6>
-                    <h6 class="mt-1"><span class="text-primary">Fecha de Devolución:</span> 25/12/30</h6>
-    
+                    <h6 class="mt-1"><span class="text-primary">Fecha de Inicio:</span> {{date('d-m-Y',strtotime($arriendo->arriendo_fecha_inicio))}}</h6>
+                    <h6 class="mt-1"><span class="text-primary">Fecha de Devolución:</span> {{date('d-m-Y',strtotime($arriendo->arriendo_fecha_final))}}</h6>
+                    <h6 class="mt-1"><span class="text-primary">Total Días:</span> {{$diff}}</h6>
+                    <h6 class="mt-1"><span class="text-primary">Total por Día:</span> ${{number_format($acumulado,0,".",".")}} CLP</h6>
                 </div>
                 <div class="col-4 text-right py-3">
-                    @for ($i =0,$acumulado=0; $i < count($arriendo->vehiculos) ; $i++)
-                        @php
-                        $acumulado+=$arriendo->vehiculos[$i]->tipo->valor_diario;
-                        @endphp           
-                    @endfor
-                    <h5 class="text-primary">Total ${{number_format($acumulado,0,".",".")}} CLP</h5>
+                    <h5 class="text-primary">Total ${{number_format($acumulado*$diff,0,".",".")}} CLP</h5>
                 </div>
                 <div class="col-lg-6 col-5 text-left py-3">
                     <form action="{{route('arriendos.removeAll',$arriendo->id)}}" method="POST">
@@ -123,58 +132,15 @@
                     </form>
                 </div>
                 <div class="col-lg-6 col-7 text-right py-3">
-                    <button class="btn btn-primary"><i class="fas fa-shopping-cart mr-1"></i> Tramitar Pedido <i class="fas fa-long-arrow-alt-right ml-1"></i></button>
+                    
+                    <form action="{{route('arriendos.confirm', $arriendo->id)}}" method="POST">
+                        @csrf
+                        @method('put')  
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-shopping-cart mr-1"></i> Tramitar Pedido <i class="fas fa-long-arrow-alt-right ml-1"></i></button>
+                    </form>
                 </div>
             </div>
             @endif
         @endif
-        {{-- <div class="row px-0 mx-0 border-top">
-    
-            <div class="col-4 py-2 px-0 rounded">
-                <div class="card border-0 rounded">
-                    <div class="card-body p-0 border-0 rounded">
-                        <img src="./imgs/ranger.jpg" alt="" class="img-fluid rounded">
-                    </div>
-                </div>
-            </div>
- 
-            <div class="col-5 px-1 ">
-                <div class="row">
-                    <div class="col-12 px-3 pt-3 my-0">
-                        <h6 class="px-2" style="font-weight: bold">Mazda MX-7</h6>
-                    </div>
-                    <div class="col-12 px-3 my-0">
-                        <small class="px-2"><span class="text-primary">Patente:</span> HG-KJ-09</small>
-                        <small class="px-2"><span class="text-primary">Tipo:</span> Coupe</small>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-12 px-3 my-0">
-                        <small class="px-2"><span class="text-primary">Año:</span> 2019</small>
-                    </div>
-                </div>
-            </div>
-          
-            <div class="col-3 px-1">
-                <div class="row">
-                    <div class="col-10 text-right px-0">
-                        <h5 class="px-2 mt-3">$40.670 CLP</h5>
-                    </div>
-                    <div class="col-2 px-0 d-flex justify-content-center">
-                        <button class="btn mt-2"><i class="fas fa-times"></i></button>
-                    </div>
-                        
-                </div>
-               
-            </div>
-          
-        </div> --}}
-
-        
-        
-        
-        
-       
     </div>
 @endsection

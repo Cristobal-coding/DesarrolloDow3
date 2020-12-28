@@ -26,5 +26,7 @@ class Arriendo extends Model
         return $this->belongsTo("App\Models\Usuario", 'vendedor','id');
     }
 
-    
+    public function sucursal(){
+        return $this->belongsTo("App\Models\Sucursal");
+    }
 }

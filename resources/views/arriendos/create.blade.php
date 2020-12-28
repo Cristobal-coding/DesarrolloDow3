@@ -15,9 +15,9 @@
           <div class="card-body mt-0 pt-0">
               <div class="form-group text-light ">
                   <label for="rut_cliente" style="color: rgb(255, 255, 255);">Rut Cliente:</label>
-                  <select class="form-control bg-info border-0" name="rut_cliente" id="rut_cliente" style="color: rgb(14, 13, 13);">
+                  <select class="form-control " name="rut_cliente" id="rut_cliente" style="color: rgb(14, 13, 13);">
                     @foreach ($clientes as $cliente)
-                     <option value="{{$cliente->rut_cliente}}">Rut: {{$cliente->rut_cliente}}</option>
+                     <option value="{{$cliente->rut_cliente}}">{{$cliente->rut_cliente}}</option>
                     @endforeach
                     
                     
@@ -30,13 +30,25 @@
                   </div> --}}
                   {{-- VALIDAR LAS FECHAS --}}
                   <div class="form-group col-xl-6 col-md-12 text-light ">
-                    <label for="arriendo_fecha_inicio" class="text-light" style="color: rgb(15, 1, 1);">Fecha Entrega:</label>
-                    <input type="date" name="arriendo_fecha_inicio" class="form-control bg-info border-0 text-light" id="arriendo_fecha_inicio" placeholder="" value="" >
+                    <label for="arriendo_fecha_inicio" class="text-light" style="color: rgb(15, 1, 1);">Fecha Inicio:</label>
+                    <input type="date" name="arriendo_fecha_inicio" class="form-control " id="arriendo_fecha_inicio" placeholder="" value="" >
                  </div>
                   <div class="form-group col-xl-6 col-md-12 text-light ">
                     <label for="arriendo_fecha_final" class="text-light" style="color: rgb(15, 1, 1);">Fecha devolucion :</label>
-                    <input type="date" name="arriendo_fecha_final" class="form-control bg-info border-0 text-light" id="arriendo_fecha_final" placeholder="" value="" >
+                    <input type="date" name="arriendo_fecha_final" class="form-control " id="arriendo_fecha_final" placeholder="" value="" >
                   </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group text-light ">
+                    <label for="sucursal" style="color: rgb(255, 255, 255);">Sucursal:</label>
+                    <select class="form-control " name="sucursal" id="sucursal" style="color: rgb(14, 13, 13);">
+                      @foreach ($sucursales as $sucursal)
+                       <option value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
+                      @endforeach
+                    </select>                
+                </div> 
+                </div>  
               </div>                                                      
               <div class="row w-100 m-0 d-flex" >
                   <div class="col-lg-6 col-12 order-lg-2  order-1 px-0 pb-3 pt-2">
