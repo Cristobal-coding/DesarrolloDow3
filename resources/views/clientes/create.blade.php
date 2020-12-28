@@ -15,19 +15,31 @@
         </div>
         <div class="card mt-1 bg-dark">
             <div class="card-body p-0 pt-2 text-light">
+                {{-- Errores --}}
+                @if ($errors->any())
+                    
+                    <div class="alert alert-warning mx-2">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                 @endif
+                {{-- Errores --}}
                 <form action="{{route("clientes.store")}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row m-0 px-0">
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="marca">Rut:</label>
-                                <input class="form-control" type="text" name="rut" id="rut">
+                                <input class="form-control @error('rut') is-invalid @enderror" type="text" name="rut" id="rut" value="{{old('rut')}}" >
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="nombre">Nombre:</label>
-                                <input class="form-control" type="text" name="nombre" id="nombre">
+                                <input class="form-control @error('nombre') is-invalid @enderror" type="text" name="nombre" id="nombre" value={{old('nombre')}}>
                             </div>
                         </div>                    
                     </div>
@@ -35,7 +47,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="patente">Fono Cliente:</label>
-                                <input class="form-control" type="text" name="fono" id="fono">
+                                <input class="form-control @error('fono') is-invalid @enderror" type="text" name="fono" id="fono" value={{old('fono')}}>
                             </div>
                         </div>
                     </div>

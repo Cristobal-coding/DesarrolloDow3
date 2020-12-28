@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\{Usuario,Rol};
 use Illuminate\Support\Facades\{Auth,Hash};
 use Illuminate\Http\Request;
+use App\Http\Requests\UsuariosRequest;
 
 class UsuariosController extends Controller
 {
@@ -39,7 +40,7 @@ class UsuariosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsuariosRequest $request)
     {
          
         $usuario= new Usuario;

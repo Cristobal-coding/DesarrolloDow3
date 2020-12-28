@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use App\Http\Requests\ClientesRequest;
 
 class ClientesController extends Controller
 {
@@ -39,7 +40,7 @@ class ClientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientesRequest $request)
     {
         $cliente= new Cliente;
         $cliente->rut_cliente = $request->rut;
@@ -82,11 +83,11 @@ class ClientesController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(ClientesRequest $request, Cliente $cliente)
     {
-        $cliente->rut_cliente=$request->rut_cliente;
-        $cliente->nombre_cliente=$request->nombre_cliente;
-        $cliente->fono_cliente=$request->fono_cliente;
+        $cliente->rut_cliente=$cliente->rut_cliente;
+        $cliente->nombre_cliente=$request->nombre;
+        $cliente->fono_cliente=$request->fono;
         $cliente->entrega_pendiente=$request->entrega_pendiente;
         
         $cliente->save();
