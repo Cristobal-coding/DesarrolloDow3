@@ -6,6 +6,7 @@ use App\Models\{Arriendo,Cliente,Vehiculo, Sucursal, Usuario};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Session\SessionManager;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\{ArriendosRequest};
 
 class ArriendosController extends Controller
@@ -99,6 +100,19 @@ class ArriendosController extends Controller
             $estado='estado'.$num;
             $fotoArriendo=$request->$arriendof;
             $fotoEntrega=$request->$entrega;
+            //Devuelvo a Disponible
+            if($request->$estado==1 || $request->estadoArriendo==0){
+                $vehiculo->estado='Disponible';
+                $vehiculo->save();
+            }
+            //Que pasa si existe ya la foto de arriendo?
+            if($fotoArriendo!=null && $vehiculo->pivot->foto_arriendo!=null){
+                Storage::delete( $vehiculo->pivot->foto_arriendo);
+            }
+            //Que pasa si existe ya la foto de entrega?
+            if($fotoEntrega!=null && $vehiculo->pivot->foto_entrega!=null){
+                Storage::delete( $vehiculo->pivot->foto_entrega);
+            }
             $arriendo->vehiculos()->updateExistingPivot($vehiculo->id,['entregado'=>$request->$estado, 'foto_arriendo'=>$fotoArriendo!=null?$fotoArriendo->store("public/FotosArriendos"):null, 'foto_entrega'=>$fotoEntrega!=null?$fotoEntrega->store("public/FotosEntregas"):null]);
             // dd($arriendo->vehiculos());
         }
@@ -142,7 +156,6 @@ class ArriendosController extends Controller
                 $arriendo=$usuario->arriendos[$i];
                 if(count($arriendo->vehiculos)==null){
                     $confirmado='not_but_empty';
-                    // dd($arriendo);
                 }else{
                     $confirmado='not';
                 }
@@ -177,10 +190,8 @@ class ArriendosController extends Controller
             }
         }
         if($arriendodisponible=='ninguno'){
-            $arriendos= Arriendo::all();
-            $cliente=Cliente::all();
             $sessionManager->flash('mensaje', 'Para añadir al carrito, crea un arriendo para un cliente.');
-            return view("arriendos.index",compact('arriendos','cliente'));
+            return $this->index();
         }
         
     }
@@ -203,7 +214,7 @@ class ArriendosController extends Controller
         return redirect()->route('arriendos.carrito');
     }
 
-    public function confirmArriendo(Arriendo $arriendo){
+    public function confirmArriendo(Arriendo $arriendo, SessionManager $sessionManager){
         $acumulado=0;
         foreach($arriendo->vehiculos as $vehiculo){
             $acumulado+=$vehiculo->tipo->valor_diario;
@@ -217,7 +228,7 @@ class ArriendosController extends Controller
         $arriendo->confirmada=true;
         $arriendo->total=$total;
         $arriendo->save();
-
+        $sessionManager->flash('mensaje', 'El arriendo se ha completado exitosamente haz click.');
         return redirect()->route('arriendos.carrito');
     }
 

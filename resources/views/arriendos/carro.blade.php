@@ -16,16 +16,28 @@
     </div>
     <div class="col-lg-7 offset-lg-2 mt-4  shadow-lg mb-5">
         @if($confirmado=='ok')
-        <div class="row">
-            <div class="col-lg-1 col-3 d-flex justify-content-center align-items-center">
-                <i class="fas fa-info-circle fa-3x text-dark"></i>
+            @if(Session::has('mensaje'))
+                <div class="row">
+                    <div class="col-lg-1 col-3 d-flex justify-content-center align-items-center">
+                        <i class="fas fa-info-circle fa-3x text-dark"></i>
+                    </div>
+                    <div class="col-lg-11 col-9 p-3">
+                        <h5 class="text-primary">¡El Carrito se vaciado!</h5>  
+                        <h6 class="text-primary">{{Session::get('mensaje')}} <a href="{{route('arriendos.index')}}" class="text-primary text-decoration-none">Aquí</a> para crear otro arriendo.</h6>
+                    </div>
+                </div>
+            @else
+            <div class="row">
+                <div class="col-lg-1 col-3 d-flex justify-content-center align-items-center">
+                    <i class="fas fa-info-circle fa-3x text-dark"></i>
+                </div>
+                <div class="col-lg-11 col-9 p-3">
+                    <h5 class="text-primary">El Carrito esta vacío</h5>  
+                    <h6>Ayuda a un cliente y llena el carrito. <a href="{{route('arriendos.index')}}" class="text-decoration-none text-secondary">Generar Arriendo <i class="fas fa-long-arrow-alt-right"></i></a></h6>
+                    {{-- <p>{{$arriendo->usuariovendedor->nombre}}</p> --}}
+                </div>
             </div>
-            <div class="col-lg-11 col-9 p-3">
-                <h5 class="text-primary">El Carrito esta vacío</h5>  
-                <h6>Ayuda a un cliente y llena el carrito. <a href="{{route('vehiculos.index')}}" class="text-decoration-none text-secondary">Mirar Vehiculos <i class="fas fa-long-arrow-alt-right"></i></a></h6>
-                {{-- <p>{{$arriendo->usuariovendedor->nombre}}</p> --}}
-            </div>
-        </div>
+            @endif
         @else
             @if($confirmado=='not_but_empty')
             <div class="row">

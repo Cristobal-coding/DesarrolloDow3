@@ -8,7 +8,7 @@
 </div>
   @if(Session::has('mensaje'))
     <div class="col-6 offset-4">
-        <h6 class="text-primary"><i class="fas fa-info-circle fa-lg mr-1"></i>{{Session::get('mensaje')}}</h6>
+        <h6 class="text-primary"><i class="fas fa-info-circle fa-lg mr-1"></i>{{Session::get('mensaje')}} <i class="fas fa-long-arrow-alt-up fa-lg ml-1"></i></h6>
     </div>
   @endif
 
