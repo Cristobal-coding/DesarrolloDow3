@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\{Tipo, Vehiculo};
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\{VehiculosRequest};
 use DateTime;
 class VehiculosController extends Controller
 {
@@ -24,7 +25,8 @@ class VehiculosController extends Controller
         if($incompleta!=0){
             $totalInPage+=1;
         }
-        return view("vehiculos.index", compact("totalInPage", "elementos", "iteraciones", "tipos", "años","vehiculos"));
+        $estados = array("Disponible", "Arrendado", "En mantenimiento");                          
+        return view("vehiculos.index", compact("totalInPage", "elementos", "iteraciones", "tipos", "años","vehiculos",'estados'));
     }
 
     public function create()
@@ -33,7 +35,7 @@ class VehiculosController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(VehiculosRequest $request)
     {
         $vehiculo= new Vehiculo();
         $vehiculo->nombre_vehiculo= $request->nombre;
