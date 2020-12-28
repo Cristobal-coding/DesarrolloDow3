@@ -5,6 +5,18 @@
 
 
 <div class="col-lg-8 offset-lg-2 flex justify-content-center align-items-center mt-4">
+      {{-- Errores --}}
+        @if ($errors->any())
+                            
+          <div class="alert alert-warning mx-2">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+        @endif
+    {{-- Errores --}}
     <form class="" method="POST" action="">
         @csrf
         

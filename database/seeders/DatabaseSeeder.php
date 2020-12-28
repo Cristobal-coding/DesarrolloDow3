@@ -127,7 +127,7 @@ class DatabaseSeeder extends Seeder
         $sucursales=[
             ['id'=>'1','nombre'=>'Autos Viña','region'=>'Valparaiso'],
             ['id'=>'2','nombre'=>'Autos Santiago','region'=>'Santiago'],                  
-      
+     
         ];
         foreach($sucursales as $sucursal){
             DB::table('sucursales')->insert([

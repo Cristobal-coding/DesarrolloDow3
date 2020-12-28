@@ -43,8 +43,8 @@
                     <input type="password" name="password" class="form-control bg-info border-0 text-dark" id="password" placeholder="" value="" >
                  </div>
                  <div class="form-group col-12 text-light ">
-                    <label for="password" class="text-light" style="color: rgb(15, 1, 1);">Confirmar Contraseña:</label>
-                    <input type="password" name="password" class="form-control bg-info border-0 text-dark" id="password" placeholder="" value="" >
+                    <label for="password2" class="text-light" style="color: rgb(15, 1, 1);">Confirmar Contraseña:</label>
+                    <input type="password" name="password2" class="form-control bg-info border-0 text-dark" id="password2" placeholder="" value="" >
                  </div>
                  <div class="form-group col-12 text-light ">
                     <label for="rol_id" style="color: rgb(255, 255, 255);">Rol:</label>

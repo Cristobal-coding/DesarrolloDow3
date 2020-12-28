@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\{Usuario,Rol};
 use Illuminate\Support\Facades\{Auth,Hash};
 use Illuminate\Http\Request;
-use App\Http\Requests\UsuariosRequest;
+use App\Http\Requests\{UsuariosRequest,UsuariosEditRequest};
 
 class UsuariosController extends Controller
 {
@@ -45,10 +45,9 @@ class UsuariosController extends Controller
          
         $usuario= new Usuario;
         $usuario->nombre = $request->nombre;
-        $usuario->password= $request->password;
+        $usuario->password= Hash::make($request->password);
         $usuario->rol_id= $request->rol_id;
-       
-        $usuario->email= $request->nombre;
+        $usuario->email= $request->email;
         $usuario->save();
 
         return redirect()->route("usuarios.index");
@@ -85,12 +84,11 @@ class UsuariosController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(UsuariosEditRequest $request, Usuario $usuario)
     {   
         
         $usuario->nombre = $request->nombre;
-        $usuario->email= $request->email;
-        $usuario->password= $request->password;
+        $usuario->password= Hash::make($request->password);
         $usuario->rol_id= $request->rol_id;
         $usuario->save();
         return redirect()->route("usuarios.index");
