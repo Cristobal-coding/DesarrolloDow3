@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Arriendo,Cliente,Vehiculo, Sucursal};
+use App\Models\{Arriendo,Cliente,Vehiculo, Sucursal, Usuario};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Session\SessionManager;
@@ -79,7 +79,8 @@ class ArriendosController extends Controller
     public function edit(Arriendo $arriendo)
     {   $sucursales=Sucursal::all();
         $clientes=Cliente::all();
-        return view('arriendos.edit', compact('arriendo','sucursales','clientes'));
+        $usuarios=Usuario::all();
+        return view('arriendos.edit', compact('arriendo','sucursales','clientes','usuarios'));
     }
 
     /**
@@ -91,7 +92,14 @@ class ArriendosController extends Controller
      */
     public function update(Request $request, Arriendo $arriendo)
     {
-        //
+        $numVehiculos= count($arriendo->vehiculos);
+        // dd('hola');
+        foreach($arriendo->vehiculos as $num=>$vehiculo){
+            $arriendo='fotoArriendo'.$num;
+            $entrega='fotoEntrega'.$num;
+            $estado='estado'.$num;
+            $arriendo->vehiculos()->updateExistingPivot($vehiculo->id,['entregado'=>$estados[$i], 'foto_arriendo'=>$calidades[$i], 'foto_entrega'=>$calidades[$i]]);
+        }
     }
 
     /**
@@ -102,6 +110,10 @@ class ArriendosController extends Controller
      */
     public function destroy(Arriendo $arriendo)
     {
+        foreach($arriendo->vehiculos as $vehiculo){
+            $vehiculo->estado='Disponible';
+            $vehiculo->save();
+        }
         $arriendo->vehiculos()->detach();
         $arriendo->delete();
          return redirect()->route("arriendos.index"); 

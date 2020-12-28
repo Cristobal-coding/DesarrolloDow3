@@ -4,10 +4,12 @@
 @endsection
 
 @section('main_content')
-    <h5>Bievenido a edit con el arriendo {{$arriendo->id}}</h5>
-    <div class="col-lg-5 shadow-lg overflow-auto mi-scrol" style="max-height: 400px !important; overflow-x: hidden !important;">
+    <div class="col-12 my-4 d-flex align-items-center justify-content-center">
+        <h5 class="text-primary">Editando el arriendo con <span class="text-secondary">ID: {{$arriendo->id}}</span></h5>
+    </div>
+    <div class="col-lg-5 shadow-sm overflow-auto mi-scrol" style="max-height: 400px !important; overflow-x: hidden !important;">
         @foreach ($arriendo->vehiculos as $vehiculo)
-        <div class="row px-1 mx-1 w-100 border-top  w-100" >
+        <div class="row px-1 mx-1 w-100 border-bottom  w-100" >
             {{-- imagen --}}
             <div class="col-4 py-2 px-0 rounded">
                 <div class="card border-0 rounded">
@@ -57,10 +59,10 @@
         </div>
         @endforeach
     </div>
-    <div class="col-7 shadow-lg">
+    <div class="col-7 shadow-sm">
         <div class="row p-3">
             <div class="col-12">
-                <form action="">
+                <form action="{{route("arriendos.update", $arriendo->id)}}" method="POST" >
                     @csrf
                     @method('put')
                     {{-- request de cada vehiculo --}}
@@ -68,27 +70,27 @@
                         <h6 class="text-primary">Vehiculos Arrendados:</h6>
                     </div>
                     <div class="row px-3 overflow-auto mi-scrol shadow-sm rounded" style="max-height: 100px !important;">
-                        @foreach ($arriendo->vehiculos as $vehiculo)
+                        @foreach ($arriendo->vehiculos as $num=>$vehiculo)
                             <div class="col-12 mx-0 py-1 px-1 form-floating">
                                 <h6 class="text-primary">{{$vehiculo->marca}} {{$vehiculo->nombre_vehiculo}} {{$vehiculo->year}}</h6>
                             </div>
                             <div class="col-2 mx-0 py-1 px-1 form-floating">
-                                <select class="form-select" id="estado" aria-label="estado" name="estado">
+                                <select class="form-select" id="estado{{$num}}" aria-label="estado{{$num}}" name="estado{{$num}}">
                                     <option value="Arrendado" @if($vehiculo->estado=='Arrendado') selected="selected" @endif>Arrendado</option>
                                     <option value="Disponible" @if($vehiculo->estado=='Disponible') selected="selected" @endif>Disponible</option>
                                 </select>
-                                <label for="estado" class="text-primary">Estado:</label>
+                                <label for="estado{{$num}}" class="text-primary">Estado:</label>
                             </div>
                             <div class="col-5 mx-0 py-1 px-1 form-floating">
                                 <div class="mb-3">
-                                    <label for="fotoEntrega" class="form-label text-primary py-0 my-0" style="font-size: 14px">Foto Entrega:</label>
-                                    <input class="form-control form-control-sm text-primary" id="fotoEntrega" type="file" name="fotoEntrega">
+                                    <label for="fotoEntrega{{$num}}" class="form-label text-primary py-0 my-0" style="font-size: 14px">Foto Entrega:</label>
+                                    <input class="form-control form-control-sm text-primary" id="fotoEntrega{{$num}}" type="file" name="fotoEntrega{{$num}}">
                                 </div>
                             </div>
                             <div class="col-5 mx-0 py-1 px-1 form-floating">
                                 <div class="mb-3">
-                                    <label for="fotoArriendo" class="form-label text-primary py-0 my-0" style="font-size: 14px">Foto Arriendo:</label>
-                                    <input class="form-control form-control-sm text-primary" id="fotoArriendo" type="file" name="fotoArriendo">
+                                    <label for="fotoArriendo{{$num}}" class="form-label text-primary py-0 my-0" style="font-size: 14px">Foto Arriendo:</label>
+                                    <input class="form-control form-control-sm text-primary" id="fotoArriendo{{$num}}" type="file" name="fotoArriendo{{$num}}">
                                 </div>
                             </div>
                         @endforeach
@@ -98,18 +100,54 @@
                         <h6 class="text-primary">Detalles del arriendo:</h6>
                     </div>
                     <div class="row px-3 pt-2">
-                        <div class="col-4 mx-0 px-0 form-floating">
-                            <input type="text" class="form-control" id="rutCliente" name="rutCliente" value="{{$arriendo->rut_cliente}}">
-                            <label for="rutCliente" class="text-primary">Rut Cliente:</label>
+                        <div class="col-4 mx-0 px-1 form-floating">
+                            <select class="form-select" id="rut_cliente" aria-label="rut_cliente" name="rut_cliente">
+                                @foreach ($clientes as $cliente )
+                                <option value="{{$cliente->rut_cliente}}" @if($arriendo->cliente->rut_cliente==$cliente->rut_cliente) selected="selected" @endif>{{$cliente->rut_cliente}}</option> 
+                                @endforeach
+                            </select>
+                            <label for="rut_cliente" class="text-primary">Rut Cliente:</label>
                         </div>
-                        <div class="col-8 mx-0 px-0 form-floating">
-                            <select class="form-select" id="estado" aria-label="estado" name="estado">
+                        <div class="col-4 mx-0 px-1 form-floating">
+                            <select class="form-select" id="estadoArriendo" aria-label="estadoArriendo" name="estadoArriendo">
                                 <option value="0" @if($arriendo->estado==0) selected="selected" @endif>Finalizada</option>
                                 <option value="1" @if($arriendo->estado==1) selected="selected" @endif>Vigente</option>
                             </select>
-                            <label for="estado" class="text-primary">Estado:</label>
+                            <label for="estadoArriendo" class="text-primary">Estado:</label>
                         </div>
+                        <div class="col-4 mx-0 px-1 form-floating">
+                            <select class="form-select" id="vendedor" aria-label="vendedor" name="vendedor">
+                                @foreach ($usuarios as $usuario )
+                                <option value="{{$usuario->id}}" @if($arriendo->usuariovendedor->id==$usuario->id) selected="selected" @endif>{{$usuario->nombre}}</option> 
+                                @endforeach
+                            </select>
+                            <label for="vendedor" class="text-primary">Usuario vendedor:</label>
+                        </div>
+                    </div>
 
+                    <div class="row px-3 pt-2">
+                        <div class="col-4 mx-0 px-1 px-0 form-floating">
+                            <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" value="{{$arriendo->arriendo_fecha_inicio}}">
+                            <label for="fechaInicio" class="text-primary">Fecha inicio:</label>
+                        </div>
+                        <div class="col-4 mx-0 px-1 px-0 form-floating">
+                            <input type="date" class="form-control" id="fechaFinal" name="fechaFinal" value="{{$arriendo->arriendo_fecha_final}}">
+                            <label for="fechaFinal" class="text-primary">Fecha Devolución:</label>
+                        </div>
+                        <div class="col-4 mx-0 px-1 px-0 form-floating">
+                            <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" >
+                            <label for="fechaEntrega" class="text-primary">Fecha de Entrega</label>
+                        </div>
+                        
+                    </div>
+
+                    <div class="row px-3 pt-3">
+                        <div class="col-6 mx-0 px-1 px-0 form-floating">
+                           <a href="{{route('arriendos.index')}}" class="btn btn-dark w-100">Cancelar</a>
+                        </div>
+                        <div class="col-6 mx-0 px-1 px-0 form-floating">
+                            <button type="submit" class="btn btn-primary w-100">Finalizar</button>
+                        </div>
                     </div>
                 </form>
             </div>
