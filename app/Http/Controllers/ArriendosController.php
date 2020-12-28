@@ -6,6 +6,7 @@ use App\Models\{Arriendo,Cliente,Vehiculo, Sucursal};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Session\SessionManager;
+use App\Http\Requests\{ArriendosRequest};
 
 class ArriendosController extends Controller
 {
@@ -43,7 +44,7 @@ class ArriendosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArriendosRequest $request)
     {
         $arriendo= new Arriendo;
         $arriendo->rut_cliente = $request->rut_cliente;
@@ -52,7 +53,7 @@ class ArriendosController extends Controller
         $arriendo->confirmada= false;
         $arriendo->vendedor=Auth::user()->id;
         $arriendo->estado=true;
-        $arriendo->sucursal=$request->sucursal;
+        $arriendo->id_sucursal=$request->sucursal;
         
         $arriendo->save();
 
