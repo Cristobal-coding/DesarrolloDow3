@@ -122,5 +122,22 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => NULL
             ]);           
         }
+
+        // //Sucursales
+        $sucursales=[
+            ['id'=>'1','nombre'=>'Autos Viña','region'=>'Valparaiso'],
+            ['id'=>'2','nombre'=>'Autos Santiago','region'=>'Santiago'],                  
+      
+        ];
+        foreach($sucursales as $sucursal){
+            DB::table('sucursales')->insert([
+                'id' => $sucursal['id'],
+                'nombre' => $sucursal['nombre'],
+                'region' => $sucursal['region'],
+                'created_at' => new DateTime('NOW'),
+                'updated_at' => NULL
+            ]);           
+        }
+
     }
 }

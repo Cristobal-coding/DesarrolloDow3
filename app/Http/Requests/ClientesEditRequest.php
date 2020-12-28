@@ -23,11 +23,9 @@ class ClientesEditRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            
+        return [       
             'nombre' => 'required|min:2|max:23',
-            'fono'=>'required|digits:8',
-            
+            'fono'=>'required|digits:8',       
         ];
     }
     public function messages(){
