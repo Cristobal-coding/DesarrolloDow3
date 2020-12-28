@@ -62,7 +62,7 @@
     <div class="col-7 shadow-sm">
         <div class="row p-3">
             <div class="col-12">
-                <form action="{{route("arriendos.update", $arriendo->id)}}" method="POST" >
+                <form action="{{route("arriendos.update", $arriendo->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     {{-- request de cada vehiculo --}}
@@ -76,8 +76,8 @@
                             </div>
                             <div class="col-2 mx-0 py-1 px-1 form-floating">
                                 <select class="form-select" id="estado{{$num}}" aria-label="estado{{$num}}" name="estado{{$num}}">
-                                    <option value="Arrendado" @if($vehiculo->estado=='Arrendado') selected="selected" @endif>Arrendado</option>
-                                    <option value="Disponible" @if($vehiculo->estado=='Disponible') selected="selected" @endif>Disponible</option>
+                                    <option value="0" @if($vehiculo->pivot->entregado==0) selected="selected" @endif>Pendiente</option>
+                                    <option value="1" @if($vehiculo->pivot->entregado==1) selected="selected" @endif>Entregado</option>
                                 </select>
                                 <label for="estado{{$num}}" class="text-primary">Estado:</label>
                             </div>
@@ -96,6 +96,8 @@
                         @endforeach
                     </div>
                     {{-- request de cada vehiculo --}}
+
+                    {{-- request de la orden --}}
                     <div class="text-center pt-4">
                         <h6 class="text-primary">Detalles del arriendo:</h6>
                     </div>
@@ -140,7 +142,6 @@
                         </div>
                         
                     </div>
-
                     <div class="row px-3 pt-3">
                         <div class="col-6 mx-0 px-1 px-0 form-floating">
                            <a href="{{route('arriendos.index')}}" class="btn btn-dark w-100">Cancelar</a>

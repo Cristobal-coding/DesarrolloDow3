@@ -80,6 +80,7 @@ class ArriendosController extends Controller
     {   $sucursales=Sucursal::all();
         $clientes=Cliente::all();
         $usuarios=Usuario::all();
+        // dd($arriendo->vehiculos[0]->pivot->entregado);
         return view('arriendos.edit', compact('arriendo','sucursales','clientes','usuarios'));
     }
 
@@ -92,14 +93,26 @@ class ArriendosController extends Controller
      */
     public function update(Request $request, Arriendo $arriendo)
     {
-        $numVehiculos= count($arriendo->vehiculos);
-        // dd('hola');
         foreach($arriendo->vehiculos as $num=>$vehiculo){
-            $arriendo='fotoArriendo'.$num;
+            $arriendof='fotoArriendo'.$num;
             $entrega='fotoEntrega'.$num;
             $estado='estado'.$num;
-            $arriendo->vehiculos()->updateExistingPivot($vehiculo->id,['entregado'=>$estados[$i], 'foto_arriendo'=>$calidades[$i], 'foto_entrega'=>$calidades[$i]]);
+            $fotoArriendo=$request->$arriendof;
+            $fotoEntrega=$request->$entrega;
+            $arriendo->vehiculos()->updateExistingPivot($vehiculo->id,['entregado'=>$request->$estado, 'foto_arriendo'=>$fotoArriendo!=null?$fotoArriendo->store("public/FotosArriendos"):null, 'foto_entrega'=>$fotoEntrega!=null?$fotoEntrega->store("public/FotosEntregas"):null]);
+            // dd($arriendo->vehiculos());
         }
+
+        $arriendo->rut_cliente = $request->rut_cliente;
+        $arriendo->arriendo_fecha_inicio= $request->fechaInicio;
+        $arriendo->arriendo_fecha_final= $request->fechaFinal;
+        $arriendo->vendedor=$request->vendedor;
+        if($request->estadoArriendo!=1){
+            $arriendo->estado=false;
+        }
+        $arriendo->fecha_entrega_autos=$request->fechaEntrega;
+        $arriendo->save();
+        return redirect()->route("arriendos.index"); 
     }
 
     /**
