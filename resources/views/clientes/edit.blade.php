@@ -48,8 +48,8 @@
                     <input class="form-control @error('nombre') is-invalid @enderror" type="text" name="nombre" id="nombre" value="{{$cliente->nombre_cliente}}" >
                 </div>
                 <div class="form-group col-xl-4 col-md-12 text-light ">
-                  <label for="fono_cliente" class="text-light" style="color: rgb(15, 1, 1);">Fono:</label>
-                  <input type="text" name="fono_cliente" class="form-control bg-info border-0 " id="fono_cliente" placeholder="" value="{{$cliente->fono_cliente}}" >
+                  <label for="fono" class="text-light" style="color: rgb(15, 1, 1);">Fono:</label>
+                  <input type="text" name="fono" class="form-control bg-info border-0 " id="fono" placeholder="" value="{{$cliente->fono_cliente}}" >
               </div>
             </div>                              
             <div class="row w-100 m-0 d-flex" >

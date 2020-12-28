@@ -15,6 +15,19 @@
 </div>
 
 <div class="col-lg-8 offset-lg-2 flex justify-content-center align-items-center mt-4">
+
+    {{-- Errores --}}
+    @if ($errors->any())
+                        
+    <div class="alert alert-warning mx-2">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+        @endif
+    {{-- Errores --}}
     <form action="{{route('usuarios.update',$usuario->id)}}"  method="POST" enctype="multipart/form-data">
         @csrf
         @method('put')
@@ -25,7 +38,7 @@
           <div class="card-body mt-0 pt-0">
               <div class="form-group text-light ">
                   <label for="nombre" style="color: rgb(255, 255, 255);">Nombre:</label>         
-                  <input type="text" name="nombre" class="form-control bg-info border-0 text-dark" id="nombre" placeholder="{{$usuario->nombre}}" value="" >
+                  <input type="text" name="nombre" class="form-control bg-info border-0 text-dark" @error('nombre') is-invalid @enderror id="nombre" placeholder="{{$usuario->nombre}}" value="" >
              
               </div>         
               <div class="row text-light">
@@ -34,17 +47,13 @@
                       <input type="text" name="id_vehiculo" class="form-control bg-info border-0 text-light" id="id_vehiculo" placeholder="0001" value="" >
                   </div> --}}
                   {{-- VALIDAR LAS FECHAS --}}
-                  <div class="form-group col-12 text-light ">
-                    <label for="email" class="text-light" style="color: rgb(15, 1, 1);">E-mail:</label>
-                    <input type="email" name="email" class="form-control bg-info border-0 text-dark" id="email" placeholder="{{$usuario->email}}" value="" >
-                 </div>
                  <div class="form-group col-12 text-light ">
                     <label for="password" class="text-light" style="color: rgb(15, 1, 1);">Contraseña:</label>
                     <input type="password" name="password" class="form-control bg-info border-0 text-dark" id="password" placeholder="" value="" >
                  </div>
                  <div class="form-group col-12 text-light ">
-                    <label for="password" class="text-light" style="color: rgb(15, 1, 1);">Confirmar Contraseña:</label>
-                    <input type="password" name="password" class="form-control bg-info border-0 text-dark" id="password" placeholder="" value="" >
+                    <label for="password2" class="text-light" style="color: rgb(15, 1, 1);">Confirmar Contraseña:</label>
+                    <input type="password" name="password2" class="form-control bg-info border-0 text-dark" id="password2" placeholder="" value="" >
                  </div>
                  <div class="form-group col-12 text-light ">
                     <label for="rol_id" style="color: rgb(255, 255, 255);">Rol:</label>
