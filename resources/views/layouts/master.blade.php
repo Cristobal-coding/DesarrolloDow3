@@ -23,13 +23,17 @@
                   <li class="nav-item">
                     <a class="nav-link  @if(Route::current()->getName()=="home.index") active @endif" aria-current="page" href="{{route('home.index')}}">Home</a>
                   </li>
-                  <li class="nav-item dropdown @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="vehiculos") active @endif">
+                  <li class="nav-item dropdown @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="vehiculos"||Request::segments()[0]=="tipos") active @endif">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Vehículos
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                      <li>
+                        <a class="dropdown-item" href="{{route("tipos.index")}}">Tipos de vehiculos</a>
+                      </li>
                       <li><a class="dropdown-item" href="{{route("vehiculos.index")}}">Gestionar Vehículos</a></li>
                     </ul>
+                  
                   </li>
                   {{-- <li class="nav-item">
                     <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="vehiculos") active @endif" href="{{route("vehiculos.index")}}">Vehiculos</a>
@@ -40,19 +44,18 @@
                   <li class="nav-item">
                     <a class="nav-link  @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="clientes") active @endif" href="{{route("clientes.index")}}" tabindex="-1" aria-disabled="true">Clientes</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link  @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="tipos") active @endif" href="{{route("tipos.index")}}" tabindex="-1" aria-disabled="true">Tipos</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="" tabindex="-1" aria-disabled="true">Generar reporte</a>
-                  </li>
+                  
+                  
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle  @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="usuarios") active @endif" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Configuración
                     </a>
+                    
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <li><a class="dropdown-item" href="{{route("usuarios.index")}}">Gestionar Usuarios</a></li>
-                      
+                      <li >
+                        <a class="dropdown-item" href="" tabindex="-1" aria-disabled="true">Generar reporte</a>
+                      </li>
                     </ul>
                   </li>        
                 </ul>
