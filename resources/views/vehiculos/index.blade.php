@@ -116,6 +116,18 @@
 <div class="col-4">
     <div class="card mt-3">
         <div class="card-body p-0 pt-2">
+            {{-- Errores --}}
+            @if ($errors->any())
+                        
+                <div class="alert alert-warning mx-2">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        {{-- Errores --}}
             <form action="{{route("vehiculos.store")}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row m-0 px-0">
@@ -140,16 +152,21 @@
                         </div>
                     </div>
                     <div class="col-6">
+                        
                         <div class="form-group">
                             <label for="estado">Estado:</label>
-                            <input class="form-control" type="text" name="estado" id="estado">
+                            <select class="form-control mi-scrol @error('director_id') is-invalid @enderror" name="nombre_tipo" id="nombre_tipo" >
+                                @foreach ($estados as $estado)
+                                    <option value="{{$estado}}">{{$estado}}</option>                        
+                                @endforeach                      
+                            </select> 
                         </div>
                     </div>
                 </div>
                 <div class="row m-0 mb-3 px-0">
                     <div class="col-6">
                         <label for="nombre_tipo" id="nombre_tipo" name="nombre_tipo">Tipo Vehículo:</label>
-                        <select class="form-control mi-scrol @error('director_id') is-invalid @enderror" name="nombre_tipo" id="nombre_tipo" >
+                        <select class="form-control mi-scrol @error('nombre_tipo') is-invalid @enderror" name="nombre_tipo" id="nombre_tipo" >
                             @foreach ($tipos as $tipo)
                                 <option value="{{$tipo->nombre_tipo}}">{{$tipo->nombre_tipo}}</option>                        
                             @endforeach                      
