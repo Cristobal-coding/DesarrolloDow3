@@ -17,24 +17,25 @@
     <table class="table mt-2 table-bordered table-striped ">
         <thead class="bg-dark border-0 text-light">
           <tr>
-            <th scope="col">N° de orden</th>
-            <th scope="col">Rut</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Vencimiento</th>
+            <th scope="col">Rut Cliente</th>
+            <th scope="col">Nombre Cliente</th>
+
+            <th scope="col">Usuario Vendedor</th>
+            <th scope="col">Estado</th>
             <th scope="col">Gestionar</th>        
           </tr>
         </thead>
         <tbody class="mi-scrol">
           @foreach ($arriendos as $arriendo )
           <tr>
-            <th scope="row">{{$arriendo->id}}</th>
             <td>{{$arriendo->rut_cliente}}</td>
             <td>
               {{$arriendo->cliente->nombre_cliente}}
             </td>
             <td>
-              {{$arriendo->arriendo_fecha_final}} 
+              {{$arriendo->usuariovendedor->nombre}} 
             </td>   
+            <th scope="row">{{$arriendo->estado==1?'Vigente':'Finalizada'}}</th>
             <td class="text-center">
               <span class="pr-1" data-toggle="tooltip" title="Detalles Orden." data-placement="bottom">                               
                 <a  href="" class="btn btn-secondary"><i class="fas fa-info-circle fa-lg"></i></a>
