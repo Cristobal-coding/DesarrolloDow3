@@ -47,21 +47,21 @@
                       <a  href="{{route("usuarios.edit",$user->id)}}" class="btn btn-secondary"><i class="far fa-edit fa-lg"></i></a>
                     </span>
                     <span class="pl-1" data-toggle="tooltip" title="Borrar." data-placement="right">                               
-                      <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#borrarCliente{{$user->id}}"><i class="fas fa-trash fa-lg"></i></a>
+                      <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#borrarTipo{{$user->id}}"><i class="fas fa-trash fa-lg"></i></a>
                      </span>  
                      {{-- modal borrar --}}
-                     <div class="modal fade text-light " id="borrarCliente{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                     <div class="modal fade text-light " id="borrarTipo{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                               <div class="modal-content bg-dark" style="color: #fff;">
                                   <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash fa-lg"></i>Confirmar Borrar Cliente ?</h5>
+                                      <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash fa-lg"></i>Confirmar Borrar Usuario ?</h5>
                                       <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                           <span aria-hidden="true"><i class="fas fa-times border-0" style="color: #fff"></i></span>
                                       </button>
                                   </div>
                                   <div class="modal-body">
                                       <div class="d-flex align-items-center justify-content-center">
-                                          <i class="fas fa-exclamation-triangle fa-lg pr-2 text-warning"></i>¿Desea eliminar el cliente {{$user->nombre}}?
+                                          <i class="fas fa-exclamation-triangle fa-lg pr-2 text-warning"></i>¿Desea eliminar el Usuario {{$user->nombre}}?
                                       </div>
                                   </div>
                                   <div class="modal-footer">
