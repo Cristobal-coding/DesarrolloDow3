@@ -21,7 +21,7 @@ use App\Http\Controllers\{HomeController, VehiculosController, ArriendosControll
 Route::get('/', [HomeController::class, 'index'])->name("home.index");
 Route::get('login', [HomeController::class, 'login'])->name('home.login');
 
-Route::resource('/tipos',TiposController::class);
+
 
 
 Route::get('/vehiculos', [VehiculosController::class, 'index'])->name('vehiculos.index');
@@ -55,4 +55,11 @@ Route::delete('/cliente/{cliente}', [ClientesController::class, 'destroy'])->nam
 Route::get('/cliente/{cliente}/edit', [ClientesController::class, 'edit'])->name('clientes.edit');
 Route::put('/clientes/{cliente}', [ClientesController::class, "update"])->name("clientes.update");
 
+
+Route::get('/tipos', [TiposController::class, 'index'])->name('tipos.index');
+Route::get('/tipos/create', [TiposController::class, 'create'])->name('tipos.create');
+Route::post('/tipos/create', [TiposController::class, 'store'])->name('tipos.store');
+Route::delete('/tipos/{tipo}', [TiposController::class, 'destroy'])->name('tipos.destroy');
+Route::get('/tipos/{tipo}/edit', [TiposController::class, 'edit'])->name('tipos.edit');
+Route::put('/tipos/{tipo}', [TiposController::class, "update"])->name("tipos.update");
 

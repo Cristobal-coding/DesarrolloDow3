@@ -11,8 +11,7 @@
           </div>
           <div class="card-body mt-0 pt-0">
             {{-- Errores --}}
-            @if ($errors->any())
-                        
+            @if ($errors->any())                     
                 <div class="alert alert-warning mx-2">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -21,7 +20,7 @@
                     </ul>
                 </div>
             @endif
-        {{-- Errores --}}
+             {{-- Errores --}}
 
               <div class="form-group text-light ">
                   <label for="nombre" style="color: rgb(255, 255, 255);">Nombre:</label>         

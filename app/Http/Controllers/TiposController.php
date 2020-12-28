@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tipo;
 use Illuminate\Http\Request;
+use App\Http\Requests\{TiposRequest,TiposEditRequest};
 
 class TiposController extends Controller
 {
@@ -25,7 +26,7 @@ class TiposController extends Controller
      */
     public function create()
     {
-        
+        return view("tipos.create");
     }
 
     /**
@@ -34,9 +35,13 @@ class TiposController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TiposRequest $request)
     {
-        //
+        $tipo_vehiculo = new Tipo;
+        $tipo_vehiculo->nombre_tipo = $request->nombre;
+        $tipo_vehiculo->valor_diario= $request->valor;
+        $tipo_vehiculo->save();
+        return redirect()->route("tipos.index");
     }
 
     /**
@@ -56,9 +61,10 @@ class TiposController extends Controller
      * @param  \App\Models\Tipos  $tipos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tipos $tipos)
+    public function edit(Tipo $tipo)
     {
-        //
+        $tipo=$tipo;
+         return view("tipos.edit",compact("tipo"));
     }
 
     /**
@@ -68,9 +74,11 @@ class TiposController extends Controller
      * @param  \App\Models\Tipos  $tipos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tipos $tipos)
+    public function update(TiposEditRequest $request, Tipo $tipo)
     {
-        //
+        $tipo->valor_diario= $request->valor;
+        $tipo->save();
+        return redirect()->route("tipos.index");
     }
 
     /**
@@ -79,8 +87,9 @@ class TiposController extends Controller
      * @param  \App\Models\Tipos  $tipos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tipos $tipos)
+    public function destroy(Tipo $tipo)
     {
-        //
+        $tipo->delete();
+         return redirect()->route("tipos.index"); 
     }
 }

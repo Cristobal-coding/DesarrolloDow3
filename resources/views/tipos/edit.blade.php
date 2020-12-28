@@ -1,13 +1,22 @@
 @extends('layouts/master')
 
 @section('main_content')
+<div class="col-8 offset-2  mt-4 px-1">
+    <div class="row m-0 no-gutters  shadow-lg  bg-dark border-0 text-light" style="border-radius: 25px;">
+      <div class="col-lg-8 offset-2 p-4" style="padding-bottom: 0 !important;">
+        <h3 class="mb-0">{{$tipo->nombre_tipo}}</h3>
+        <div class="mb-4 ">Valor: $ {{$tipo->valor_diario}}</div>
+      </div>
+    </div>
+</div>
 
 <div class="col-lg-8 offset-lg-2 flex justify-content-center align-items-center mt-4">
-    <form class="" method="POST" action="">
+    <form class="" method="POST" action="{{route('tipos.update',$tipo->nombre_tipo)}}" >
         @csrf
+        @method('put')  
         <div class="card bg-dark px-0 " >
           <div class="card-header text-light text-center mb-0 pb-0">
-            <h4 style="font-weight: bold"> <i class="fas fa-plus"></i>Agregar nuevo tipo de vehiculo.</h4>
+            <h4 style="font-weight: bold"> <i class="fas fa-plus"></i>Editar Tipo de vehiculo.</h4>
           </div>
           <div class="card-body mt-0 pt-0">
             {{-- Errores --}}
@@ -21,10 +30,6 @@
                 </div>
             @endif
              {{-- Errores --}}
-              <div class="form-group text-light ">
-                  <label for="nombre" style="color: rgb(255, 255, 255);">Nombre:</label>         
-                  <input type="text" name="nombre" class="form-control bg-info border-0 text-dark @error('nombre') is-invalid @enderror" id="nombre" placeholder="" value={{old('nombre')}} >
-              </div>         
               <div class="row text-light">
                   {{-- <div class="form-group col-xl-6 col-md-12 text-light">
                       <label for="id_vehiculo" class="text-light" style="color: rgb(15, 1, 1);">ID Vehiculo:</label>
@@ -33,7 +38,7 @@
                   {{-- VALIDAR LAS FECHAS --}}
                   <div class="form-group col-12 text-light ">
                     <label for="valor" class="text-light" style="color: rgb(15, 1, 1);">Valor Diario:</label>
-                    <input type="text" name="valor" class="form-control bg-info border-0 text-dark @error('valor') is-invalid @enderror" id="valor" placeholder="" value={{old('valor')}} >
+                    <input type="text" name="valor" class="form-control bg-info border-0 text-dark @error('valor') is-invalid @enderror" id="valor" placeholder="" value="{{$tipo->valor_diario}}" >
                  </div>
               </div>                                                      
               <div class="row w-100 m-0 d-flex" >

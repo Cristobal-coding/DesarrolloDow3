@@ -8,7 +8,7 @@
     <div class="d-md-flex flex-md-equal w-100">
       <div class="bg-dark mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"style="width: 80%; height: 1500px;)">
         <div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
-          <a type="button" href="{{route("usuarios.create")}}"class="btn btn-warning">Agregar un tipo de vehiculo.</a>
+          <a type="button" href="{{route("tipos.create")}}"class="btn btn-warning">Agregar un tipo de vehiculo.</a>
         </div>
         <div class="my-3 py-3"> 
           <h2 class="display-5">Tipos de Vehiculos</h2>
@@ -32,7 +32,7 @@
                     <td>{{$tipo->valor_diario}}</td>
                     <td>
                       <span class="pr-1" data-toggle="tooltip" title="Editar." data-placement="bottom">                               
-                        <a  href="" class="btn btn-secondary"><i class="far fa-edit fa-lg"></i></a>
+                        <a  href="{{route("tipos.edit",$tipo->nombre_tipo)}}" class="btn btn-secondary"><i class="far fa-edit fa-lg"></i></a>
                       </span>
                       <span class="pl-1" data-toggle="tooltip" title="Borrar." data-placement="right">                               
                         <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#borrarTipo{{$tipo->nombre_tipo}}"><i class="fas fa-trash fa-lg"></i></a>
@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <form method="POST" action="">
+                                        <form method="POST" action="{{route("tipos.destroy",$tipo->nombre_tipo)}}">
                                             @csrf
                                             @method("delete")
                                             <button type="submit" data-toggle="tooltip" title="Borrar" data-placement="right" class="btn btn-warning">Borrar Cliente</button>
