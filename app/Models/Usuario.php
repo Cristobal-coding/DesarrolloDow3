@@ -20,4 +20,7 @@ class Usuario extends Authenticable
     public function rol(){
         return $this->belongsTo('App\Models\Rol');
     }
+    public function arriendos(){
+        return $this->hasMany("App\Models\Arriendo", 'vendedor','id');
+    }
 }

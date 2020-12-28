@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\{Arriendo,Cliente,Vehiculo};
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Session\SessionManager;
 
 class ArriendosController extends Controller
 {
@@ -46,6 +48,7 @@ class ArriendosController extends Controller
         $arriendo->arriendo_fecha_inicio= $request->arriendo_fecha_inicio;
         $arriendo->arriendo_fecha_final= $request->arriendo_fecha_final;
         $arriendo->confirmada= false;
+        $arriendo->vendedor=Auth::user()->id;
         
         $arriendo->save();
 
@@ -99,27 +102,56 @@ class ArriendosController extends Controller
     }
 
     public function carrito(){
-        $arriendos= Arriendo::all();
-        $vehiculos= Vehiculo::all();
-        return view('arriendos.carro', compact('vehiculos','arriendos'));
+ 
+        $usuario=Auth::user();
+        $confirmado='ok';
+        $i=0;
+        while ($confirmado=='ok' && $i<count($usuario->arriendos)) {
+            if($usuario->arriendos[$i]->confirmada!=1){
+                $arriendo=$usuario->arriendos[$i];
+                if(count($arriendo->vehiculos)==null){
+                    $confirmado='not_but_empty';
+                    // dd($arriendo);
+                }else{
+                    $confirmado='not';
+                }
+                return view('arriendos.carro', compact('confirmado','arriendo'));
+
+            }else{
+                $i++;  
+            }
+        }
+        if($confirmado=='ok'){
+            return view('arriendos.carro', compact('confirmado'));
+        }
+        // dd($confirmado);
+
     }
 
-    public function addCarrito(Vehiculo $vehiculo){
+    public function addCarrito(Vehiculo $vehiculo, SessionManager $sessionManager){
         $arriendos= Arriendo::all();
+        $arriendodisponible="ninguno";
         for ($i=0;$i<count($arriendos);$i++){
-            if($arriendos[$i]->rut_cliente=="20.440.649-9"){ //Depende del rut por ahora, como vemos quien creo la orden?
+            if($arriendos[$i]->usuariovendedor->id==Auth::user()->id){ //Depende del rut por ahora, como vemos quien creo la orden?
                 //existe ya el vehiculo que clickea?
                 foreach( $arriendos[$i]->vehiculos as $producto){
                     if($producto->id==$vehiculo->id){
                         $arriendos[$i]->vehiculos()->detach($producto->id);
                     }
                 }
+                $arriendodisponible="existe";
                 $arriendos[$i]->vehiculos()->attach($vehiculo->id,  ['entregado'=>false,'foto_arriendo'=>null, 'foto_entrega'=>null]);
+                return redirect()->route('arriendos.carrito');
                 
             }
         }
-
-        return redirect()->route('arriendos.carrito');
+        if($arriendodisponible=='ninguno'){
+            $arriendos= Arriendo::all();
+            $cliente=Cliente::all();
+            $sessionManager->flash('mensaje', 'Para añadir al carrito, crea un arriendo para un usuario.');
+            return view("arriendos.index",compact('arriendos','cliente'));
+        }
+        
     }
 
     public function removeCarrito(Vehiculo $vehiculo){
@@ -136,7 +168,7 @@ class ArriendosController extends Controller
     public function removeCarritoAll(Arriendo $arriendo){
 
         $arriendo->vehiculos()->detach();
-
+        $arriendo->delete();
         return redirect()->route('arriendos.carrito');
     }
 

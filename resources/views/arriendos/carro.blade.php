@@ -4,9 +4,9 @@
     <div class="col-lg-7 offset-lg-2 mt-4 px-0">
         <div class="row px-0 mx-0">
             <div class="col-lg-6 col-7">
-                <h5><i class="fas fa-shopping-cart mr-2"></i>Carrito @if(count($arriendos[0]->vehiculos)!=null)({{count($arriendos[0]->vehiculos)}} Vehículos) @endif</h5>
+                <h5><i class="fas fa-shopping-cart mr-2"></i>Carrito @if($confirmado!='ok')({{count($arriendo->vehiculos)}} Vehículos) @endif</h5>
             </div>
-            @if(count($arriendos[0]->vehiculos)!=null)
+            @if($confirmado!='ok')
             <div class="col-lg-6 col-5 text-right">
                 <a href="{{route("vehiculos.index")}}" class="text-decoration-none text-primary text-right">Continuar Viendo<i class="fas fa-long-arrow-alt-right"></i></a>
             </div>
@@ -15,24 +15,38 @@
        
     </div>
     <div class="col-lg-7 offset-lg-2 mt-4  shadow-lg mb-5">
-        @if(count($arriendos[0]->vehiculos)==null)
+        @if($confirmado=='ok')
         <div class="row">
             <div class="col-lg-1 col-3 d-flex justify-content-center align-items-center">
                 <i class="fas fa-info-circle fa-3x text-dark"></i>
             </div>
             <div class="col-lg-11 col-9 p-3">
-                <h5 class="text-primary">Tu Carrito esta vacío</h5>  
-                <h6>Solo tienes que llenarlo y arrendar tu vehículo favorito. <a href="{{route('vehiculos.index')}}" class="text-decoration-none text-secondary">Continuar Viendo <i class="fas fa-long-arrow-alt-right"></i></a></h6>
-
+                <h5 class="text-primary">El Carrito esta vacío</h5>  
+                <h6>Ayuda a un cliente y llena el carrito. <a href="{{route('vehiculos.index')}}" class="text-decoration-none text-secondary">Mirar Vehiculos <i class="fas fa-long-arrow-alt-right"></i></a></h6>
+                {{-- <p>{{$arriendo->usuariovendedor->nombre}}</p> --}}
             </div>
         </div>
         @else
-         <div class="row mb-3">
+            @if($confirmado=='not_but_empty')
+            <div class="row">
+                <div class="col-lg-1 col-3 d-flex justify-content-center align-items-center">
+                    <i class="fas fa-info-circle fa-3x text-dark"></i>
+                </div>
+                <div class="col-lg-11 col-9 p-3">
+                    <h5 class="text-primary">Haz creado la orden, ahora llena el carrito!</h5>  
+                    <h6><a href="{{route('vehiculos.index')}}" class="text-decoration-none text-secondary">Continuar Viendo <i class="fas fa-long-arrow-alt-right"></i></a></h6>
+                    {{-- <p>{{$arriendo->usuariovendedor->nombre}}</p> --}}
+                </div>
+            </div>
+            @else
+            <div class="row mb-3">
                 <div class="col-12 py-0 text-right pt-3">
                     <button class="btn text-primary">Tramitar Pedido<i class="fas fa-long-arrow-alt-right"></i></button>
                 </div>
             </div>
-            @foreach ($arriendos[0]->vehiculos as $vehiculo )
+            @endif
+            
+            @foreach ($arriendo->vehiculos as $vehiculo )
                 
             <div class="row px-0 mx-0 border-top">
                 {{-- imagen --}}
@@ -83,23 +97,25 @@
                 {{-- /precio --}}
             </div>
             @endforeach
+            @if($confirmado!='not_but_empty')
+
             <div class="row border-top border-bottom mt-2 mb-5 px-0 mx-0">
                 <div class="col-8 py-3">
-                    <h6 class="d-inline pr-1"><span class="text-primary">Cliente:</span> {{$arriendos[0]->cliente->nombre_cliente}}</h6>
-                    <h6 class="d-inline"><span class="text-primary">Rut:</span> {{$arriendos[0]->rut_cliente}}</h6>
+                    <h6 class="d-inline pr-1"><span class="text-primary">Cliente:</span> {{$arriendo->cliente->nombre_cliente}}</h6>
+                    <h6 class="d-inline"><span class="text-primary">Rut:</span> {{$arriendo->rut_cliente}}</h6>
                     <h6 class="mt-1"><span class="text-primary">Fecha de Devolución:</span> 25/12/30</h6>
     
                 </div>
                 <div class="col-4 text-right py-3">
-                    @for ($i =0,$acumulado=0; $i < count($arriendos[0]->vehiculos) ; $i++)
+                    @for ($i =0,$acumulado=0; $i < count($arriendo->vehiculos) ; $i++)
                         @php
-                        $acumulado+=$arriendos[0]->vehiculos[$i]->tipo->valor_diario;
+                        $acumulado+=$arriendo->vehiculos[$i]->tipo->valor_diario;
                         @endphp           
                     @endfor
                     <h5 class="text-primary">Total ${{number_format($acumulado,0,".",".")}} CLP</h5>
                 </div>
                 <div class="col-lg-6 col-5 text-left py-3">
-                    <form action="{{route('arriendos.removeAll',$arriendos[0]->id)}}" method="POST">
+                    <form action="{{route('arriendos.removeAll',$arriendo->id)}}" method="POST">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-dark d-lg-inline d-none"><i class="fas fa-times"></i> Cancelar todo</button>
@@ -110,6 +126,7 @@
                     <button class="btn btn-primary"><i class="fas fa-shopping-cart mr-1"></i> Tramitar Pedido <i class="fas fa-long-arrow-alt-right ml-1"></i></button>
                 </div>
             </div>
+            @endif
         @endif
         {{-- <div class="row px-0 mx-0 border-top">
     

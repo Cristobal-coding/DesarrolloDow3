@@ -22,5 +22,9 @@ class Arriendo extends Model
         return $this->belongsToMany('App\Models\Vehiculo');
     }
 
+    public function usuariovendedor(){
+        return $this->belongsTo("App\Models\Usuario", 'vendedor','id');
+    }
+
     
 }

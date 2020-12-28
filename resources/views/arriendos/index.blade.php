@@ -3,13 +3,17 @@
     <link rel="stylesheet" href="{{asset("css/myThemes.css")}}">
 @endsection
 @section('main_content')
-<div class="row m-0 my-4">
-  <div class="col-lg-4 offset-lg-4 col-12 offset-0">
-    <a href="{{route("arriendos.create")}}"class="btn btn-primary w-100 text-light shadow-lg"><i class="fas fa-plus"></i> Generar nueva orden</a>
-  </div>
+<div class="col-lg-4 offset-lg-4 col-12 offset-0 my-4">
+  <a href="{{route("arriendos.create")}}"class="btn btn-primary w-100 text-light shadow-lg"><i class="fas fa-plus"></i> Generar nueva orden</a>
 </div>
+  @if(Session::has('mensaje'))
+    <div class="col-6 offset-4">
+        <h6 class="text-primary"><i class="fas fa-info-circle fa-lg mr-1"></i>{{Session::get('mensaje')}}</h6>
+    </div>
+  @endif
 
 <div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
+    
     <table class="table mt-2 table-bordered table-striped ">
         <thead class="bg-dark border-0 text-light">
           <tr>
