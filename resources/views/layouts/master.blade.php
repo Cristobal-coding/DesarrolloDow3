@@ -29,18 +29,22 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
                       <li><a class="dropdown-item" href="{{route("vehiculos.index")}}">Gestionar Vehículos</a></li>
-                      <li><a class="dropdown-item" href="#">Vehículos en Stock</a></li>
                     </ul>
                   </li>
                   {{-- <li class="nav-item">
                     <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="vehiculos") active @endif" href="{{route("vehiculos.index")}}">Vehiculos</a>
-                  </li> --}}
-                  
+                  </li> --}}           
                   <li class="nav-item">
                     <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]==("arriendos")) active @endif" href="{{route("arriendos.index")}}" tabindex="-1" aria-disabled="true">Arriendos</a>
                   </li>                  
                   <li class="nav-item">
                     <a class="nav-link  @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="clientes") active @endif" href="{{route("clientes.index")}}" tabindex="-1" aria-disabled="true">Clientes</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link  @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="tipos") active @endif" href="{{route("tipos.index")}}" tabindex="-1" aria-disabled="true">Tipos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="" tabindex="-1" aria-disabled="true">Generar reporte</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle  @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="usuarios") active @endif" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,13 +52,9 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <li><a class="dropdown-item" href="{{route("usuarios.index")}}">Gestionar Usuarios</a></li>
-                      <li><a class="dropdown-item" href="">Gestionar Roles</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>
+                      
                     </ul>
-                  </li>
-                  
-                  
+                  </li>        
                 </ul>
                 <form class="d-flex justify-content-center align-items-center" method="GET" action="{{route("usuarios.logout")}}">
                   @csrf
@@ -68,8 +68,6 @@
               </div>
             </div>
           </nav>
-  
-
         <div class="row m-0">
             @yield('main_content') 
         </div>

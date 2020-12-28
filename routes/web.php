@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{HomeController, VehiculosController, ArriendosController,GenerarController, UsuariosController,ClientesController};
+use App\Http\Controllers\{HomeController, VehiculosController, ArriendosController,GenerarController, UsuariosController,ClientesController,TiposController};
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +20,8 @@ use App\Http\Controllers\{HomeController, VehiculosController, ArriendosControll
 
 Route::get('/', [HomeController::class, 'index'])->name("home.index");
 Route::get('login', [HomeController::class, 'login'])->name('home.login');
+
+Route::resource('/tipos',TiposController::class);
 
 
 Route::get('/vehiculos', [VehiculosController::class, 'index'])->name('vehiculos.index');

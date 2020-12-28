@@ -44,7 +44,7 @@
                                     <div class="modal-content bg-dark" style="color: #fff;">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash fa-lg"></i>Confirmar Borrar Cliente ?</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true"><i class="fas fa-times border-0" style="color: #fff"></i></span>
                                         </button>
                                         </div>
@@ -54,7 +54,7 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                         <form method="POST" action="{{route("clientes.destroy",$cliente->rut_cliente)}}">
                                             @csrf
                                             @method("delete")
