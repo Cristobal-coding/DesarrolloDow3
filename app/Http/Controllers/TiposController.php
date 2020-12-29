@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tipo;
 use Illuminate\Http\Request;
 use App\Http\Requests\{TiposRequest,TiposEditRequest};
-
+Use Gate;
 class TiposController extends Controller
 {
     /**
@@ -15,6 +15,9 @@ class TiposController extends Controller
      */
     public function index()
     {
+         if(Gate::denies('onlyAdmin')){
+            return redirect()->route('home.index');
+        }
         $tipo_vehiculo= Tipo::all();
         return view("tipos.index",compact("tipo_vehiculo"));
     }
@@ -26,6 +29,9 @@ class TiposController extends Controller
      */
     public function create()
     {
+         if(Gate::denies('onlyAdmin')){
+            return redirect()->route('home.index');
+        }
         return view("tipos.create");
     }
 
@@ -37,6 +43,9 @@ class TiposController extends Controller
      */
     public function store(TiposRequest $request)
     {
+         if(Gate::denies('onlyAdmin')){
+            return redirect()->route('home.index');
+        }
         $tipo_vehiculo = new Tipo;
         $tipo_vehiculo->nombre_tipo = $request->nombre;
         $tipo_vehiculo->valor_diario= $request->valor;
@@ -52,6 +61,9 @@ class TiposController extends Controller
      */
     public function show(Tipos $tipos)
     {
+         if(Gate::denies('onlyAdmin')){
+            return redirect()->route('home.index');
+        }
         //
     }
 
@@ -63,6 +75,9 @@ class TiposController extends Controller
      */
     public function edit(Tipo $tipo)
     {
+         if(Gate::denies('onlyAdmin')){
+            return redirect()->route('home.index');
+        }
         $tipo=$tipo;
          return view("tipos.edit",compact("tipo"));
     }
@@ -76,6 +91,9 @@ class TiposController extends Controller
      */
     public function update(TiposEditRequest $request, Tipo $tipo)
     {
+         if(Gate::denies('onlyAdmin')){
+            return redirect()->route('home.index');
+        }
         $tipo->valor_diario= $request->valor;
         $tipo->save();
         return redirect()->route("tipos.index");
@@ -89,6 +107,9 @@ class TiposController extends Controller
      */
     public function destroy(Tipo $tipo)
     {
+         if(Gate::denies('onlyAdmin')){
+            return redirect()->route('home.index');
+        }
         $tipo->delete();
          return redirect()->route("tipos.index"); 
     }

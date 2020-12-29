@@ -34,15 +34,12 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
                       <li>
-                        <a class="dropdown-item" href="{{route("tipos.index")}}">Tipos de vehiculos</a>
+                        <a class="dropdown-item @if(Gate::denies('onlyAdmin')) disabled @endif" href="{{route("tipos.index")}}">Tipos de vehiculos</a>
                       </li>
                       <li><a class="dropdown-item" href="{{route("vehiculos.index")}}">Gestionar Vehículos</a></li>
                     </ul>
                   
-                  </li>
-                  {{-- <li class="nav-item">
-                    <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="vehiculos") active @endif" href="{{route("vehiculos.index")}}">Vehiculos</a>
-                  </li> --}}           
+                  </li>    
                   <li class="nav-item">
                     <a class="nav-link @if(Route::current()->getName()!="home.index")
                       @if(Request::segments()[0]==("arriendos") || Request::segments()[0]==("cart") || Request::segments()[0]==("addcart"))
