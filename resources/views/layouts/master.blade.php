@@ -23,7 +23,12 @@
                   <li class="nav-item">
                     <a class="nav-link  @if(Route::current()->getName()=="home.index") active @endif" aria-current="page" href="{{route('home.index')}}">Home</a>
                   </li>
-                  <li class="nav-item dropdown @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="vehiculos"||Request::segments()[0]=="tipos") active @endif">
+                  <li class="nav-item dropdown @if(Route::current()->getName()!="home.index")
+                      @if(Request::segments()[0]=="vehiculos"||Request::segments()[0]=="tipos")
+                      active
+                      @endif
+                    @endif">
+                    
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Vehículos
                     </a>
@@ -39,7 +44,12 @@
                     <a class="nav-link @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="vehiculos") active @endif" href="{{route("vehiculos.index")}}">Vehiculos</a>
                   </li> --}}           
                   <li class="nav-item">
-                    <a class="nav-link @if(Route::current()->getName()!="home.index" && ( Request::segments()[0]==("arriendos") || Request::segments()[0]==("cart") || Request::segments()[0]==("addcart"))) active @endif" href="{{route("arriendos.index")}}" tabindex="-1" aria-disabled="true">Arriendos</a>
+                    <a class="nav-link @if(Route::current()->getName()!="home.index")
+                      @if(Request::segments()[0]==("arriendos") || Request::segments()[0]==("cart") || Request::segments()[0]==("addcart"))
+                      active 
+                      @endif
+                     
+                     @endif" href="{{route("arriendos.index")}}" tabindex="-1" aria-disabled="true">Arriendos</a>
                   </li>                  
                   <li class="nav-item">
                     <a class="nav-link  @if(Route::current()->getName()!="home.index" && Request::segments()[0]=="clientes") active @endif" href="{{route("clientes.index")}}" tabindex="-1" aria-disabled="true">Clientes</a>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Session\SessionManager;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\{ArriendosRequest};
+use Gate;
 
 class ArriendosController extends Controller
 {
@@ -33,6 +34,10 @@ class ArriendosController extends Controller
      */
     public function create()
     {
+        if(Gate::denies('noMakeArriendo')){
+            // dd(Gate::denies('noMakeArriendo'));
+            return redirect()->route('arriendos.index');
+        }
         $clientes= Cliente::all();
         $sucursales=Sucursal::all();
         return view("arriendos.create",compact("clientes",'sucursales'));

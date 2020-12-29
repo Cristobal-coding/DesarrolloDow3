@@ -25,6 +25,22 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        //Gates
+        Gate::define('onlyAdmin', function($usuario){
+            return $usuario->rol->nombre == 'Administrador';
+        });
+        Gate::define('bothRols', function($usuario){
+            return $usuario->rol->nombre == 'Administrador' || $usuario->rol->nombre == 'Ejecutivo';
+        });
+        Gate::define('noMakeArriendo', function($usuario){
+            $confirmado='ok';
+            foreach($usuario->arriendos as $arriendo){
+                if($arriendo->confirmada == 0){
+                    $confirmado='one';
+                }
+                
+            }
+            return $confirmado=='ok';
+        });
     }
 }
