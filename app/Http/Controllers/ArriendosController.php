@@ -73,7 +73,7 @@ class ArriendosController extends Controller
      */
     public function show(Arriendo $arriendo)
     {
-        //
+        return view('arriendos.detalle', compact('arriendo'));
     }
 
     /**

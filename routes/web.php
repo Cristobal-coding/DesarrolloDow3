@@ -54,7 +54,7 @@ Route::post('/clientes/create', [ClientesController::class, 'store'])->name('cli
 Route::delete('/cliente/{cliente}', [ClientesController::class, 'destroy'])->name('clientes.destroy');
 Route::get('/cliente/{cliente}/edit', [ClientesController::class, 'edit'])->name('clientes.edit');
 Route::put('/clientes/{cliente}', [ClientesController::class, "update"])->name("clientes.update");
-
+Route::get('/clientes/{cliente}', [ClientesController::class, 'show'])->name('clientes.show');
 
 Route::get('/tipos', [TiposController::class, 'index'])->name('tipos.index');
 Route::get('/tipos/create', [TiposController::class, 'create'])->name('tipos.create');
@@ -62,4 +62,5 @@ Route::post('/tipos/create', [TiposController::class, 'store'])->name('tipos.sto
 Route::delete('/tipos/{tipo}', [TiposController::class, 'destroy'])->name('tipos.destroy');
 Route::get('/tipos/{tipo}/edit', [TiposController::class, 'edit'])->name('tipos.edit');
 Route::put('/tipos/{tipo}', [TiposController::class, "update"])->name("tipos.update");
+
 

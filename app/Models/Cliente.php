@@ -15,6 +15,6 @@ class Cliente extends Model
     
     public function arriendos(){
         
-        return  $this->hasMany("App\Models\Arriendo");
+        return  $this->hasMany("App\Models\Arriendo" , 'rut_cliente');
     }
 }

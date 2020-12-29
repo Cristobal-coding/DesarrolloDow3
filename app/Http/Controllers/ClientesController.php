@@ -63,8 +63,10 @@ class ClientesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Cliente $cliente)
-    {
-        //
+    {   
+        
+        return view('clientes.show', compact('cliente'));
+        // dd('El cliente es: '.$cliente->nombre_cliente);
     }
 
     /**
