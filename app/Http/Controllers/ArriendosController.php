@@ -37,7 +37,7 @@ class ArriendosController extends Controller
      */
     public function create()
     {
-        if(Gate::denies('noMakeArriendo') || Gate::denies('onlyAdmin') ){
+        if(Gate::denies('noMakeArriendo') || Gate::denies('bothRols') ){
             // dd(Gate::denies('noMakeArriendo'));
             return redirect()->route('arriendos.index');
         }
@@ -54,7 +54,7 @@ class ArriendosController extends Controller
      */
     public function store(ArriendosRequest $request)
     {
-        if(Gate::denies('onlyAdmin')){
+        if(Gate::denies('bothRols')){
             return redirect()->route('arriendos.index');
         }
         $arriendo= new Arriendo;
@@ -182,7 +182,7 @@ class ArriendosController extends Controller
         }
     }
     public function carrito(){
-        if(Gate::denies('onlyAdmin')){
+        if(Gate::denies('bothRols')){
             return redirect()->route('arriendos.index');
         }
         $usuario=Auth::user();
@@ -209,7 +209,7 @@ class ArriendosController extends Controller
     }
 
     public function addCarrito(Vehiculo $vehiculo, SessionManager $sessionManager){
-        if(Gate::denies('onlyAdmin')){
+        if(Gate::denies('bothRols')){
             return redirect()->route('vehiculos.index');
         }
         //  existe ya el vehiculo que clickea?
@@ -232,7 +232,7 @@ class ArriendosController extends Controller
     }
 
     public function removeCarrito(Vehiculo $vehiculo){
-        if(Gate::denies('onlyAdmin')){
+        if(Gate::denies('bothRols')){
             return redirect()->route('arriendos.index');
         }
         $arriendo= $this->getArriendoActual();
@@ -241,7 +241,7 @@ class ArriendosController extends Controller
     }
 
     public function removeCarritoAll(){
-        if(Gate::denies('onlyAdmin')){
+        if(Gate::denies('bothRols')){
             return redirect()->route('arriendos.index');
         }
         $arriendo=$this->getArriendoActual();
@@ -251,7 +251,7 @@ class ArriendosController extends Controller
     }
 
     public function confirmArriendo(Arriendo $arriendo, SessionManager $sessionManager){
-        if(Gate::denies('onlyAdmin')){
+        if(Gate::denies('bothRols')){
             return redirect()->route('arriendos.index');
         }
         $acumulado=0;
