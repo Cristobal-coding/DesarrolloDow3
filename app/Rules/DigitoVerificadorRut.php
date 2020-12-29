@@ -27,7 +27,6 @@ class DigitoVerificadorRut implements Rule
     {
       $dv= strtoupper(substr($value,strlen($value)-1));
       $rut=substr($value,0,strlen($value)-2);
-      
       $factor = 2;
       $suma = 0;
         for($i=strlen($rut)-1;$i>=0;$i--){

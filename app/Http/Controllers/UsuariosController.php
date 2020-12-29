@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\{Usuario,Rol};
 use Illuminate\Support\Facades\{Auth,Hash};
 use Illuminate\Http\Request;
-use App\Http\Requests\{UsuariosRequest,UsuariosEditRequest};
+use App\Http\Requests\{UsuariosRequest,UsuariosEditRequest,EditPassRequest};
 
 class UsuariosController extends Controller
 {
@@ -21,6 +21,11 @@ class UsuariosController extends Controller
     {
         $usuario= Usuario::all();
         return view("usuarios.index",compact('usuario'));
+    }
+    public function indexpass()
+    {
+        $usuario= Usuario::all();
+        return view("editpass.editpass",compact('usuario'));
     }
 
     /**
@@ -92,6 +97,17 @@ class UsuariosController extends Controller
         $usuario->rol_id= $request->rol_id;
         $usuario->save();
         return redirect()->route("usuarios.index");
+    }
+    public function updatepass(EditPassRequest $request, Usuario $usuario)
+    {   
+
+        $usuario->password= Hash::make($request->password);
+        $usuario->save();
+        return redirect()->route("usuarios.index");
+        
+
+        
+        
     }
 
     /**

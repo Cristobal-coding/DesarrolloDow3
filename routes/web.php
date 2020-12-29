@@ -48,6 +48,10 @@ Route::post('/usuarios/{usuario}/activar', [UsuariosController::class, 'activar'
 Route::get('/usuarios/create', [UsuariosController::class, 'create'])->name('usuarios.create');
 Route::post('/usuarios/create', [UsuariosController::class, 'store'])->name('usuarios.store');
 
+Route::get('/editpass', [UsuariosController::class,'indexpass'])->name('editpass.editpass');
+Route::put('/editpass/{usuario}', [UsuariosController::class, "updatepass"])->name('usuarios.updatepass');
+
+
 Route::get('/clientes', [ClientesController::class, 'index'])->name('clientes.index');
 Route::get('/clientes/create', [ClientesController::class, 'create'])->name('clientes.create');
 Route::post('/clientes/create', [ClientesController::class, 'store'])->name('clientes.store');

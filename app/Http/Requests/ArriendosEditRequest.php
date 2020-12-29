@@ -24,8 +24,22 @@ class ArriendosEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'foto_entrega'=> 'required',
-            'foto_arriendo'=> 'required'
+            'rut_cliente'=>'exists:clientes,rut_cliente',
+            'vendedor'=>'exists:usuarios,id',
+            'fechaInicio' => 'required',
+            'fechaFinal' => 'required|after:fechaInicio',
+            'fechaEntrega' => 'required|after:fechaInicio',
+        ];
+    }
+    public function messages(){
+        return[
+            'rut_cliente.exists'=>'Ingrese un rut valido',
+            'vendedor.exists'=>'Ingrese un vendedor valido',
+            'fechaInicio.required'=>'Ingrese una fecha valida',
+            'fechaFinal.required'=>'Ingrese una fecha valida',
+            'fechaEntrega.required'=>'Ingrese una fecha valida',
+            'fechaFinal.after'=>'Ingrese una fecha valida, despues de la fecha de inicio',
+            'fechaEntrega.after'=>'Ingrese una fecha valida, despues de la fecha de inicio',
         ];
     }
 }
