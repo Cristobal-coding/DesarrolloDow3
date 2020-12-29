@@ -6,11 +6,13 @@ use App\Models\{Usuario,Rol};
 use Illuminate\Support\Facades\{Auth,Hash};
 use Illuminate\Http\Request;
 use App\Http\Requests\{UsuariosRequest,UsuariosEditRequest,EditPassRequest};
+use Gate;
 
 class UsuariosController extends Controller
 {
     public function __construct() {
         $this->middleware('auth')->except('login');
+
     }
     /**
      * Display a listing of the resource.
@@ -35,6 +37,9 @@ class UsuariosController extends Controller
      */
     public function create()
     {
+        if(Gate::denies('onlyAdmin')){
+            return redirect()->route('usuarios.index');
+        }
         $roles= Rol::all();
         return view("usuarios.create",compact('roles'));
     }
@@ -47,7 +52,10 @@ class UsuariosController extends Controller
      */
     public function store(UsuariosRequest $request)
     {
-         
+
+        if(Gate::denies('onlyAdmin')){
+            return redirect()->route('usuarios.index');
+        } 
         $usuario= new Usuario;
         $usuario->nombre = $request->nombre;
         $usuario->password= Hash::make($request->password);
@@ -66,7 +74,9 @@ class UsuariosController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        //
+        if(Gate::denies('onlyAdmin')){
+            return redirect()->route('usuarios.index');
+        }
     }
 
     /**
@@ -77,6 +87,9 @@ class UsuariosController extends Controller
      */
     public function edit(Usuario $usuario)
     {
+        if(Gate::denies('onlyAdmin')){
+            return redirect()->route('usuarios.index');
+        }
         $usuarios=$usuario;
         $roles= Rol::all();
          return view("usuarios.edit",compact("usuario","roles"));
@@ -91,7 +104,9 @@ class UsuariosController extends Controller
      */
     public function update(UsuariosEditRequest $request, Usuario $usuario)
     {   
-        
+        if(Gate::denies('onlyAdmin')){
+            return redirect()->route('usuarios.index');
+        }
         $usuario->nombre = $request->nombre;
         $usuario->password= Hash::make($request->password);
         $usuario->rol_id= $request->rol_id;
@@ -118,6 +133,9 @@ class UsuariosController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
+        if(Gate::denies('onlyAdmin')){
+            return redirect()->route('usuarios.index');
+        }
         $usuario->delete();
          return redirect()->route("usuarios.index"); 
     }
@@ -130,7 +148,7 @@ class UsuariosController extends Controller
             //dd('Usuario Confirmado');
             $usuario= Usuario::where('email',$request->email)->first();
            // $usuario->registrarLastLogin();
-            return redirect()->route('home.index');
+            return redirect()->route('usuarios.index');
 
         }else{
 

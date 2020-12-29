@@ -1,5 +1,7 @@
 @extends('layouts/master')
-
+@section('css-personalizado')
+    <link rel="stylesheet" href="{{asset("css/myThemes.css")}}">
+@endsection
 @section('main_content')
    {{-- <div class="col-12 px-4 pt-4 pb-0 shadow">
         <div class="row p-0 overflow-auto mi-scrol rounded" style="!important;">
@@ -35,26 +37,77 @@
                     <small class="px-2"><span class="text-primary">Año:</span> {{$vehiculo->year}}</small>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-6 px-3 my-0 text-center">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fotoArriendo{{$vehiculo->id}}">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                    <small class="d-block">Foto Arriendo</small>
+                </div>
+                <div class="col-6 px-3 my-0 text-center">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fotoEntrega{{$vehiculo->id}}">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                    <small class="d-block">Foto Entrega</small>
+                </div>
+            </div>
         </div>
         {{-- /informacion --}}
         {{-- precio --}}
         <div class="col-3 px-1">
             <div class="row">
-                <div class="col-10 text-right px-0">
+                <div class="col-12 text-right px-0">
                     <h5 class="px-2 mt-3">${{number_format($vehiculo->tipo->valor_diario,0,".",".")}} CLP</h5>
                 </div>
-                <div class="col-2 px-0 d-flex justify-content-center">
-                    <form action="{{route("arriendos.removecart",$vehiculo->id)}}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn mt-2"><i class="fas fa-times"></i></button>
-                    </form>
-                </div>
+                
                     
             </div>
         
         </div>
         {{-- /precio --}}
+        <!-- Modal Foto Arriendo -->
+        <div class="modal fade" id="fotoArriendo{{$vehiculo->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{$vehiculo->marca}} {{$vehiculo->nombre_vehiculo}} arriendo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @if($vehiculo->pivot->foto_arriendo==null)
+                    <h6 class="text-primary"><i class="fas fa-info-circle mr-1 fa-lg"></i>Este vehiculo aún no ha sido entregado al cliente.</h6>
+                    @else
+                    <img src="{{Storage::url($vehiculo->pivot->foto_arriendo)}}" alt="{{$vehiculo->id_vehiculo}}" class="img-fluid">
+                   @endif
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary text-light w-100" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Modal de Foto Entrega -->
+        <div class="modal fade" id="fotoEntrega{{$vehiculo->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{$vehiculo->marca}} {{$vehiculo->nombre_vehiculo}} entrega</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                @if($vehiculo->pivot->foto_entrega==null)
+                 <h6 class="text-primary"><i class="fas fa-info-circle mr-1 fa-lg"></i>Este vehículo aún no ha sido devuelto.</h6>
+                 @else
+                 <img src="{{Storage::url($vehiculo->pivot->foto_entrega)}}" alt="{{$vehiculo->id_vehiculo}}" class="img-fluid">
+                @endif
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary text-light w-100" data-bs-dismiss="modal">Cerrar</button>
+               
+                </div>
+            </div>
+            </div>
+        </div>
     </div>
     @endforeach
 </div>
@@ -119,8 +172,11 @@
         </div>
     </div>
     <div class="row pt-3 px-lg-4 border-bottom shadow-sm">
-        <div class="col-6">
+        <div class="col-6 border-right">
             <h6 class="text-primary">Días Atraso: <br class="d-lg-none"> <span class="text-dark">{{abs($atraso)}}</span></h6>
+        </div>
+        <div class="col-6">
+            <h6 class="text-primary">Id Arriendo: <br class="d-lg-none"> <span class="text-dark">{{$arriendo->id}}</span></h6>
         </div>
         
     </div>

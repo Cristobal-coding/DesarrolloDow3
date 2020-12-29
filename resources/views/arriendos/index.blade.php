@@ -57,7 +57,7 @@
             <th scope="row">{{$arriendo->estado==1?'Vigente':'Finalizada'}}</th>
             <td class="text-center">
               <span class="pr-1" data-toggle="tooltip" title="Detalles Orden." data-placement="bottom">                               
-                <a  href="" class="btn btn-secondary"><i class="fas fa-info-circle fa-lg"></i></a>
+                <a  href="{{route('arriendos.show',$arriendo->id)}}" class="btn btn-success"><i class="fas fa-info-circle fa-lg"></i></a>
               </span>
 
               <span class="" data-toggle="tooltip" title="Editar." data-placement="bottom">                               

@@ -11,6 +11,6 @@ class Sucursal extends Model
     protected $table='sucursales';
 
     public function arriendos(){
-        return  $this->hasMany("App\Models\Arriendo",'id');
+        return  $this->hasMany("App\Models\Arriendo", 'id_sucursal');
     }
 }

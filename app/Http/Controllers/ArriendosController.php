@@ -72,7 +72,9 @@ class ArriendosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Arriendo $arriendo)
-    {
+    {   
+        // $sucursales= Sucursal::all();
+        // dd($arriendo->vehiculos[0]->pivot->foto_arriendo);
         return view('arriendos.detalle', compact('arriendo'));
     }
 

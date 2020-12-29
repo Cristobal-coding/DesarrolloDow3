@@ -12,9 +12,7 @@ class ClientesController extends Controller
 
     public function __construct() {
         $this->middleware('auth');
-        if(Gate::denies('bothRols')){
-            return redirect()->route('home.index');
-        }
+        
     }
     /**
      * Display a listing of the resource.
@@ -23,11 +21,17 @@ class ClientesController extends Controller
      */
     public function index()
     {
+        if(Gate::denies('bothRols')){
+            return redirect()->route('home.index');
+        }
         $clientes= Cliente::all();
         return view("clientes.index",compact("clientes"));
     }
     public function create()
     {
+        if(Gate::denies('bothRols')){
+            return redirect()->route('home.index');
+        }
         
         return view("clientes.create");
     }
@@ -46,6 +50,9 @@ class ClientesController extends Controller
      */
     public function store(ClientesRequest $request)
     {
+        if(Gate::denies('bothRols')){
+            return redirect()->route('home.index');
+        }
         $cliente= new Cliente;
         $cliente->rut_cliente = $request->rut;
         $cliente->nombre_cliente= $request->nombre;
@@ -63,8 +70,11 @@ class ClientesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Cliente $cliente)
-    {   
-        
+    { 
+        if(Gate::denies('bothRols')){
+            return redirect()->route('home.index');
+        }  
+
         return view('clientes.show', compact('cliente'));
         // dd('El cliente es: '.$cliente->nombre_cliente);
     }
@@ -77,6 +87,9 @@ class ClientesController extends Controller
      */
     public function edit(Cliente $cliente)
     {
+        if(Gate::denies('bothRols')){
+            return redirect()->route('home.index');
+        }
         $clientes=$cliente;
          return view("clientes.edit",compact("cliente"));
     }
@@ -90,6 +103,9 @@ class ClientesController extends Controller
      */
     public function update(ClientesEditRequest $request, Cliente $cliente)
     {
+        if(Gate::denies('bothRols')){
+            return redirect()->route('home.index');
+        }
         $cliente->rut_cliente=$cliente->rut_cliente;
         $cliente->nombre_cliente=$request->nombre;
         $cliente->fono_cliente=$request->fono;
@@ -108,6 +124,9 @@ class ClientesController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
+        if(Gate::denies('bothRols')){
+            return redirect()->route('home.index');
+        }
         
         $cliente->delete();
          return redirect()->route("clientes.index"); 
