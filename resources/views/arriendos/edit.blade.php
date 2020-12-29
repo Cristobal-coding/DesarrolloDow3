@@ -98,6 +98,17 @@
                     {{-- request de cada vehiculo --}}
 
                     {{-- request de la orden --}}
+                        {{-- Errores --}}
+                        @if ($errors->any())                       
+                        <div class="alert alert-warning mx-2 mt-3">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                            @endif
+                        {{-- Errores --}}
                     <div class="text-center pt-4">
                         <h6 class="text-primary">Detalles del arriendo:</h6>
                     </div>

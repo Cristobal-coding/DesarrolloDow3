@@ -8,7 +8,7 @@
 
   <div class="col-12 w-100 mx-0 px-0">
     <div class="d-md-flex flex-md-equal w-100">
-        <div class="bg-danger mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"style="width: 80%; height: 1500px;)">
+        <div class="bg-danger mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"style="width: 100%; height: 1500px;)">
           <div class="col-lg-4 offset-lg-4 col-12 offset-0 my-4">
             <a href="{{route("arriendos.create")}}"class="btn btn-primary w-100 text-light shadow-lg"><i class="fas fa-plus"></i> Generar nueva orden</a>
           </div>

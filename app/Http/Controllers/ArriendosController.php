@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Session\SessionManager;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\{ArriendosRequest};
+use App\Http\Requests\{ArriendosRequest,ArriendosEditRequest};
 use Gate;
 
 class ArriendosController extends Controller
@@ -97,7 +97,7 @@ class ArriendosController extends Controller
      * @param  \App\Models\Arriendo  $arriendo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Arriendo $arriendo)
+    public function update(ArriendosEditRequest $request, Arriendo $arriendo)
     {
         foreach($arriendo->vehiculos as $num=>$vehiculo){
             $arriendof='fotoArriendo'.$num;
