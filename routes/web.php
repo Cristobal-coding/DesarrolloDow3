@@ -38,7 +38,7 @@ Route::post('/arriendos/create', [ArriendosController::class, 'store'])->name('a
 Route::get('/cart', [ArriendosController::class, 'carrito'])->name('arriendos.carrito');
 Route::post('/addcart/{vehiculo}', [ArriendosController::class, 'addCarrito'])->name('arriendos.addCarrito');
 Route::delete('/removecart/{vehiculo}', [ArriendosController::class, 'removeCarrito'])->name('arriendos.removecart');
-Route::delete('/removecartall/{arriendo}', [ArriendosController::class, 'removeCarritoAll'])->name('arriendos.removeAll');
+Route::delete('/removecartall', [ArriendosController::class, 'removeCarritoAll'])->name('arriendos.removeAll');
 Route::put('/confirm/{arriendo}', [ArriendosController::class, 'confirmArriendo'])->name('arriendos.confirm');
 
 Route::post('/usuarios/login',[UsuariosController::class, 'login'])->name('usuarios.login');

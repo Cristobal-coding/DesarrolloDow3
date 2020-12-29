@@ -107,17 +107,14 @@ class DatabaseSeeder extends Seeder
         }
         // //Clientes
         $clientes=[
-            ['rut_cliente'=>'20.482.871-7','nombre_cliente'=>'Renato Plaza','fono_cliente'=>'78590098   ',
-                'entrega_pendiente'=>'no'],
-            ['rut_cliente'=>'20.440.649-9','nombre_cliente'=>'Cristobal Herrera','fono_cliente'=>'98390098   ',
-                'entrega_pendiente'=>'no']         
+            ['rut_cliente'=>'20.482.871-7','nombre_cliente'=>'Renato Plaza','fono_cliente'=>'78590098'],
+            ['rut_cliente'=>'20.440.649-9','nombre_cliente'=>'Cristobal Herrera','fono_cliente'=>'98390098']         
         ];
         foreach($clientes as $cliente){
             DB::table('clientes')->insert([
                 'rut_cliente' => $cliente['rut_cliente'],
                 'nombre_cliente' => $cliente['nombre_cliente'],
                 'fono_cliente' => $cliente['fono_cliente'],
-                'entrega_pendiente' => $cliente['entrega_pendiente'],
                 'created_at' => new DateTime('NOW'),
                 'updated_at' => NULL
             ]);           

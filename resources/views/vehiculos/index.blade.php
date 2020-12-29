@@ -30,14 +30,11 @@
                     @endif
                     >{{$vehiculos[$i]->estado}}</span></h6>
                     <div class="row m-0">
-                        <div class="col-4 mb-1 px-0">
-                            <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="left" title="Mas Info."><i class="fas fa-question-circle fa-lg "></i></a>
-                        </div>
-                        <div class="col-4 mb-1 px-0">
+                        <div class="col-6 mb-1 px-0">
                             <a href="{{route("vehiculos.edit", $vehiculos[$i]->id)}}" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="far fa-edit fa-lg"></i></a>
                         </div>
-                        <div class="col-4 mb-1 px-0">
-                            @if($vehiculos[$i]->estado=='Arrendado' || $vehiculos[$i]->estado=='De Baja' || $vehiculos[$i]->estado=='En Mantenimiento')
+                        <div class="col-6 mb-1 px-0">
+                            @if($vehiculos[$i]->estado=='Arrendado' || $vehiculos[$i]->estado=='De Baja' || $vehiculos[$i]->estado=='En Mantenimiento' || Gate::denies('onlyAdmin'))
                             <span data-toggle="tooltip" data-placement="right" title="Eliminar">
                                 <button class="btn btn-outline-dark w-100 disabled"><i class="fas fa-times-circle fa-lg"></i></button>
                              </span>
@@ -55,7 +52,7 @@
                         <div class="col-12 px-0">
                             <form action="{{route('arriendos.addCarrito',$vehiculos[$i]->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <button type="submit" class="btn btn-outline-primary w-100"><i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($vehiculos[$i]->tipo->valor_diario,0,".",".")}} CLP</button>
+                                <button type="submit" class="btn btn-outline-primary w-100 @if(Gate::denies('onlyAdmin')) disabled @endif"><i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($vehiculos[$i]->tipo->valor_diario,0,".",".")}} CLP</button>
                             </form>
                         </div>
 
@@ -63,7 +60,7 @@
                     </div> 
                     
                     <!-- Modal -->
-                    @if($vehiculos[$i]->estado!='Arrendado' || $vehiculos[$i]->estado!='De Baja' || $vehiculos[$i]->estado!='En Mantenimiento')
+                    @if($vehiculos[$i]->estado!='Arrendado' || $vehiculos[$i]->estado!='De Baja' || $vehiculos[$i]->estado!='En Mantenimiento' || Gate::allows('onlyAdmin'))
                     <div class="modal fade" id="borrarVehiculo{{$vehiculos[$i]->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -134,13 +131,13 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="nombre">Nombre:</label>
-                            <input class="form-control" type="text" name="nombre" id="nombre">
+                            <input class="form-control " @if(Gate::denies('onlyAdmin')) disabled @endif type="text" name="nombre" id="nombre">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="marca">Marca:</label>
-                            <input class="form-control" type="text" name="marca" id="marca">
+                            <input class="form-control" @if(Gate::denies('onlyAdmin')) disabled @endif type="text" name="marca" id="marca">
                         </div>
                     </div>
                 </div>
@@ -148,14 +145,14 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="patente">Patente:</label>
-                            <input class="form-control" type="text" name="patente" id="patente">
+                            <input class="form-control" @if(Gate::denies('onlyAdmin')) disabled @endif type="text" name="patente" id="patente">
                         </div>
                     </div>
                     <div class="col-6">
                         
                         <div class="form-group">
                             <label for="estado">Estado:</label>
-                            <select class="form-control mi-scrol @error('director_id') is-invalid @enderror" name="nombre_tipo" id="nombre_tipo" >
+                            <select class="form-control mi-scrol @error('director_id') is-invalid @enderror" @if(Gate::denies('onlyAdmin')) disabled @endif name="nombre_tipo" id="nombre_tipo" >
                                 @foreach ($estados as $estado)
                                     <option value="{{$estado}}">{{$estado}}</option>                        
                                 @endforeach                      
@@ -166,7 +163,7 @@
                 <div class="row m-0 mb-3 px-0">
                     <div class="col-6">
                         <label for="nombre_tipo" id="nombre_tipo" name="nombre_tipo">Tipo Vehículo:</label>
-                        <select class="form-control mi-scrol @error('nombre_tipo') is-invalid @enderror" name="nombre_tipo" id="nombre_tipo" >
+                        <select class="form-control mi-scrol @error('nombre_tipo') is-invalid @enderror" @if(Gate::denies('onlyAdmin')) disabled @endif name="nombre_tipo" id="nombre_tipo" >
                             @foreach ($tipos as $tipo)
                                 <option value="{{$tipo->nombre_tipo}}">{{$tipo->nombre_tipo}}</option>                        
                             @endforeach                      
@@ -175,7 +172,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="año">Año:</label>
-                            <select class="form-control mi-scrol @error('director_id') is-invalid @enderror" name="año" id="año" >                
+                            <select class="form-control mi-scrol @error('director_id') is-invalid @enderror" @if(Gate::denies('onlyAdmin')) disabled @endif name="año" id="año" >                
                                 @foreach ($años as $año)
                                     <option value="{{$año}}">{{$año}}</option>
                                 @endforeach                       
@@ -187,13 +184,13 @@
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="foto" class="form-label">Imagen del Vehículo:</label>
-                            <input class="form-control form-control-sm" id="foto" type="file" name="foto">
+                            <input class="form-control form-control-sm" id="foto" type="file" @if(Gate::denies('onlyAdmin')) disabled @endif name="foto">
                         </div>
                     </div>
                 </div>
                 <div class="row mx-0 mb-3 px-2">
                     <div class="col-12">
-                        <button class="btn btn-primary w-100" type="submit">Añadir</button>
+                        <button class="btn btn-primary w-100 @if(Gate::denies('noMakeArriendo') || Gate::denies('onlyAdmin')) disabled @endif" type="submit">Añadir</button>
                     </div>
                 </div>
             </form>

@@ -148,7 +148,7 @@ class UsuariosController extends Controller
             //dd('Usuario Confirmado');
             $usuario= Usuario::where('email',$request->email)->first();
            // $usuario->registrarLastLogin();
-            return redirect()->route('usuarios.index');
+            return redirect()->route('home.index');
 
         }else{
 

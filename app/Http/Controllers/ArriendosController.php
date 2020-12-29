@@ -22,6 +22,9 @@ class ArriendosController extends Controller
      */
     public function index()
     {
+        if(Gate::denies('bothRols')){
+            return redirect()->route('arriendos.index');
+        }
         $arriendos= Arriendo::all();
         $cliente=Cliente::all();
         return view("arriendos.index",compact('arriendos','cliente'));
@@ -34,7 +37,7 @@ class ArriendosController extends Controller
      */
     public function create()
     {
-        if(Gate::denies('noMakeArriendo')){
+        if(Gate::denies('noMakeArriendo') || Gate::denies('onlyAdmin') ){
             // dd(Gate::denies('noMakeArriendo'));
             return redirect()->route('arriendos.index');
         }
@@ -51,6 +54,9 @@ class ArriendosController extends Controller
      */
     public function store(ArriendosRequest $request)
     {
+        if(Gate::denies('onlyAdmin')){
+            return redirect()->route('arriendos.index');
+        }
         $arriendo= new Arriendo;
         $arriendo->rut_cliente = $request->rut_cliente;
         $arriendo->arriendo_fecha_inicio= $request->arriendo_fecha_inicio;
@@ -73,8 +79,9 @@ class ArriendosController extends Controller
      */
     public function show(Arriendo $arriendo)
     {   
-        // $sucursales= Sucursal::all();
-        // dd($arriendo->vehiculos[0]->pivot->foto_arriendo);
+        if(Gate::denies('bothRols')){
+            return redirect()->route('arriendos.index');
+        }
         return view('arriendos.detalle', compact('arriendo'));
     }
 
@@ -85,7 +92,11 @@ class ArriendosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Arriendo $arriendo)
-    {   $sucursales=Sucursal::all();
+    {   
+        if(Gate::denies('bothRols')){
+            return redirect()->route('arriendos.index');
+        }
+        $sucursales=Sucursal::all();
         $clientes=Cliente::all();
         $usuarios=Usuario::all();
         // dd($arriendo->vehiculos[0]->pivot->entregado);
@@ -101,6 +112,9 @@ class ArriendosController extends Controller
      */
     public function update(ArriendosEditRequest $request, Arriendo $arriendo)
     {
+        if(Gate::denies('bothRols')){
+            return redirect()->route('arriendos.index');
+        }
         foreach($arriendo->vehiculos as $num=>$vehiculo){
             $arriendof='fotoArriendo'.$num;
             $entrega='fotoEntrega'.$num;
@@ -149,6 +163,9 @@ class ArriendosController extends Controller
      */
     public function destroy(Arriendo $arriendo)
     {
+        if(Gate::denies('onlyAdmin')){
+            return redirect()->route('arriendos.index');
+        }
         foreach($arriendo->vehiculos as $vehiculo){
             $vehiculo->estado='Disponible';
             $vehiculo->save();
@@ -157,9 +174,17 @@ class ArriendosController extends Controller
         $arriendo->delete();
          return redirect()->route("arriendos.index"); 
     }
-
+    private function getArriendoActual(){
+        foreach(Auth::user()->arriendos as $arriendo){
+            if($arriendo->confirmada==0){
+                return $arriendo;
+            }
+        }
+    }
     public function carrito(){
- 
+        if(Gate::denies('onlyAdmin')){
+            return redirect()->route('arriendos.index');
+        }
         $usuario=Auth::user();
         $confirmado='ok';
         $i=0;
@@ -180,53 +205,55 @@ class ArriendosController extends Controller
         if($confirmado=='ok'){
             return view('arriendos.carro', compact('confirmado'));
         }
-        // dd($confirmado);
 
     }
 
     public function addCarrito(Vehiculo $vehiculo, SessionManager $sessionManager){
-        $arriendos= Arriendo::all();
-        $arriendodisponible="ninguno";
-        for ($i=0;$i<count($arriendos);$i++){
-            if($arriendos[$i]->usuariovendedor->id==Auth::user()->id && $arriendos[$i]->confirmada!=true){ //Depende del rut por ahora, como vemos quien creo la orden?
-                //existe ya el vehiculo que clickea?
-                foreach( $arriendos[$i]->vehiculos as $producto){
-                    if($producto->id==$vehiculo->id){
-                        $arriendos[$i]->vehiculos()->detach($producto->id);
-                    }
-                }
-                $arriendodisponible="existe";
-                $arriendos[$i]->vehiculos()->attach($vehiculo->id,  ['entregado'=>false,'foto_arriendo'=>null, 'foto_entrega'=>null]);
-                return redirect()->route('arriendos.carrito');
-                
-            }
+        if(Gate::denies('onlyAdmin')){
+            return redirect()->route('vehiculos.index');
         }
-        if($arriendodisponible=='ninguno'){
+        //  existe ya el vehiculo que clickea?
+        $arriendo=$this->getArriendoActual();
+        if($arriendo!=null){
+            foreach( $arriendo->vehiculos as $producto){
+                if($producto->id==$vehiculo->id){
+                    $arriendo->vehiculos()->detach($producto->id);
+                }
+            }
+            $arriendodisponible="existe";
+            $arriendo->vehiculos()->attach($vehiculo->id,  ['entregado'=>false,'foto_arriendo'=>null, 'foto_entrega'=>null]);
+            return redirect()->route('arriendos.carrito');
+
+        }else{
             $sessionManager->flash('mensaje', 'Para añadir al carrito, crea un arriendo para un cliente.');
             return $this->index();
         }
-        
+       
     }
 
     public function removeCarrito(Vehiculo $vehiculo){
-        $arriendos= Arriendo::all();
-        for ($i=0;$i<count($arriendos);$i++){
-            if($arriendos[$i]->rut_cliente=="20.440.649-9"){ //Depende del rut por ahora, como vemos quien creo la orden?
-                $arriendos[$i]->vehiculos()->detach($vehiculo->id);
-                
-            }
+        if(Gate::denies('onlyAdmin')){
+            return redirect()->route('arriendos.index');
         }
+        $arriendo= $this->getArriendoActual();
+        $arriendo->vehiculos()->detach($vehiculo->id);
         return redirect()->route('arriendos.carrito');
     }
 
-    public function removeCarritoAll(Arriendo $arriendo){
-
+    public function removeCarritoAll(){
+        if(Gate::denies('onlyAdmin')){
+            return redirect()->route('arriendos.index');
+        }
+        $arriendo=$this->getArriendoActual();
         $arriendo->vehiculos()->detach();
         $arriendo->delete();
         return redirect()->route('arriendos.carrito');
     }
 
     public function confirmArriendo(Arriendo $arriendo, SessionManager $sessionManager){
+        if(Gate::denies('onlyAdmin')){
+            return redirect()->route('arriendos.index');
+        }
         $acumulado=0;
         foreach($arriendo->vehiculos as $vehiculo){
             $acumulado+=$vehiculo->tipo->valor_diario;

@@ -21,15 +21,15 @@
             @method('put')
             <div class="row my-2">
                 <div class="col-4 mx-0 pr-1 px-0 form-floating">
-                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{$vehiculo->nombre_vehiculo}}">
+                    <input type="text" class="form-control" id="nombre" @if(Gate::denies('onlyAdmin')) disabled @endif name="nombre" value="{{$vehiculo->nombre_vehiculo}}">
                     <label for="nombre" class="text-primary">Nombre:</label>
                 </div>
                 <div class="col-4 mx-0 px-0 form-floating">
-                    <input type="text" class="form-control" id="marca" name="marca" value="{{$vehiculo->marca}}">
+                    <input type="text" class="form-control" id="marca" @if(Gate::denies('onlyAdmin')) disabled @endif name="marca" value="{{$vehiculo->marca}}">
                     <label for="marca" class="text-primary">Marca:</label>
                 </div>
                 <div class="col-4 mx-0 pl-1 px-0 form-floating">
-                    <select class="form-select mi-scrol" id="año" aria-label="año" name="año">
+                    <select class="form-select mi-scrol" id="año" aria-label="año" @if(Gate::denies('onlyAdmin')) disabled @endif name="año">
                         {{-- <option selected>Open this select menu</option> --}}
                         @foreach ($años as $año)
                             <option value="{{$año}}" @if($vehiculo->year==$año) selected="selected" @endif>{{$año}}</option>
@@ -40,11 +40,11 @@
             </div>
             <div class="row my-2">
                 <div class="col-4 mx-0 pr-1 px-0 form-floating">
-                    <input type="text" class="form-control" id="patente" name="patente" value="{{$vehiculo->patente}}">
+                    <input type="text" class="form-control" id="patente" @if(Gate::denies('onlyAdmin')) disabled @endif name="patente" value="{{$vehiculo->patente}}">
                     <label for="patente" class="text-primary">Patente:</label>
                 </div>
                 <div class="col-lg-4 col-8 mx-0 pl-1 px-0 form-floating">
-                    <select class="form-select mi-scrol" id="tipo" aria-label="tipo" name="tipo">
+                    <select class="form-select mi-scrol" id="tipo" aria-label="tipo" @if(Gate::denies('onlyAdmin')) disabled @endif name="tipo">
                         {{-- <option selected>Open this select menu</option> --}}
                         @foreach ($tipos as $tipo)
                             <option value="{{$tipo->nombre_tipo}}" @if($vehiculo->tipo->nombre_tipo==$tipo->nombre_tipo) selected="selected" @endif>{{$tipo->nombre_tipo}}</option>
@@ -79,7 +79,7 @@
                 <div class="col-12 px-0">
                     <div class="mb-3">
                         <label for="foto" class="form-label text-primary" >Imagen del Vehículo:</label>
-                        <input class="form-control form-control-sm text-primary" id="foto" type="file" name="foto">
+                        <input class="form-control form-control-sm text-primary" id="foto" type="file" @if(Gate::denies('onlyAdmin')) disabled @endif name="foto">
                         <small class="text-secondary pl-1">Si no defines una nueva foto, mantendras la antigua.</small>
                     </div>
                 </div>

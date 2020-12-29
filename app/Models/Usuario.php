@@ -23,4 +23,14 @@ class Usuario extends Authenticable
     public function arriendos(){
         return $this->hasMany("App\Models\Arriendo", 'vendedor','id');
     }
+
+    // public function arriendosinconfirmar(){
+    //     $confirmados=true;
+    //     foreach($this->arriendos as $arriendo){
+    //         if($arriendo->confirmada==0){
+    //             $confirmados=false;
+    //             return $arriendo->id;
+    //         }
+    //     }
+    // }
 }

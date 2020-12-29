@@ -30,25 +30,36 @@
                 @endif
                 >{{$vehiculos[$i]->estado}}</span></h6>
                 <div class="row m-0">
-                    <div class="col-4 mb-1 px-0">
-                        <a href="" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="top" title="Mas Detalles"><i class="fas fa-question-circle fa-lg "></i></a>
+                    <div class="col-6 mb-1 px-0">
+                        <a href="{{route("vehiculos.edit", $vehiculos[$i]->id)}}" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="far fa-edit fa-lg"></i></a>
                     </div>
-                    <div class="col-4 mb-1 px-0">
-                        <a href="{{route("vehiculos.edit", $vehiculos[$i]->id)}}" class="btn btn-outline-dark w-100" data-toggle="tooltip" data-placement="top" title="Mas Detalles"><i class="far fa-edit fa-lg"></i></a>
-                    </div>
-                    <div class="col-4 mb-1 px-0">
+                    <div class="col-6 mb-1 px-0">
+                        @if($vehiculos[$i]->estado=='Arrendado' || $vehiculos[$i]->estado=='De Baja' || $vehiculos[$i]->estado=='En Mantenimiento' || Gate::denies('onlyAdmin'))
+                        <span data-toggle="tooltip" data-placement="right" title="Eliminar">
+                            <button class="btn btn-outline-dark w-100 disabled"><i class="fas fa-times-circle fa-lg"></i></button>
+                         </span>
+                        @else
                         <span data-toggle="tooltip" data-placement="right" title="Eliminar">
                            <button class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#borrarVehiculo{{$vehiculos[$i]->id}}"><i class="fas fa-times-circle fa-lg"></i></button>
                         </span>
+                        @endif
                     </div>
+                    @if($vehiculos[$i]->estado=='Arrendado' || $vehiculos[$i]->estado=='De Baja' || $vehiculos[$i]->estado=='En Mantenimiento')
+                        <div class="col-12 px-0">
+                            <a class="btn btn-outline-primary w-100 disabled" ><i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($vehiculos[$i]->tipo->valor_diario,0,".",".")}} CLP</a>        
+                        </div>
+                    @else
                     <div class="col-12 px-0">
                         <form action="{{route('arriendos.addCarrito',$vehiculos[$i]->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <button type="submit" class="btn btn-outline-primary w-100"><i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($vehiculos[$i]->tipo->valor_diario,0,".",".")}} CLP</button>
                         </form>
                     </div>
+
+                    @endif
                 </div>  
                 <!-- Modal -->
+                @if($vehiculos[$i]->estado!='Arrendado' || $vehiculos[$i]->estado!='De Baja' || $vehiculos[$i]->estado!='En Mantenimiento' || Gate::allows('onlyAdmin'))
                 <div class="modal fade" id="borrarVehiculo{{$vehiculos[$i]->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -70,6 +81,7 @@
                         </div>
                     </div>
                 </div>              
+                @endif
             </div>
         </div>
     @endfor

@@ -12,7 +12,7 @@
 <div class="col-12 w-100 mx-0 px-0">
   <div class="row">
     <div class="col-8 offset-2 text-center pt-3">
-      <a href="{{route("arriendos.create")}}"class="btn btn-primary text-light shadow-lg"><i class="fas fa-plus"></i> Generar nueva orden</a>
+      <a href="{{route("arriendos.create")}}"class="btn btn-primary text-light shadow-lg @if(Gate::denies('noMakeArriendo')) disabled @endif"><i class="fas fa-plus"></i> Generar nueva orden</a>
     </div>
   </div>
   <div class="row">
@@ -25,14 +25,14 @@
   {{-- ojo con este, es intermedio --}}
   @if(Session::has('mensaje'))
   <div class="row">
-    <div class="col-6 offset-3">
-      <h6 class="text-primary"><i class="fas fa-info-circle mr-1"></i>{{Session::get('mensaje')}}</h6>
+    <div class="col-6 offset-3 text-center">
+      <h6 class="text-primary"><i class="fas fa-info-circle mr-1"></i>{{Session::get('mensaje')}} <i class="fas fa-arrow-up fa-lg ml-1"></i></h6>
     </div>
   </div>
   @endif
 
   <div class="row">
-    <div class="col-lg-8 offset-lg-2">
+    <div class="col-lg-10 offset-lg-1">
       <table class="table mt-2 table-bordered table-striped ">
         <thead class="bg-dark border-0 text-light">
           <tr>
@@ -41,6 +41,7 @@
 
             <th scope="col">Usuario Vendedor</th>
             <th scope="col">Estado</th>
+            <th scope="col">Total</th>
             <th scope="col">Gestionar</th>        
           </tr>
         </thead>
@@ -55,6 +56,9 @@
               {{$arriendo->usuariovendedor->nombre}} 
             </td>   
             <th scope="row">{{$arriendo->estado==1?'Vigente':'Finalizada'}}</th>
+            <td>
+              ${{number_format($arriendo->total,0,".",".")}} CLP
+            </td>   
             <td class="text-center">
               <span class="pr-1" data-toggle="tooltip" title="Detalles Orden." data-placement="bottom">                               
                 <a  href="{{route('arriendos.show',$arriendo->id)}}" class="btn btn-success"><i class="fas fa-info-circle fa-lg"></i></a>
