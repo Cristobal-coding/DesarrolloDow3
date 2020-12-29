@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use App\Http\Requests\{ClientesRequest,ClientesEditRequest};
+use Gate;
 
 class ClientesController extends Controller
 {
 
     public function __construct() {
         $this->middleware('auth');
+        if(Gate::denies('bothRols')){
+            return redirect()->route('home.index');
+        }
     }
     /**
      * Display a listing of the resource.
