@@ -5,7 +5,7 @@
 @section('main_content')
 <div class="col-12 w-100 mx-0 px-0">
 <div class="d-md-flex flex-md-equal w-100">
-    <div class="bg-danger mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"style="width: 80%; height: 1500px;)">
+    <div class="bg-danger mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"style="width: 80%; height: 1000px;)">
     <div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
         <a type="button" href="{{route("clientes.create")}}"class="btn btn-warning">Registrar un cliente.</a>
     </div>
@@ -19,7 +19,6 @@
                 <tr>
                 <th scope="col">Rut</th>
                 <th scope="col">Nombre Cliente</th>
-                <th scope="col">Entrega Pendiente</th>
                 <th scope="col">Fono</th>      
                 <th scope="col">Gestionar</th>     
                 </tr>
@@ -29,7 +28,6 @@
                     <tr>
                         <td>{{$cliente->rut_cliente}}</td>
                         <td>{{$cliente->nombre_cliente}}</td>
-                        <th>{{$cliente->entrega_pendiente}}</th>
                         <td>{{$cliente->fono_cliente}}</td>
                         <td>
                             <div class="btn-group w-100 justify-content-center align-items-center" role="group" aria-label="Button group with nested dropdown">

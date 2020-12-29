@@ -87,11 +87,12 @@ class DatabaseSeeder extends Seeder
             ]);           
         }
         $usuarios=[
-            ['id'=>2,'nombre'=>'Renato Plaza','password'=>'$2y$10$Lj3spqVFDDvtpk..JBsQT.aqB5ZfBcDWf/G3S48eW484kkmIilU9S',
+            ///Las tres contraseñas son '12345'
+            ['id'=>2,'nombre'=>'Renato Plaza','password'=>'$2y$10$Jrx8m.mXR5Tk5GxTMmq6peuKsWB.ReqcHM/yuPqExMxd2hFiA1wAi',
                 'rol_id'=>1,'email'=>'renato@gmail.com',],
-            ['id'=>1,'nombre'=>'Carlos Alten','password'=>'$2y$10$08ttoKi2SpZkRmDFYC2kEOzVtVaJBX0E4eg3Y.295csobyUdkuRIy',
+            ['id'=>1,'nombre'=>'Carlos Alten','password'=>'$2y$10$sUkguMKL/reYpC85.2FmmeW26b6ujY4umywnKGnPCkGTXpnSUPOum',
                 'rol_id'=>8,'email'=>'carlosalt@gmail.com',],
-            ['id'=>3,'nombre'=>'Cristobal Herrera','password'=>'$2y$10$/Ob7ZYsEv9URBlcYUGO0VOcsTsg.qZ2ZC9ztxSYv4/a5iMWLdnhCm',
+            ['id'=>3,'nombre'=>'Cristobal Herrera','password'=>'$2y$10$UhPOv0HEoAzCCS5bA7H1yO6ZSiyPeZOXf6s.8QnJ2CT5bvh8kDRRO',
                 'rol_id'=>1,'email'=>'cristobalh@gmail.com',],
         ];
         foreach($usuarios as $usuario){

@@ -126,8 +126,7 @@
     <div class="card mt-3">
         <div class="card-body p-0 pt-2">
             {{-- Errores --}}
-            @if ($errors->any())
-                        
+            @if ($errors->any())                    
                 <div class="alert alert-warning mx-2">
                     <ul>
                         @foreach ($errors->all() as $error)

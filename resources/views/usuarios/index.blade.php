@@ -19,13 +19,13 @@
 </div> --}}
 <div class="col-12 w-100 mx-0 px-0">
   <div class="d-md-flex flex-md-equal w-100">
-    <div class="bg-dark mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"style="width: 80%; height: 1500px;)">
+    <div class="bg-dark mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"style="width: 80%; height: 1000px;)">
       <div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
         <a type="button" href="{{route("usuarios.create")}}"class="btn btn-warning">Agregar un Usuario</a>
       </div>
       <div class="my-3 py-3"> 
-        <h2 class="display-5">Ejectivo</h2>
-        <p class="lead">Lista de Usuarios Ejectivos.</p>
+        <h2 class="display-5">Ejecutivo</h2>
+        <p class="lead">Lista de Usuarios Ejecutivos.</p>
       </div>
       <div class="bg-light mt-0 shadow-sm mx-auto" style="width: 80%; height: 500px; border-radius: 21px 21px 0 0;);">
         <table class="table mt-2 table-bordered">
@@ -83,7 +83,7 @@
         </table>
       </div>
     </div>
-    <div class="bg-secondary mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"style="width: 80%; height: 1500px;)">
+    <div class="bg-secondary mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"style="width: 80%; height: 1000px;)">
       <div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
         <a type="button" href="{{route("usuarios.create")}}"class="btn btn-warning">Agregar un Usuario</a>
       </div>

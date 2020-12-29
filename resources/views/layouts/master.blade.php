@@ -64,7 +64,7 @@
                         <a class="dropdown-item" href="" tabindex="-1" aria-disabled="true">Generar reporte</a>
                       </li>
                       <li >
-                        <a class="dropdown-item" href="{{route("editpass.editpass")}}" tabindex="-1" aria-disabled="true">Cambiar contraseña.</a>
+                        <a class="dropdown-item" href="{{route("editpass.editpass")}}" tabindex="-1" aria-disabled="true">Cambiar mi contraseña.</a>
                       </li>
                     </ul>
                   </li>        

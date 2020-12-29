@@ -1,9 +1,9 @@
 @extends('layouts/master')
+@section('css-personalizado')
+    <link rel="stylesheet" href="{{asset("css/myThemes.css")}}">
+@endsection
 
 @section('main_content')
-<div class="col-4 mt-4">
-    <h5>Edit Contraseña</h5>
-</div>
 <div class="col-8 offset-2  mt-4 px-1">
     <div class="row m-0 no-gutters  shadow-lg  bg-dark border-0 text-light" style="border-radius: 25px;">
       <div class="col-lg-8 offset-2 p-4" style="padding-bottom: 0 !important;">
@@ -27,7 +27,7 @@
     </div>
         @endif
     {{-- Errores --}}
-    <form action="{{route('usuarios.updatepass',Auth::user  ()->id)}}"  method="POST" enctype="multipart/form-data">
+    <form action="{{route('usuarios.updatepass',Auth::user()->id)}}"  method="POST" enctype="multipart/form-data">
         @csrf
         @method('put')
         <div class="card bg-dark px-0 " >
@@ -51,11 +51,11 @@
             
               </div>                                                      
               <div class="row w-100 m-0 d-flex" >
-                  <div class="col-lg-6 col-12 order-lg-2  order-1 px-0 pb-3 pt-2">
+                  <div class="col-lg-6 col-12 order-lg-2  order-1 px-3 pb-3 pt-2">
                     <a href="{{route('usuarios.index')}}" class="btn btn-secondary w-100">Cancelar</a>
                     
                 </div>
-                  <div class=" col-lg-6 col-12 order-lg-2  order-1 px-0 pl-lg-1 pt-2 ">
+                  <div class=" col-lg-6 col-12 order-lg-2  order-1 px-3 pl-lg-1 pt-2 ">
                       <button type="submit" class=" btn btn-warning w-100">Editar</button>
                   </div>                                
               </div>
