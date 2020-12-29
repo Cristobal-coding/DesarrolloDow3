@@ -105,7 +105,8 @@ class ArriendosController extends Controller
             $estado='estado'.$num;
             $fotoArriendo=$request->$arriendof;
             $fotoEntrega=$request->$entrega;
-            //Devuelvo a Disponible
+
+            //Devuelvo a Disponible el estado de un Vehiculo
             if($request->$estado==1 || $request->estadoArriendo==0){
                 $vehiculo->estado='Disponible';
                 $vehiculo->save();
@@ -119,19 +120,23 @@ class ArriendosController extends Controller
                 Storage::delete( $vehiculo->pivot->foto_entrega);
             }
             $arriendo->vehiculos()->updateExistingPivot($vehiculo->id,['entregado'=>$request->$estado, 'foto_arriendo'=>$fotoArriendo!=null?$fotoArriendo->store("public/FotosArriendos"):null, 'foto_entrega'=>$fotoEntrega!=null?$fotoEntrega->store("public/FotosEntregas"):null]);
-            // dd($arriendo->vehiculos());
-        }
 
-        $arriendo->rut_cliente = $request->rut_cliente;
-        $arriendo->arriendo_fecha_inicio= $request->fechaInicio;
-        $arriendo->arriendo_fecha_final= $request->fechaFinal;
-        $arriendo->vendedor=$request->vendedor;
-        if($request->estadoArriendo!=1){
-            $arriendo->estado=false;
         }
-        $arriendo->fecha_entrega_autos=$request->fechaEntrega;
-        $arriendo->save();
-        return redirect()->route("arriendos.index"); 
+        if(Auth::user()->rol->nombre=='Ejecutivo'){
+            $arriendo->fecha_entrega_autos=$request->fechaEntrega;
+            $arriendo->save();
+        }else{
+            $arriendo->rut_cliente = $request->rut_cliente;
+            $arriendo->arriendo_fecha_inicio= $request->fechaInicio;
+            $arriendo->arriendo_fecha_final= $request->fechaFinal;
+            $arriendo->vendedor=$request->vendedor;
+            if($request->estadoArriendo!=1){
+                $arriendo->estado=false;
+            }
+            $arriendo->fecha_entrega_autos=$request->fechaEntrega;
+            $arriendo->save();
+            return redirect()->route("arriendos.index"); 
+        }
     }
 
     /**

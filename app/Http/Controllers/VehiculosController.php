@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\{Tipo, Vehiculo};
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\{VehiculosRequest};
+use Illuminate\Support\Facades\Auth;
 use DateTime;
+use Gate;
 class VehiculosController extends Controller
 {
     public function __construct() {
@@ -68,17 +70,24 @@ class VehiculosController extends Controller
  
     public function update(Request $request, Vehiculo $vehiculo)
     {
-       $vehiculo->nombre_vehiculo=$request->nombre;
-       $vehiculo->marca=$request->marca;
-       $vehiculo->year= $request->año;
-       $vehiculo->patente= $request->patente;
-       $vehiculo->nombre_tipo=$request->tipo;
-       $vehiculo->estado=$request->estado;
-       if($request->foto!=null){
-           Storage::delete($vehiculo->foto);
-           $vehiculo->foto= $request->foto->store("public/Vehiculos");
-       }
-       $vehiculo->save();
+        if(Auth::user()->rol->nombre=='Ejecutivo'){
+            $vehiculo->estado=$request->estado;
+            $vehiculo->save();
+
+        }else{
+            $vehiculo->nombre_vehiculo=$request->nombre;
+            $vehiculo->marca=$request->marca;
+            $vehiculo->year= $request->año;
+            $vehiculo->patente= $request->patente;
+            $vehiculo->nombre_tipo=$request->tipo;
+            $vehiculo->estado=$request->estado;
+            if($request->foto!=null){
+                Storage::delete($vehiculo->foto);
+                $vehiculo->foto= $request->foto->store("public/Vehiculos");
+            }
+            $vehiculo->save();
+
+        }
 
        return redirect()->route("vehiculos.index");
     }
@@ -86,6 +95,9 @@ class VehiculosController extends Controller
   
     public function destroy(Vehiculo $vehiculo)
     {
+        if(Gate::denies('onlyAdmin')){
+            return redirect()->route('vehiculos.index');
+        }
        Storage::delete($vehiculo->foto);
        $vehiculo->delete();
 
