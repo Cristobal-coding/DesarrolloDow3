@@ -143,13 +143,13 @@ class ArriendosController extends Controller
             $arriendo->save();
         }else{
             $arriendo->rut_cliente = $request->rut_cliente;
-            $arriendo->fecha_hora_entrega_alCliente= $request->fechaInicio;
+            $arriendo->fecha_hora_entrega_alCliente= $request->fechaInicio.' '.$request->hora;
             $arriendo->fecha_devolucion= $request->fechaFinal;
-            $arriendo->vendedor=$request->vendedor;
+            // $arriendo->vendedor=$request->vendedor;
             if($request->estadoArriendo!=1){
                 $arriendo->estado=false;
             }
-            $arriendo->fecha_entrega_autos=$request->fechaEntrega;
+            $arriendo->fecha_recepcion_vehiculos=$request->fechaEntrega;
             $arriendo->save();
             return redirect()->route("arriendos.index"); 
         }

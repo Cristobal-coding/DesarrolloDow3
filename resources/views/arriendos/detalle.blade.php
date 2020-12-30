@@ -123,15 +123,15 @@
     </div>
     <div class="row pt-3 px-lg-4 border-bottom shadow-sm">
         <div class="col-6 border-right">
-            <h6 class="text-primary">Fecha Inicio: <br class="d-lg-none"> <span class="text-dark">{{date('d-m-Y',strtotime($arriendo->arriendo_fecha_inicio))}}</span></h6>
+            <h6 class="text-primary">Fecha Inicio: <br class="d-lg-none"> <span class="text-dark">{{date('d-m-Y',strtotime($arriendo->fecha_hora_entrega_alCliente))." ".date('H:i:s A',strtotime($arriendo->fecha_recepcion_vehiculos))}}</span></h6>
         </div>
         <div class="col-6">
-            <h6 class="text-primary">Fecha Devolucion: <br class="d-lg-none"> <span class="text-dark">{{date('d-m-Y',strtotime($arriendo->arriendo_fecha_final))}}</span></h6>
+            <h6 class="text-primary">Fecha fin: <br class="d-lg-none"> <span class="text-dark">{{date('d-m-Y',strtotime($arriendo->fecha_devolucion))}}</span></h6>
         </div>
     </div>
     <div class="row pt-3 px-lg-4 border-bottom shadow-sm">
         <div class="col-6 border-right">
-            <h6 class="text-primary">Fecha Entrega: <br class="d-lg-none"> <span class="text-dark">{{$arriendo->fecha_entrega_autos!=null?date('d-m-Y',strtotime($arriendo->fecha_entrega_autos)):'No entregado'}}</span></h6>
+            <h6 class="text-primary">Fecha Devolución: <br class="d-lg-none"> <span class="text-dark">{{$arriendo->fecha_recepcion_vehiculos!=null?date('d-m-Y',strtotime($arriendo->fecha_recepcion_vehiculos))." ".date('H:i:s A',strtotime($arriendo->fecha_recepcion_vehiculos)):'No devueltos'}}</span></h6>
         </div>
         <div class="col-6">
             <h6 class="text-primary">Valor: <br class="d-lg-none"> <span class="text-dark">${{number_format($arriendo->total,0,".",".")}} CLP</span></h6>
@@ -139,9 +139,9 @@
     </div>
     <div class="row pt-3 px-lg-4 border-bottom shadow-sm">
         @php
-            $diff = (strtotime($arriendo->arriendo_fecha_inicio)-strtotime($arriendo->arriendo_fecha_final))/86400;
+            $diff = (strtotime($arriendo->fecha_hora_entrega_alCliente)-strtotime($arriendo->fecha_devolucion))/86400;
             if($arriendo->fecha_entrega_autos!=null){
-                $atraso= (strtotime($arriendo->arriendo_fecha_final)-strtotime($arriendo->fecha_entrega_autos))/86400;
+                $atraso= (strtotime($arriendo->fecha_devolucion)-strtotime($arriendo->fecha_entrega_autos))/86400;
                 $atraso = floor($atraso);
                 if($atraso>=0){
                     $atraso=0;

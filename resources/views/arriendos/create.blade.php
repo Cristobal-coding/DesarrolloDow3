@@ -44,10 +44,16 @@
                   <div class="form-group col-xl-6 col-md-12 text-light ">
                     <label for="fecha_hora_entrega_alCliente" class="text-light" style="color: rgb(15, 1, 1);">Fecha Inicio:</label>
                     <input type="date" name="fecha_hora_entrega_alCliente" class="form-control @error('fecha_hora_entrega_alCliente') is-invalid @enderror " id="fecha_hora_entrega_alCliente" placeholder="" value={{old('fecha_hora_entrega_alCliente')}} >
-                 </div>
+                    <div class="text-center">
+                      <small class="text-secondary">*Fecha en que el cliente debe recoger los vehículos*</small>
+                    </div>
+                  </div>
                   <div class="form-group col-xl-6 col-md-12 text-light ">
-                    <label for="fecha_devolucion" class="text-light" style="color: rgb(15, 1, 1);">Fecha devolucion :</label>
+                    <label for="fecha_devolucion" class="text-light" style="color: rgb(15, 1, 1);">Fecha fin arriendo:</label>
                     <input type="date" name="fecha_devolucion" class="form-control @error('fecha_devolucion') is-invalid @enderror" id="fecha_devolucion" placeholder="" value={{old('fecha_devolucion')}} >
+                    <div class="text-center">
+                      <small class="text-secondary">*Fecha en que el cliente debe devolver los vehículos*</small>
+                    </div>
                   </div>
               </div>
               <div class="row">

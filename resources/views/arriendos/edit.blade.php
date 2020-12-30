@@ -126,27 +126,23 @@
                             </select>
                             <label for="estadoArriendo" class="text-primary">Estado:</label>
                         </div>
-                        <div class="col-4 mx-0 px-1 form-floating">
-                            <select class="form-select" id="vendedor" aria-label="vendedor" name="vendedor">
-                                @foreach ($usuarios as $usuario )
-                                <option value="{{$usuario->id}}" @if($arriendo->usuariovendedor->id==$usuario->id) selected="selected" @endif>{{$usuario->nombre}}</option> 
-                                @endforeach
-                            </select>
-                            <label for="vendedor" class="text-primary">Usuario vendedor:</label>
+                        <div class="col-4 mx-0 px-1 px-0 form-floating">
+                            <input type="time" class="form-control" id="hora" name="hora" value="{{date('H:i', strtotime($arriendo->fecha_hora_entrega_alCliente))}}">
+                            <label for="hora" class="text-primary">Hora Entrega al Cliente:</label>
                         </div>
                     </div>
-
+                    {{-- 2014-10-08T23:59 --}}
                     <div class="row px-3 pt-2">
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
-                            <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" value="{{$arriendo->arriendo_fecha_inicio}}">
+                            <input type="datetime-local" class="form-control" id="fechaInicio" name="fechaInicio" value="{{date('Y-m-d',strtotime($arriendo->fecha_hora_entrega_alCliente)).'T'.date('H:i',strtotime($arriendo->fecha_hora_entrega_alCliente))}}"> 
                             <label for="fechaInicio" class="text-primary">Fecha inicio:</label>
                         </div>
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
-                            <input type="date" class="form-control" id="fechaFinal" name="fechaFinal" value="{{$arriendo->arriendo_fecha_final}}">
-                            <label for="fechaFinal" class="text-primary">Fecha Devolución:</label>
+                            <input type="date" class="form-control" id="fechaFinal" name="fechaFinal" value="{{date('Y-m-d', strtotime($arriendo->fecha_devolucion))}}">
+                            <label for="fechaFinal" class="text-primary">Fecha fin Arriendo:</label>
                         </div>
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
-                            <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" >
+                            <input type="datetime-local" class="form-control" id="fechaEntrega" name="fechaEntrega" value="{{date('Y-m-d', strtotime($arriendo->fecha_recepcion_vehiculos)).'T'.date('H:i', strtotime($arriendo->fecha_recepcion_vehiculos))}}" >
                             <label for="fechaEntrega" class="text-primary">Fecha de Entrega</label>
                         </div>
                         

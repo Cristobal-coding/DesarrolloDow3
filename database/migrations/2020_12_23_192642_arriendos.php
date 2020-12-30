@@ -16,13 +16,13 @@ class Arriendos extends Migration
         Schema::create('arriendos', function (Blueprint $table) {
             $table->id();
             $table->string('rut_cliente');
-            $table->date('fecha_hora_entrega_alCliente')->nullable();
-            $table->date('fecha_devolucion');
+            $table->datetime('fecha_hora_entrega_alCliente')->nullable();
+            $table->datetime('fecha_devolucion');
             $table->boolean('confirmada');
             $table->integer('total')->nullable();
 
  
-            $table->date('fecha_recepcion_vehiculos')->nullable();
+            $table->datetime('fecha_recepcion_vehiculos')->nullable();
             $table->boolean('estado');//0 vigente 1 Finalizado
 
             $table->timestamps();
