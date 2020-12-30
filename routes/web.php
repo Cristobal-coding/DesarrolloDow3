@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{HomeController, VehiculosController, ArriendosController,GenerarController, UsuariosController,ClientesController,TiposController};
+use App\Http\Controllers\{EstadisticasController,HomeController, VehiculosController, ArriendosController,GenerarController, UsuariosController,ClientesController,TiposController};
 
 /*
 |--------------------------------------------------------------------------
@@ -66,5 +66,8 @@ Route::post('/tipos/create', [TiposController::class, 'store'])->name('tipos.sto
 Route::delete('/tipos/{tipo}', [TiposController::class, 'destroy'])->name('tipos.destroy');
 Route::get('/tipos/{tipo}/edit', [TiposController::class, 'edit'])->name('tipos.edit');
 Route::put('/tipos/{tipo}', [TiposController::class, "update"])->name("tipos.update");
+
+
+Route::get('/reporteDownload', [EstadisticasController::class, 'downloadReporte'])->name('estadisticas.download');
 
 
