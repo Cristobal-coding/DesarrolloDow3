@@ -15,17 +15,28 @@
 </div>
 <div class="col-lg-7 col-12 mt-5">
     <div class="card">
+        {{-- Errores --}}
+        @if ($errors->any())                    
+        <div class="alert alert-warning mx-2 mt-2">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+{{-- Errores --}}
         <div class="card-body">
             <form action="{{route("vehiculos.update", $vehiculo->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="row my-2">
                 <div class="col-4 mx-0 pr-1 px-0 form-floating">
-                    <input type="text" class="form-control" id="nombre" @if(Gate::denies('onlyAdmin')) disabled @endif name="nombre" value="{{$vehiculo->nombre_vehiculo}}">
+                    <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" @if(Gate::denies('onlyAdmin')) disabled @endif name="nombre" value="{{$vehiculo->nombre_vehiculo}}">
                     <label for="nombre" class="text-primary">Nombre:</label>
                 </div>
                 <div class="col-4 mx-0 px-0 form-floating">
-                    <input type="text" class="form-control" id="marca" @if(Gate::denies('onlyAdmin')) disabled @endif name="marca" value="{{$vehiculo->marca}}">
+                    <input type="text" class="form-control @error('marca') is-invalid @enderror" id="marca" @if(Gate::denies('onlyAdmin')) disabled @endif name="marca" value="{{$vehiculo->marca}}">
                     <label for="marca" class="text-primary">Marca:</label>
                 </div>
                 <div class="col-4 mx-0 pl-1 px-0 form-floating">
@@ -40,7 +51,7 @@
             </div>
             <div class="row my-2">
                 <div class="col-4 mx-0 pr-1 px-0 form-floating">
-                    <input type="text" class="form-control" id="patente" @if(Gate::denies('onlyAdmin')) disabled @endif name="patente" value="{{$vehiculo->patente}}">
+                    <input type="text" class="form-control @error('patente') is-invalid @enderror" id="patente" @if(Gate::denies('onlyAdmin')) disabled @endif name="patente" value="{{$vehiculo->patente}}">
                     <label for="patente" class="text-primary">Patente:</label>
                 </div>
                 <div class="col-lg-4 col-8 mx-0 pl-1 px-0 form-floating">

@@ -43,11 +43,11 @@
                   {{-- VALIDAR LAS FECHAS --}}
                   <div class="form-group col-xl-6 col-md-12 text-light ">
                     <label for="arriendo_fecha_inicio" class="text-light" style="color: rgb(15, 1, 1);">Fecha Inicio:</label>
-                    <input type="date" name="arriendo_fecha_inicio" class="form-control " id="arriendo_fecha_inicio" placeholder="" value="" >
+                    <input type="date" name="arriendo_fecha_inicio" class="form-control @error('arriendo_fecha_inicio') is-invalid @enderror " id="arriendo_fecha_inicio" placeholder="" value={{old('arriendo_fecha_inicio')}} >
                  </div>
                   <div class="form-group col-xl-6 col-md-12 text-light ">
                     <label for="arriendo_fecha_final" class="text-light" style="color: rgb(15, 1, 1);">Fecha devolucion :</label>
-                    <input type="date" name="arriendo_fecha_final" class="form-control " id="arriendo_fecha_final" placeholder="" value="" >
+                    <input type="date" name="arriendo_fecha_final" class="form-control @error('arriendo_fecha_final') is-invalid @enderror" id="arriendo_fecha_final" placeholder="" value={{old('arriendo_fecha_final')}} >
                   </div>
               </div>
               <div class="row">

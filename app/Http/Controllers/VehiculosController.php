@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\{Tipo, Vehiculo};
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\{VehiculosRequest};
+use App\Http\Requests\{VehiculosRequest,VehiculosEditRequest};
 use Illuminate\Support\Facades\Auth;
 use DateTime;
 use Gate;
@@ -68,7 +68,7 @@ class VehiculosController extends Controller
     }
 
  
-    public function update(Request $request, Vehiculo $vehiculo)
+    public function update(VehiculosEditRequest $request, Vehiculo $vehiculo)
     {
         if(Auth::user()->rol->nombre=='Ejecutivo'){
             $vehiculo->estado=$request->estado;
