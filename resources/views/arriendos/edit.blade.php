@@ -41,11 +41,17 @@
             {{-- precio --}}
             <div class="col-3 px-1">
                 <div class="row">
-                    <div class="col-12 text-right px-0">
+                    <div class="col-10 text-right px-0">
                         <h5 class="px-2 mt-3">${{number_format($vehiculo->tipo->valor_diario,0,".",".")}} CLP</h5>
                     </div>
-                </div>
-            
+                    <div class="col-2 px-0 d-flex justify-content-center">
+                        <form action="{{route("arriendos.removecart",$vehiculo->id)}}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn mt-2"><i class="fas fa-times"></i></button>
+                        </form>
+                    </div>  
+                </div>         
             </div>
             {{-- /precio --}}
         </div>
@@ -89,25 +95,24 @@
                     </div>
                     {{-- request de cada vehiculo --}}
 
-                    {{-- Errores --}}
-                    @if ($errors->any())                       
-                    <div class="alert alert-warning mx-2 mt-3">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
-                    {{-- Errores --}}
-                   
                     {{-- request de la orden --}}
+                        {{-- Errores --}}
+                        @if ($errors->any())                       
+                        <div class="alert alert-warning mx-2 mt-3">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                            @endif
+                        {{-- Errores --}}
                     <div class="text-center pt-4">
                         <h6 class="text-primary">Detalles del arriendo:</h6>
                     </div>
                     <div class="row px-3 pt-2">
                         <div class="col-4 mx-0 px-1 form-floating">
-                            <select class="form-select" id="rut_cliente" aria-label="rut_cliente" @if(Gate::denies('onlyAdmin')) disabled @endif name="rut_cliente">
+                            <select class="form-select" id="rut_cliente" aria-label="rut_cliente" name="rut_cliente">
                                 @foreach ($clientes as $cliente )
                                 <option value="{{$cliente->rut_cliente}}" @if($arriendo->cliente->rut_cliente==$cliente->rut_cliente) selected="selected" @endif>{{$cliente->rut_cliente}}</option> 
                                 @endforeach
@@ -115,14 +120,14 @@
                             <label for="rut_cliente" class="text-primary">Rut Cliente:</label>
                         </div>
                         <div class="col-4 mx-0 px-1 form-floating">
-                            <select class="form-select" id="estadoArriendo" aria-label="estadoArriendo" @if(Gate::denies('onlyAdmin')) disabled @endif name="estadoArriendo">
+                            <select class="form-select" id="estadoArriendo" aria-label="estadoArriendo" name="estadoArriendo">
                                 <option value="0" @if($arriendo->estado==0) selected="selected" @endif>Finalizada</option>
                                 <option value="1" @if($arriendo->estado==1) selected="selected" @endif>Vigente</option>
                             </select>
                             <label for="estadoArriendo" class="text-primary">Estado:</label>
                         </div>
                         <div class="col-4 mx-0 px-1 form-floating">
-                            <select class="form-select" id="vendedor" aria-label="vendedor" @if(Gate::denies('onlyAdmin')) disabled @endif name="vendedor">
+                            <select class="form-select" id="vendedor" aria-label="vendedor" name="vendedor">
                                 @foreach ($usuarios as $usuario )
                                 <option value="{{$usuario->id}}" @if($arriendo->usuariovendedor->id==$usuario->id) selected="selected" @endif>{{$usuario->nombre}}</option> 
                                 @endforeach
@@ -133,11 +138,11 @@
 
                     <div class="row px-3 pt-2">
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
-                            <input type="date" class="form-control" id="fechaInicio" @if(Gate::denies('onlyAdmin')) disabled @endif name="fechaInicio" value="{{$arriendo->arriendo_fecha_inicio}}">
+                            <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" value="{{$arriendo->arriendo_fecha_inicio}}">
                             <label for="fechaInicio" class="text-primary">Fecha inicio:</label>
                         </div>
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
-                            <input type="date" class="form-control" id="fechaFinal" @if(Gate::denies('onlyAdmin')) disabled @endif name="fechaFinal" value="{{$arriendo->arriendo_fecha_final}}">
+                            <input type="date" class="form-control" id="fechaFinal" name="fechaFinal" value="{{$arriendo->arriendo_fecha_final}}">
                             <label for="fechaFinal" class="text-primary">Fecha Devolución:</label>
                         </div>
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
