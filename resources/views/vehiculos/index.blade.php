@@ -53,8 +53,8 @@
                             <form action="{{route('arriendos.addCarrito',$vehiculos[$i]->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @php
+                                    $tramite=false;
                                     foreach(Auth::user()->arriendos as $arriendo){
-                                        $tramite=false;
                                         if($arriendo->confirmada==0){
                                             foreach ($arriendo->vehiculos as $vehiculoEnArriendo) {
                                                 if($vehiculoEnArriendo->id==$vehiculos[$i]->id){
@@ -122,7 +122,7 @@
     </div>   
 </div>
 
-<div class="col-4 @if(Gate::denies('onlyeAdmin')) d-none @endif">
+<div class="col-4 @if(Gate::denies('onlyAdmin')) d-none @endif">
     <div class="card mt-3">
         <div class="card-body p-0 pt-2">
             {{-- Errores --}}
@@ -163,7 +163,7 @@
                         
                         <div class="form-group">
                             <label for="estado">Estado:</label>
-                            <select class="form-control mi-scrol @error('director_id') is-invalid @enderror" @if(Gate::denies('onlyAdmin')) disabled @endif name="nombre_tipo" id="nombre_tipo" >
+                            <select class="form-control mi-scrol @error('director_id') is-invalid @enderror" @if(Gate::denies('onlyAdmin')) disabled @endif name="estado" id="estado" >
                                 @foreach ($estados as $estado)
                                     <option value="{{$estado}}">{{$estado}}</option>                        
                                 @endforeach                      
