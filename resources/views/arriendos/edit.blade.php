@@ -7,6 +7,17 @@
     <div class="col-12 my-4 d-flex align-items-center justify-content-center">
         <h5 class="text-primary">Editando el arriendo con <span class="text-secondary">ID: {{$arriendo->id}}</span></h5>
     </div>
+     {{-- Errores --}}
+     @if ($errors->any())                       
+     <div class=" col-6 offset-3 alert alert-warning  mt-3">
+         <ul>
+             @foreach ($errors->all() as $error)
+                 <li>{{ $error }}</li>
+             @endforeach
+         </ul>
+     </div>
+         @endif
+     {{-- Errores --}}
     <div class="col-lg-5 shadow-sm overflow-auto mi-scrol" style="max-height: 400px !important; overflow-x: hidden !important;">
         @foreach ($arriendo->vehiculos as $vehiculo)
         <div class="row px-1 mx-1 w-100 border-bottom  w-100" >
@@ -96,17 +107,7 @@
                     {{-- request de cada vehiculo --}}
 
                     {{-- request de la orden --}}
-                        {{-- Errores --}}
-                        @if ($errors->any())                       
-                        <div class="alert alert-warning mx-2 mt-3">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                            @endif
-                        {{-- Errores --}}
+                       
                     <div class="text-center pt-4">
                         <h6 class="text-primary">Detalles del arriendo:</h6>
                     </div>

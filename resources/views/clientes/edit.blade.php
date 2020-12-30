@@ -3,9 +3,7 @@
     <link rel="stylesheet" href="{{asset("css/myThemes.css")}}">
 @endsection
 @section('main_content')
-<div class="col-4 mt-4">
-    <h5>Edit Clientes</h5>
-</div>
+
 <div class="col-8 offset-2  mt-4 px-1">
     <div class="row m-0 no-gutters  shadow-lg  bg-dark border-0 text-light">
       <div class="col-lg-8 offset-2 p-4" style="padding-bottom: 0 !important;">
