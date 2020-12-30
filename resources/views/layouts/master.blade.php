@@ -36,7 +36,7 @@
                       <li>
                         <a class="dropdown-item @if(Gate::denies('onlyAdmin')) disabled @endif" href="{{route("tipos.index")}}">Tipos de vehiculos</a>
                       </li>
-                      <li><a class="dropdown-item" href="{{route("vehiculos.index")}}">Gestionar Vehículos</a></li>
+                      <li><a class="dropdown-item" href="{{route("vehiculos.index")}}"> @if(Gate::denies('onlyAdmin')) Ver Vehículos @else Gestionar Vehículos @endif </a></li>
                     </ul>
                   
                   </li>    

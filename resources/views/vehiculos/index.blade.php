@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="{{asset("css/myThemes.css")}}">
 @endsection
 @section('main_content')
-<div class="col-8 ">
+<div class="col-lg-8 col-10  @if(Gate::denies('onlyAdmin')) offset-lg-2 offset-1 @endif">
     <div class="row m-0 pt-3 d-flex align-items-center justify-content-center">
         @for ($i=0;$i<$iteraciones;$i++)
             <div class="card m-2 shadow-lg px-0 border-0 rounded-lg" style="width:18rem" >
@@ -52,7 +52,19 @@
                         <div class="col-12 px-0">
                             <form action="{{route('arriendos.addCarrito',$vehiculos[$i]->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <button type="submit" class="btn btn-outline-primary w-100 @if(Gate::denies('onlyAdmin')) disabled @endif"><i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($vehiculos[$i]->tipo->valor_diario,0,".",".")}} CLP</button>
+                                @php
+                                    foreach(Auth::user()->arriendos as $arriendo){
+                                        $tramite=false;
+                                        if($arriendo->confirmada==0){
+                                            foreach ($arriendo->vehiculos as $vehiculoEnArriendo) {
+                                                if($vehiculoEnArriendo->id==$vehiculos[$i]->id){
+                                                    $tramite=true;
+                                                }
+                                            }
+                                        }
+                                    }    
+                                @endphp
+                                <button type="submit" class="btn btn-outline-primary w-100 @if(Gate::denies('bothRols') || $tramite==true) disabled @endif">@if($tramite==true)<i class="fas fa-check-circle fa-lg"></i> Añadido @else <i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($vehiculos[$i]->tipo->valor_diario,0,".",".")}} CLP @endif </button>
                             </form>
                         </div>
 
@@ -110,7 +122,7 @@
     </div>   
 </div>
 
-<div class="col-4">
+<div class="col-4 @if(Gate::denies('onlyeAdmin')) d-none @endif">
     <div class="card mt-3">
         <div class="card-body p-0 pt-2">
             {{-- Errores --}}

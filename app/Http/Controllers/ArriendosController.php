@@ -212,22 +212,28 @@ class ArriendosController extends Controller
         if(Gate::denies('bothRols')){
             return redirect()->route('vehiculos.index');
         }
-        //  existe ya el vehiculo que clickea?
-        $arriendo=$this->getArriendoActual();
-        if($arriendo!=null){
-            foreach( $arriendo->vehiculos as $producto){
-                if($producto->id==$vehiculo->id){
-                    $arriendo->vehiculos()->detach($producto->id);
+        if($vehiculo->estado=='Disponible'){
+            //  existe ya el vehiculo que clickea?
+            $arriendo=$this->getArriendoActual();
+            if($arriendo!=null){
+                foreach( $arriendo->vehiculos as $producto){
+                    if($producto->id==$vehiculo->id){
+                        $arriendo->vehiculos()->detach($producto->id);
+                    }
                 }
+                $arriendodisponible="existe";
+                $arriendo->vehiculos()->attach($vehiculo->id,  ['entregado'=>false,'foto_arriendo'=>null, 'foto_entrega'=>null]);
+                return redirect()->route('arriendos.carrito');
+    
+            }else{
+                $sessionManager->flash('mensaje', 'Para añadir al carrito, crea un arriendo para un cliente.');
+                return $this->index();
             }
-            $arriendodisponible="existe";
-            $arriendo->vehiculos()->attach($vehiculo->id,  ['entregado'=>false,'foto_arriendo'=>null, 'foto_entrega'=>null]);
-            return redirect()->route('arriendos.carrito');
 
         }else{
-            $sessionManager->flash('mensaje', 'Para añadir al carrito, crea un arriendo para un cliente.');
-            return $this->index();
+            return back()->withErrors('Este Vehículo ya esta arriendado');
         }
+        // dd('hola');
        
     }
 
