@@ -52,6 +52,7 @@
                 </div>
             </div>
         </div>
+        
         {{-- /informacion --}}
         {{-- precio --}}
         <div class="col-3 px-1">

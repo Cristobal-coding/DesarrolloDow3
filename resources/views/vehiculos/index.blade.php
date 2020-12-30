@@ -142,13 +142,13 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="nombre">Nombre:</label>
-                            <input class="form-control " @if(Gate::denies('onlyAdmin')) disabled @endif type="text" name="nombre" id="nombre">
+                            <input class="form-control @error('nombre') is-invalid @enderror " @if(Gate::denies('onlyAdmin')) disabled @endif type="text" name="nombre" id="nombre" value={{old('nombre')}}>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="marca">Marca:</label>
-                            <input class="form-control" @if(Gate::denies('onlyAdmin')) disabled @endif type="text" name="marca" id="marca">
+                            <input class="form-control @error('marca') is-invalid @enderror" @if(Gate::denies('onlyAdmin')) disabled @endif type="text" name="marca" id="marca" value={{old('marca')}}>
                         </div>
                     </div>
                 </div>
@@ -156,14 +156,14 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="patente">Patente:</label>
-                            <input class="form-control" @if(Gate::denies('onlyAdmin')) disabled @endif type="text" name="patente" id="patente">
+                            <input class="form-control @error('patente') is-invalid @enderror" @if(Gate::denies('onlyAdmin')) disabled @endif type="text" name="patente" id="patente" value={{old('patente')}} >
                         </div>
                     </div>
                     <div class="col-6">
                         
                         <div class="form-group">
                             <label for="estado">Estado:</label>
-                            <select class="form-control mi-scrol @error('director_id') is-invalid @enderror" @if(Gate::denies('onlyAdmin')) disabled @endif name="estado" id="estado" >
+                            <select class="form-control mi-scrol @error('estado') is-invalid @enderror" @if(Gate::denies('onlyAdmin')) disabled @endif name="estado" id="estado"  value={{old('estado')}}>
                                 @foreach ($estados as $estado)
                                     <option value="{{$estado}}">{{$estado}}</option>                        
                                 @endforeach                      
@@ -195,7 +195,7 @@
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="foto" class="form-label">Imagen del Vehículo:</label>
-                            <input class="form-control form-control-sm" id="foto" type="file" @if(Gate::denies('onlyAdmin')) disabled @endif name="foto">
+                            <input class="form-control form-control-sm @error('foto') is-invalid @enderror " id="foto" type="file" @if(Gate::denies('onlyAdmin')) disabled @endif name="foto" value={{old('foto')}}>
                         </div>
                     </div>
                 </div>
