@@ -42,12 +42,18 @@
                   </div> --}}
                   {{-- VALIDAR LAS FECHAS --}}
                   <div class="form-group col-xl-6 col-md-12 text-light ">
-                    <label for="arriendo_fecha_inicio" class="text-light" style="color: rgb(15, 1, 1);">Fecha Inicio:</label>
-                    <input type="date" name="arriendo_fecha_inicio" class="form-control " id="arriendo_fecha_inicio" placeholder="" value="" >
+                    <label for="fecha_hora_entrega_alCliente" class="text-light" style="color: rgb(15, 1, 1);">Fecha Inicio:</label>
+                    <input type="date" name="fecha_hora_entrega_alCliente" class="form-control " id="fecha_hora_entrega_alCliente" placeholder="" value="" >
+                    <div class="text-center">
+                      <small class="text-secondary">*Fecha en que el cliente debe recoger los vehículos*</small>
+                    </div>
                  </div>
                   <div class="form-group col-xl-6 col-md-12 text-light ">
-                    <label for="arriendo_fecha_final" class="text-light" style="color: rgb(15, 1, 1);">Fecha devolucion :</label>
-                    <input type="date" name="arriendo_fecha_final" class="form-control " id="arriendo_fecha_final" placeholder="" value="" >
+                    <label for="fecha_devolucion" class="text-light" style="color: rgb(15, 1, 1);">Fecha fin del arriendo:</label>
+                    <input type="date" name="fecha_devolucion" class="form-control " id="fecha_devolucion" placeholder="" value="" >
+                    <div class="text-center h-0">
+                      <small class="text-secondary">*Fecha en que el cliente debe devolver los vehículos*</small>
+                    </div>
                   </div>
               </div>
               <div class="row">
@@ -59,7 +65,7 @@
                        <option value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
                       @endforeach
                     </select>                
-                </div> 
+                  </div> 
                 </div>  
               </div>                                                      
               <div class="row w-100 m-0 d-flex" >

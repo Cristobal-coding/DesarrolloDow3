@@ -29,6 +29,7 @@ class VehiculosController extends Controller
         }
         $estados = array("Disponible", "Arrendado", "En mantenimiento");                          
         return view("vehiculos.index", compact("totalInPage", "elementos", "iteraciones", "tipos", "años","vehiculos",'estados'));
+        // dd(date('H:i:s',strtotime($vehiculos[0]->created_at)));
     }
 
     public function create()

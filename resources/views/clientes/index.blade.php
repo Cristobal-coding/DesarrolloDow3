@@ -32,7 +32,7 @@
                         <td>
                             <div class="btn-group w-100 justify-content-center align-items-center" role="group" aria-label="Button group with nested dropdown">
                                 <span class="pr-1" data-toggle="tooltip" title="Arriendos." data-placement="bottom">                               
-                                    <a  href="{{route("clientes.show",$cliente->rut_cliente)}}" class="btn btn-secondary"><i class="far fa-eye fa-lg"></i></a>
+                                    <a  href="{{route("clientes.show",$cliente->rut_cliente)}}" class="btn btn-success"><i class="far fa-eye fa-lg"></i></a>
                                 </span>
                                 <span class="pr-1" data-toggle="tooltip" title="Editar." data-placement="bottom">                               
                                     <a  href="{{route("clientes.edit",$cliente->rut_cliente)}}" class="btn btn-secondary"><i class="far fa-edit fa-lg"></i></a>

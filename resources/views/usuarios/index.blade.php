@@ -21,7 +21,7 @@
   <div class="d-md-flex flex-md-equal w-100">
     <div class="bg-dark mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"style="width: 80%; height: 1000px;)">
       <div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
-        <a type="button" href="{{route("usuarios.create")}}"class="btn btn-warning">Agregar un Usuario</a>
+        <a type="button" href="{{route("usuarios.create")}}"class="btn btn-warning @if(Gate::denies('onlyAdmin')) disabled @endif">Agregar un Usuario</a>
       </div>
       <div class="my-3 py-3"> 
         <h2 class="display-5">Ejecutivo</h2>
@@ -44,12 +44,13 @@
                   <td>{{$user->email}}</td>
                   <td>
                     <span class="pr-1" data-toggle="tooltip" title="Editar." data-placement="bottom">                               
-                      <a  href="{{route("usuarios.edit",$user->id)}}" class="btn btn-secondary"><i class="far fa-edit fa-lg"></i></a>
+                      <a  href="{{route("usuarios.edit",$user->id)}}" class="btn btn-secondary @if(Gate::denies('onlyAdmin')) disabled @endif"><i class="far fa-edit fa-lg"></i></a>
                     </span>
                     <span class="pl-1" data-toggle="tooltip" title="Borrar." data-placement="right">                               
-                      <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#borrarTipo{{$user->id}}"><i class="fas fa-trash fa-lg"></i></a>
+                      <a type="button" class="btn btn-warning @if(Gate::denies('onlyAdmin')) disabled @endif" data-bs-toggle="modal" data-bs-target="#borrarTipo{{$user->id}}"><i class="fas fa-trash fa-lg"></i></a>
                      </span>  
                      {{-- modal borrar --}}
+                     @if(Gate::denies('onlyAdmin')) 
                      <div class="modal fade text-light " id="borrarTipo{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                               <div class="modal-content bg-dark" style="color: #fff;">
@@ -75,6 +76,7 @@
                               </div>
                         </div>
                      </div>     
+                     @endif
                   </td>
                 </tr>
               @endif
@@ -85,7 +87,7 @@
     </div>
     <div class="bg-secondary mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"style="width: 80%; height: 1000px;)">
       <div class="col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
-        <a type="button" href="{{route("usuarios.create")}}"class="btn btn-warning">Agregar un Usuario</a>
+        <a type="button" href="{{route("usuarios.create")}}"class="btn btn-warning @if(Gate::denies('onlyAdmin')) disabled @endif">Agregar un Usuario</a>
       </div>
       <div class="my-3 p-3 text-light">
         <h2 class="display-5">Administrador</h2>
@@ -108,13 +110,14 @@
                   <td>{{$user->email}}</td>
                   <td>
                     <span class="pr-1" data-toggle="tooltip" title="Editar." data-placement="bottom">                               
-                      <a  href="{{route("usuarios.edit",$user->id)}}" class="btn btn-secondary"><i class="far fa-edit fa-lg"></i></a>
+                      <a  href="{{route("usuarios.edit",$user->id)}}" class="btn btn-secondary  @if(Gate::denies('onlyAdmin')) disabled @endif"><i class="far fa-edit fa-lg"></i></a>
                     </span>
                     <span class="pl-1" data-toggle="tooltip" title="Borrar." data-placement="right">                               
-                      <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#borrarCliente{{$user->id}}"><i class="fas fa-trash fa-lg"></i></a>
+                      <a type="button" class="btn btn-warning  @if(Gate::denies('onlyAdmin')) disabled @endif" data-bs-toggle="modal" data-bs-target="#borrarCliente{{$user->id}}"><i class="fas fa-trash fa-lg"></i></a>
                      </span>      
                   </td>
                   {{-- modal borrar --}}
+                  @if(Gate::denies('onlyAdmin')) 
                   <div class="modal fade text-light " id="borrarCliente{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark" style="color: #fff;">
@@ -139,6 +142,10 @@
                             </div>
                         </div>
                     </div>
+                  </div>
+                  
+                  
+                  @endif
                 </tr>
               @endif
             @endforeach

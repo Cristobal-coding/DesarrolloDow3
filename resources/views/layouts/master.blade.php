@@ -83,8 +83,8 @@
                     <a href="{{route("arriendos.carrito")}}" class="nav-link text-light"><span style='color:red;' class="@if($arriendoEnCurso!=true)d-none @endif"><i class="fas fa-asterisk"></i></span><i class="fas fa-shopping-cart fa-lg"></i></a>
                   </div>
                   <p class="m-0 p-0 text-light mr-1" style=" font-size:18px">{{Auth::user()->nombre}} ({{Auth::user()->rol->nombre}})</p>
-                  <button type="button" class="btn btn-primary border-0" data-toggle="tooltip" data-placement="bottom" title="Foto Usuario"><i class="far fa-user fa-lg"></i></button>
-                  <button type="submit" class="btn btn-primary border-0" data-toggle="tooltip" data-placement="bottom" title="Cerrar Sesión"><i class="fas fa-sign-out-alt fa-lg"></i></button>
+                  <button type="button" class="btn btn-primary border-0 mr-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Foto Usuario"><i class="far fa-user fa-lg"></i></button>
+                  <button type="submit" class="btn btn-primary border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cerrar Sesión"><i class="fas fa-sign-out-alt fa-lg"></i></button>
                 </form>
               </div>
             </div>
@@ -97,8 +97,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 </body>
 <script text="javascript/text">
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
   })
 </script>
 </html>
