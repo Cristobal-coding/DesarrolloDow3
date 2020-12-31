@@ -61,7 +61,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <li><a class="dropdown-item" href="{{route("usuarios.index")}}">Gestionar Usuarios</a></li>
                       <li >
-                        <a class="dropdown-item" href="" tabindex="-1" aria-disabled="true">Generar reporte</a>
+                        <a class="dropdown-item" href="{{route('estadisticas.download')}}" tabindex="-1" aria-disabled="true">Generar reporte</a>
                       </li>
                       <li >
                         <a class="dropdown-item" href="{{route("editpass.editpass")}}" tabindex="-1" aria-disabled="true">Cambiar mi contraseña.</a>

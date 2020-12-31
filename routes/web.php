@@ -69,5 +69,6 @@ Route::put('/tipos/{tipo}', [TiposController::class, "update"])->name("tipos.upd
 
 
 Route::get('/reporteDownload', [EstadisticasController::class, 'downloadReporte'])->name('estadisticas.download');
+Route::get('/showtabla', [EstadisticasController::class, 'reporteArriendos'])->name('estadisticas.tabla');
 
 
