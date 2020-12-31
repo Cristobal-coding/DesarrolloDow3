@@ -104,17 +104,17 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 @for($i=1; $i<=$totalInPage;$i++)
-                @if($i==1)
-                <li class="page-item"><a class="page-link" href="{{route("vehiculos.index")}}">{{$i}}</a></li>
-                @else
-                <li class="page-item"><a class="page-link" href="{{route("vehiculos.paginas", $i)}}">{{$i}}</a></li>
-                @endif
+                    @if($i==1)
+                        <li class="page-item"><a class="page-link" href="{{route("vehiculos.index")}}">{{$i}}</a></li>
+                    @else
+                        <li class="page-item"><a class="page-link" href="{{route("vehiculos.paginas", $i)}}">{{$i}}</a></li>
+                    @endif
                 @endfor
                 
                 <li class="page-item">
-                <a class="page-link" href="{{route("vehiculos.paginas",2)}}" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
+                    <a class="page-link" href="{{route("vehiculos.paginas",2)}}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
                 </li>
                 
             </ul>

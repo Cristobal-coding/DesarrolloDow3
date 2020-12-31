@@ -17,7 +17,7 @@
   <body class="bg-info">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-xl-4 col-lg-5 d-flex flex-column align-items-end min-vh-100 bg-dark">
+        <div class="col-xl-4 col-lg-5 d-flex flex-column align-items-end min-vh-100 bg-dark h-100">
           <div class="p-4 px-lg-5 pt-lg-4 pb-lg-3 text-center w-100 mb-auto">
             <h1 class="text-secondary" style="font-weight: bold">Arrienda Autos</h1>
             <h5 class="text-secondary">DOW020</h5>

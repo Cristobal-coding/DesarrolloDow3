@@ -107,7 +107,7 @@
                 <li class="page-item"><a class="page-link" href="{{route("vehiculos.paginas", $i)}}">{{$i}}</a></li>
             @endif
           @endfor
-          @if($iteraciones>=6)
+          @if($iteraciones>=6) 
           <li class="page-item">
             <a class="page-link" href="{{Request::segments()[2]+1}}" aria-label="Next">
               <span aria-hidden="true">&raquo;</span>

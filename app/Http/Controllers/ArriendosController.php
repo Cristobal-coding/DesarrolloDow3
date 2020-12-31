@@ -138,13 +138,28 @@ class ArriendosController extends Controller
             }
 
             if($request->estadoArriendo==0){
-                //reviso si los vehiculos fueron entregadosy si tiene sus fotos
+                //reviso si los vehiculos fueron entregados y si tiene sus fotos
+                $todoOk=true; //Para Autos
+                $fechaOk=true;// Para las fechas
                 if($vehiculo->pivot->entregado!=0 ||$request->$estado!=0){
-                    if($vehiculo->pivot->foto_arriendo==null && $vehiculo->pivot->foto_entrega==null && $fotoArriendo==null && $fotoEntrega==null) {
-                        return back()->withErrors('Para finalizar un arriendo, los vehiculos deben estar devueltos y con sus respectivas fotos.');
+                    if($vehiculo->pivot->foto_arriendo==null || $vehiculo->pivot->foto_entrega==null) {
+                        if($fotoArriendo==null || $fotoEntrega==null){
+                            $todoOk=false;
+                        }
                     }
                 }else{
-                    return back()->withErrors('Para finalizar un arriendo, los vehiculos deben estar devueltos y con sus respectivas fotos...');
+                    $todoOk=false;
+                }
+                if($arriendo->hora_recepcion_cliente==null || $arriendo->fecha_recepcion_vehiculos==null){
+                    if($request->hora==null ||$request->fechaEntrega==null ){
+                        $fechaOk=false;
+                    }
+                }
+                if($todoOk!=true){
+                    return back()->withErrors('Para finalizar un arriendo, los vehiculos deben estar devueltos y con sus respectivas fotos.');
+                }
+                if($fechaOk!=true){
+                    return back()->withErrors('Para finalizar un arriendo, la fecha de devolucion y hora de recepcion del cliente deben estar definidos.');
                 }
             }
             if($request->$estado !=0){
@@ -162,8 +177,9 @@ class ArriendosController extends Controller
 
         }
         if(Auth::user()->rol->nombre=='Ejecutivo'){
-            $arriendo->fecha_entrega_autos=$request->fechaEntrega;
+            $arriendo->fecha_recepcion_vehiculos=$request->fechaEntrega;
             $arriendo->save();
+            return redirect()->route("arriendos.index"); 
         }else{
             $arriendo->rut_cliente = $request->rut_cliente;
             $arriendo->fecha_recogida= $request->fechaInicio;

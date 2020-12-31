@@ -19,13 +19,13 @@ class VehiculosController extends Controller
         $tipos= Tipo::all();
         $vehiculos= Vehiculo::orderby('marca',"asc")->get();
         $años = range(date('Y'), 1980);
-        $total = count($vehiculos); 
+        $total = count($vehiculos); //11
         $elementos=6;
-        $incompleta=$total % $elementos;
-        $totalInPage= $total/$elementos;
-        $iteraciones=$total<$elementos?$total:$elementos;
+        $incompleta=$total % $elementos; //1
+        $totalInPage= $total/$elementos; //1.5
+        $iteraciones=$total<$elementos?$total:$elementos;//6
         if($incompleta!=0){
-            $totalInPage+=1;
+            $totalInPage+=1; //2.5
         }
         $estados = array("Disponible", "Arrendado", "En mantenimiento");                          
         return view("vehiculos.index", compact("totalInPage", "elementos", "iteraciones", "tipos", "años","vehiculos",'estados'));
@@ -112,7 +112,7 @@ class VehiculosController extends Controller
         $elementos=6;
         $incompleta=$total % $elementos;
         $totalInPage= $total/$elementos;
-        $start=$elementos*($pagina-1);
+        $start=$elementos*($pagina-1);// 6*1=6
         $iteraciones=$total-$start>6?6:$total-$start;
         if($incompleta!=0){
             $totalInPage+=1;

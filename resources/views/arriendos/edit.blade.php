@@ -135,7 +135,7 @@
                     {{-- 2014-10-08T23:59 --}}
                     <div class="row px-3 pt-2">
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
-                            <input type="datetime" class="form-control" id="fechaInicio" name="fechaInicio" value="{{date('Y-m-d',strtotime($arriendo->fecha_recogida))}}"> 
+                            <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" value="{{date('Y-m-d',strtotime($arriendo->fecha_recogida))}}"> 
                             <label for="fechaInicio" class="text-primary">Fecha inicio:</label>
                         </div>
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
