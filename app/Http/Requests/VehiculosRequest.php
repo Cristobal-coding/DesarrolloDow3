@@ -28,7 +28,7 @@ class VehiculosRequest extends FormRequest
             "marca" => 'required|min:2|max:20',
             "foto" => 'required',
             "patente" => 'required|unique:vehiculos,patente|regex:/^([A-Z]{2}-[A-Z]{2}-[0-9]{2})?$/',
-            "tipo" => 'required|exists:tipo_vehiculo,nombre_tipo'
+            "nombre_tipo" => 'required|exists:tipo_vehiculo,nombre_tipo'
         ];
 
 
@@ -47,8 +47,8 @@ class VehiculosRequest extends FormRequest
             'patente.unique'=> 'Patente ya ingresada, ingresar nueva patente.',
             'patente.regex' => 'Patente invalida. 
                 FORMATO (AA-BB-11)',
-            "tipo.exists" => 'Ingrese valor  valido.-*',
-            "tipo.required" => 'Ingrese valor  valido.-*'
+            "nombre_tipo.exists" => 'Ingrese valor  valido.-*',
+            "nombre_tipo.required" => 'Ingrese valor  valido.-*'
         ];
     }
 }
