@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $tablas=['tipo_vehiculo','vehiculos','usuarios','roles','clientes'];
+        $tablas=['tipo_vehiculo','vehiculos','usuarios','roles','clientes','sucursales'];
         Schema::disableForeignKeyConstraints();
         foreach($tablas as $tabla){
             DB::table($tabla)->truncate();
