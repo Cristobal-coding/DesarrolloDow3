@@ -139,10 +139,18 @@ class ArriendosController extends Controller
 
             if($request->estadoArriendo==0){
                 //reviso si los vehiculos fueron entregadosy si tiene sus fotos
-                if($vehiculo->pivot->entregado==1 ){
+                if($vehiculo->pivot->entregado!=0 ||$request->$estado!=0){
                     if($vehiculo->pivot->foto_arriendo==null && $vehiculo->pivot->foto_entrega==null && $fotoArriendo==null && $fotoEntrega==null) {
                         return back()->withErrors('Para finalizar un arriendo, los vehiculos deben estar devueltos y con sus respectivas fotos.');
                     }
+                }else{
+                    return back()->withErrors('Para finalizar un arriendo, los vehiculos deben estar devueltos y con sus respectivas fotos...');
+                }
+            }
+            if($request->$estado !=0){
+                // dd($vehiculo->pivot->entregado);
+                if($vehiculo->pivot->entregado==0 && $vehiculo->pivot->foto_arriendo==null && $vehiculo->pivot->foto_entrega==null && $fotoArriendo==null && $fotoEntrega==null){
+                    return back()->withErrors('Si un vehiculo ha sido entregado, debe tener sus fotos definidas');
                 }
             }
             //Devuelvo a Disponible el estado de un Vehiculo

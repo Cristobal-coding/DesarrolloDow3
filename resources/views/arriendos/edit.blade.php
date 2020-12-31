@@ -9,7 +9,7 @@
     </div>
      {{-- Errores --}}
      @if ($errors->any())                       
-     <div class=" col-6 offset-3 alert alert-warning  mt-3">
+     <div class=" col-6 offset-3 alert alert-warning  mt-1">
          <ul>
              @foreach ($errors->all() as $error)
                  <li>{{ $error }}</li>
