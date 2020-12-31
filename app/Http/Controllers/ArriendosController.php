@@ -59,7 +59,7 @@ class ArriendosController extends Controller
         }
         $arriendo= new Arriendo;
         $arriendo->rut_cliente = $request->rut_cliente;
-        // $arriendo->fecha_recogida= $request->fecha_recogida;
+        $arriendo->fecha_recogida= $request->fecha_recogida;
         $arriendo->fecha_devolucion= $request->fecha_devolucion;
         $arriendo->confirmada= false;
         $arriendo->vendedor=Auth::user()->id;
@@ -81,6 +81,9 @@ class ArriendosController extends Controller
     {   
         if(Gate::denies('bothRols')){
             return redirect()->route('arriendos.index');
+        }
+        if($arriendo->confirmada==0){
+            return back()->withErrors('Este arriendo aun no esta completo, por lo tanto no puedes verlo.');
         }
         return view('arriendos.detalle', compact('arriendo'));
     }
@@ -115,18 +118,13 @@ class ArriendosController extends Controller
         if(Gate::denies('bothRols')){
             return redirect()->route('arriendos.index');
         }
+
         foreach($arriendo->vehiculos as $num=>$vehiculo){
             $arriendof='fotoArriendo'.$num;
             $entrega='fotoEntrega'.$num;
             $estado='estado'.$num;
             $fotoArriendo=$request->$arriendof;
             $fotoEntrega=$request->$entrega;
-
-            //Devuelvo a Disponible el estado de un Vehiculo
-            if($request->$estado==1 || $request->estadoArriendo==0){
-                $vehiculo->estado='Disponible';
-                $vehiculo->save();
-            }
             //Que pasa si existe ya la foto de arriendo?
             if($fotoArriendo!=null && $vehiculo->pivot->foto_arriendo!=null){
                 Storage::delete( $vehiculo->pivot->foto_arriendo);
@@ -135,7 +133,21 @@ class ArriendosController extends Controller
             if($fotoEntrega!=null && $vehiculo->pivot->foto_entrega!=null){
                 Storage::delete( $vehiculo->pivot->foto_entrega);
             }
-            $arriendo->vehiculos()->updateExistingPivot($vehiculo->id,['entregado'=>$request->$estado, 'foto_arriendo'=>$fotoArriendo!=null?$fotoArriendo->store("public/FotosArriendos"):null, 'foto_entrega'=>$fotoEntrega!=null?$fotoEntrega->store("public/FotosEntregas"):null]);
+
+            if($request->estadoArriendo==0){
+                //reviso si los vehiculos fueron entregadosy si tiene sus fotos
+                if($vehiculo->pivot->entregado==1 ){
+                    if($vehiculo->pivot->foto_arriendo==null && $vehiculo->pivot->foto_entrega==null && $fotoArriendo==null && $fotoEntrega==null) {
+                        return back()->withErrors('Para finalizar un arriendo, los vehiculos deben estar devueltos y con sus respectivas fotos.');
+                    }
+                }
+            }
+            //Devuelvo a Disponible el estado de un Vehiculo
+            if($request->$estado==1 || $request->estadoArriendo==0){
+                $vehiculo->estado='Disponible';
+                $vehiculo->save();
+            }
+            $arriendo->vehiculos()->updateExistingPivot($vehiculo->id,['entregado'=>$request->$estado, 'foto_arriendo'=>$fotoArriendo!=null?$fotoArriendo->store("public/FotosArriendos"):$vehiculo->pivot->foto_arriendo, 'foto_entrega'=>$fotoEntrega!=null?$fotoEntrega->store("public/FotosEntregas"):$vehiculo->pivot->foto_entrega]);
 
         }
         if(Auth::user()->rol->nombre=='Ejecutivo'){
@@ -143,12 +155,10 @@ class ArriendosController extends Controller
             $arriendo->save();
         }else{
             $arriendo->rut_cliente = $request->rut_cliente;
-            $arriendo->fecha_recogida= $request->fechaInicio.' '.$request->hora;
+            $arriendo->fecha_recogida= $request->fechaInicio;
             $arriendo->fecha_devolucion= $request->fechaFinal;
-            // $arriendo->vendedor=$request->vendedor;
-            if($request->estadoArriendo!=1){
-                $arriendo->estado=false;
-            }
+            $arriendo->hora_recepcion_cliente=$request->hora;
+            $arriendo->estado=$request->estadoArriendo;
             $arriendo->fecha_recepcion_vehiculos=$request->fechaEntrega;
             $arriendo->save();
             return redirect()->route("arriendos.index"); 

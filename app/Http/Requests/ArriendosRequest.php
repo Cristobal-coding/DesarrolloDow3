@@ -25,14 +25,15 @@ class ArriendosRequest extends FormRequest
     public function rules()
     {
         return [
-            "arriendo_fecha_final" => 'required|after:arriendo_fecha_inicio'
+            'fecha_recogida' => 'required',
+            "fecha_devolucion" => 'required|after:fecha_recogida'
         ];
     }
     public function messages(){
         return[
-            'arriendo_fecha_final.required' => 'Debe ingresar fecha final.',     
-        
-            'arriendo_fecha_final.after' => 'La devolucion debe ser despues a la fecha de inicio',     
+            'fecha_devolucion.required' => 'Debe ingresar la fecha de devolucion.',     
+            'fecha_recogida.required' => 'Debe ingresar la fecha de inicio',
+            'fecha_devolucion.after' => 'La devolucion debe ser despues a la fecha de inicio',     
         ];
     }
 }

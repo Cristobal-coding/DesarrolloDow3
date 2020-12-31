@@ -81,13 +81,13 @@
                             </div>
                             <div class="col-5 mx-0 py-1 px-1 form-floating">
                                 <div class="mb-3">
-                                    <label for="fotoEntrega{{$num}}" class="form-label text-primary py-0 my-0" style="font-size: 14px">Foto Entrega:</label>
+                                    <label for="fotoEntrega{{$num}}" class="form-label text-primary py-0 my-0" style="font-size: 14px">Foto Entrega @if($vehiculo->pivot->foto_entrega!=null)(<small class="text-secondary">*Foto Ingresada*</small>)@endif:</label>
                                     <input class="form-control form-control-sm text-primary" id="fotoEntrega{{$num}}" type="file" name="fotoEntrega{{$num}}">
                                 </div>
                             </div>
                             <div class="col-5 mx-0 py-1 px-1 form-floating">
                                 <div class="mb-3">
-                                    <label for="fotoArriendo{{$num}}" class="form-label text-primary py-0 my-0" style="font-size: 14px">Foto Arriendo:</label>
+                                    <label for="fotoArriendo{{$num}}" class="form-label text-primary py-0 my-0" style="font-size: 14px">Foto Arriendo @if($vehiculo->pivot->foto_arriendo!=null)(<small class="text-secondary">*Foto Ingresada*</small>)@endif:</label>
                                     <input class="form-control form-control-sm text-primary" id="fotoArriendo{{$num}}" type="file" name="fotoArriendo{{$num}}">
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
                             <label for="estadoArriendo" class="text-primary">Estado:</label>
                         </div>
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
-                            <input type="time" class="form-control" id="hora" name="hora" value="{{date('H:i', strtotime($arriendo->fecha_recogida))}}">
+                            <input type="time" class="form-control" id="hora" name="hora" @if($arriendo->hora_recepcion_cliente!=null) value="{{date('H:i', strtotime($arriendo->hora_recepcion_cliente))}}" @endif >
                             <label for="hora" class="text-primary">Hora Entrega al Cliente:</label>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                         </div>
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
                             <input type="datetime-local" class="form-control" id="fechaEntrega" name="fechaEntrega" @if($arriendo->fecha_recepcion_vehiculos!=null) value="{{date('Y-m-d', strtotime($arriendo->fecha_recepcion_vehiculos)).'T'.date('H:i', strtotime($arriendo->fecha_recepcion_vehiculos))}}"  @endif >
-                            <label for="fechaEntrega" class="text-primary">Fecha de Entrega</label>
+                            <label for="fechaEntrega" class="text-primary">Fecha de Devolución</label>
                         </div>
                         
                     </div>

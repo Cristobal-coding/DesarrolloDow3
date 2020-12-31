@@ -1,5 +1,7 @@
 @extends('layouts/master')
-
+@section('css-personalizado')
+    <link rel="stylesheet" href="{{asset("css/myThemes.css")}}">
+@endsection
 @section('main_content')
     <div class="col-lg-7 offset-lg-2 mt-4 px-0">
         <div class="row px-0 mx-0">
@@ -69,58 +71,62 @@
                 </div>
             </div>
             @endif
-            
-            @foreach ($arriendo->vehiculos as $vehiculo )
-                
-            <div class="row px-0 mx-0 border-top">
-                {{-- imagen --}}
-                <div class="col-4 py-2 px-0 rounded">
-                    <div class="card border-0 rounded">
-                        <div class="card-body p-0 border-0 rounded">
-                            <img src="{{Storage::url($vehiculo->foto)}}" alt="" class="img-fluid rounded w-100" style="max-height: 155px !important;">
-                        </div>
-                    </div>
-                </div>
-                {{-- /imagen --}
-                {{-- informacion --}}
-                <div class="col-5 px-1 ">
-                    <div class="row">
-                        <div class="col-12 px-3 pt-3 my-0">
-                            <h6 class="px-2" style="font-weight: bold">{{$vehiculo->marca}} {{$vehiculo->nombre_vehiculo}}</h6>
-                        </div>
-                        <div class="col-12 px-3 my-0">
-                            <small class="px-2"><span class="text-primary">Patente:</span>{{$vehiculo->patente}}</small>
-                            <small class="px-2"><span class="text-primary">Tipo:</span> {{$vehiculo->tipo->nombre_tipo}}</small>
-                        </div>
 
-                    </div>
-                    <div class="row">
-                        <div class="col-12 px-3 my-0">
-                            <small class="px-2"><span class="text-primary">Año:</span> {{$vehiculo->year}}</small>
+            <div class="row">
+                <div class="col-12 overflow-auto mi-scrol" style="max-height:500px !important;">
+                    @foreach ($arriendo->vehiculos as $vehiculo )
+                    <div class="row px-0 mx-0 border-top">
+                        {{-- imagen --}}
+                        <div class="col-4 py-2 px-0 rounded">
+                            <div class="card border-0 rounded">
+                                <div class="card-body p-0 border-0 rounded">
+                                    <img src="{{Storage::url($vehiculo->foto)}}" alt="" class="img-fluid rounded w-100" style="max-height: 155px !important;">
+                                </div>
+                            </div>
                         </div>
+                        {{-- /imagen --}
+                        {{-- informacion --}}
+                        <div class="col-5 px-1 ">
+                            <div class="row">
+                                <div class="col-12 px-3 pt-3 my-0">
+                                    <h6 class="px-2" style="font-weight: bold">{{$vehiculo->marca}} {{$vehiculo->nombre_vehiculo}}</h6>
+                                </div>
+                                <div class="col-12 px-3 my-0">
+                                    <small class="px-2"><span class="text-primary">Patente:</span>{{$vehiculo->patente}}</small>
+                                    <small class="px-2"><span class="text-primary">Tipo:</span> {{$vehiculo->tipo->nombre_tipo}}</small>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-12 px-3 my-0">
+                                    <small class="px-2"><span class="text-primary">Año:</span> {{$vehiculo->year}}</small>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- /informacion --}}
+                        {{-- precio --}}
+                        <div class="col-3 px-1">
+                            <div class="row">
+                                <div class="col-10 text-right px-0">
+                                    <h5 class="px-2 mt-3">${{number_format($vehiculo->tipo->valor_diario,0,".",".")}} CLP</h5>
+                                </div>
+                                <div class="col-2 px-0 d-flex justify-content-center">
+                                    <form action="{{route("arriendos.removecart",$vehiculo->id)}}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn mt-2"><i class="fas fa-times"></i></button>
+                                    </form>
+                                </div>
+                                    
+                            </div>
+                        
+                        </div>
+                        {{-- /precio --}}
                     </div>
+                    @endforeach
                 </div>
-                {{-- /informacion --}}
-                {{-- precio --}}
-                <div class="col-3 px-1">
-                    <div class="row">
-                        <div class="col-10 text-right px-0">
-                            <h5 class="px-2 mt-3">${{number_format($vehiculo->tipo->valor_diario,0,".",".")}} CLP</h5>
-                        </div>
-                        <div class="col-2 px-0 d-flex justify-content-center">
-                            <form action="{{route("arriendos.removecart",$vehiculo->id)}}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn mt-2"><i class="fas fa-times"></i></button>
-                            </form>
-                        </div>
-                            
-                    </div>
-                
-                </div>
-                {{-- /precio --}}
             </div>
-            @endforeach
+            
             @if($confirmado!='not_but_empty')
             {{-- Datos de la order --}}
           

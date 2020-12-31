@@ -17,7 +17,7 @@ class Arriendos extends Migration
             $table->id();
             $table->string('rut_cliente');
             $table->date('fecha_recogida');
-            $table->datetime('fecha_devolucion');
+            $table->date('fecha_devolucion');
             $table->boolean('confirmada');
             $table->integer('total')->nullable();
             $table->time('hora_recepcion_cliente')->nullable();
