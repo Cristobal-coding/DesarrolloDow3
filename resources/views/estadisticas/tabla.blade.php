@@ -19,27 +19,42 @@
           <th scope="col">Estado</th> 
           <th scope="col">Total</th>                     
         </tr>
-      </thead>
+      </thead>    
       <tbody >
-        @foreach ($arriendos as $arriendo)
-          @php
-              $acumulado+=$arriendo->total;
+           @php
+            $todos=($arriendos->count()-1);
+            $cont=0; 
           @endphp
-          @if($arriendo->confirmada!=0)
-          <tr>
-            <td>{{$arriendo->id}}</td>
-            <td>{{$arriendo->usuariovendedor->nombre}}</td>
-            <td>{{$arriendo->sucursal->nombre}}</td>
-            <td>{{$arriendo->cliente->nombre_cliente}}</td>
-            <td class="text-center">{{count($arriendo->vehiculos)}}</td>
-            <td>{{$arriendo->estado==0?'Vigente':'Finalizado'}}</td>
-            <td>${{ number_format($arriendo->total,0,".",".")}}CLP</td>
-          </tr>
-          @endif
-        @endforeach
-        <tr>
-          <td colspan="6" class="text-right">${{ number_format($acumulado,0,".",".")}}CLP</td>
-        </tr>
+          @foreach ($arriendos as $arriendo)
+            @php
+                $acumulado+=$arriendo->total;             
+            @endphp
+            @if($arriendo->confirmada!=0)
+              <tr>
+                <td>{{$arriendo->id}}</td>
+                <td>{{$arriendo->usuariovendedor->nombre}}</td>
+                <td>{{$arriendo->sucursal->nombre}}</td>
+                <td>{{$arriendo->cliente->nombre_cliente}}</td>
+                <td class="text-center">{{count($arriendo->vehiculos)}}</td>
+                <td>{{$arriendo->estado==0?'Vigente':'Finalizado'}}</td>
+                <td>${{ number_format($arriendo->total,0,".",".")}}CLP</td>
+              </tr>
+              @endif
+            @if($cont==$todos)
+              <tr style="border: 0 !important;">
+                <td  style="border: 0 !important;"></td>
+                <td  style="border: 0 !important;"></td>
+                <td  style="border: 0 !important;"></td>
+                <td  style="border: 0 !important;"></td>
+                <td  style="border: 0 !important;"></td>
+                <td  class="align-right" style="border: 0 !important;"> Total a pagar:</td>
+                <td  class="border">${{ number_format($acumulado,0,".",".")}}</td>
+                </tr>
+            @endif
+            @php
+              $cont+=1; 
+            @endphp
+         @endforeach
       </tbody>      
     </table>
     <hr>
