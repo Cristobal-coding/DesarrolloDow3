@@ -123,7 +123,7 @@
     </div>
     <div class="row pt-3 px-lg-4 border-bottom shadow-sm">
         <div class="col-6 border-right">
-            <h6 class="text-primary">Fecha Inicio: <br class="d-lg-none"> <span class="text-dark">{{date('d-m-Y',strtotime($arriendo->fecha_recogida))." ".date('H:i:s A',strtotime($arriendo->fecha_recepcion_vehiculos))}}</span></h6>
+            <h6 class="text-primary">Fecha Inicio: <br class="d-lg-none"> <span class="text-dark">{{date('d-m-Y',strtotime($arriendo->fecha_recogida))}}</span></h6>
         </div>
         <div class="col-6">
             <h6 class="text-primary">Fecha fin: <br class="d-lg-none"> <span class="text-dark">{{date('d-m-Y',strtotime($arriendo->fecha_devolucion))}}</span></h6>
@@ -131,10 +131,10 @@
     </div>
     <div class="row pt-3 px-lg-4 border-bottom shadow-sm">
         <div class="col-6 border-right">
-            <h6 class="text-primary">Fecha Devolución: <br class="d-lg-none"> <span class="text-dark">{{$arriendo->fecha_recepcion_vehiculos!=null?date('d-m-Y',strtotime($arriendo->fecha_recepcion_vehiculos))." ".date('H:i:s A',strtotime($arriendo->fecha_recepcion_vehiculos)):'No devueltos'}}</span></h6>
+            <h6 class="text-primary">Fecha Devolución: <br class="d-lg-none"> <span class="text-dark">{{$arriendo->fecha_recepcion_vehiculos!=null?date('d-m-Y',strtotime($arriendo->fecha_recepcion_vehiculos)):'No devueltos'}}</span></h6>
         </div>
         <div class="col-6">
-            <h6 class="text-primary">Valor: <br class="d-lg-none"> <span class="text-dark">${{number_format($arriendo->total,0,".",".")}} CLP</span></h6>
+            <h6 class="text-primary">Hora: <br class="d-lg-none"> <span class="text-dark">{{$arriendo->fecha_recepcion_vehiculos!=null?date('H:i',strtotime($arriendo->fecha_recepcion_vehiculos)):'No devueltos'}}</span></h6>
         </div>
     </div>
     <div class="row pt-3 px-lg-4 border-bottom shadow-sm">
@@ -176,10 +176,15 @@
         <div class="col-6 border-right">
             <h6 class="text-primary">Días Atraso: <br class="d-lg-none"> <span class="text-dark">{{abs($atraso)}}</span></h6>
         </div>
-        <div class="col-6">
-            <h6 class="text-primary">Id Arriendo: <br class="d-lg-none"> <span class="text-dark">{{$arriendo->id}}</span></h6>
+        <div class="col-5">
+            <h6 class="text-primary">Valor: <br class="d-lg-none"> <span class="text-dark">${{number_format($arriendo->total,0,".",".")}} CLP</span></h6>
         </div>
         
+    </div>
+    <div class="row pt-3 px-lg-4 border-bottom shadow-sm">
+        <div class="col-12 border-bottom text-center">
+            <h6 class="text-primary">Si quieres editar este arriendo, haz<br class="d-lg-none"> <a href="{{route('arriendos.edit', $arriendo->id)}}" class="text-secondary">click aquí.</a></h6>
+        </div>
     </div>
 </div>
 @endsection

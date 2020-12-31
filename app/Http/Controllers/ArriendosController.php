@@ -99,6 +99,9 @@ class ArriendosController extends Controller
         if(Gate::denies('bothRols')){
             return redirect()->route('arriendos.index');
         }
+        if($arriendo->confirmada==0){
+            return back()->withErrors('Este arriendo aun no esta completo, por lo tanto no puedes editarlo.');
+        }
         $sucursales=Sucursal::all();
         $clientes=Cliente::all();
         $usuarios=Usuario::all();
