@@ -49,15 +49,33 @@ class DatabaseSeeder extends Seeder
             ['id'=>2,'nombre_vehiculo'=>'Ranger','marca'=>'Ford','nombre_tipo'=>
                 'Camioneta','estado'=>'Disponible','patente'=>'BB-CL-35','year'=>2019,'foto'=>'public/Vehiculos/ranger.jpg'],
             ['id'=>3,'nombre_vehiculo'=>'Tercel','marca'=>'Toyota','nombre_tipo'=>
-                'Sedan','estado'=>'Disponible','patente'=>'BB-CL-36','year'=>1998,'foto'=>'public/Vehiculos/tercel.jpg'],
-            ['id'=>4,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
-                'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
-            ['id'=>5,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
-                'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
-            ['id'=>6,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
-                'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
-            ['id'=>7,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
-                'Coupe','estado'=>'Disponible','patente'=>'BB-CL-34','year'=>2019,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
+                'Sedan','estado'=>'Disponible','patente'=>'BQ-BG-36','year'=>1998,'foto'=>'public/Vehiculos/tercel.jpg'],
+            ['id'=>4,'nombre_vehiculo'=>'Renato','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'HJ-KJ-34','year'=>2013,'foto'=>'public/Vehiculos/fondoLogin1.jpg'],
+            ['id'=>5,'nombre_vehiculo'=>'Cristobal','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'AA-DF-34','year'=>2016,'foto'=>'public/Vehiculos/1.jpg'],
+            ['id'=>6,'nombre_vehiculo'=>'Mangini','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'AA-FD-45','year'=>2019,'foto'=>'public/Vehiculos/2.jpg'],
+            ['id'=>7,'nombre_vehiculo'=>'Esteban','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'ZZ-KL-34','year'=>2019,'foto'=>'public/Vehiculos/3.jpg'],
+            ['id'=>8,'nombre_vehiculo'=>'Carlos','marca'=>'Alten','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'ZH-MN-34','year'=>2020,'foto'=>'public/Vehiculos/4.jpg'],
+            ['id'=>9,'nombre_vehiculo'=>'Lujuria','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'FG-JH-34','year'=>2018,'foto'=>'public/Vehiculos/5.jpg'],
+            ['id'=>10,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'WW-DE-34','year'=>2011,'foto'=>'public/Vehiculos/6.jpg'],
+            ['id'=>11,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'AS-FD-30','year'=>2004,'foto'=>'public/Vehiculos/7.jpg'],
+            ['id'=>12,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'FG-AS-23','year'=>2015,'foto'=>'public/Vehiculos/8.jpg'],
+            ['id'=>13,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'ER-SD-22','year'=>2014,'foto'=>'public/Vehiculos/9.jpg'],
+            ['id'=>14,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'ED-AS-14','year'=>2012,'foto'=>'public/Vehiculos/10.jpg'],
+            ['id'=>15,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'ZZ-AS-12','year'=>2019,'foto'=>'public/Vehiculos/11.jpg'],
+            ['id'=>16,'nombre_vehiculo'=>'MX-7','marca'=>'Mazda','nombre_tipo'=>
+                'Coupe','estado'=>'Disponible','patente'=>'AS-CV-12','year'=>2020,'foto'=>'public/Vehiculos/12.jpg'],
         ];
         foreach($vehiculos as $vehiculo){
             DB::table('vehiculos')->insert([
