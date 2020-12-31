@@ -62,7 +62,7 @@
                                         <form method="POST" action="{{route("tipos.destroy",$tipo->nombre_tipo)}}">
                                             @csrf
                                             @method("delete")
-                                            <button type="submit" data-toggle="tooltip" title="Borrar" data-placement="right" class="btn btn-warning">Borrar Cliente</button>
+                                            <button type="submit" data-toggle="tooltip" title="Borrar" data-placement="right" class="btn btn-warning">Borrar Tipo</button>
                                         </form>
                                     </div>
                                 </div>
