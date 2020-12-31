@@ -13,6 +13,11 @@
         <div class="my-3 py-3"> 
           <h2 class="display-5">Tipos de Vehiculos</h2>
           <p class="lead">Lista de tipos.</p>
+          @if ($errors->any())                    
+            @foreach ($errors->all() as $error)
+                <p class="text-secondary">{{ $error }}</p>
+            @endforeach
+          @endif
           <p class="lead">Hasta ahora hay  <span style="color:red; font-weight: bold;">{{$tipo_vehiculo->count()}}</span> tipos de vehiculos ingresados</p>
         </div>
         <div class="bg-light mt-0 shadow-sm mx-auto" style="width: 80%; height: 500px; border-radius: 21px 21px 0 0;);">

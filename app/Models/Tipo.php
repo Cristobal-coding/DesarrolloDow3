@@ -14,6 +14,6 @@ class Tipo extends Model
     public $incrementing = false;
 
     public function vehiculos(){
-        return  $this->hasMany("App\Models\Auto", 'nombre_tipo', 'nombre_tipo');
+        return  $this->hasMany("App\Models\Vehiculo", 'nombre_tipo', 'nombre_tipo');
     }
 }

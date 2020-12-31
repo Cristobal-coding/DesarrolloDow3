@@ -30,6 +30,16 @@
     </div>
   </div>
   @endif
+  @if ($errors->any())                    
+    @foreach ($errors->all() as $error)
+      <div class="row">
+        <div class="col-6 offset-3 text-center">
+
+          <p class="text-secondary"><i class="fas fa-info-circle mr-1"></i>{{ $error }}</p>
+        </div>
+      </div>   
+    @endforeach
+  @endif
 
   <div class="row">
     <div class="col-lg-10 offset-lg-1">

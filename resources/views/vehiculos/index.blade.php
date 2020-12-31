@@ -11,7 +11,7 @@
                 <div class="card-body d-flex flex-column flex-fill "  >                
                     <h5 class="card-title">{{$vehiculos[$i]->marca}} {{$vehiculos[$i]->nombre_vehiculo}} {{$vehiculos[$i]->year}}</h5>
                     <h6 class="text-primary">Patente: <span style="color: black">{{$vehiculos[$i]->patente}}</span></h6>
-                    <h6 class="text-primary">Tipo: <span style="color: black">{{$vehiculos[$i]->nombre_tipo}}</span></h6>
+                    <h6 class="text-primary">Tipo: <span style="color: black">{{$vehiculos[$i]->nombre_tipo!=null?$vehiculos[$i]->nombre_tipo:'Desconocido'}}</span></h6>
                     <h6 class="text-primary">Estado: <span 
                     @if($vehiculos[$i]->estado=="Disponible")    
                         style="color: #80EF10"

@@ -110,6 +110,21 @@ class TiposController extends Controller
          if(Gate::denies('onlyAdmin')){
             return redirect()->route('home.index');
         }
+        if(count($tipo->vehiculos)!=null){
+            return back()->withErrors('No puedes eliminar este tipo de vehiculo, ya que hay muchas ventas asociadas a el..');
+        }
+        foreach($tipo->vehiculos as $vehiculo){
+            foreach($vehiculo->arriendos as $arriendo){
+                foreach($arriendo->vehiculos as $auto){
+                    if($auto->pivot->entregado!=1 && $vehiculo->id==$auto->id){
+                        return back()->withErrors('No puedes eliminar este tipo de vehiculo, ya que hay muchas ventas asociadas a el..');
+                    }else if(count($vehiculo->arriendos) !=null ){
+                        return back()->withErrors('No puedes eliminar este tipo de vehiculo, ya que hay muchas ventas asociadas a el.');
+                    }
+                }
+            }
+        }
+ 
         $tipo->delete();
          return redirect()->route("tipos.index"); 
     }
