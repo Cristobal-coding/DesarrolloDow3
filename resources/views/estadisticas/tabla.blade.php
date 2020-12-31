@@ -47,8 +47,10 @@
                 <td  style="border: 0 !important;"></td>
                 <td  style="border: 0 !important;"></td>
                 <td  style="border: 0 !important;"></td>
-                <td  class="align-right" style="border: 0 !important;"> Total a pagar:</td>
-                <td  class="border">${{ number_format($acumulado,0,".",".")}}</td>
+                <td> Total a pagar:</td>
+                <td>${{ number_format($acumulado,0,".",".")}}</td>
+                {{-- <td  class="d-flex justify-content-end border" style="border-right:0 !important; border-top:0 !important;"> Total a pagar:</td>
+                <td  class="border" style="border-left:0 !important;">${{ number_format($acumulado,0,".",".")}}</td> --}}
                 </tr>
             @endif
             @php
@@ -57,7 +59,7 @@
          @endforeach
       </tbody>      
     </table>
-    <hr>
+
     {{-- <div class="row">
       <div class="col-12 d-flex justify-content-end">
         <h6>${{ number_format($acumulado,0,".",".")}}CLP</h6>
