@@ -53,13 +53,10 @@ class DatabaseSeeder extends Seeder
                 'Sedan','estado'=>'Disponible','patente'=>'BQ-BG-36','year'=>1998,'foto'=>'public/Vehiculos/tercel.jpg'],
             ['id'=>4,'nombre_vehiculo'=>'Panamera','marca'=>'Porsche','nombre_tipo'=>
                 'Coupe','estado'=>'Disponible','patente'=>'HJ-KJ-34','year'=>2021,'foto'=>'public/Vehiculos/Panamera.jpg'],
-
             ['id'=>5,'nombre_vehiculo'=>'Panamera Turbo','marca'=>'Porsche','nombre_tipo'=>
                 'Deportivo','estado'=>'Disponible','patente'=>'AA-DF-34','year'=>2020,'foto'=>'public/Vehiculos/Panamera_Turbo.jpg'],
-
             ['id'=>6,'nombre_vehiculo'=>'Hilux','marca'=>'Toyota','nombre_tipo'=>
                 'Camioneta','estado'=>'Disponible','patente'=>'AA-FD-45','year'=>2018,'foto'=>'public/Vehiculos/Hilux.jpg'],
-
             ['id'=>7,'nombre_vehiculo'=>'R8','marca'=>'Mazda','nombre_tipo'=>
                 'Deportivo','estado'=>'Disponible','patente'=>'ZZ-KL-34','year'=>2019,'foto'=>'public/Vehiculos/R8.jpg'],
             ['id'=>8,'nombre_vehiculo'=>'S5 Sportback','marca'=>'Audi','nombre_tipo'=>
