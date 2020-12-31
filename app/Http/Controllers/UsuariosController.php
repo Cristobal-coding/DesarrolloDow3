@@ -133,7 +133,7 @@ class UsuariosController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        if(Gate::denies('onlyAdmin')){
+        if(Gate::denies('onlyAdmin') || Auth::user()->id==$usuario->id){
             return redirect()->route('usuarios.index');
         }
         $usuario->delete();

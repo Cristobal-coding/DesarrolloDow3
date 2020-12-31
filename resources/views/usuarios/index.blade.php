@@ -47,10 +47,10 @@
                       <a  href="{{route("usuarios.edit",$user->id)}}" class="btn btn-secondary @if(Gate::denies('onlyAdmin')) disabled @endif"><i class="far fa-edit fa-lg"></i></a>
                     </span>
                     <span class="pl-1" data-toggle="tooltip" title="Borrar." data-placement="right">                               
-                      <a type="button" class="btn btn-warning @if(Gate::denies('onlyAdmin')) disabled @endif" data-bs-toggle="modal" data-bs-target="#borrarTipo{{$user->id}}"><i class="fas fa-trash fa-lg"></i></a>
+                      <a type="button" class="btn btn-warning @if(Gate::denies('onlyAdmin') || $user->id==Auth::user()->id) disabled @endif" data-bs-toggle="modal" data-bs-target="#borrarTipo{{$user->id}}"><i class="fas fa-trash fa-lg"></i></a>
                      </span>  
                      {{-- modal borrar --}}
-                     @if(Gate::denies('onlyAdmin')) 
+                     @if(Gate::allows('onlyAdmin') || $user->id==Auth::user()->id) 
                      <div class="modal fade text-light " id="borrarTipo{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                               <div class="modal-content bg-dark" style="color: #fff;">
@@ -113,11 +113,11 @@
                       <a  href="{{route("usuarios.edit",$user->id)}}" class="btn btn-secondary  @if(Gate::denies('onlyAdmin')) disabled @endif"><i class="far fa-edit fa-lg"></i></a>
                     </span>
                     <span class="pl-1" data-toggle="tooltip" title="Borrar." data-placement="right">                               
-                      <a type="button" class="btn btn-warning  @if(Gate::denies('onlyAdmin')) disabled @endif" data-bs-toggle="modal" data-bs-target="#borrarCliente{{$user->id}}"><i class="fas fa-trash fa-lg"></i></a>
+                      <a type="button" class="btn btn-warning  @if(Gate::denies('onlyAdmin') || $user->id==Auth::user()->id) disabled @endif" data-bs-toggle="modal" data-bs-target="#borrarCliente{{$user->id}}"><i class="fas fa-trash fa-lg"></i></a>
                      </span>      
                   </td>
                   {{-- modal borrar --}}
-                  @if(Gate::denies('onlyAdmin')) 
+                  @if(Gate::allows('onlyAdmin') || $user->id==Auth::user()->id) 
                   <div class="modal fade text-light " id="borrarCliente{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark" style="color: #fff;">
