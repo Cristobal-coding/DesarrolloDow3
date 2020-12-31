@@ -127,14 +127,14 @@
                             <label for="estadoArriendo" class="text-primary">Estado:</label>
                         </div>
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
-                            <input type="time" class="form-control" id="hora" name="hora" value="{{date('H:i', strtotime($arriendo->fecha_hora_entrega_alCliente))}}">
+                            <input type="time" class="form-control" id="hora" name="hora" value="{{date('H:i', strtotime($arriendo->fecha_recogida))}}">
                             <label for="hora" class="text-primary">Hora Entrega al Cliente:</label>
                         </div>
                     </div>
                     {{-- 2014-10-08T23:59 --}}
                     <div class="row px-3 pt-2">
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
-                            <input type="datetime-local" class="form-control" id="fechaInicio" name="fechaInicio" value="{{date('Y-m-d',strtotime($arriendo->fecha_hora_entrega_alCliente)).'T'.date('H:i',strtotime($arriendo->fecha_hora_entrega_alCliente))}}"> 
+                            <input type="datetime" class="form-control" id="fechaInicio" name="fechaInicio" value="{{date('Y-m-d',strtotime($arriendo->fecha_recogida))}}"> 
                             <label for="fechaInicio" class="text-primary">Fecha inicio:</label>
                         </div>
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
@@ -142,7 +142,7 @@
                             <label for="fechaFinal" class="text-primary">Fecha fin Arriendo:</label>
                         </div>
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
-                            <input type="datetime-local" class="form-control" id="fechaEntrega" name="fechaEntrega" value="{{date('Y-m-d', strtotime($arriendo->fecha_recepcion_vehiculos)).'T'.date('H:i', strtotime($arriendo->fecha_recepcion_vehiculos))}}" >
+                            <input type="datetime-local" class="form-control" id="fechaEntrega" name="fechaEntrega" @if($arriendo->fecha_recepcion_vehiculos!=null) value="{{date('Y-m-d', strtotime($arriendo->fecha_recepcion_vehiculos)).'T'.date('H:i', strtotime($arriendo->fecha_recepcion_vehiculos))}}"  @endif >
                             <label for="fechaEntrega" class="text-primary">Fecha de Entrega</label>
                         </div>
                         

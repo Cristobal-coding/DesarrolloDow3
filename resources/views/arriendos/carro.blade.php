@@ -125,7 +125,7 @@
             {{-- Datos de la order --}}
           
             @php
-            $diff = (strtotime($arriendo->fecha_hora_entrega_alCliente)-strtotime($arriendo->fecha_devolucion))/86400;
+            $diff = (strtotime($arriendo->fecha_recogida)-strtotime($arriendo->fecha_devolucion))/86400;
             $diff = abs($diff);
             $diff = floor($diff);
             @endphp
@@ -139,7 +139,7 @@
                 <div class="col-8 py-3">
                     <h6 class="d-inline pr-1"><span class="text-primary">Cliente:</span> {{$arriendo->cliente->nombre_cliente}}</h6>
                     <h6 class="d-inline"><span class="text-primary">Rut:</span> {{$arriendo->rut_cliente}}</h6>
-                    <h6 class="mt-1"><span class="text-primary">Fecha de Inicio:</span> {{date('d-m-Y',strtotime($arriendo->fecha_hora_entrega_alCliente))}}</h6>
+                    <h6 class="mt-1"><span class="text-primary">Fecha de Inicio:</span> {{date('d-m-Y',strtotime($arriendo->fecha_recogida))}}</h6>
                     <h6 class="mt-1"><span class="text-primary">Fecha de Devolución:</span> {{date('d-m-Y',strtotime($arriendo->fecha_devolucion))}}</h6>
                     <h6 class="mt-1"><span class="text-primary">Total Días:</span> {{$diff}}</h6>
                     <h6 class="mt-1"><span class="text-primary">Total por Día:</span> ${{number_format($acumulado,0,".",".")}} CLP</h6>

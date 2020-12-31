@@ -59,7 +59,7 @@ class ArriendosController extends Controller
         }
         $arriendo= new Arriendo;
         $arriendo->rut_cliente = $request->rut_cliente;
-        // $arriendo->fecha_hora_entrega_alCliente= $request->fecha_hora_entrega_alCliente;
+        // $arriendo->fecha_recogida= $request->fecha_recogida;
         $arriendo->fecha_devolucion= $request->fecha_devolucion;
         $arriendo->confirmada= false;
         $arriendo->vendedor=Auth::user()->id;
@@ -143,7 +143,7 @@ class ArriendosController extends Controller
             $arriendo->save();
         }else{
             $arriendo->rut_cliente = $request->rut_cliente;
-            $arriendo->fecha_hora_entrega_alCliente= $request->fechaInicio.' '.$request->hora;
+            $arriendo->fecha_recogida= $request->fechaInicio.' '.$request->hora;
             $arriendo->fecha_devolucion= $request->fechaFinal;
             // $arriendo->vendedor=$request->vendedor;
             if($request->estadoArriendo!=1){
@@ -266,7 +266,7 @@ class ArriendosController extends Controller
             $vehiculo->estado='Arrendado';
             $vehiculo->save();
         }
-        $dias = (strtotime($arriendo->fecha_hora_entrega_alCliente)-strtotime($arriendo->fecha_devolucion))/86400;
+        $dias = (strtotime($arriendo->fecha_recogida)-strtotime($arriendo->fecha_devolucion))/86400;
         $dias = abs($dias);
         $dias = floor($dias);
         $total = $acumulado*$dias;

@@ -42,8 +42,8 @@
                   </div> --}}
                   {{-- VALIDAR LAS FECHAS --}}
                   <div class="form-group col-xl-6 col-md-12 text-light ">
-                    <label for="fecha_hora_entrega_alCliente" class="text-light" style="color: rgb(15, 1, 1);">Fecha Inicio:</label>
-                    <input type="date" name="fecha_hora_entrega_alCliente" class="form-control @error('fecha_hora_entrega_alCliente') is-invalid @enderror " id="fecha_hora_entrega_alCliente" placeholder="" value={{old('fecha_hora_entrega_alCliente')}} >
+                    <label for="fecha_recogida" class="text-light" style="color: rgb(15, 1, 1);">Fecha Inicio:</label>
+                    <input type="date" name="fecha_recogida" class="form-control @error('fecha_recogida') is-invalid @enderror " id="fecha_recogida" placeholder="" value={{old('fecha_recogida')}} >
                     <div class="text-center">
                       <small class="text-secondary">*Fecha en que el cliente debe recoger los vehículos*</small>
                     </div>
