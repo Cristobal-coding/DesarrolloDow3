@@ -25,7 +25,7 @@ class ArriendosEditRequest extends FormRequest
     {
         return [
             'rut_cliente'=>'required|exists:clientes,rut_cliente',
-            'vendedor'=>'requirede|exists:usuarios,id',
+            'vendedor'=>'required|exists:usuarios,id',
             'fechaInicio' => 'required',
             'fechaFinal' => 'required|after:fechaInicio',
             'fechaEntrega' => 'required|after:fechaInicio',
@@ -40,8 +40,8 @@ class ArriendosEditRequest extends FormRequest
             'fechaInicio.required'=>'Ingrese una fecha valida',
             'fechaFinal.required'=>'Ingrese una fecha valida',
             'fechaEntrega.required'=>'Ingrese una fecha valida',
-            'fechaFinal.after'=>'Ingrese una fecha valida, despues de la fecha de inicio',
-            'fechaEntrega.after'=>'Ingrese una fecha valida, despues de la fecha de inicio',
+            'fechaFinal.after'=>'Ingrese una fecha final valida, despues de la fecha de inicio',
+            'fechaEntrega.after'=>'Ingrese una fecha de entrega valida, despues de la fecha de inicio',
         ];
     }
 }
