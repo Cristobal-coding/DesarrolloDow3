@@ -25,7 +25,6 @@ class ArriendosEditRequest extends FormRequest
     {
         return [
             'rut_cliente'=>'required|exists:clientes,rut_cliente',
-            'vendedor'=>'required|exists:usuarios,id',
             'fechaInicio' => 'required',
             'fechaFinal' => 'required|after:fechaInicio',
             'fechaEntrega' => 'required|after:fechaInicio',
