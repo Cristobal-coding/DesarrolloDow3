@@ -128,6 +128,12 @@ class ArriendosController extends Controller
             $estado='estado'.$num;
             $fotoArriendo=$request->$arriendof;
             $fotoEntrega=$request->$entrega;
+            if($request->estadoArriendo !=1 && $request->estadoArriendo !=0 ){
+                return back()->withErrors('Valor inválido definido para el estado del arriendo.');
+            }
+            if($request->$estado !=1 && $request->$estado !=0 ){
+                return back()->withErrors('Valor inválido definido para el estado de un vehículo.');
+            }
             //Que pasa si existe ya la foto de arriendo?
             if($fotoArriendo!=null && $vehiculo->pivot->foto_arriendo!=null){
                 Storage::delete( $vehiculo->pivot->foto_arriendo);

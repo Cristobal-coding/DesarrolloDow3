@@ -113,15 +113,15 @@
                     </div>
                     <div class="row px-3 pt-2">
                         <div class="col-4 mx-0 px-1 form-floating">
-                            <select class="form-select" id="rut_cliente" aria-label="rut_cliente" name="rut_cliente">
+                            <select class="form-select" @if(Gate::denies('onlyAdmin')) disabled @endif id="rut_cliente" aria-label="rut_cliente" name="rut_cliente">
                                 @foreach ($clientes as $cliente )
                                 <option value="{{$cliente->rut_cliente}}" @if($arriendo->cliente->rut_cliente==$cliente->rut_cliente) selected="selected" @endif>{{$cliente->rut_cliente}}</option> 
                                 @endforeach
                             </select>
-                            <label for="rut_cliente" class="text-primary">Rut Cliente:</label>
+                            <label for="rut_cliente" class="text-primary ">Rut Cliente:</label>
                         </div>
                         <div class="col-4 mx-0 px-1 form-floating">
-                            <select class="form-select" id="estadoArriendo" aria-label="estadoArriendo" name="estadoArriendo">
+                            <select class="form-select" id="estadoArriendo" @if(Gate::denies('onlyAdmin')) disabled @endif aria-label="estadoArriendo" name="estadoArriendo">
                                 <option value="0" @if($arriendo->estado==0) selected="selected" @endif>Finalizada</option>
                                 <option value="1" @if($arriendo->estado==1) selected="selected" @endif>Vigente</option>
                             </select>
@@ -135,15 +135,15 @@
                     {{-- 2014-10-08T23:59 --}}
                     <div class="row px-3 pt-2">
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
-                            <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" value="{{date('Y-m-d',strtotime($arriendo->fecha_recogida))}}"> 
+                            <input type="date" class="form-control " @if(Gate::denies('onlyAdmin')) disabled @endif id="fechaInicio" name="fechaInicio" value="{{date('Y-m-d',strtotime($arriendo->fecha_recogida))}}"> 
                             <label for="fechaInicio" class="text-primary">Fecha inicio:</label>
                         </div>
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
-                            <input type="date" class="form-control" id="fechaFinal" name="fechaFinal" value="{{date('Y-m-d', strtotime($arriendo->fecha_devolucion))}}">
+                            <input type="date" class="form-control" @if(Gate::denies('onlyAdmin')) disabled @endif id="fechaFinal" name="fechaFinal" value="{{date('Y-m-d', strtotime($arriendo->fecha_devolucion))}}">
                             <label for="fechaFinal" class="text-primary">Fecha fin Arriendo:</label>
                         </div>
                         <div class="col-4 mx-0 px-1 px-0 form-floating">
-                            <input type="datetime-local" class="form-control" id="fechaEntrega" name="fechaEntrega" @if($arriendo->fecha_recepcion_vehiculos!=null) value="{{date('Y-m-d', strtotime($arriendo->fecha_recepcion_vehiculos)).'T'.date('H:i', strtotime($arriendo->fecha_recepcion_vehiculos))}}"  @endif >
+                            <input type="datetime-local" class="form-control " id="fechaEntrega" name="fechaEntrega" @if($arriendo->fecha_recepcion_vehiculos!=null) value="{{date('Y-m-d', strtotime($arriendo->fecha_recepcion_vehiculos)).'T'.date('H:i', strtotime($arriendo->fecha_recepcion_vehiculos))}}"  @endif >
                             <label for="fechaEntrega" class="text-primary">Fecha de Devolución</label>
                         </div>
                         
