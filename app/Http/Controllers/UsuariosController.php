@@ -114,8 +114,12 @@ class UsuariosController extends Controller
         return redirect()->route("usuarios.index");
     }
     public function updatepass(EditPassRequest $request, Usuario $usuario)
-    {   
+    {   $email=Auth::user()->email;
+        if(!Auth::attempt(['email' =>$email,'password'=>$request->passwordactual])){
+            return back()->withErrors('La contraseña actual no coincide.');
+        }
 
+        dd('Contraseña correcta');
         $usuario->password= Hash::make($request->password);
         $usuario->save();
         return redirect()->route("usuarios.index");

@@ -186,5 +186,10 @@
             <h6 class="text-primary">Si quieres editar este arriendo, haz<br class="d-lg-none"> <a href="{{route('arriendos.edit', $arriendo->id)}}" class="text-secondary">click aquí.</a></h6>
         </div>
     </div>
+    <div class="row pt-3 px-lg-4 border-bottom shadow-sm">
+        <div class="col-12 border-bottom text-center">
+            <h6 class="text-primary">Ver todos los<br class="d-lg-none"> <a href="{{route('arriendos.index')}}" class="text-secondary">arriendos.</a></h6>
+        </div>
+    </div>
 </div>
 @endsection
