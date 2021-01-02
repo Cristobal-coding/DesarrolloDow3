@@ -17,8 +17,8 @@
       </section>
       
 </div>
-<div class="col-12 w-100 mx-0 px-0">
-  <div class="d-md-flex flex-md-equal w-100">
+<div class="col-12 w-100 mx-0 px-0 my-container pb-4">
+  {{-- <div class="d-md-flex flex-md-equal w-100">
     <div class="bg-dark mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
       <div class="my-3 py-3">
         <h2 class="display-5">Another headline</h2>
@@ -32,6 +32,36 @@
         <p class="lead">And an even wittier subasdheading.</p>
       </div>
       <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 500px; border-radius: 21px 21px 0 0; background-image: url(../imgs/autoverde.jpg");></div>
+    </div>
+  </div> --}}
+  <div class="my-card m-3">
+    <div class="box">
+      <div class="content p-2 text-center">
+        <h2>01</h2>
+        <h3>Vehículos</h3>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum vitae blanditiis perspiciatis distinctio, quae officia maxime quam temporibus nesciunt! Ab ut eligendi libero aspernatur debitis alias? Maxime quaerat nobis commodi?</p>
+        <a href="{{route('vehiculos.index')}}" class="text-light text-decoration-none">Ver más</a>
+      </div>
+    </div>
+  </div>
+  <div class="my-card m-3">
+    <div class="box">
+      <div class="content p-2 text-center">
+        <h2>02</h2>
+        <h3>Arriendos</h3>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum vitae blanditiis perspiciatis distinctio, quae officia maxime quam temporibus nesciunt! Ab ut eligendi libero aspernatur debitis alias? Maxime quaerat nobis commodi?</p>
+        <a href="{{route('arriendos.index')}}" class="text-light text-decoration-none">Ver más</a>
+      </div>
+    </div>
+  </div>
+  <div class="my-card m-3">
+    <div class="box">
+      <div class="content p-2 text-center">
+        <h2>03</h2>
+        <h3>Clientes</h3>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum vitae blanditiis perspiciatis distinctio, quae officia maxime quam temporibus nesciunt! Ab ut eligendi libero aspernatur debitis alias? Maxime quaerat nobis commodi?</p>
+        <a href="{{route('clientes.index')}}" class="text-light text-decoration-none">Ver más</a>
+      </div>
     </div>
   </div>
 </div>

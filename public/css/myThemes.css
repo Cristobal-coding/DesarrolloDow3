@@ -111,5 +111,88 @@
     border: 2px solid red !important;
     
   }
-  
-  
+
+  body{
+      background-color: #ebf5fc !important;
+    }
+  .my-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .my-container .my-card{
+    position: relative;
+    width: 320px;
+    height: 440px;
+    box-shadow: inset 5px 5px 5px rgba(0, 0,0, 0.05),
+                inset -5px -5px 5px rgba(255, 255, 255, 0.5),
+                5px 5px 5px rgba(0, 0, 0, 0.05),
+                -5px -5px 5px rgba(255, 255, 255, 0.5);
+    border-radius: 14px;
+  }
+
+  .my-container .my-card .box{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: #ebf5fc;
+    box-shadow: 0 10px 20px rgba(0, 0, 0,0.1);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+  }
+  .my-container .my-card:hover .box{
+    transform: translateY(-50px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0,0.2);
+    background: linear-gradient(45deg,  #b70fe6, #f47cfd);
+
+  }
+  .my-container .my-card .box .content h2{
+    position: absolute;
+    top: -10px;
+    right: 30px;
+    font-size: 8em;
+    color: rgba(0, 0, 0, 0.02);
+    transition: 0.5s;
+    pointer-events: none;
+  }
+  .my-container .my-card:hover .box .content h2{
+    color: rgba(0, 0, 0, 0.05);
+
+  }
+  .my-container .my-card .box .content h3{
+    font-size: 2em;
+    color: #777;
+    z-index: 1;
+    transition: 0.3s;
+  }
+  .my-container .my-card:hover .box .content h3,
+  .my-container .my-card:hover .box .content p{
+    color: #fff;
+  }
+  .my-container .my-card .box .content p{
+    font-size: 1em;
+    font-weight: 300;
+    color: #777;
+    z-index: 1;
+    transition: 0.2s;
+
+  }
+  .my-container .my-card .box .content a{
+    position: relative;
+    display: inline-block;
+    border-radius: 20px;
+    padding: 8px 20px;
+    background: #03a9f4;
+    font-weight: 400;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  .my-container .my-card:hover .box .content a{
+    background: #f47cfd;
+
+  }

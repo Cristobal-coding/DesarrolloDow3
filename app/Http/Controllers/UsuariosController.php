@@ -119,7 +119,7 @@ class UsuariosController extends Controller
             return back()->withErrors('La contraseña actual no coincide.');
         }
 
-        dd('Contraseña correcta');
+        // dd('Contraseña correcta');
         $usuario->password= Hash::make($request->password);
         $usuario->save();
         return redirect()->route("usuarios.index");
