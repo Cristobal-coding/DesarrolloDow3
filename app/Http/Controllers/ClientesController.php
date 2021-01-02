@@ -57,7 +57,7 @@ class ClientesController extends Controller
         $cliente->rut_cliente = $request->rut;
         $cliente->nombre_cliente= $request->nombre;
         $cliente->fono_cliente = $request->fono;
-        $cliente->entrega_pendiente = 'no';
+        // $cliente->entrega_pendiente = 'no';
         $cliente->save();
 
         return redirect()->route("clientes.index");
@@ -109,7 +109,7 @@ class ClientesController extends Controller
         $cliente->rut_cliente=$cliente->rut_cliente;
         $cliente->nombre_cliente=$request->nombre;
         $cliente->fono_cliente=$request->fono;
-        $cliente->entrega_pendiente=$request->entrega_pendiente;
+        // $cliente->entrega_pendiente=$request->entrega_pendiente;
         
         $cliente->save();
         return redirect()->route("clientes.index");
