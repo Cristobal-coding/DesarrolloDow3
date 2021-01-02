@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="d-flex align-items-center justify-content-center">
-                                            <i class="fas fa-exclamation-triangle fa-lg pr-2 text-warning"></i>¿Desea eliminar el cliente ?
+                                            <i class="fas fa-exclamation-triangle fa-lg pr-2 text-warning"></i>¿Desea eliminar el Tipo ?
                                         </div>
                                     </div>
                                     <div class="modal-footer">
