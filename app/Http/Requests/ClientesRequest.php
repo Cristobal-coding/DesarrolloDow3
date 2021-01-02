@@ -34,7 +34,7 @@ class ClientesRequest extends FormRequest
     public function messages(){
         return[
             'rut.required' => 'Indique el rut del cliente',
-            'rut.regex' => 'indique RUT sin puntos con guion y con digito verificador',
+            'rut.regex' => 'Indique RUT sin puntos con guion y con digito verificador',
             'rut.unique' => 'Ya está registrado el rut :input.',
             'nombre.required' => 'Indique el nombre del cliente',
             'nombre.min' => 'Nombre debe tener minimo 2 letras.',

@@ -9,7 +9,6 @@
       <div class="col-lg-8 offset-2 p-4" style="padding-bottom: 0 !important;">
         <h3 class="mb-0">{{$cliente->nombre_cliente}}</h3>
         <div class="mb-1 ">Rut: {{$cliente->rut_cliente}}</div>
-        <p class="card-text"><span class="text-danger">Deudor: </span>{{$cliente->entrega_pendiente}}</p>
         <p class="card-text mb-2"><span class="text-danger">Fono: </span>{{$cliente->fono_cliente}}</p>
       </div>
     </div>
@@ -36,10 +35,6 @@
         </div>
         <div class="card-body mt-0 pt-0">
             <div class="row text-light">
-                <div class="form-group col-xl-4 col-md-12 text-light">
-                    <label for="entrega_pendiente" class="text-light" style="color: rgb(15, 1, 1);">Entrega:</label>
-                    <input type="text" name="entrega_pendiente" class="form-control bg-info border-0 " id="entrega_pendiente" placeholder="Ubicacion" value="{{$cliente->entrega_pendiente}}" >
-                </div>
 
                 <div class="form-group col-xl-4 col-md-12 text-light">
                     <label for="nombre" class="text-light" style="color: rgb(15, 1, 1);">Nombre:</label>

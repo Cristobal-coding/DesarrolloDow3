@@ -3,9 +3,7 @@
     <link rel="stylesheet" href="{{asset("css/myThemes.css")}}">
 @endsection
 @section('main_content')
-<div class="col-4 mt-4">
-    <h5>Clientes</h5>
-</div>
+
 <div class="row m-0 my-4">
    
   
@@ -33,7 +31,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="marca">Rut:</label>
-                                <input class="form-control @error('rut') is-invalid @enderror" type="text" name="rut" id="rut" value="{{old('rut')}}" >
+                                <input class="form-control @error('rut') is-invalid @enderror"   type="text" name="rut" id="rut" value="{{old('rut')}}" >
                             </div>
                         </div>
                         <div class="col-6">
