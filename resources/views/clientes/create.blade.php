@@ -30,8 +30,8 @@
                     <div class="row m-0 px-0">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="marca">Rut:</label>
-                                <input class="form-control @error('rut') is-invalid @enderror"   type="text" name="rut" id="rut" value="{{old('rut')}}" >
+                                <label for="marca">Rut:  <small class="text-muted">(Sin puntos y con guión)</small></label>
+                                <input class="form-control @error('rut') is-invalid @enderror"   type="text" name="rut" placeholder="20111222-k" id="rut" value="{{old('rut')}}" >
                             </div>
                         </div>
                         <div class="col-6">
@@ -44,8 +44,8 @@
                     <div class="row m-0 px-0">
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="patente">Fono Cliente:</label>
-                                <input class="form-control @error('fono') is-invalid @enderror" type="text" name="fono" id="fono" value={{old('fono')}}>
+                                <label for="patente">Fono Cliente: <small class="text-muted">(8 Digitos)</small></label>
+                                <input class="form-control @error('fono') is-invalid @enderror" type="text" name="fono" placeholder="Ej: 98562259" id="fono" value={{old('fono')}}>
                             </div>
                         </div>
                     </div>

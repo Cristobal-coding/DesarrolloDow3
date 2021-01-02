@@ -25,16 +25,12 @@ class DigitoVerificadorRut implements Rule
      */
     public function passes($attribute, $value)
     {
-        // if ((str_contains($value, '.')) or (str_contains($value, ',')) or (str_contains($value, ' ')) or (str_contains($value, '/')) or (str_contains($value, '<')) or (str_contains($value, '> '))){
-        //     $dvCalc=10000;
-        //     $dv=1;
-        // }
-        // else{
-        //    
-
-        // }
-
-        $dv= strtoupper(substr($value,strlen($value)-1));
+        if ((str_contains($value, '.')) or (str_contains($value, ',')) or (str_contains($value, ' ')) or (str_contains($value, '/')) or (str_contains($value, '<')) or (str_contains($value, '> '))){
+            $dvCalc=10000;
+            $dv=1;
+        }
+        else{
+            $dv= strtoupper(substr($value,strlen($value)-1));
             $rut=substr($value,0,strlen($value)-2);
                 $factor = 2;
                 $suma = 0;
@@ -46,6 +42,11 @@ class DigitoVerificadorRut implements Rule
                 }
                 $dvCalc = 11-$suma%11;
                 $dvCalc = $dvCalc==11?0:($dvCalc==10?'k':$dvCalc);
+      
+           
+
+        }
+
       
 
         return $dv==$dvCalc;
