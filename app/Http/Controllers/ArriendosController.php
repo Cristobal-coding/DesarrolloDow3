@@ -146,7 +146,7 @@ class ArriendosController extends Controller
             if($request->estadoArriendo==0){
                 //reviso si los vehiculos fueron entregados y si tiene sus fotos
                 $todoOk=true; //Para Autos
-                $fechaOk=true;// Para las fechas
+                $fechaOk=true;// Para las fechas del arriendo
                 if($vehiculo->pivot->entregado!=0 ||$request->$estado!=0){
                     if($vehiculo->pivot->foto_arriendo==null || $vehiculo->pivot->foto_entrega==null) {
                         if($fotoArriendo==null || $fotoEntrega==null){
@@ -177,6 +177,9 @@ class ArriendosController extends Controller
             //Devuelvo a Disponible el estado de un Vehiculo
             if($request->$estado==1 || $request->estadoArriendo==0){
                 $vehiculo->estado='Disponible';
+                $vehiculo->save();
+            }else{
+                $vehiculo->estado='Arrendado';
                 $vehiculo->save();
             }
             $arriendo->vehiculos()->updateExistingPivot($vehiculo->id,['entregado'=>$request->$estado, 'foto_arriendo'=>$fotoArriendo!=null?$fotoArriendo->store("public/FotosArriendos"):$vehiculo->pivot->foto_arriendo, 'foto_entrega'=>$fotoEntrega!=null?$fotoEntrega->store("public/FotosEntregas"):$vehiculo->pivot->foto_entrega]);

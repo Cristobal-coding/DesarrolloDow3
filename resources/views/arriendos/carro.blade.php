@@ -66,8 +66,8 @@
             </div>
             @else
             <div class="row mb-3">
-                <div class="col-12 py-0 text-right pt-3">
-                    <button class="btn text-primary">Tramitar Pedido<i class="fas fa-long-arrow-alt-right"></i></button>
+                <div class="col-12 py-0 text-right pt-3 pr-2">
+                    <a href="{{route('arriendos.index')}}" class="text-decoration-none text-primary">Ver arriendos<i class="fas fa-long-arrow-alt-right"></i></a>
                 </div>
             </div>
             @endif

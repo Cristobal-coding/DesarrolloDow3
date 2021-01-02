@@ -48,7 +48,7 @@
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fotoEntrega{{$vehiculo->id}}">
                         <i class="fas fa-camera"></i>
                     </button>
-                    <small class="d-block">Foto Devolución</small>
+                    <small class="d-block">Foto Entrega</small>
                 </div>
             </div>
         </div>
@@ -92,7 +92,7 @@
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Fotografía de devolución del Vehículo</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Fotografía de entrega del Vehículo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

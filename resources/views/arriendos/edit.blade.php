@@ -85,14 +85,14 @@
                             </div>
                             <div class="col-5 mx-0 py-1 px-1 form-floating">
                                 <div class="mb-3">
-                                    <label for="fotoEntrega{{$num}}" class="form-label text-primary py-0 my-0" style="font-size: 14px">Foto Entrega @if($vehiculo->pivot->foto_entrega!=null)(<small class="text-secondary">*Foto Ingresada*</small>)@endif:</label>
-                                    <input class="form-control form-control-sm text-primary" id="fotoEntrega{{$num}}" type="file" name="fotoEntrega{{$num}}">
+                                    <label for="fotoArriendo{{$num}}" class="form-label text-primary py-0 my-0" style="font-size: 14px">Foto Recepción @if($vehiculo->pivot->foto_arriendo!=null)(<small class="text-secondary">*Foto Ingresada*</small>)@endif:</label>
+                                    <input class="form-control form-control-sm text-primary" id="fotoArriendo{{$num}}" type="file" name="fotoArriendo{{$num}}">
                                 </div>
                             </div>
                             <div class="col-5 mx-0 py-1 px-1 form-floating">
                                 <div class="mb-3">
-                                    <label for="fotoArriendo{{$num}}" class="form-label text-primary py-0 my-0" style="font-size: 14px">Foto Arriendo @if($vehiculo->pivot->foto_arriendo!=null)(<small class="text-secondary">*Foto Ingresada*</small>)@endif:</label>
-                                    <input class="form-control form-control-sm text-primary" id="fotoArriendo{{$num}}" type="file" name="fotoArriendo{{$num}}">
+                                    <label for="fotoEntrega{{$num}}" class="form-label text-primary py-0 my-0" style="font-size: 14px">Foto Entrega @if($vehiculo->pivot->foto_entrega!=null)(<small class="text-secondary">*Foto Ingresada*</small>)@endif:</label>
+                                    <input class="form-control form-control-sm text-primary" id="fotoEntrega{{$num}}" type="file" name="fotoEntrega{{$num}}">
                                 </div>
                             </div>
                         @endforeach

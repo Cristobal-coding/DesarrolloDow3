@@ -65,9 +65,10 @@
             <td>
               {{$arriendo->usuariovendedor->nombre}} 
             </td>   
-            <th scope="row">{{$arriendo->estado==1?'Vigente':'Finalizada'}}</th>
+            <th scope="row">@if($arriendo->confirmada==0) En Curso @else {{$arriendo->estado==1?'Vigente':'Finalizada'}}@endif</th>
             <td>
-              ${{number_format($arriendo->total,0,".",".")}} CLP
+              @if($arriendo->confirmada==0) En Curso @else ${{number_format($arriendo->total,0,".",".")}} CLP @endif
+              
             </td>   
             <td class="text-center">
               <span class="pr-1" data-toggle="tooltip" title="Detalles Orden." data-placement="bottom">                               
@@ -115,15 +116,7 @@
   </div>
 </div>
 
-{{-- <div class="d-md-flex flex-md-equal w-100">
-  <div class="bg-danger mx-0 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"style="; height: 1500px;">
-    <div class="col-lg-4 offset-lg-4 col-12 offset-0 my-4">
-      
-    </div>
-    
-    <div class="bg-light mt-0 shadow-sm mx-auto" style="height: 500px; border-radius: 21px 21px 0 0;">
-      
-    </div> --}}
+
     
     
     
