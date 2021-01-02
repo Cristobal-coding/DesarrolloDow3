@@ -42,13 +42,13 @@
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fotoArriendo{{$vehiculo->id}}">
                         <i class="fas fa-camera"></i>
                     </button>
-                    <small class="d-block">Foto Arriendo</small>
+                    <small class="d-block">Foto Recepción</small>
                 </div>
                 <div class="col-6 px-3 my-0 text-center">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fotoEntrega{{$vehiculo->id}}">
                         <i class="fas fa-camera"></i>
                     </button>
-                    <small class="d-block">Foto Entrega</small>
+                    <small class="d-block">Foto Devolución</small>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{$vehiculo->marca}} {{$vehiculo->nombre_vehiculo}} arriendo</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Fotografía de recepcion al cliente</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -92,7 +92,7 @@
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{$vehiculo->marca}} {{$vehiculo->nombre_vehiculo}} entrega</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Fotografía de devolución del Vehículo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

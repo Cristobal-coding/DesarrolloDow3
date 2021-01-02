@@ -52,16 +52,9 @@
             {{-- precio --}}
             <div class="col-3 px-1">
                 <div class="row">
-                    <div class="col-10 text-right px-0">
+                    <div class="col-12 text-right px-0">
                         <h5 class="px-2 mt-3">${{number_format($vehiculo->tipo->valor_diario,0,".",".")}} CLP</h5>
                     </div>
-                    <div class="col-2 px-0 d-flex justify-content-center">
-                        <form action="{{route("arriendos.removecart",$vehiculo->id)}}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn mt-2"><i class="fas fa-times"></i></button>
-                        </form>
-                    </div>  
                 </div>         
             </div>
             {{-- /precio --}}
