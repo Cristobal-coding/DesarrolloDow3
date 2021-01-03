@@ -106,19 +106,27 @@ class VehiculosController extends Controller
     }
 
     public function pagina($pagina){
-        $tipos= Tipo::all();
-        $vehiculos= Vehiculo::orderby('marca',"asc")->get();
-        $total = count($vehiculos); 
-        $elementos=6;
-        $incompleta=$total % $elementos;
-        $totalInPage= $total/$elementos;
-        $start=$elementos*($pagina-1);// 6*1=6
-        $iteraciones=$total-$start>6?6:$total-$start;
-        if($incompleta!=0){
-            $totalInPage+=1;
+        if($pagina==1){
+            return $this->index();
+        }else{
+
+            $tipos= Tipo::all();
+            $vehiculos= Vehiculo::orderby('marca',"asc")->get();
+            $total = count($vehiculos); 
+            $elementos=6;
+            $incompleta=$total % $elementos;
+            $totalInPage= $total/$elementos;
+            $start=$elementos*($pagina-1);// 6*1=6
+            $iteraciones=$total-$start>6?6:$total-$start;
+            if($incompleta!=0){
+                $totalInPage+=1;
+            }
+            if($totalInPage<$pagina){
+                return $this->index();
+            }
+            //dd("Emperzar: ".$start." Iterar: ".$iteraciones);
+            return view("vehiculos.paginaciones", compact("totalInPage", "iteraciones", "start", "vehiculos", "tipos"));
         }
-        //dd("Emperzar: ".$start." Iterar: ".$iteraciones);
-        return view("vehiculos.paginaciones", compact("totalInPage", "iteraciones", "start", "vehiculos", "tipos"));
     }
 
 
