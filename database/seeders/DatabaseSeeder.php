@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $tablas=['tipo_vehiculo','vehiculos','usuarios','roles','clientes','sucursales'];
+        $tablas=['tipo_vehiculo','vehiculos','usuarios','roles','clientes','sucursales','arriendos','arriendo_vehiculo'];
         Schema::disableForeignKeyConstraints();
         foreach($tablas as $tabla){
             DB::table($tabla)->truncate();
@@ -133,13 +133,13 @@ class DatabaseSeeder extends Seeder
         // //Clientes
         $clientes=[
             ['rut_cliente'=>'20482871-7','nombre_cliente'=>'Renato Plaza','fono_cliente'=>'78590098'],
-            ['rut_cliente'=>'20421831-5','nombre_cliente'=>'Bob Esponja','fono_cliente'=>'05263985'],
+            ['rut_cliente'=>'20421831-5','nombre_cliente'=>'Bob Ross','fono_cliente'=>'05263985'],
             ['rut_cliente'=>'14253561-7','nombre_cliente'=>'Sylvia Costa','fono_cliente'=>'58260023'],
-            ['rut_cliente'=>'11482871-7','nombre_cliente'=>'Ash Ketchum','fono_cliente'=>'78945651'],
+            ['rut_cliente'=>'11482871-7','nombre_cliente'=>'Cristobal Herrera','fono_cliente'=>'78945651'],
             ['rut_cliente'=>'10256572-7','nombre_cliente'=>'Oscar Buff','fono_cliente'=>'23541156'],
             ['rut_cliente'=>'21452871-7','nombre_cliente'=>'Elwynn Troncoso','fono_cliente'=>'95869956'],
             ['rut_cliente'=>'14485786-7','nombre_cliente'=>'Mario Gann','fono_cliente'=>'789566889'],
-            ['rut_cliente'=>'11482871-7','nombre_cliente'=>'Jose Marco','fono_cliente'=>'56892244'],
+            ['rut_cliente'=>'11482871-7','nombre_cliente'=>'Jose Marco','fono_cliente'=>'568922444'],
             ['rut_cliente'=>'18440649-9','nombre_cliente'=>'Catalina Herrera','fono_cliente'=>'78452269']         
         ];
         foreach($clientes as $cliente){
