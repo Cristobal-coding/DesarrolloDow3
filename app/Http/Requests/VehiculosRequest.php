@@ -47,7 +47,7 @@ class VehiculosRequest extends FormRequest
             'patente.unique'=> 'Patente ya ingresada, ingresar nueva patente.',
             'patente.regex' => 'Patente invalida. 
                 FORMATO (AA-BB-11)',
-            "nombre_tipo.exists" => 'Ingrese valor  valido.-*',
+            "nombre_tipo.exists" => 'Ingrese valor  valido.',
             "nombre_tipo.required" => 'Ingrese valor  valido.-*'
         ];
     }

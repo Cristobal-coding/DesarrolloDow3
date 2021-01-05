@@ -31,7 +31,8 @@ class VehiculosEditRequest extends FormRequest
             "nombre" => 'required|min:2|max:20',
             "marca" => 'required|min:2|max:20',
             "patente" => ['required','regex:/^([A-Z]{2}-[A-Z]{2}-[0-9]{2})?$/'],
-            "tipo" => 'required|exists:tipo_vehiculo,nombre_tipo'
+            "tipo" => 'required|exists:tipo_vehiculo,nombre_tipo',
+            "estado" =>'required'
         ];
 
     }
@@ -45,6 +46,7 @@ class VehiculosEditRequest extends FormRequest
             'marca.min'=>'Marca de vehiculo debe ser mayor a 2 caracteres.',
             'marca.max'=>'Marca de vehiculo debe ser menor a 20 caracteres.',
             'patente.required'=>'Ingresar Patente',
+            'estado.required'=>'Debe seleccionar un estado para el vehiculo',
             //'patente.unique'=> 'Patente ya ingresada, ingresar nueva patente.',
             'patente.regex' => 'Patente invalida. 
                 FORMATO (AA-BB-11)',
