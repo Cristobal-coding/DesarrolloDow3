@@ -139,7 +139,7 @@ class DatabaseSeeder extends Seeder
             ['rut_cliente'=>'10256572-7','nombre_cliente'=>'Oscar Buff','fono_cliente'=>'23541156'],
             ['rut_cliente'=>'21452871-7','nombre_cliente'=>'Elwynn Troncoso','fono_cliente'=>'95869956'],
             ['rut_cliente'=>'14485786-7','nombre_cliente'=>'Mario Gann','fono_cliente'=>'789566889'],
-            ['rut_cliente'=>'11482871-7','nombre_cliente'=>'Jose Marco','fono_cliente'=>'568922444'],
+            ['rut_cliente'=>'17482871-7','nombre_cliente'=>'Jose Marco','fono_cliente'=>'568922444'],
             ['rut_cliente'=>'18440649-9','nombre_cliente'=>'Catalina Herrera','fono_cliente'=>'78452269']         
         ];
         foreach($clientes as $cliente){
