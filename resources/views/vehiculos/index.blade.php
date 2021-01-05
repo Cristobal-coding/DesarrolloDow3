@@ -9,7 +9,11 @@
             <div class="card m-2 shadow-lg px-0 border-0 rounded-lg" style="width:18rem" >
                 <img src="{{Storage::url($vehiculos[$i]->foto)}}" class="rounded-top img-fluid" style="max-height:259px !important; min-height:259px !important; " >
                 <div class="card-body d-flex flex-column flex-fill "  >                
-                    <h5 class="card-title">{{$vehiculos[$i]->marca}} {{$vehiculos[$i]->nombre_vehiculo}} {{$vehiculos[$i]->year}}</h5>
+                    <h5 class="card-title overflow-hidden " style="text-overflow: ellipsis;
+                    overflow: hidden; 
+                    width: 260px; 
+                    height: 1.2em; 
+                    white-space: nowrap;">{{$vehiculos[$i]->marca}} {{$vehiculos[$i]->nombre_vehiculo}} {{$vehiculos[$i]->year}}</h5>
                     <h6 class="text-primary">Patente: <span style="color: black">{{$vehiculos[$i]->patente}}</span></h6>
                     <h6 class="text-primary">Tipo: <span style="color: black">{{$vehiculos[$i]->nombre_tipo!=null?$vehiculos[$i]->nombre_tipo:'Desconocido'}}</span></h6>
                     <h6 class="text-primary">Estado: <span 
