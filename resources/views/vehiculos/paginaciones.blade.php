@@ -24,6 +24,10 @@
                         @else
                             @if($vehiculos[$i]->estado=="De Baja")
                                 style="color: #F20B0B"
+                            @else
+                                @if($vehiculos[$i]->estado=="En Tramite")
+                                    style="color: #f47cfd"
+                                @endif
                             @endif
                         @endif
                     @endif
@@ -44,7 +48,7 @@
                         </span>
                         @endif
                     </div>
-                    @if($vehiculos[$i]->estado=='Arrendado' || $vehiculos[$i]->estado=='De Baja' || $vehiculos[$i]->estado=='En Mantenimiento')
+                    @if($vehiculos[$i]->estado=='Arrendado' || $vehiculos[$i]->estado=='De Baja' || $vehiculos[$i]->estado=='En Mantenimiento' || $vehiculos[$i]->estado=='En Tramite')
                         <div class="col-12 px-0">
                             <a class="btn btn-outline-primary w-100 disabled" ><i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($vehiculos[$i]->tipo->valor_diario,0,".",".")}} CLP</a>        
                         </div>

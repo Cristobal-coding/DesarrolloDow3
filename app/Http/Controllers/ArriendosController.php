@@ -269,6 +269,8 @@ class ArriendosController extends Controller
                 }
                 $arriendodisponible="existe";
                 $arriendo->vehiculos()->attach($vehiculo->id,  ['entregado'=>false,'foto_arriendo'=>null, 'foto_entrega'=>null]);
+                $vehiculo->estado='En Tramite';
+                $vehiculo->save();
                 return redirect()->route('arriendos.carrito');
     
             }else{
