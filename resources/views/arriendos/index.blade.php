@@ -112,7 +112,13 @@
             </tr>
             @endforeach
           @else
-          <h5>Aun no se ha añadido nada</h5>   
+          <tr class="text-center border-0 bg-light">
+            <td colspan="6" rowspan="1" class="text-center">
+                <div class="alert alert-primary mb-0 w-100 border-o " role="alert">
+                    Aun no se ha han creado arriendos
+                </div>
+            </td>
+        </tr>
           @endif              
         </tbody>
       </table>
