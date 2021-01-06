@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{asset("css/theme.css")}}">
     <title>Cars</title>
 </head>
-<body class="no-scroll">
+<body class="no-scroll" @if(Route::current()->getName()=="home.index")style='background: #ebf5fc !important;'@endif>
     <div class="container-fluid m-0 p-0">
           <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
             <div class="container-fluid">

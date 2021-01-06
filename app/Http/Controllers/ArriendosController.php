@@ -291,6 +291,8 @@ class ArriendosController extends Controller
         }
         $arriendo= $this->getArriendoActual();
         $arriendo->vehiculos()->detach($vehiculo->id);
+        $vehiculo->estado='Disponible';
+        $vehiculo->save();
         return redirect()->route('arriendos.carrito');
     }
 
@@ -299,6 +301,10 @@ class ArriendosController extends Controller
             return redirect()->route('arriendos.index');
         }
         $arriendo=$this->getArriendoActual();
+        foreach($arriendo->vehiculos as $vehiculo){
+            $vehiculo->estado='Disponible';
+            $vehiculo->save();
+        }
         $arriendo->vehiculos()->detach();
         $arriendo->delete();
         return redirect()->route('arriendos.carrito');

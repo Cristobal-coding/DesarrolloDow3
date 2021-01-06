@@ -29,7 +29,7 @@ class VehiculosController extends Controller
         }
         $estados = array("Disponible", "Arrendado", "En mantenimiento");                          
         return view("vehiculos.index", compact("totalInPage", "elementos", "iteraciones", "tipos", "años","vehiculos",'estados'));
-        // dd(date('H:i:s',strtotime($vehiculos[0]->created_at)));
+        dd(date('H:i:s',strtotime($vehiculos[0]->created_at)));
     }
 
     public function create()
@@ -71,11 +71,25 @@ class VehiculosController extends Controller
  
     public function update(VehiculosEditRequest $request, Vehiculo $vehiculo)
     {
+        $tramite=false;
+        foreach(Auth::user()->arriendos as $arriendo){
+            if($arriendo->confirmada==0){
+                foreach ($arriendo->vehiculos as $vehiculoEnArriendo) {
+                    if($vehiculoEnArriendo->id==$vehiculo->id){
+                        $tramite=true;
+                    }
+                }
+            }
+        }   
+        if($tramite==true && $request->estado!=null){
+            return back()->withErrors('Este vehiculo esta siendo tramitado en un arriendo, no puedes cambiar su estado actual');
+        }
         if(Auth::user()->rol->nombre=='Ejecutivo'){
             $vehiculo->estado=$request->estado;
             $vehiculo->save();
 
         }else{
+            
             $vehiculo->nombre_vehiculo=$request->nombre;
             $vehiculo->marca=$request->marca;
             $vehiculo->year= $request->año;

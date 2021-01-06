@@ -38,9 +38,9 @@
     <div class="box">
       <div class="content p-2 text-center">
         <h2>01</h2>
-        <h3>Vehículos</h3>
+        <h3>Tipos</h3>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum vitae blanditiis perspiciatis distinctio, quae officia maxime quam temporibus nesciunt! Ab ut eligendi libero aspernatur debitis alias? Maxime quaerat nobis commodi?</p>
-        <a href="{{route('vehiculos.index')}}" class="text-light text-decoration-none">Ver más</a>
+        <a href="{{route('tipos.index')}}" class="text-light text-decoration-none">Ver más</a>
       </div>
     </div>
   </div>
@@ -48,9 +48,9 @@
     <div class="box">
       <div class="content p-2 text-center">
         <h2>02</h2>
-        <h3>Arriendos</h3>
+        <h3>Usuarios</h3>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum vitae blanditiis perspiciatis distinctio, quae officia maxime quam temporibus nesciunt! Ab ut eligendi libero aspernatur debitis alias? Maxime quaerat nobis commodi?</p>
-        <a href="{{route('arriendos.index')}}" class="text-light text-decoration-none">Ver más</a>
+        <a href="{{route('usuarios.index')}}" class="text-light text-decoration-none">Ver más</a>
       </div>
     </div>
   </div>

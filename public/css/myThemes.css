@@ -112,9 +112,9 @@
     
   }
 
-  body{
+  /* body{
       background-color: #ebf5fc !important;
-    }
+    } */
   .my-container{
     display: flex;
     justify-content: center;
