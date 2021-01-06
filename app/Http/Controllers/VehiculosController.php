@@ -91,7 +91,7 @@ class VehiculosController extends Controller
         //Se valida si pertecene a un arriendo y no esta entregado, y le quieren cambiar su estado
         foreach($vehiculo->arriendos as $arriendo){
             foreach($arriendo->vehiculos as $vehiculoArrendado){
-                if($vehiculoArrendadado->pivot->entregado==0 && $vehiculoArrendadado->id==$vehiculo->id && $request->estado!='Arrendado'){
+                if($vehiculoArrendado->pivot->entregado==0 && $vehiculoArrendado->id==$vehiculo->id && $request->estado!='Arrendado'){
                     return back()->withErrors('Este vehiculo esta arrendado y no ha sido entregado, por lo tanto no puedes cambiar su estado actual');
                 }
             }
