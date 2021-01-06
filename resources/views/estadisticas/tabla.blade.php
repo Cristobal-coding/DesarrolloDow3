@@ -8,6 +8,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 <body>
+  <div class="text-center">
+    <h3>Reporte de Ingresos Obtenidos.</h3>
+  </div>
   <table class="table mt-2 table-bordered">
       <thead class="bg-secondary border-0 text-light">
         <tr>
@@ -20,11 +23,19 @@
           <th scope="col">Total</th>                     
         </tr>
       </thead>    
-      <tbody >
-           @php
-            $todos=($arriendos->count()-1);
-            $cont=0; 
-          @endphp
+      <tbody>
+        @php
+          $todos=($arriendos->count()-1);
+          $vacio=false;
+          if(count($arriendos)==1){
+            if($arriendos[0]->confirmada==0){
+              $vacio=true;
+            }
+          }
+          $cont=0; 
+        @endphp
+        @if(count($arriendos)!=null && $vacio!=true)
+          
           @foreach ($arriendos as $arriendo)
             @php
                 $acumulado+=$arriendo->total;             
@@ -47,7 +58,7 @@
                 <td  style="border: 0 !important;"></td>
                 <td  style="border: 0 !important;"></td>
                 <td  style="border: 0 !important;"></td>
-                <td> Total a pagar:</td>
+                <td> Total Ingresos:</td>
                 <td>${{ number_format($acumulado,0,".",".")}}</td>
                 {{-- <td  class="d-flex justify-content-end border" style="border-right:0 !important; border-top:0 !important;"> Total a pagar:</td>
                 <td  class="border" style="border-left:0 !important;">${{ number_format($acumulado,0,".",".")}}</td> --}}
@@ -57,6 +68,14 @@
               $cont+=1; 
             @endphp
          @endforeach
+        @else
+        <tr>
+          <td colspan="7" class="text-center">
+            Aun no se han generado ingresos en los arriendos.
+          </td>
+        </tr>
+        @endif
+          
       </tbody>      
     </table>
 
