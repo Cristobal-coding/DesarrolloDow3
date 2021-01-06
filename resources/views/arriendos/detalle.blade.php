@@ -114,11 +114,8 @@
 </div>
 <div class="col-lg-6 col-12 d-flex order-0 flex-column">
     <div class="row pt-3 px-lg-4 border-bottom shadow-sm">
-        <div class="col-6 border-right">
+        <div class="col-12  text-center">
             <h6 class="text-primary">Usuario Vendedor: <br class="d-lg-none"> <span class="text-dark">{{$arriendo->usuariovendedor->nombre}}</span></h6>
-        </div>
-        <div class="col-6 ">
-            <h6 class="text-primary">Rut Cliente: <br class="d-lg-none"> <span class="text-dark">{{$arriendo->rut_cliente}}</span></h6>
         </div>
     </div>
     <div class="row pt-3 px-lg-4 border-bottom shadow-sm">
@@ -126,7 +123,16 @@
             <h6 class="text-primary">Fecha Inicio: <br class="d-lg-none"> <span class="text-dark">{{date('d-m-Y',strtotime($arriendo->fecha_recogida))}}</span></h6>
         </div>
         <div class="col-6">
+            <h6 class="text-primary">Hora entrega al Cliente: <br class="d-lg-none"> <span class="text-dark">{{date('H:i',strtotime($arriendo->fecha_recogida))}}</span></h6>
+        </div>
+       
+    </div>
+    <div class="row pt-3 px-lg-4 border-bottom shadow-sm">
+        <div class="col-6 border-right">
             <h6 class="text-primary">Fecha fin: <br class="d-lg-none"> <span class="text-dark">{{date('d-m-Y',strtotime($arriendo->fecha_devolucion))}}</span></h6>
+        </div>
+        <div class="col-6 ">
+            <h6 class="text-primary">Rut Cliente: <br class="d-lg-none"> <span class="text-dark">{{$arriendo->rut_cliente}}</span></h6>
         </div>
     </div>
     <div class="row pt-3 px-lg-4 border-bottom shadow-sm">
@@ -134,7 +140,7 @@
             <h6 class="text-primary">Fecha Devolución: <br class="d-lg-none"> <span class="text-dark">{{$arriendo->fecha_recepcion_vehiculos!=null?date('d-m-Y',strtotime($arriendo->fecha_recepcion_vehiculos)):'No devueltos'}}</span></h6>
         </div>
         <div class="col-6">
-            <h6 class="text-primary">Hora: <br class="d-lg-none"> <span class="text-dark">{{$arriendo->fecha_recepcion_vehiculos!=null?date('H:i',strtotime($arriendo->fecha_recepcion_vehiculos)):'No devueltos'}}</span></h6>
+            <h6 class="text-primary">Hora de Devolución: <br class="d-lg-none"> <span class="text-dark">{{$arriendo->fecha_recepcion_vehiculos!=null?date('H:i',strtotime($arriendo->fecha_recepcion_vehiculos)):'No devueltos'}}</span></h6>
         </div>
     </div>
     <div class="row pt-3 px-lg-4 border-bottom shadow-sm">
