@@ -123,7 +123,7 @@
             <h6 class="text-primary">Fecha Inicio: <br class="d-lg-none"> <span class="text-dark">{{date('d-m-Y',strtotime($arriendo->fecha_recogida))}}</span></h6>
         </div>
         <div class="col-6">
-            <h6 class="text-primary">Hora entrega al Cliente: <br class="d-lg-none"> <span class="text-dark">{{date('H:i',strtotime($arriendo->fecha_recogida))}}</span></h6>
+            <h6 class="text-primary">Hora entrega al Cliente: <br class="d-lg-none"> <span class="text-dark">{{date('H:i',strtotime($arriendo->hora_recepcion_cliente))}}</span></h6>
         </div>
        
     </div>
