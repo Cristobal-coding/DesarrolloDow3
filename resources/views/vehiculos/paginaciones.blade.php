@@ -52,20 +52,33 @@
                         </span>
                         @endif
                     </div>
+                    @php
+                        $tramite=false;
+                        foreach(Auth::user()->arriendos as $arriendo){
+                            if($arriendo->confirmada==0){
+                                foreach ($arriendo->vehiculos as $vehiculoEnArriendo) {
+                                    if($vehiculoEnArriendo->id==$vehiculos[$i]->id){
+                                        $tramite=true;
+                                    }
+                                }
+                            }
+                        }   
+                        // dd($tramite); 
+                    @endphp
                     @if($vehiculos[$i]->estado=='Arrendado' || $vehiculos[$i]->estado=='De Baja' || $vehiculos[$i]->estado=='En Mantenimiento' || $vehiculos[$i]->estado=='En Tramite')
                         <div class="col-12 px-0">
-                            <a class="btn btn-outline-primary w-100 disabled" ><i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($vehiculos[$i]->tipo->valor_diario,0,".",".")}} CLP</a>        
+                            <a class="btn btn-outline-primary w-100 disabled" >@if($tramite==true || $vehiculos[$i]->estado=='En Tramite')<i class="fas fa-check-circle fa-lg"></i> Añadido @else <i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($vehiculos[$i]->tipo->valor_diario,0,".",".")}} CLP @endif </a>        
                         </div>
                     @else
                     <div class="col-12 px-0">
                         <form action="{{route('arriendos.addCarrito',$vehiculos[$i]->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <button type="submit" class="btn btn-outline-primary w-100 @if(Gate::denies('bothRols')) disabled @endif"><i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($vehiculos[$i]->tipo->valor_diario,0,".",".")}} CLP</button>
+                            <button type="submit" class="btn btn-outline-primary w-100 @if(Gate::denies('bothRols') || $tramite==true) disabled @endif">@if($tramite==true || $vehiculos[$i]->estado=='En Tramite')<i class="fas fa-check-circle fa-lg"></i> Añadido @else <i class="fas fa-shopping-cart fa-lg"></i> ${{number_format($vehiculos[$i]->tipo->valor_diario,0,".",".")}} CLP @endif </button>
                         </form>
                     </div>
 
                     @endif
-                </div>  
+                </div> 
                 <!-- Modal -->
                 @if($vehiculos[$i]->estado!='Arrendado' || $vehiculos[$i]->estado!='De Baja' || $vehiculos[$i]->estado!='En Mantenimiento' || Gate::allows('onlyAdmin'))
                 <div class="modal fade" id="borrarVehiculo{{$vehiculos[$i]->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

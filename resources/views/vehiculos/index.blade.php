@@ -210,7 +210,7 @@
                 </div>
                 <div class="row mx-0 mb-3 px-2">
                     <div class="col-12">
-                        <button class="btn btn-primary w-100 @if(Gate::denies('noMakeArriendo') || Gate::denies('onlyAdmin')) disabled @endif" type="submit">Añadir</button>
+                        <button class="btn btn-primary w-100 @if(Gate::denies('onlyAdmin')) disabled @endif" type="submit">Añadir</button>
                     </div>
                 </div>
             </form>

@@ -68,7 +68,7 @@
                 <div class="col-12 py-2">
                     <label for="estado" class="text-primary d-block">Estado:</label>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio"  @if($vehiculo->estado=='Disponible')  checked @endif  name="estado" id="disponible" value="Disponible">
+                        <input class="form-check-input" type="radio"  @if($vehiculo->estado=='Disponible' || $vehiculo->estado=='En Tramite')  checked @endif  name="estado" id="disponible" value="Disponible">
                         <label class="form-check-label" for="disponible" style="color: #80EF10">Disponible</label>
                       </div>
                       <div class="form-check form-check-inline">
@@ -85,6 +85,7 @@
                       </div>
                       
                 </div>
+                <small class="@if($vehiculo->estado!='En Tramite') d-none @endif text-primary">Este vehiculo esta siendo tramitado, no cambies su estado actual.</small>
             </div>
             <div class="row mx-0 my-2 px-0">
                 <div class="col-12 px-0">
