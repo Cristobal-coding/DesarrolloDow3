@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="text-center">
-    <h3>Reporte de Ingresos Obtenidos.</h3>
+    <h5>Reporte de Ingresos Obtenidos.</h5>
   </div>
   <table class="table mt-2 table-bordered">
       <thead class="bg-secondary border-0 text-light">
