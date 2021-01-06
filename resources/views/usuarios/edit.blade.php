@@ -1,9 +1,7 @@
 @extends('layouts/master')
 
 @section('main_content')
-<div class="col-4 mt-4">
-    <h5>Edit usuarios</h5>
-</div>
+
 <div class="col-8 offset-2  mt-4 px-1">
     <div class="row m-0 no-gutters  shadow-lg  bg-dark border-0 text-light" style="border-radius: 25px;">
       <div class="col-lg-8 offset-2 p-4" style="padding-bottom: 0 !important;">

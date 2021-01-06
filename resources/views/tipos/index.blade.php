@@ -21,7 +21,7 @@
           <p class="lead">Hasta ahora hay  <span style="color:red; font-weight: bold;">{{$tipo_vehiculo->count()}}</span> tipos de vehiculos ingresados</p>
         </div>
         <div class="bg-light mt-0 shadow-sm mx-auto" style="width: 80%; height: 500px; border-radius: 21px 21px 0 0;);">
-          <table class="table mt-2 table-bordered">
+          <table class="table mt-2 table-bordered table-striped">
             <thead class="bg-dark border-0 text-light">
               <tr>
                 <th scope="col">Nombre</th>

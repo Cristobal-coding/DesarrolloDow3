@@ -24,14 +24,12 @@ class EditPassRequest extends FormRequest
     public function rules()
     {
         return [
-            'passwordanterior' => 'password',
             'password' => 'required|min:5|max:12|same:password2',
         ];
     }
     public function messages(){
         return[
-            'password_actual.required' => 'Indique contraseña',
-            'password.required' => 'Indique contraseña',
+            'password.required' => 'Indique nueva contraseña',
             'password.min' => 'Password debe contener minimo 5 caracteres',
             'password.max' => 'Password debe contener maximo 12 caracteres',
             'password.same' => 'Contraseñas deben coincidir'
