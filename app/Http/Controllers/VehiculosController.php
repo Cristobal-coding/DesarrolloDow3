@@ -73,7 +73,8 @@ class VehiculosController extends Controller
 
  
     public function update(VehiculosEditRequest $request, Vehiculo $vehiculo)
-    {
+    {   
+        //Se valida si esta siendo tramitado y le cambian el arriendo
         $tramite=false;
         foreach(Auth::user()->arriendos as $arriendo){
             if($arriendo->confirmada==0){
@@ -86,6 +87,14 @@ class VehiculosController extends Controller
         }   
         if($tramite==true && $request->estado!=null){
             return back()->withErrors('Este vehiculo esta siendo tramitado en un arriendo, no puedes cambiar su estado actual');
+        }
+        //Se valida si pertecene a un arriendo y no esta entregado, y le quieren cambiar su estado
+        foreach($vehiculo->arriendos as $arriendo){
+            foreach($arriendo->vehiculos as $vehiculoArrendado){
+                if($vehiculoArrendadado->pivot->entregado==0 && $vehiculoArrendadado->id==$vehiculo->id && $request->estado!='Arrendado'){
+                    return back()->withErrors('Este vehiculo esta arrendado y no ha sido entregado, por lo tanto no puedes cambiar su estado actual');
+                }
+            }
         }
         if(Auth::user()->rol->nombre=='Ejecutivo'){
             $vehiculo->estado=$request->estado;
