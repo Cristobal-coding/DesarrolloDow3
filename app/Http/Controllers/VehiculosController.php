@@ -40,6 +40,9 @@ class VehiculosController extends Controller
 
     public function store(VehiculosRequest $request)
     {
+        if(Gate::denies('onlyAdmin')){
+            return redirect()->route('vehiculos.index');
+        }
         $vehiculo= new Vehiculo();
         $vehiculo->nombre_vehiculo= $request->nombre;
         $vehiculo->marca = $request->marca;
